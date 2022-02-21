@@ -4,9 +4,11 @@ const { promisify } = require("util")
 const glob = promisify(require("glob"))
 const path = require('path')
 const fs = require('fs')
+
 async function sendLogs(content) {
   const webhookClient = new WebhookClient({
-    url: process.env.LOG_WEBHOOCK,
+    token: process.env.LOGS_TOKEN,
+    id: process.env.LOGS_ID
   });
   webhookClient.send({
     content: String(content)

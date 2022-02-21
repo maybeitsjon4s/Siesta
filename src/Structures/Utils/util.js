@@ -6,7 +6,7 @@ const path = require('path')
 const fs = require('fs')
 async function sendLogs(content) {
   const webhookClient = new WebhookClient({
-    url: "https://discord.com/api/webhooks/917107057625292862/ogR93A4UZrhsqY0rocDElJ6yGILk269Xf0sfImGNzYI9YIb7LmA8ULFEO8Ul5fDp8np2",
+    url: process.env.LOG_WEBHOOCK,
   });
   webhookClient.send({
     content: String(content)

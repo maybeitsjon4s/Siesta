@@ -180,7 +180,7 @@ function shorten(text, size) {
   if (text.length <= size) return text;
   return text.substr(0, size).trim() + `...`;
 }
-const coinflip = () => Math.random > 0.5
+const coinflip = () => Math.random < 0.5
 
 function formatSizeUnits(bytes) {
   if (bytes >= 1073741824) {

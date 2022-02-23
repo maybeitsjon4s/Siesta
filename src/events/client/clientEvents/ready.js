@@ -1,7 +1,10 @@
 const Emojis = require(`../../../Structures/Utils/emojis`);
+const delay = require('util').promisify(setTimeout);
 module.exports = async(client) => {
+  console.log(`[ SHARDS ] › Shard ${client.shard.ids} conectada!`.green)
+  await delay(5000)
   client.music.start(client.user.id);
-  client.user.setActivity(`<play - ${await client.shard.fetchClientValues('guilds.cache.size').then(a => eval(a.join(",").split(",").map(a => Number(a)).join("+")))} Guilds`, {
-    type: `LISTENING`,
+  client.user.setActivity(`<help - ${await client.shard.fetchClientValues("guilds.cache.size").then((x) => x.reduce((f, y) => f + y))} Guilds | [${client.shard.id}]`, {
+    type: 'LISTENING',
   })
 };

@@ -17,7 +17,7 @@ module.exports = {
       .then(async (m) => {
         try {
           let pingStart = process.hrtime();
-          let result = await eval(code);
+          let result = eval(code);
           if (result instanceof Promise) {
             await result;
           }

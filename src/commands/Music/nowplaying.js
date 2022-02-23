@@ -27,7 +27,7 @@ module.exports = {
             20
           )}]\` ${formatTime(
             client.utils.convertMilliseconds(track.duration)
-          )}\n${Emojis.estrela} » Status\n Volume: \`${player.volume}/500\`\nLoop: \`${player.trackRepeat ? lang.commands.nowplaying.enabled : lang.commands.nowplaying.disabled}\`\nStatus: \`${player.filters.player.paused ? lang.commands.nowplaying.playing : lang.commands.nowplaying.paused}\`**`
+          )}\n${Emojis.estrela} » Status\n Volume: \`${player.volume}/500\`\nLoop: \`${player.trackRepeat ? lang.commands.nowplaying.enabled : lang.commands.nowplaying.disabled}\`\nStatus: \`${!player.filters.player.paused ? lang.commands.nowplaying.playing : lang.commands.nowplaying.paused}\`**`
         )
         .setFooter({
           text: `${message.author.tag}`,

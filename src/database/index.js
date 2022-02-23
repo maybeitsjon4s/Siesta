@@ -12,4 +12,4 @@ module.exports = {
         }
         //console.log(c.red"Database conectada com sucesso")
     }
-};
+}

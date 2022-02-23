@@ -27,7 +27,7 @@ module.exports = {
 
         let embed = new MessageEmbed()
           .setColor(client.color)
-          .setDescription(`> ${message.author}, ${lang.commands.help.message.replace('{}', client.commands.size)}!`)
+          .setDescription(`> ${message.author}, ${lang.commands.help.message.replace('{}', '**' + client.commands.size + '**')}!`)
           .addField(`${Emojis.ban} » __${lang.commands.help.moderation}__ [${mod.length}]`, `\`${mod.join(", ")}\``)
           .addField(`${Emojis.config} » __${lang.commands.help.config}__ [${configs.length}]`, `\`${configs.join(", ")}\``)
           .addField(`${Emojis.dima} » __${lang.commands.help.economy}__ [${eco.length}]`, `\`${eco.join(", ")}\``)

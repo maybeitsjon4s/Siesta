@@ -17,4 +17,4 @@ jobs:
           REMOTE_HOST: ${{ secrets.FTP_HOSTNAME }}
           REMOTE_USER: ${{ secrets.FTP_USERNAME }}
           TARGET: '/home/admin/Siesta-Canary'
-          EXCLUDE: "/node_modules/, .env" 
+          EXCLUDE: "/node_modules/, .env"

@@ -1,0 +1,20 @@
+on: [push]
+name: 🚀 Deploy on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2 
+    
+    - name: 📂 Deploy to Server
+      uses: easingthemes/ssh-deploy@main
+      
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.FTP_KEY }}
+          REMOTE_HOST: ${{ secrets.FTP_HOSTNAME }}
+          REMOTE_USER: ${{ secrets.FTP_USERNAME }}
+          TARGET: '/home/admin/Siesta-Canary'
+          EXCLUDE: "/node_modules/, .env"

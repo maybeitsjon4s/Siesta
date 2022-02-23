@@ -19,7 +19,7 @@ module.exports = {
         let embed = new MessageEmbed()
           .setColor(client.color)
           .setTitle(`${Emojis.star} | __Siesta__`)
-          .setDescription(`${lang.commands.avatar.sucess.replace('{}', user.username).replace('{URL}', user.displayAvatarURL({ dynamic: true, size: 2048}))}`)
+          .setDescription(`${lang.commands.avatar.sucess.replace('{}', user.username).replace('{URL}', user.displayAvatarURL({ dynamic: true, size: 2048}))}**`)
           .setImage(avatar)
           .setFooter({
             text: message.author.tag,

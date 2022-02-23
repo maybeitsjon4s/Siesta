@@ -22,7 +22,7 @@ module.exports = {
         const value = user.mine.level  * (user.mine.esmeraldas * 150)
 
         message.reply({
-          content: `**${Emojis.dima} » ${lang.commands.mine.sold.replace('{emeralds}', user.mine.esmeraldas.toLocaleString()).replace('{value}', value.toLocaleString())}**`
+          content: `**${Emojis.dima} » ${lang.commands.mine.sold.replace('{emeralds}', user.mine.esmeraldas.toLocaleString()).replace('value', value.toLocaleString())}**`
         })
 
         await User.findOneAndUpdate({

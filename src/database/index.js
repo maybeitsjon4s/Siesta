@@ -1,15 +1,13 @@
-const mongoose = require("mongoose")
-const c = require("colors")
-module.exports = {
-    start() {
-        try{
-            mongoose.connect(process.env.DATABASE_URL, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-            })
-        } catch(e) {
-            console.log(c.red`Erro na database:`, c.gray(e))
-        }
-        //console.log(c.red"Database conectada com sucesso")
+import { connect } from "mongoose"
+import { red, gray } from "colors"
+
+export function start() {
+    try {
+        connect(process.env.DATABASE_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        })
+    } catch (e) {
+        console.log(red`Erro na database:`, gray(e))
     }
 }

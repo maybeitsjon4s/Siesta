@@ -1,9 +1,10 @@
-const Emojis = require(`../../../Structures/Utils/emojis`);
-const Guild = require("../../../database/Schemas/Guild")
-module.exports = async (client, message) => {
+import { errado } from `../../../Structures/Utils/emojis.js`;
+import { findOne } from "../../../database/Schemas/Guild.js";
+
+export default async (client, message) => {
 if (!message.guild) return;
 
-    let GUILD = await Guild.findOne({
+    let GUILD = await findOne({
       _id: message.guild.id
     })
     if (!GUILD) return;
@@ -38,7 +39,7 @@ if (!message.guild) return;
       const whitelist = GUILD.antiinvite.whitelist
 
       if (regex.exec(message.content) && !whitelist.some(x => x == message.channel.id)) {
-        message.channel.send(`**${Emojis.errado} » ${message.author} ` + lang.events.autoModEvents.antiinvite + '**')
+        message.channel.send(`**${errado} » ${message.author} ` + lang.events.autoModEvents.antiinvite + '**')
         message.delete().catch((a) => {});
       }
     }

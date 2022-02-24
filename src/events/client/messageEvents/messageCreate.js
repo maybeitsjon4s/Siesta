@@ -1,25 +1,26 @@
-const Discord = require(`discord.js`);
-const Emojis = require(`../../../Structures/Utils/emojis`);
-const moment = require(`moment`);
-const Guild = require("../../../database/Schemas/Guild")
-const User = require('../../../database/Schemas/User');
-module.exports = async (client, message) => {
+import { Collection, MessageActionRow, MessageButton } from `discord.js`;
+import { rocket, estrela } from `../../../Structures/Utils/emojis.js`;
+import moment from `moment`;
+import { findOne, create } from "../../../database/Schemas/Guild.js";
+import { findOne as _findOne, create as _create, findOneAndUpdate } from '../../../database/Schemas/User.js';
+
+export default async (client, message) => {
 const { cooldowns } = client;
   if (message.author.bot || !message.guild) return;
 
   let prefix;
 
-  let USER = await User.findOne({
+  let USER = await _findOne({
     _id: message.author.id,
   })
-  let GUILD = await Guild.findOne({
+  let GUILD = await findOne({
     _id: message.guild.id,
   })
   if (!GUILD) {
-    await Guild.create({
+    await create({
     _id: message.guild.id,
   })
-  GUILD = await Guild.findOne({
+  GUILD = await findOne({
     _id: message.guild.id
   })
   }
@@ -36,10 +37,10 @@ const { cooldowns } = client;
   if (!message.content.toLowerCase().startsWith(prefix)) return;
 
   if (!USER) {
-      await User.create({
+      await _create({
     _id: message.author.id,
   })
-  USER = await User.findOne({ _id: message.author.id })
+  USER = await _findOne({ _id: message.author.id })
   }
 
   if(USER.blacklist) return;
@@ -63,7 +64,7 @@ const { cooldowns } = client;
   if (cmd.length === 0) return;
   const command = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
 
-  if (!cooldowns.has(command)) cooldowns.set(command, new Discord.Collection());
+  if (!cooldowns.has(command)) cooldowns.set(command, new Collection());
   
   if (!command) return;
   const now = Date.now();
@@ -75,7 +76,7 @@ const { cooldowns } = client;
 
     if (now < expirationTime) {
       const timeLeft = (expirationTime - now) / 1000;
-      return message.reply({ content: `**${Emojis.rocket} » `+ String(lang.events.messageCreate.cooldown).replace('{}', timeLeft.toFixed(1)) + '**'})
+      return message.reply({ content: `**${rocket} » `+ String(lang.events.messageCreate.cooldown).replace('{}', timeLeft.toFixed(1)) + '**'})
     }
   }
   timestamps.set(message.author.id, now);
@@ -91,18 +92,18 @@ const { cooldowns } = client;
       await command.run(client, message, args, player, lang);
     } catch (e) {
       console.log('\n\n' + e.stack + '\n\n')
-      const row = new Discord.MessageActionRow().addComponents(
-        new Discord.MessageButton()
-        .setEmoji(Emojis.estrela)
+      const row = new MessageActionRow().addComponents(
+        new MessageButton()
+        .setEmoji(estrela)
         .setStyle(`LINK`)
         .setURL(`https://discord.com/invite/vYEutrG7gY`)
       );
       message.reply({ embeds: [{
       color: client.color,
-      description: `**${Emojis.rocket} » ` + lang.events.messageCreate.error.replace('{}', command.name) + '**' + '\n\`' + e + '\`'
+      description: `**${rocket} » ` + lang.events.messageCreate.error.replace('{}', command.name) + '**' + '\n\`' + e + '\`'
       }], components: [row]})
     } finally {
-      await User.findOneAndUpdate({ _id: message.author.id }, { $set: { lastCommandUsed: Date.now() }})
+      await findOneAndUpdate({ _id: message.author.id }, { $set: { lastCommandUsed: Date.now() }})
     }
   }
 };

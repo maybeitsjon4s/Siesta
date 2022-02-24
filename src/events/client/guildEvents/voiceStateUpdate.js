@@ -1,6 +1,6 @@
 const delay = require('util').promisify(setTimeout);
-const Guild = require("../../../database/Schemas/Guild")
-module.exports = async (client, oldState, newState) => {
+
+export default async (client, oldState, newState) => {
   const channel = newState.guild.channels.cache.get(
     newState.channel?.id ?? newState.channelId
   );

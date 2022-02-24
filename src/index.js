@@ -1,6 +1,7 @@
-require("dotenv/config");
-require("colors");
-const SiestaClient = require('./Structures/SiestaClient')
+import "dotenv/config";
+import "colors";
+import SiestaClient from './Structures/SiestaClient.js';
+
 const client = new SiestaClient()
+
 client.login()
-module.exports = client;

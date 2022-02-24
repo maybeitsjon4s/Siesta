@@ -1,6 +1,7 @@
 {
-  "name": "Siesta",
+  "name": "siste",
   "version": "1.0.0",
+  "type": "module",
   "main": "ClientSharding.js",
   "scripts": {
     "start": "node ClientSharding.js"

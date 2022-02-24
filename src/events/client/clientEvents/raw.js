@@ -1,4 +1,3 @@
-const Emojis = require(`../../../Structures/Utils/emojis`);
-module.exports = (client, packet) => {
+export default (client, packet) => {
   client.music.handleVoiceUpdate(packet);
 };

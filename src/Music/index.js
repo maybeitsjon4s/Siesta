@@ -1,7 +1,9 @@
-const { Vulkava } = require(`vulkava`);
-const nodes = require('./nodes')
-const fs = require("fs")
-module.exports = async (client) => {
+import { Vulkava } from `vulkava`;
+import nodes from './nodes.js';
+import { readdirSync } from "fs";
+
+
+export default async (client) => {
   client.music = new Vulkava({
     nodes: nodes,
     sendWS: (guildId, payload) => {
@@ -13,8 +15,8 @@ module.exports = async (client) => {
     },
   });
 
-  fs.readdirSync(`./src/events/lavalink/`).forEach((file) => {
-    let event = require(`../events/lavalink/${file}`);
+  readdirSync(`./src/events/lavalink/`).forEach((file) => {
+    let event = await import(`../events/lavalink/${file}`);
     let eventName = file.split(`.`)[0];
     client.music.on(eventName, event.bind(null, client));
   });

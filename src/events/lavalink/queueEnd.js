@@ -1,8 +1,9 @@
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
-module.exports = async (client, player) => {
+import { music } from `../../Structures/Utils/emojis.js`;
+import { findOne } from "../../database/Schemas/Guild.js";
+
+export default async (client, player) => {
   const channel = client.channels.cache.get(player.textChannelId);
-  const GUILD = await Guild.findOne({ _id: channel.guild.id })
+  const GUILD = await findOne({ _id: channel.guild.id })
 
    let lang = GUILD.lang || 0
 
@@ -15,6 +16,6 @@ module.exports = async (client, player) => {
     break;
   }
 
-  channel.send(`**${Emojis.music} » ${lang.events.musicEvents.queueEnd}**`)
+  channel.send(`**${music} » ${lang.events.musicEvents.queueEnd}**`)
   player.destroy();
 };

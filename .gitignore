@@ -2,3 +2,4 @@ yarn.lock
 node_modules
 .env
 Procfile
+package-lock.json

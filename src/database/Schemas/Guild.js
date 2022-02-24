@@ -1,5 +1,4 @@
-const { Schema } = require("mongoose");
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
 let guildSchema = new Schema({
   _id: {
@@ -43,5 +42,5 @@ let guildSchema = new Schema({
   }
 });
 
-let Guild = mongoose.model("Guilds", guildSchema);
-module.exports = Guild;
+let Guild = model("Guilds", guildSchema);
+export default Guild;

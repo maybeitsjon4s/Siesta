@@ -1,9 +1,10 @@
-const Emojis = require(`../../../Structures/Utils/emojis`);
-const Discord = require(`discord.js`);
-const Guild = require("../../../database/Schemas/Guild")
-module.exports = async (client, member) => {
+import { ban } from `../../../Structures/Utils/emojis.js`;
+import { MessageActionRow, MessageButton } from `discord.js`;
+import { findOne } from "../../../database/Schemas/Guild.js";
 
-  const guild = await Guild.findOne({ _id: member.guild.id, })
+export default async (client, member) => {
+
+  const guild = await findOne({ _id: member.guild.id, })
   if(!guild) return;
 
   //======================> Welcome <======================\\
@@ -12,13 +13,13 @@ module.exports = async (client, member) => {
 
     let channel = await member.guild.channels.cache.get(guild.welcome.channel);
 
-    const row = new Discord.MessageActionRow().addComponents(
-      new Discord.MessageButton()
+    const row = new MessageActionRow().addComponents(
+      new MessageButton()
         .setLabel(`Message configured by ${member.guild.name} team`)
         .setCustomId("welcome")
         .setStyle(`SECONDARY`)
         .setDisabled(true)
-        .setEmoji(Emojis.ban)
+        .setEmoji(ban)
     );
 
     channel.send({

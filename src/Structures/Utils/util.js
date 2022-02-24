@@ -1,9 +1,11 @@
-const moment = require("moment");
-const { WebhookClient } = require("discord.js");
-const { promisify } = require("util")
-const glob = promisify(require("glob"))
-const path = require('path')
-const fs = require('fs')
+import { duration } from "moment";
+import { WebhookClient } from "discord.js";
+import { promisify } from "util";
+import pkg from "glob";
+import { parse } from 'path';
+import { readdirSync } from 'fs';
+
+const glob = promisify(pkg);
 
 async function sendLogs(content) {
   const webhookClient = new WebhookClient({
@@ -20,7 +22,7 @@ async function getUser(args, message) {
 
   let user;
 
-  if(/<@!?\d{17,18}>/.test(args)) {
+  if (/<@!?\d{17,18}>/.test(args)) {
     user = await message.client.users.fetch(args.match(/\d{17,18}/)?.[0])
 
   } else {
@@ -28,12 +30,12 @@ async function getUser(args, message) {
     try {
       user = await message.guild.members.search({ query: args }).then((x) => x.first().user);
 
-    } catch {};
+    } catch { };
     try {
-     user = await message.client.users.fetch(args).catch(null); 
-    } catch {}
-    }
-  if(user) return user
+      user = await message.client.users.fetch(args).catch(null);
+    } catch { }
+  }
+  if (user) return user
 }
 
 function applyLineBreaks(string, maxCharLengthPerLine) {
@@ -49,9 +51,9 @@ function applyLineBreaks(string, maxCharLengthPerLine) {
   return chunks.map((c) => c.trim()).join(`\n`);
 }
 
-function formatTime(time /*, format = `ddd hhh mmm`*/ ) {
+function formatTime(time /*, format = `ddd hhh mmm`*/) {
   if (!time) return;
-  return moment.duration(time).format("d[d] h[h] m[m] s[s]");
+  return duration(time).format("d[d] h[h] m[m] s[s]");
 }
 
 function abbreviateNumber(number, precision = 2) {
@@ -124,7 +126,7 @@ function timeToMilliseconds(time) {
     timeUnits.length === new Set(timeUnits).size &&
     timeUnits.every(
       (u, i, a) =>
-      formats.includes(u) && formats.indexOf(a[i - 1]) < formats.indexOf(u)
+        formats.includes(u) && formats.indexOf(a[i - 1]) < formats.indexOf(u)
     );
   if (!isValid) return null;
 
@@ -157,9 +159,9 @@ function timeToMilliseconds(time) {
 
   return formatted.reduce(
     (acc, curr, i, a) =>
-    acc +
-    parseInt(curr.substring(0, curr.length - 1)) *
-    convertions[curr[curr.length - 1]],
+      acc +
+      parseInt(curr.substring(0, curr.length - 1)) *
+      convertions[curr[curr.length - 1]],
     0
   );
 }
@@ -192,11 +194,11 @@ function formatSizeUnits(bytes) {
 }
 
 async function loadCommands(client) {
-  fs.readdirSync(`./src/commands/`).forEach((local) => {
-    const comandos = fs.readdirSync(`./src/commands/${local}`).filter((arquivo) => arquivo.endsWith('.js'));
+  readdirSync(`./src/commands/`).forEach((local) => {
+    const comandos = readdirSync(`./src/commands/${local}`).filter((arquivo) => arquivo.endsWith('.js'));
 
     for (let file of comandos) {
-      let puxar = require(`../../commands/${local}/${file}`);
+      let puxar = await import(`../../commands/${local}/${file}`);
 
       if (puxar.name) {
         client.commands.set(puxar.name, puxar);
@@ -210,28 +212,26 @@ async function loadCommands(client) {
 async function loadEvents(client) {
   const events = await glob(`${process.cwd()}/src/events/client/**/*.js`)
   events.forEach(eventFile => {
-    delete require.cache[eventFile]
-    const file = require(eventFile)
-    const { name } = path.parse(eventFile)
-    client.on(name, file.bind(null, client))
+    const rawFile = await import(`file://${eventFile}`);
+    const File = rawFile.default;
+    const { name } = parse(File)
+    client.on(name, File.bind(null, client))
   });
 }
 
-module.exports = {
-  abbreviateNumber: abbreviateNumber,
-  convertAbbreviatedNum: convertAbbreviatedNum,
-  abbreviateNumber: abbreviateNumber,
-  convertAbbreviatedNum: convertAbbreviatedNum,
-  convertMilliseconds: convertMilliseconds,
-  progressBarEnhanced: progressBarEnhanced,
-  formatTime: formatTime,
-  applyLineBreaks: applyLineBreaks,
-  shorten: shorten,
-  timeToMilliseconds: timeToMilliseconds,
-  getUser: getUser,
-  coinflip: coinflip,
-  sendLogs: sendLogs,
-  formatSizeUnits: formatSizeUnits,
-  loadEvents: loadEvents,
-  loadCommands: loadCommands,
-}
+export const abbreviateNumber = abbreviateNumber;
+export const convertAbbreviatedNum = convertAbbreviatedNum;
+export const abbreviateNumber = abbreviateNumber;
+export const convertAbbreviatedNum = convertAbbreviatedNum;
+export const convertMilliseconds = convertMilliseconds;
+export const progressBarEnhanced = progressBarEnhanced;
+export const formatTime = formatTime;
+export const applyLineBreaks = applyLineBreaks;
+export const shorten = shorten;
+export const timeToMilliseconds = timeToMilliseconds;
+export const getUser = getUser;
+export const coinflip = coinflip;
+export const sendLogs = sendLogs;
+export const formatSizeUnits = formatSizeUnits;
+export const loadEvents = loadEvents;
+export const loadCommands = loadCommands;

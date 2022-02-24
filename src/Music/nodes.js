@@ -1,4 +1,4 @@
-module.exports = [
+export default [
    {
     id: 'Lunary',
     hostname: 'jon4slavalink.herokuapp.com',

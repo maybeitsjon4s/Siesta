@@ -1,4 +1,4 @@
-import { music } from `../../Structures/Utils/emojis.js`;
+import { music } from "../../Structures/Utils/emojis.js";
 import { findOne } from "../../database/Schemas/Guild.js";
 
 export default async (client, player) => {

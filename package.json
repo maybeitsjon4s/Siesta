@@ -19,6 +19,7 @@
     "glob": "^7.2.0",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
+    "moment-timezone": "^0.5.34",
     "mongoose": "^6.2.2",
     "ms": "^2.1.3",
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1",

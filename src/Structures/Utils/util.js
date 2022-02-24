@@ -1,11 +1,12 @@
-import { duration } from "moment";
+import pkg from "moment";
 import { WebhookClient } from "discord.js";
 import { promisify } from "util";
-import pkg from "glob";
+import pkg2 from "glob";
 import { parse } from 'path';
 import { readdirSync } from 'fs';
 
-const glob = promisify(pkg);
+const glob = promisify(pkg2);
+const { duration } = pkg
 
 async function sendLogs(content) {
   const webhookClient = new WebhookClient({
@@ -194,7 +195,7 @@ function formatSizeUnits(bytes) {
 }
 
 async function loadCommands(client) {
-  readdirSync(`./src/commands/`).forEach((local) => {
+  readdirSync(`./src/commands/`).forEach(async (local) => {
     const comandos = readdirSync(`./src/commands/${local}`).filter((arquivo) => arquivo.endsWith('.js'));
 
     for (let file of comandos) {
@@ -211,7 +212,7 @@ async function loadCommands(client) {
 
 async function loadEvents(client) {
   const events = await glob(`${process.cwd()}/src/events/client/**/*.js`)
-  events.forEach(eventFile => {
+  events.forEach(async eventFile => {
     const rawFile = await import(`file://${eventFile}`);
     const File = rawFile.default;
     const { name } = parse(File)
@@ -219,19 +220,26 @@ async function loadEvents(client) {
   });
 }
 
-export const abbreviateNumber = abbreviateNumber;
-export const convertAbbreviatedNum = convertAbbreviatedNum;
-export const abbreviateNumber = abbreviateNumber;
-export const convertAbbreviatedNum = convertAbbreviatedNum;
-export const convertMilliseconds = convertMilliseconds;
-export const progressBarEnhanced = progressBarEnhanced;
-export const formatTime = formatTime;
-export const applyLineBreaks = applyLineBreaks;
-export const shorten = shorten;
-export const timeToMilliseconds = timeToMilliseconds;
-export const getUser = getUser;
-export const coinflip = coinflip;
-export const sendLogs = sendLogs;
-export const formatSizeUnits = formatSizeUnits;
-export const loadEvents = loadEvents;
-export const loadCommands = loadCommands;
+export default {
+  abbreviateNumber: abbreviateNumber,
+  convertAbbreviatedNum: convertAbbreviatedNum,
+  convertMilliseconds: convertMilliseconds,
+  progressBarEnhanced: progressBarEnhanced,
+  formatTime: formatTime,
+  applyLineBreaks: applyLineBreaks,
+  shorten: shorten,
+  timeToMilliseconds: timeToMilliseconds,
+  getUser: getUser,
+  coinflip: coinflip,
+  sendLogs: sendLogs,
+  formatSizeUnits: formatSizeUnits,
+  loadEvents: loadEvents,
+  loadCommands: loadCommands
+}
+
+/*
+* Vendo esse codigo eu achei que teria um derrame
+* Por sorte isso não aconteceu
+* Espero que você melhore e que não siga os videos do splinter
+* Pois os codigo dele é feio pra porra 💋
+*/

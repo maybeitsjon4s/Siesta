@@ -1,5 +1,5 @@
-import { ban } from `../../../Structures/Utils/emojis.js`;
-import { MessageActionRow, MessageButton } from `discord.js`;
+import { ban } from "../../../Structures/Utils/emojis.js";
+import { MessageActionRow, MessageButton } from "discord.js";
 import { findOne } from "../../../database/Schemas/Guild.js";
 
 export default async (client, member) => {

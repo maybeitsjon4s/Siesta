@@ -1,4 +1,4 @@
-import { Vulkava } from `vulkava`;
+import { Vulkava } from "vulkava";
 import nodes from './nodes.js';
 import { readdirSync } from "fs";
 
@@ -15,7 +15,7 @@ export default async (client) => {
     },
   });
 
-  readdirSync(`./src/events/lavalink/`).forEach((file) => {
+  readdirSync(`./src/events/lavalink/`).forEach(async (file) => {
     let event = await import(`../events/lavalink/${file}`);
     let eventName = file.split(`.`)[0];
     client.music.on(eventName, event.bind(null, client));

@@ -1,38 +1,48 @@
-const { MessageEmbed, Discord } = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
-const moment = require('moment')
-module.exports = {
-  name: `userinfo`,
-  category: `utils`,
-  aliases: [`ui`, "whois"],
-  run: async (client, message, args, player, lang) => {
-moment.locale(lang.name)
+import { MessageEmbed } from "discord.js";
+import { star, user as _user, estrela, heart2, boost } from `../../Structures/Utils/emojis`;
+import { locale, utc } from 'moment';
 
-        let user = await client.utils.getUser(args[0], message);
+export const name = `userinfo`;
+export const category = `utils`;
+export const aliases = [`ui`, "whois"];
+export async function run(client, message, args, player, lang) {
+  locale(lang.name);
 
-        if (!user) user = message.author;
+  export default {
+    name: "userinfo",
+    category: "utils",
+    aliases: ["ui", "whois"],
+    run: async (client, message, args, player, lang) => {
+      locale(lang.name)
 
-          const embed = new MessageEmbed()
-            .setTitle(`${Emojis.star} | __Siesta__`)
-            .setColor(client.color)
-            .addField(`${Emojis.user} » User`, ` \`${user.tag}\``, true)
-            .addField(`${Emojis.estrela} » ${lang.commands.userinfo.createdAccount}`, `\`${moment.utc(user.createdAt).format(`DD/MM/YYYY`)}\` \`(${moment(user.createdAt).fromNow()})\``, true)
-            .addField(`<:members:867005290859462676> » Id`, `\`${user.id}\``, true)
-            .setFooter({
-              text: message.author.tag,
-              iconURL: message.author.displayAvatarURL({ dynamic: true }),
-            })
-            .setTimestamp();
 
-            if (message.guild.members.cache.get(user.id)) {
-          let member = message.guild.members.cache.get(user.id);
+      let user = await client.utils.getUser(args[0], message);
 
-          embed.addField(`${Emojis.heart2} » ${lang.commands.userinfo.joinedAt}`, `\`${moment.utc(member.joinedAt).format(`DD/MM/YYYY`)}\` \`(${moment(member.joinedAt).fromNow()})\``, true);
-          
-          if(member.premiumSince) embed.addField(`${Emojis.boost} » ${lang.commands.userinfo.boosterSince}`, `\`${moment.utc(member.premiumSince).format("DD/MM/YYYY")} \`\`(${moment.utc(member.premiumSince).fromNow()})\``, true)
-        }
+      if (!user)
+        user = message.author;
 
-          message.reply({ embeds: [embed] });
+      const embed = new MessageEmbed()
+        .setTitle(`${star} | __Siesta__`)
+        .setColor(client.color)
+        .addField(`${_user} » User`, ` \`${user.tag}\``, true)
+        .addField(`${estrela} » ${lang.commands.userinfo.createdAccount}`, `\`${utc(user.createdAt).format(`DD/MM/YYYY`)}\` \`(${moment(user.createdAt).fromNow()})\``, true)
+        .addField(`<:members:867005290859462676> » Id`, `\`${user.id}\``, true)
+        .setFooter({
+          text: message.author.tag,
+          iconURL: message.author.displayAvatarURL({ dynamic: true }),
+        })
+        .setTimestamp();
+
+      if (message.guild.members.cache.get(user.id)) {
+        let member = message.guild.members.cache.get(user.id);
+
+        embed.addField(`${heart2} » ${lang.commands.userinfo.joinedAt}`, `\`${utc(member.joinedAt).format(`DD/MM/YYYY`)}\` \`(${moment(member.joinedAt).fromNow()})\``, true);
+
+        if (member.premiumSince)
+          embed.addField(`${boost} » ${lang.commands.userinfo.boosterSince}`, `\`${utc(member.premiumSince).format("DD/MM/YYYY")} \`\`(${utc(member.premiumSince).fromNow()})\``, true);
+      }
+
+      message.reply({ embeds: [embed] });
+    }
   }
 }

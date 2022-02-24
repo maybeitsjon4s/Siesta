@@ -1,4 +1,4 @@
-import { errado } from `../../../Structures/Utils/emojis.js`;
+import { errado } from "../../../Structures/Utils/emojis.js";
 import { findOne } from "../../../database/Schemas/Guild.js";
 
 export default async (client, message) => {

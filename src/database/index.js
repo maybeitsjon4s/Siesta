@@ -1,5 +1,7 @@
-import { connect } from "mongoose"
-import { red, gray } from "colors"
+import pkg from "mongoose"
+import colors from "colors"
+
+const { connect } = pkg
 
 export function start() {
     try {
@@ -8,6 +10,6 @@ export function start() {
             useUnifiedTopology: true,
         })
     } catch (e) {
-        console.log(red`Erro na database:`, gray(e))
+        console.log(colors.red(`Erro na database:`), colors.gray(e))
     }
 }

@@ -1,13 +1,14 @@
 import { Client, Options, Collection } from "discord.js"
-import Music from "../Music.js"
-import { start } from "../database.js"
+import Music from "../Music/index.js"
+import { start } from "../database/index.js"
 import moment from "moment-timezone"
 import momentDurationFormatSetup from "moment-duration-format"
+import Utils from "./Utils/util.js"
+
+import ptBR from "../Locales/pt-BR.js"
+import enUS from "../Locales/en-US.js"
+
 momentDurationFormatSetup(moment)
-
-import * as langs from "../Locales/"
-console.log(langs)
-
 
 export default class extends Client {
     constructor(options = {}) {
@@ -43,16 +44,16 @@ export default class extends Client {
 
         this.cooldowns = new Collection()
 
-        this.utils = require('./Utils/util')
+        this.utils = Utils
 
         this.owners = ["431768491759239211"]
 
         this.color = '#ffffff'
 
-        //this.langs = {
-            //pt:
-            //en: 
-        //}
+        this.langs = {
+            pt: ptBR,
+            en: enUS
+        }
     }
 
 

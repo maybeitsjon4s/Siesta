@@ -1,4 +1,5 @@
-const delay = require('util').promisify(setTimeout);
+import { promisify } from "util"
+const delay = promisify(setTimeout)
 
 export default async (client, oldState, newState) => {
   const channel = newState.guild.channels.cache.get(

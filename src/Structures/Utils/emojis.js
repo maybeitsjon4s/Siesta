@@ -1,4 +1,3 @@
-const Discord = require("discord.js")
 module.exports = {
   //numeros
   um: `<:um:910271178780860426>`,

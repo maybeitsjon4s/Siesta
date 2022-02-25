@@ -17,7 +17,7 @@ module.exports = {
         client.utils.formatTime(
           client.utils.convertMilliseconds(x.stats.uptime)
         ),
-        x.state.replace(0, 'CONNECTING').replace(1, 'CONNECTED').replace(2, 'DISCONNECTED')
+        String(x.state).replace('0', 'CONNECTING').replace('1', 'CONNECTED').replace('2', 'DISCONNECTED')
       )
     );
     message.reply({ content: `\`\`\`\n${table.toString()}\n\`\`\`` });

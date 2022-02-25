@@ -15,7 +15,7 @@ module.exports = async (client) => {
 
   fs.readdirSync(`./src/events/lavalink/`).forEach((file) => {
     let event = require(`../events/lavalink/${file}`);
-    let eventName = file.split(`.`)[0];
+    let eventName = file.split('.')[0];
     client.music.on(eventName, event.bind(null, client));
   });
 }

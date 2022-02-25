@@ -1,12 +1,11 @@
-const { MessageEmbed, Discord } = require(`discord.js`);
-
+const { MessageEmbed } = require(`discord.js`);
 const Emojis = require(`../../Structures/Utils/emojis`);
 const Guild = require("../../database/Schemas/Guild")
 const User = require("../../database/Schemas/User")
 module.exports = {
   name: `work`,
   category: `economy`,
-  aliases: [`traUsershar`],
+  aliases: [`trabalhar`],
   run: async (client, message, args, player, lang) => {
 
      const user = await User.findOne({ _id: message.author.id, })

@@ -1,4 +1,4 @@
-const { MessageEmbed, Discord } = require(`discord.js`);
+const { MessageEmbed } = require(`discord.js`);
 const Emojis = require(`../../Structures/Utils/emojis`);
 const Guild = require("../../database/Schemas/Guild")
 const User = require("../../database/Schemas/User")

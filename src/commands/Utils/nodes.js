@@ -8,12 +8,13 @@ module.exports = {
   aliases: ["lavalink"],
   run: async (client, message, args, player, lang) => {
     let table = new AsciiTable(`Siesta Lavalink Nodes`);
-    table.setHeading(`Name`, `Players`, `PlayingPlayers`, `Uptime`);
+    table.setHeading(`Name`, `Players`, `PlayingPlayers`, `Uptime`, 'Status');
     client.music.nodes.map((x) =>
       table.addRow(
         x.options.id,
         x.stats.players,
         x.stats.playingPlayers,
+        x.state.replace(0, 'CONNECTING').replace(1, 'CONNECTED').replace(2, 'DISCONNECTED')
         client.utils.formatTime(
           client.utils.convertMilliseconds(x.stats.uptime)
         )

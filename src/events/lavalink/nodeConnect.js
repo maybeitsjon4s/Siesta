@@ -1,5 +1,10 @@
 const Emojis = require(`../../Structures/Utils/emojis`);
 const c = require("colors")
 module.exports = async (client, node) => {
-  //console.log(c.magenta(`[🎵 LAVALINK] Node ${node.options.id} conectado`));
+
+        for (const player of [...client.music.players.values()].filter(p => p.node === node).values()) {
+        const position = player.position;
+        player.connect();
+        player.play({ startTime: position });
+      }
 };

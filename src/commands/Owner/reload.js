@@ -1,4 +1,5 @@
 const glob = require('glob');
+const Emojis = require('../../Structures/Utils/emojis.js');
 
 module.exports = {
   name: 'reload',

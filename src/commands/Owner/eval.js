@@ -1,3 +1,5 @@
+const Emojis = require('../../Structures/Utils/emojis.js');
+
 module.exports = {
   name: 'eval',
   aliases: ['e', 'ev'],

@@ -22,7 +22,7 @@ const { cooldowns } = client;
 
   const mentionRegex = message.content.match(new RegExp(`^<@!?(${client.user.id})>`, `gi`));
 
-  if (message.content.test(new RegExp(`^<@!?(${client.user.id})>`, 'gi'))) {
+  if (message.content.match(new RegExp(`^<@!?(${client.user.id})>`, 'gi'))) {
     prefix = String(mentionRegex)
   } else if (message.content.toLowerCase().startsWith("siesta")) {
     prefix = 'siesta'

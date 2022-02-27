@@ -12,13 +12,17 @@ module.exports = {
 
         const target = await client.db.user.findOne({ _id: user.id })
 
+        if(!target) return message.reply(`${Emojis.errado}** » ${lang.commands.pay.neverUsed}!**`)
+
         if (user.id == message.author.id) return message.reply(`**${Emojis.errado} » ${lang.commands.pay.payYourSelf}!**`);
+
+        if (!args[1]) return message.reply(`**${Emojis.errado} » ${lang.commands.pay.validValue}**`);
+
         const value = parseInt(client.utils.convertAbbreviatedNum(args[1]))
+
         if (!args[1] || value < 0 || isNaN(value)) return message.reply(`**${Emojis.errado} » ${lang.commands.pay.validValue}**`);
 
         if (author.money < value) return message.reply(`**${Emojis.errado} » ${lang.commands.pay.noDiamonds}!**`);
-
-        if(!target) return message.reply(`${Emojis.errado}** » ${lang.commands.pay.neverUsed}!**`)
 
         message.reply(`${Emojis.dima}** » ${message.author} ${lang.commands.pay.payed.replace('{user}', String(user)).replace('{value}', value.toLocaleString())}!**`);
 

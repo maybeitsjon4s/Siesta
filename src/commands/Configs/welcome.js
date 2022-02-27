@@ -1,6 +1,4 @@
-const { MessageEmbed } = require(`discord.js`);
 const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
 
 module.exports = {
   name: `welcome`,
@@ -13,7 +11,7 @@ module.exports = {
       if(!['on', 'off'].includes(args[0])) return message.reply(`**${Emojis.errado} » ${lang.commands.welcome.argsError} **`)
 
       if (args[0] == 'off') {
-        await Guild.findOneAndUpdate({
+        await client.db.guild.findOneAndUpdate({
           _id: message.guild.id
         }, {
           $set: {
@@ -28,7 +26,7 @@ module.exports = {
         let msg = args.slice(2).join(' ');
         if (!msg) return message.reply(`**${Emojis.errado} » ${lang.commands.welcome.argsError}**`);
 
-        await Guild.findOneAndUpdate({
+        await client.db.guild.findOneAndUpdate({
           _id: message.guild.id
         }, {
           $set: {

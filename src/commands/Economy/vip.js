@@ -1,11 +1,11 @@
 const { MessageEmbed } = require('discord.js')
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
+const Emojis = require('../../Structures/Utils/emojis');
+
 module.exports = {
-  name: `vip`,
+  name: 'vip',
   run: async (client, message, args, player, lang) => {
     try {
-          const G = await Guild.findOne({ _id: message.guild.id })
+          const G = await client.db.guild.findOne({ _id: message.guild.id })
     const pt = G.lang
     const en = G.lang
       if (pt == 1) {

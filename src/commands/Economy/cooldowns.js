@@ -1,17 +1,16 @@
-const Discord = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
-const User = require("../../database/Schemas/User")
+const { MessageEmbed } = require('discord.js');
+const Emojis = require('../../Structures/Utils/emojis');
+
 module.exports = {
-  name: `cooldowns`,
-  aliases: [`tempos`, "times", "cd"],
+  name: 'cooldowns',
+  aliases: ['tempos', 'times', 'cd'],
   run: async (client, message, args, player, lang) => {
 
-      const user = await User.findOne({
+      const user = await client.db.user.findOne({
         _id: message.author.id
       })
 
-        let embed = new Discord.MessageEmbed()
+        let embed = new MessageEmbed()
           .setTimestamp()
           .setTitle(`${Emojis.rocket} | __Siesta__`)
           .setColor(client.color)

@@ -1,10 +1,9 @@
-const { MessageEmbed } = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
-const User = require("../../database/Schemas/User")
+const { MessageEmbed } = require('discord.js');
+const Emojis = require('../../Structures/Utils/emojis');
+
 module.exports = {
-  name: `rank`,
-  aliases: [`topmoney`, `ldb`, `leaderboard`],
+  name: 'rank',
+  aliases: ['topmoney', 'ldb', 'leaderboard'],
   cooldown: 20,
   run: async (client, message, args, player, lang) => {
 
@@ -37,7 +36,7 @@ module.exports = {
 
     async function PUSH(coins, members) {
     for (const member of coins) {
-      const doc = await User.findOne({ _id: member });
+      const doc = await client.db.user.findOne({ _id: member });
 
       members.push({
         user: await client.users.fetch(member).then((user) => {

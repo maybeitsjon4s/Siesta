@@ -1,10 +1,8 @@
-const { MessageEmbed } = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
+const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
-  name: `pause`,
-  aliases: [`pausar`],
+  name: 'pause',
+  aliases: ['pausar'],
   run: async (client, message, args, player, lang) => {
       if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.pause.noPlayer}**`);
 

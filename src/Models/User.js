@@ -1,6 +1,6 @@
 const { Schema } = require("mongoose");
 const mongoose = require("mongoose");
-let userSchema = new Schema({
+const userSchema = new Schema({
   _id: {
     type: String,
     default: null

@@ -1,9 +1,14 @@
 const { Client, Options, Collection } = require("discord.js")
+
 const Music = require("../Music")
-const database = require("../database")
+
+const User = require('../Models/User')
+const Guild = require('../Models/Guild')
+
 const moment = require("moment-timezone");
 const momentDurationFormatSetup = require("moment-duration-format");
 momentDurationFormatSetup(moment);
+
 module.exports = class extends Client {
     constructor(options = {}) {
         super({
@@ -31,15 +36,25 @@ module.exports = class extends Client {
             restTimeOffset: 0,
             restWsBridgetimeout: 100,
         })
+
         this.commands = new Collection()
         this.aliases = new Collection()
         this.cooldowns = new Collection()
+
         this.utils = require('./Utils/util')
+
         this.owners = ["431768491759239211"]
         this.color = '#ffffff'
-        this.langs = {}
-        this.langs.pt = require('../Locales/pt-BR.js')
-        this.langs.en = require('../Locales/en-US.js')
+
+        this.langs = {
+            pt: require('../Locales/pt-BR'),
+            en: require('../Locales/en-US')
+        }
+        
+         this.db = {
+             user: User,
+             guild: Guild
+         }
     }
 
 
@@ -47,7 +62,6 @@ module.exports = class extends Client {
         await this.utils.loadCommands(this)
         await this.utils.loadEvents(this)
         await Music(this)
-        await database.start()
-        await super.login(token).catch(console.log)
+        await super.login(token).catch(console.error)
     }
 }

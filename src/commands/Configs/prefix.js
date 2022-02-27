@@ -1,7 +1,4 @@
-const { MessageEmbed } = require('discord.js');
-
 const Emojis = require('../../Structures/Utils/emojis');
-const Guild = require("../../database/Schemas/Guild")
 
 module.exports = {
   name: `prefix`,
@@ -15,7 +12,7 @@ module.exports = {
 
       if (args[0].length > 7) return message.reply(`${Emojis.errado}** » ${lang.commands.prefix.sevenLenght}**`)
 
-      await Guild.findOneAndUpdate({
+      await client.db.guild.findOneAndUpdate({
         _id: message.guild.id
       }, {
         $set: {

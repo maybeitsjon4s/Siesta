@@ -1,16 +1,13 @@
-const { MessageEmbed } = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
+const { MessageEmbed } = require('discord.js');
+const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
-  name: `queue`,
-  aliases: [`q`, `fila`],
+  name: 'queue',
+  aliases: ['q', 'fila'],
   run: async (client, message, args, player, lang) => {
 
-      if (!player)
-        return message.reply(
-          `**${Emojis.errado} » ${lang.commands.queue.noPlayer}**`
-        );
+      if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.queue.noPlayer}**`);
+      
       let queue = player.queue;
 
       const QUEUE = new MessageEmbed()

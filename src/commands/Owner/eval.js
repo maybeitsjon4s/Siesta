@@ -1,10 +1,6 @@
-const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
-const { MessageEmbed } = require(`discord.js`);
-
 module.exports = {
-  name: `eval`,
-  aliases: ["e", "ev"],
+  name: 'eval',
+  aliases: ['e', 'ev'],
   cooldown: 0.000001,
   run: async (client, message, args, player, lang) => {
     if (!client.owners.some((x) => x === message.author.id)) return;

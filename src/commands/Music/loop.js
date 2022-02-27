@@ -1,9 +1,8 @@
 const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
 
 module.exports = {
-  name: `loop`,
-  aliases: ["repetir", "repeat"],
+  name: 'loop',
+  aliases: ['repetir', 'repeat'],
   run: async (client, message, args, player, lang) => {
        if (!player)
         return message.reply(

@@ -1,11 +1,10 @@
-const { MessageEmbed, Discord } = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
-const moment = require('moment')
+const { MessageEmbed } = require('discord.js');
+const Emojis = require('../../Structures/Utils/emojis');
+const moment = require('moment');
+
 module.exports = {
-  name: `userinfo`,
-  category: `utils`,
-  aliases: [`ui`, "whois"],
+  name: 'userinfo',
+  aliases: ['ui', 'whois'],
   run: async (client, message, args, player, lang) => {
 moment.locale(lang.name)
 

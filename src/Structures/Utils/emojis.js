@@ -1,5 +1,4 @@
-module.exports = {
-  //numeros
+module.exports =  {
   um: `<:um:910271178780860426>`,
   dois: `<:dois:910271211127312424>`,
   tres: `<:tres:910278440819769374>`,
@@ -8,20 +7,15 @@ module.exports = {
   seis: `<:seis:910283610249113620>`,
   sete: `<:ste:910283635767259176>`,
   oito: `<:oito:910283685243269170>`,
-  //economia
   dima: `<:diamond:935215217577717851>`,
   picareta: `<:pika:914218970129784862>`,
   vip: "<:vip:910282331405832223>",
   esmeralda: "<:emerald:939536950321365063>",
-  //moderação
   ban: `<:lock:910274452632264804>`,
-  //fun
   star: `<a:star:910274327927206018>`,
   dev: `<a:dev:910274104484044811>`,
-  //msc
   music: `<:music2:923626604301783051>`,
   aurora: `<:music:920777542007422976>`,
-  //multi usos
   rank: "<:trofeu:910275612327956530>",
   db: `<:mongo:935909831523594320>`,
   list: `<:list:880461533182836837>`,
@@ -40,5 +34,4 @@ module.exports = {
   boost: "<:booster:867003785481682948>",
   info: "<:info:919358882864849006>",
   nada: "<:nada:938903128030445638>"
-  //badges
 };

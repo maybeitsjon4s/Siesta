@@ -1,10 +1,8 @@
-const { MessageEmbed } = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
+const Emojis = require('../../Structures/Utils/emojis');
+
 module.exports = {
-  name: `clear`,
-  category: `Mod`,
-  aliases: [`limpar`, `clean`],
+  name: 'clear',
+  aliases: ['limpar', 'clean'],
   run: async (client, message, args, player, lang) => {
 
         if (!message.member.permissions.has([`MANAGE_MESSAGES`]))

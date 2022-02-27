@@ -1,10 +1,8 @@
 const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
 
 module.exports = {
-  name: `volume`,
-  description: `[🎵 Music ] » Adjust the music volume .`,
-  aliases: [`vol`],
+  name: 'volume',
+  aliases: ['vol'],
   run: async (client, message, args, player, lang) => {
 
     

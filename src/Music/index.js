@@ -1,6 +1,6 @@
 const { Vulkava } = require(`vulkava`);
 const nodes = require('./nodes')
-const fs = require("fs")
+const { readdirSync } = require("fs")
 module.exports = async (client) => {
   client.music = new Vulkava({
     nodes: nodes,
@@ -13,9 +13,9 @@ module.exports = async (client) => {
     },
   });
 
-  fs.readdirSync(`./src/events/lavalink/`).forEach((file) => {
-    let event = require(`../events/lavalink/${file}`);
-    let eventName = file.split('.')[0];
+  readdirSync('./src/events/lavalink/').forEach((file) => {
+    const event = require(`../events/lavalink/${file}`);
+    const eventName = file.split('.')[0];
     client.music.on(eventName, event.bind(null, client));
   });
 }

@@ -1,10 +1,8 @@
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
-const { MessageEmbed } = require(`discord.js`);
 const { exec } = require("child_process")
+
 module.exports = {
-  name: `shell`,
-  aliases: ["terminal", "sh", "sheel"],
+  name: 'shell',
+  aliases: ['terminal', 'sh', 'sheel'],
   run: async (client, message, args, player, lang) => {
     if (!client.owners.some(x => x === message.author.id)) return;
      

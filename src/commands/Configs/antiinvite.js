@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const Emojis = require('../../Structures/Utils/emojis');
-const Guild = require('../../database/Schemas/Guild');
+
 module.exports = {
   name: 'antiinvite',
   aliases: ['anticonvite'],
@@ -38,7 +38,7 @@ module.exports = {
           return message.reply({embeds: [embed]});
 
         if (["ativar", "enable"].some((x) => x == args[0].toLowerCase())) {
-          await Guild.findOneAndUpdate({ _id: message.guild.id },
+          await client.db.guild.findOneAndUpdate({ _id: message.guild.id },
             {
               $set: {
                 "antiinvite.status": true
@@ -48,7 +48,7 @@ module.exports = {
         }
 
         if (["desativar", "disable"].some((x) => x == args[0].toLowerCase())) {
-          await Guild.findOneAndUpdate({ _id: message.guild.id}, {
+          await client.db.guild.findOneAndUpdate({ _id: message.guild.id}, {
             $set: {
               "antiinvite.status": false
             }
@@ -69,7 +69,7 @@ module.exports = {
               message.channel;
            const channelsList = guild.antiinvite.whitelist
             if (channelsList.some((x) => x == channel.id)) return message.reply(`**${Emojis.errado} » ${lang.commands.antiinvite.channelAltereadySet}.**`);
-            await Guild.findOneAndUpdate({ _id: message.guild.id },
+            await client.db.guild.findOneAndUpdate({ _id: message.guild.id },
               {
                 $push: { "antiinvite.whitelist": channel.id }
               })
@@ -89,7 +89,7 @@ module.exports = {
               return message.reply( `**${Emojis.errado} » ${lang.commands.antiinvite.removeError}!**`);
             const NumberInList = channelsList.indexOf(channel.id);
             channelsList.splice(NumberInList, 1);
-            await Guild.findOneAndUpdate({ _id: message.guild.id },
+            await client.db.guild.findOneAndUpdate({ _id: message.guild.id },
               {
                 $set: {
                   "antiinvite.whitelist": channelsList

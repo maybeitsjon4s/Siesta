@@ -1,46 +1,40 @@
-const Discord = require(`discord.js`);
-const Emojis = require(`../../../Structures/Utils/emojis`);
-const moment = require(`moment`);
-const Guild = require("../../../database/Schemas/Guild")
-const User = require('../../../database/Schemas/User');
+const Discord = require('discord.js');
+const Emojis = require('../../../Structures/Utils/emojis')
+const moment = require('moment');
+
 module.exports = async (client, message) => {
 const { cooldowns } = client;
   if (message.author.bot || !message.guild) return;
 
   let prefix;
 
-  let USER = await User.findOne({
+  let USER = await client.db.user.findOne({
     _id: message.author.id,
   })
-  let GUILD = await Guild.findOne({
+
+  let GUILD = await client.db.guild.findOne({
     _id: message.guild.id,
   })
-  if (!GUILD) {
-    await Guild.create({
+
+  if (!GUILD) await client.db.guild.create({
     _id: message.guild.id,
   })
-  GUILD = await Guild.findOne({
-    _id: message.guild.id
-  })
-  }
 
   const mentionRegex = message.content.match(new RegExp(`^<@!?(${client.user.id})>`, `gi`));
 
-  if (message.content.match(new RegExp(`^<@!?(${client.user.id})>`, `gi`))) {
+  if (message.content.test(new RegExp(`^<@!?(${client.user.id})>`, 'gi'))) {
     prefix = String(mentionRegex)
   } else if (message.content.toLowerCase().startsWith("siesta")) {
-    prefix = "siesta";
+    prefix = 'siesta'
   } else {
-    prefix = GUILD.prefix;
+    prefix = GUILD.prefix
   }
+
   if (!message.content.toLowerCase().startsWith(prefix)) return;
 
-  if (!USER) {
-      await User.create({
+  if (!USER) await client.db.user.create({
     _id: message.author.id,
   })
-  USER = await User.findOne({ _id: message.author.id })
-  }
 
   if(USER.blacklist) return;
 
@@ -85,7 +79,7 @@ const { cooldowns } = client;
   const player = client.music.players.get(message.guild.id);
 
   if (command) {
-    client.utils.sendLogs(`\`---\`\nData: **${moment(Date.now()).format("L LT")}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``)
+    client.utils.sendLogs(`\`---\`\nData: **${moment(Date.now()).format('L LT')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``)
 
     try {
       await command.run(client, message, args, player, lang);
@@ -102,7 +96,7 @@ const { cooldowns } = client;
       description: `**${Emojis.rocket} » ` + lang.events.messageCreate.error.replace('{}', command.name) + '**' + '\n\`' + e + '\`'
       }], components: [row]})
     } finally {
-      await User.findOneAndUpdate({ _id: message.author.id }, { $set: { lastCommandUsed: Date.now() }})
+      await client.db.user.findOneAndUpdate({ _id: message.author.id }, { $set: { lastCommandUsed: Date.now() }})
     }
   }
 };

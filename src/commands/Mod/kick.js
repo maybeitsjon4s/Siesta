@@ -1,10 +1,9 @@
-const { MessageEmbed } = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
+const { MessageEmbed } = require('discord.js');
+const Emojis = require('../../Structures/Utils/emojis');
+
 module.exports = {
-  name: `kick`,
-  category: `mod`,
-  aliases: [`expulsar`, `kick`],
+  name: 'kick',
+  aliases: ['expulsar', 'kick'],
   run: async (client, message, args, player, lang) => {
 
         if (!message.member.permissions.has([`KICK_MEMBERS`])) return message.reply(`**${Emojis.errado} » ${lang.commands.kick.userPermission}**`);

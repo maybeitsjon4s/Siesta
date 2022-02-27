@@ -1,18 +1,17 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require(`discord.js`);
-const fs = require(`fs`);
+const { readdirSync } = require('fs');
 const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
 
 module.exports = {
-  name: `help`,
-  aliases: [`ajuda`, `commands`, `h`],
+  name: 'help',
+  aliases: ['ajuda', 'commands', 'h'],
   run: async (client, message, args, player, lang) => {
 
-      const mod = fs.readdirSync(`./src/commands/Mod`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
-      const configs = fs.readdirSync(`./src/commands/Configs`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
-      const eco = fs.readdirSync(`./src/commands/Economy`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
-      const utils = fs.readdirSync(`./src/commands/Utils`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
-      const msc = fs.readdirSync(`./src/commands/Music`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
+      const mod = readdirSync(`./src/commands/Mod`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
+      const configs = readdirSync(`./src/commands/Configs`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
+      const eco = readdirSync(`./src/commands/Economy`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
+      const utils = readdirSync(`./src/commands/Utils`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
+      const msc = readdirSync(`./src/commands/Music`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
       
         const row = new MessageActionRow().addComponents(
           new MessageButton()

@@ -1,14 +1,12 @@
-const { MessageEmbed, Discord } = require(`discord.js`);
-const AsciiTable = require(`ascii-table`);
-const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
+const AsciiTable = require('ascii-table');
 
 module.exports = {
-  name: `nodes`,
-  aliases: ["lavalink"],
+  name: 'nodes',
+  aliases: ['lavalink'],
   run: async (client, message, args, player, lang) => {
-    let table = new AsciiTable(`Siesta Lavalink Nodes`);
-    table.setHeading(`Name`, `Players`, `PlayingPlayers`, `Uptime`, 'Status');
+
+    let table = new AsciiTable('Siesta Lavalink Nodes');
+    table.setHeading('Name', 'Players', 'PlayingPlayers', 'Uptime', 'Status');
     client.music.nodes.map((x) =>
       table.addRow(
         x.options.id,

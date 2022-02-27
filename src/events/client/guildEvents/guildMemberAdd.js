@@ -1,19 +1,17 @@
-const Emojis = require(`../../../Structures/Utils/emojis`);
-const Discord = require(`discord.js`);
-const Guild = require("../../../database/Schemas/Guild")
+const Emojis = require('../../../Structures/Utils/emojis')
+const { MessageActionRow, MessageButton } = require('discord.js')
+
 module.exports = async (client, member) => {
 
-  const guild = await Guild.findOne({ _id: member.guild.id, })
+  const guild = await client.db.guild.findOne({ _id: member.guild.id, })
   if(!guild) return;
-
-  //======================> Welcome <======================\\
   
   if (guild.welcome.status && !member.user.bot) {
 
     let channel = await member.guild.channels.cache.get(guild.welcome.channel);
 
-    const row = new Discord.MessageActionRow().addComponents(
-      new Discord.MessageButton()
+    const row = new MessageActionRow().addComponents(
+      new MessageButton()
         .setLabel(`Message configured by ${member.guild.name} team`)
         .setCustomId("welcome")
         .setStyle(`SECONDARY`)

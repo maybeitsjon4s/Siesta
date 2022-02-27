@@ -1,9 +1,8 @@
-const Discord = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
+const Discord = require('discord.js');
+const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
-  name: `vote`,
+  name: 'vote',
   run: async (client, message, args, player, lang) => {
     
         message.reply({

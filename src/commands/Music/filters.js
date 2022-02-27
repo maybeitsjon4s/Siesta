@@ -1,6 +1,6 @@
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
+const Emojis = require('../../Structures/Utils/emojis');
 const { MessageActionRow, MessageButton } = require('discord.js')
+
 module.exports = {
   name: 'filters',
   aliases: ['filtros', 'bassboost'],

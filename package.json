@@ -1,9 +1,9 @@
 {
   "name": "Siesta",
   "version": "1.0.0",
-  "main": "ClientSharding.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node ClientSharding.js"
+    "start": "node index.js"
   },
   "author": "yJon4s_",
   "license": "ISC",

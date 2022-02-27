@@ -1,15 +1,15 @@
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
+const Emojis = require('../../Structures/Utils/emojis');
+
 module.exports = async (client, player, track) => {
   
   const channel = client.channels.cache.get(player.textChannelId);
 
-  const GUILD = await Guild.findOne({ _id: channel.guild.id })
+  const GUILD = await client.db.guild.findOne({ _id: channel.guild.id })
 
   if (player.lastPlayingMsgID) {
     const msg = channel.messages.cache.get(player.lastPlayingMsgID);
 
-    if (msg) msg.delete().catch((a) => {});
+    if (msg) msg.delete().catch(null);
   }
    let lang = GUILD.lang || 0
 

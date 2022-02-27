@@ -1,19 +1,20 @@
-const Discord = require(`discord.js`);
+const { MessageAttachment } = require(`discord.js`);
+
 const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
-const User = require("../../database/Schemas/User")
+
 const { loadImage, registerFont, createCanvas } = require("canvas");
 const { fillTextWithTwemoji } = require('node-canvas-with-twemoji-and-discord-emoji');
 registerFont("src/Assets/Fonts/seguibl.ttf", {
     family: "Segoe UI Black"
 });
+
 module.exports = {
     name: "profile",
     aliases: ["pr", "perfil"],
     cooldown: 5,
     run: async (client, message, args, player, lang) => {
 
-        const GUILD = await Guild.findOne({
+        const GUILD = await client.db.guild.findOne({
             _id: message.guild.id
         })
 
@@ -35,7 +36,7 @@ module.exports = {
             .replace("HYPESQUAD_EVENTS", "<:hypesquad:938548922954178610>")
         } 
 
-        const user = await User.findOne({
+        const user = await client.db.user.findOne({
             _id: USER.id
         })
 
@@ -74,7 +75,7 @@ module.exports = {
             ctx.font = '21px "Segoe UI Black"'
             ctx.fillText(`Sobre mim:\n${client.utils.applyLineBreaks(client.utils.shorten(user.about, 180), 70) || lang.commands.profile.defaultAboutMe.replace('{}', GUILD.prefix)}`, 50, 402)
 
-            const attach = new Discord.MessageAttachment(canvas.toBuffer(), 'Profile.png');
+            const attach = new MessageAttachment(canvas.toBuffer(), 'Profile.png');
 
             message.reply({
                 files: [attach]

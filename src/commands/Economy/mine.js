@@ -1,13 +1,12 @@
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild");
-const User = require("../../database/Schemas/User");
-const { MessageEmbed } = require("discord.js");
+const Emojis = require('../../Structures/Utils/emojis');
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
   name: 'mine',
   aliases: ['minerar', 'm'],
   run: async (client, message, args, player, lang) => {
 
-    const user = await User.findOne({
+    const user = await client.db.user.findOne({
       _id: message.author.id
     })
 
@@ -25,7 +24,7 @@ module.exports = {
           content: `**${Emojis.dima} » ${lang.commands.mine.sold.replace('{emeralds}', user.mine.esmeraldas.toLocaleString()).replace('value', value.toLocaleString())}**`
         })
 
-        await User.findOneAndUpdate({
+        await client.db.user.findOneAndUpdate({
           _id: message.author.id
         }, {
           $set: {
@@ -45,7 +44,7 @@ module.exports = {
           content: `**${Emojis.errado} » ${lang.commands.mine.needMoreExp} \`${user.mine.exp}/2000\`.**`
         })
 
-        await User.findOneAndUpdate({
+        await client.db.user.findOneAndUpdate({
           _id: message.author.id
         }, {
           $set: {
@@ -96,7 +95,7 @@ module.exports = {
 
           let amount = Math.floor(Math.random() * (50 - 20) + 20);
 
-          await User.findOneAndUpdate({
+          await client.db.user.findOneAndUpdate({
             _id: message.author.id
           }, {
             $set: {

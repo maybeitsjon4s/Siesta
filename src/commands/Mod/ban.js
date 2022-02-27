@@ -1,9 +1,9 @@
-const { MessageEmbed } = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
+const { MessageEmbed } = require('discord.js');
+const Emojis = require('../../Structures/Utils/emojis');
+
 module.exports = {
-  name: `ban`,
-  aliases: [`ban`, `banir`, `hackban`, `banip`, `banid`],
+  name: 'ban',
+  aliases: ['ban', 'banir', 'hackban', 'banip', 'banid'],
   run: async (client, message, args, player, lang) => {
     
         if (!message.member.permissions.has(`BAN_MEMBERS`)) return message.reply(`**${Emojis.errado} » ${lang.commands.ban.userPermission}.**`);

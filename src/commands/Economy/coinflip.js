@@ -1,12 +1,11 @@
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild");
-const User = require("../../database/Schemas/User");
+const Emojis = require('../../Structures/Utils/emojis')
+
 module.exports = {
-  name: `coinflip`,
-  aliases: [`cf`],
+  name: 'coinflip',
+  aliases: ['cf'],
   run: async (client, message, args, player, lang) => {
     
-     const user = await User.findOne({ _id: message.author.id })
+     const user = await client.db.user.findOne({ _id: message.author.id })
   
           if (!args[0]) return message.reply(`**${Emojis.errado} » ${lang.commands.coinflip.noValue}**`);
   
@@ -18,7 +17,7 @@ module.exports = {
   
           if (client.utils.coinflip()) {
             message.reply(`**${Emojis.dima} » ${lang.commands.coinflip.win} \`${moneyapostado.toLocaleString()}\`.**`);
-            await User.findOneAndUpdate({ _id: message.author.id },
+            await client.db.user.findOneAndUpdate({ _id: message.author.id },
               {
                 $set: {
                   money: user.money + moneyapostado
@@ -26,7 +25,7 @@ module.exports = {
               })
           } else {
             message.reply(`**${Emojis.dima} » ${lang.commands.coinflip.lose} \`${moneyapostado.toLocaleString()}\`.**`);
-            await User.findOneAndUpdate({ _id: message.author.id },
+            await client.db.user.findOneAndUpdate({ _id: message.author.id },
               {
                 $set: {
                   money: user.money - moneyapostado

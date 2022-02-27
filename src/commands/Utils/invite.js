@@ -1,9 +1,8 @@
-const { MessageActionRow, MessageButton } = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
+const { MessageActionRow, MessageButton } = require('discord.js');
+const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
-  name: `invite`,
+  name: 'invite',
   run: async (client, message, args, player, lang) => {
     
         message.reply({

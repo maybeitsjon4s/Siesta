@@ -1,7 +1,7 @@
 const { Schema } = require("mongoose");
 const mongoose = require("mongoose");
 
-let guildSchema = new Schema({
+const guildSchema = new Schema({
   _id: {
     type: String
   },
@@ -43,5 +43,6 @@ let guildSchema = new Schema({
   }
 });
 
-let Guild = mongoose.model("Guilds", guildSchema);
+const Guild = mongoose.model("Guilds", guildSchema);
+
 module.exports = Guild;

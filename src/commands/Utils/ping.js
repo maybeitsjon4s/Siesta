@@ -1,6 +1,4 @@
-const { MessageEmbed, Discord } = require(`discord.js`);
 const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
 
 module.exports = {
   name: `ping`,
@@ -9,7 +7,7 @@ module.exports = {
     try {
 
       let pingStart = process.hrtime();
-      await Guild.findOne({ _id: message.guild.id, })
+      await client.db.guild.findOne({ _id: message.guild.id, })
       let pingStop = process.hrtime(pingStart);
       let pingDb = Math.round((pingStop[0] * 1e9 + pingStop[1]) / 1e6);
 

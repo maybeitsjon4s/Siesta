@@ -1,18 +1,13 @@
-const {
-  MessageEmbed
-} = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
+const { MessageEmbed } = require(`discord.js`)
+const Emojis = require(`../../Structures/Utils/emojis`)
 
 module.exports = {
-  name: `nowplaying`,
-  aliases: [`np`, `tocando`],
+  name: 'nowplaying',
+  aliases: ['np', 'tocando'],
   run: async (client, message, args, player, lang) => {
 
-      if (!player)
-        return message.reply(
-          `**${Emojis.errado} » ${lang.commands.nowplaying.noPlayer}**`
-        );
+      if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.nowplaying.noPlayer}**`);
+      
       const track = player.current;
       let embed = new MessageEmbed()
         .setTitle(`${Emojis.music} | __Siesta__`)

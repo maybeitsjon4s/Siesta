@@ -1,10 +1,12 @@
+const AsciiTable = require("ascii-table");
+
 module.exports = {
-  name: `shards`,
+  name: 'shards',
   run: async (client, message, args, player, lang) => {
 
 
-        const AsciiTable = require("ascii-table"),
-          table = new AsciiTable(`Shards Information`),
+        
+         const table = new AsciiTable(`Shards Information`),
           unit = ["", "K", "M", "G", "T", "P"];
         table.setHeading("SID", "UpTime", "Ping", "Guilds");
         table.setAlign(0, AsciiTable.CENTER);

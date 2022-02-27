@@ -1,11 +1,9 @@
-const { MessageEmbed } = require(`discord.js`);
-const ms = require(`ms`);
-const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
-const moment = require("moment");
+const { MessageEmbed } = require('discord.js');
+const Emojis = require('../../Structures/Utils/emojis');
+
 module.exports = {
-  name: `mute`,
-  aliases: [`silenciar`, `mutar`],
+  name: 'mute',
+  aliases: ['silenciar', 'mutar'],
   cooldown: 6,
   run: async (client, message, args, player, lang) => {
     

@@ -1,6 +1,5 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require(`discord.js`);
 const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
 
 module.exports = {
   name: `language`,
@@ -50,7 +49,7 @@ module.exports = {
             })
             if (i.customId == "pt") {
               i.deferUpdate()
-              await Guild.findOneAndUpdate({
+              await client.db.guild.findOneAndUpdate({
                 _id: message.guild.id
               }, {
                 $set: {
@@ -65,7 +64,7 @@ module.exports = {
             }
             if (i.customId == "en") {
               i.deferUpdate()
-              await Guild.findOneAndUpdate({
+              await client.db.guild.findOneAndUpdate({
                 _id: message.guild.id
               }, {
                 $set: {

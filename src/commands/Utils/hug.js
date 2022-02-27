@@ -1,12 +1,8 @@
-const { MessageEmbed, Discord } = require(`discord.js`);
-
 const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
 
 module.exports = {
-  name: `hug`,
-  category: `fun`,
-  aliases: [`abraçar`],
+  name: 'hug',
+  aliases: ['abraçar'],
   run: async (client, message, args, player, lang) => {
 
         const list = [

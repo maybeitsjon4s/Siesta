@@ -1,9 +1,10 @@
-const moment = require("moment");
+const { duration } = require("moment");
 const { WebhookClient } = require("discord.js");
+
 const { promisify } = require("util")
 const glob = promisify(require("glob"))
-const path = require('path')
-const fs = require('fs')
+const { parse } = require('path')
+const { readdirSync } = require('fs')
 
 async function sendLogs(content) {
   const webhookClient = new WebhookClient({
@@ -37,42 +38,37 @@ async function getUser(args, message) {
 }
 
 function applyLineBreaks(string, maxCharLengthPerLine) {
-  const split = string.split(` `);
+  const split = string.split(' ');
   const chunks = [];
 
   for (var i = 0, j = 0; i < split.length; i++) {
     if ((chunks[j] + split[i]).length > maxCharLengthPerLine) j++;
 
-    chunks[j] = (chunks[j] || ``) + split[i] + ` `;
+    chunks[j] = (chunks[j] || '') + split[i] + ' ';
   }
 
   return chunks.map((c) => c.trim()).join(`\n`);
 }
 
-function formatTime(time /*, format = `ddd hhh mmm`*/ ) {
-  if (!time) return;
-  return moment.duration(time).format("d[d] h[h] m[m] s[s]");
-}
+const formatTime = (time) => duration(time).format('d[d,] h[h,] m[m,] s[s,]')
 
 function abbreviateNumber(number, precision = 2) {
   const suffsFromZeros = {
-    0: ``,
-    3: `k`,
-    6: `M`,
-    9: `G`,
-    12: `T`
+    0: '',
+    3: 'k',
+    6: 'M',
+    9: 'G',
+    12: 'T'
   };
-  const {
-    length
-  } = number.toString();
+  const { length } = number.toString();
   const lengthThird = length % 3;
   const divDigits = length - (lengthThird || lengthThird + 3);
   const calc = `` + (number / 10 ** divDigits).toFixed(precision);
 
   return number < 1000 ?
-    `` + number :
-    (calc.indexOf(`.`) === calc.length - 3 ?
-      calc.replace(/\.00/, ``) :
+    '' + number :
+    (calc.indexOf('.') === calc.length - 3 ?
+      calc.replace(/\.00/, '') :
       calc) + suffsFromZeros[divDigits];
 }
 
@@ -84,7 +80,7 @@ function convertAbbreviatedNum(abbreviation) {
     M: 1e6,
     G: 1e9,
     T: 1e12
-  }; // k: thousand, M: million, G: billion, T: trillion
+  };
 
   return !zeros[unit] ? parseFloat(abbreviation) : number * zeros[unit];
 }
@@ -107,18 +103,18 @@ function progressBarEnhanced(current, total, barSize) {
   const progress = Math.round((barSize * current) / total);
 
   return (
-    `━`.repeat(progress > 0 ? progress - 1 : progress) +
-    `⚪` +
-    `─`.repeat(barSize - progress)
+    '━'.repeat(progress > 0 ? progress - 1 : progress) +
+    '⚪' +
+    '─'.repeat(barSize - progress)
   );
 }
 
 function timeToMilliseconds(time) {
   const timeUnits = time
-    .replace(/[\d\s]/g, (_) => ``)
+    .replace(/[\d\s]/g, (_) => '')
     .toLowerCase()
-    .split(``);
-  const formats = [`d`, `h`, `m`, `s`];
+    .split('');
+  const formats = ['d', 'h', 'm', 's'];
 
   const isValid =
     timeUnits.length === new Set(timeUnits).size &&
@@ -129,10 +125,10 @@ function timeToMilliseconds(time) {
   if (!isValid) return null;
 
   const formatted = time
-    .replace(/([a-zA-Z])/g, `$1 `)
+    .replace(/([a-zA-Z])/g, '$1 ')
     .toLowerCase()
     .trim()
-    .split(` `)
+    .split(' ')
     .filter((f) => !!f);
   if (formatted.some((e) => !/[0-9]/.test(e))) return null;
 
@@ -142,8 +138,8 @@ function timeToMilliseconds(time) {
     s: 60
   };
   for (const f of formatted) {
-    const value = f.replace(/\D/g, ``);
-    const unit = f.replace(/\d/gi, ``);
+    const value = f.replace(/\D/g, '');
+    const unit = f.replace(/\d/gi, '');
 
     if (value >= invalid[unit]) return null;
   }
@@ -165,14 +161,12 @@ function timeToMilliseconds(time) {
 }
 
 function shorten(text, size) {
-  if (typeof text !== `string`) return ``;
+  if (typeof text !== `string`) return '';
   if (text.length <= size) return text;
-  return text.substr(0, size).trim() + `...`;
+  return text.substr(0, size).trim() + '...';
 }
 
-function coinflip() {
-  return Math.random() < 0.5
-}
+const coinflip = _ => Math.random() < 0.5
 
 function formatSizeUnits(bytes) {
   if (bytes >= 1073741824) {
@@ -192,11 +186,11 @@ function formatSizeUnits(bytes) {
 }
 
 async function loadCommands(client) {
-  fs.readdirSync(`./src/commands/`).forEach((local) => {
-    const comandos = fs.readdirSync(`./src/commands/${local}`).filter((arquivo) => arquivo.endsWith('.js'));
+  readdirSync('./src/commands/').forEach((local) => {
+    const comandos = readdirSync(`./src/commands/${local}`).filter((arquivo) => arquivo.endsWith('.js'));
 
-    for (let file of comandos) {
-      let puxar = require(`../../commands/${local}/${file}`);
+    for (const file of comandos) {
+      const puxar = require(`../../commands/${local}/${file}`);
 
       if (puxar.name) {
         client.commands.set(puxar.name, puxar);
@@ -212,7 +206,7 @@ async function loadEvents(client) {
   events.forEach(eventFile => {
     delete require.cache[eventFile]
     const file = require(eventFile)
-    const { name } = path.parse(eventFile)
+    const { name } = parse(eventFile)
     client.on(name, file.bind(null, client))
   });
 }

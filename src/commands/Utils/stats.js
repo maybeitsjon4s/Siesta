@@ -1,13 +1,12 @@
-const Discord = require(`discord.js`);
-const Emojis = require(`../../Structures/Utils/emojis`);
- const Guild = require("../../database/Schemas/Guild")
+const { MessageEmbed } = require('discord.js');
+const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
   name: `stats`,
-  aliases: [`estatisticas`, `botinfo`, `bi`, `uptime`],
+  aliases: ['estatisticas', 'botinfo', 'bi', 'uptime' ],
   run: async (client, message, args, player, lang) => {
 
-        const embed = new Discord.MessageEmbed()
+        const embed = new MessageEmbed()
           .setColor(client.color)
           .setDescription(
             `> **${

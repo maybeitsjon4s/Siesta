@@ -1,14 +1,11 @@
-const { MessageEmbed } = require(`discord.js`);
 const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
-const User = require("../../database/Schemas/User")
+
 module.exports = {
-  name: `work`,
-  category: `economy`,
-  aliases: [`trabalhar`],
+  name: 'work',
+  aliases: ['trabalhar'],
   run: async (client, message, args, player, lang) => {
 
-     const user = await User.findOne({ _id: message.author.id, })
+     const user = await client.db.user.findOne({ _id: message.author.id, })
 
         if (user.cooldowns.work !== null && 600000 - (Date.now() - user.cooldowns.work) > 0) {
           message.reply(
@@ -28,7 +25,7 @@ module.exports = {
             }  ${lang.commands.work.sucess.replace('{}', amount.toLocaleString())}**`
           );
 
-          await User.findOneAndUpdate({ _id: message.author.id }, 
+          await client.db.user.findOneAndUpdate({ _id: message.author.id }, 
             {
             $set: {
               "cooldowns.work": Date.now(),

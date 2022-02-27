@@ -1,6 +1,6 @@
 const Emojis = require('../../Structures/Utils/emojis');
-const Guild = require('../../database/Schemas/Guild')
 const ms = require('ms')
+
 module.exports = {
   name: 'seek',
   run: async (client, message, args, player, lang) => {

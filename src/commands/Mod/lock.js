@@ -1,8 +1,8 @@
 const Emojis = require(`../../Structures/Utils/emojis`);
-const Guild = require("../../database/Schemas/Guild")
+
 module.exports = {
-  name: `lock`,
-  aliases: [`trancar`],
+  name: 'lock',
+  aliases: ['trancar'],
   run: async (client, message, args, player, lang) => {
     
         if (!message.member.permissions.has([`MANAGE_CHANNELS`]))

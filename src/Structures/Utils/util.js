@@ -8,8 +8,8 @@ const { readdirSync } = require('fs')
 
 async function sendLogs(content) {
   const webhookClient = new WebhookClient({
-    token: process.env.LOGS_TOKEN,
-    id: process.env.LOGS_ID
+    token: yml.logs_token,
+    id: yml.logs_id
   });
   webhookClient.send({
     content: String(content)

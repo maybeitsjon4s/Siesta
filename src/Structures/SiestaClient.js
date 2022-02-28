@@ -58,7 +58,7 @@ module.exports = class extends Client {
     }
 
 
-    async login(token = process.env.TOKEN) {
+    async login(token = yml.token) {
         await this.utils.loadCommands(this)
         await this.utils.loadEvents(this)
         await Music(this)

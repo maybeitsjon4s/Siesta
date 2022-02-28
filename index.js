@@ -1,7 +1,11 @@
-require("dotenv/config")
+const yaml = require('js-yaml');
+const { readFileSync } = require('fs');
+
+yml = yaml.load(readFileSync('./env.yml', 'utf8'));
+
 const { ShardingManager } = require("discord.js"),
   manager = new ShardingManager('./src/index.js', {
-    token: process.env.TOKEN,
+    token: yml.token,
     totalShards: 2,
     respawn: true,
   });
@@ -15,6 +19,6 @@ process.on("unhandledRejection", (reason, p) => {
   });
   process.on("uncaughtException", (err, origin) => {
     console.log("\n\n");
-    console.log("Exception" + err.stack);
+    console.log(err.stack);
     console.log("\n\n");
   })

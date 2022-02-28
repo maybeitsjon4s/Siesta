@@ -21,6 +21,6 @@ module.exports = [
   password: 'idk',
   port: 80,
   secure: true,
-  resumeKey; 'Siesta'
+  resumeKey: 'Siesta'
   }
 ]

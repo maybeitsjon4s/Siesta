@@ -8,18 +8,10 @@ module.exports = [
     resumeKey: 'Siesta'
   },
   {
-    id: 'Aurora',
-    hostname: 'lavalink.devin-dev.xyz',
-    port: 443,
-    secure: true,
-    password: 'lava123',
-    resumeKey: 'Siesta'
-  },
-  {
   id: 'Skye',
-  hostname: 'lava.link',
-  password: 'idk',
-  port: 80,
+  hostname: 'disbotlistlavalink.ml',
+  password: 'LAVA',
+  port: 443,
   secure: true,
   resumeKey: 'Siesta'
   }

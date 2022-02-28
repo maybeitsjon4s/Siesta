@@ -18,7 +18,7 @@ module.exports = [
   {
   id: 'Skye',
   hostname: 'lava.link',
-  password. 'idk',
+  password: 'idk',
   port: 80,
   secure: true,
   resumeKey; 'Siesta'

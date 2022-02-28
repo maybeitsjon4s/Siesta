@@ -4,6 +4,7 @@ module.exports = {
   name: 'shards',
   run: async (client, message, args, player, lang) => {
 
+    if(!client.owners.some(x => x === message.author.id)) return;
 
         
          const table = new AsciiTable(`Shards Information`),

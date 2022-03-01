@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { Collection, MessageButton, MessageActionRow } = require('discord.js');
 const Emojis = require('../../../Structures/Utils/emojis')
 const moment = require('moment');
 
@@ -58,9 +58,10 @@ const { cooldowns } = client;
   if (cmd.length === 0) return;
   const command = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
 
-  if (!cooldowns.has(command)) cooldowns.set(command, new Discord.Collection());
-  
   if (!command) return;
+
+  if (!cooldowns.has(command)) cooldowns.set(command, new Collection());
+  
   const now = Date.now();
   const timestamps = cooldowns.get(command);
   const cooldownAmount = (command.cooldown || 3) * 1000;
@@ -78,16 +79,17 @@ const { cooldowns } = client;
   setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
   const player = client.music.players.get(message.guild.id);
+  
+  if(command.ownerOnly && !client.owners.some(id => id === message.author.id)) return;
 
-  if (command) {
     client.utils.sendLogs(`\`---\`\nData: **${moment(Date.now()).format('L LT')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``)
 
     try {
       await command.run(client, message, args, player, lang);
     } catch (e) {
       console.log('\n\n' + e.stack + '\n\n')
-      const row = new Discord.MessageActionRow().addComponents(
-        new Discord.MessageButton()
+      const row = new MessageActionRow().addComponents(
+        new MessageButton()
         .setEmoji(Emojis.estrela)
         .setStyle(`LINK`)
         .setURL(`https://discord.com/invite/vYEutrG7gY`)
@@ -99,5 +101,5 @@ const { cooldowns } = client;
     } finally {
       await client.db.user.findOneAndUpdate({ _id: message.author.id }, { $set: { lastCommandUsed: Date.now() }})
     }
-  }
+  
 };

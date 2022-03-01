@@ -3,6 +3,8 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'disconnect',
   aliases: ['leave', 'parar', 'dc', 'desconectar', 'stop'],
+  cooldown: 5,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
       if (!player)

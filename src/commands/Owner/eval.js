@@ -3,9 +3,10 @@ const Emojis = require('../../Structures/Utils/emojis.js');
 module.exports = {
   name: 'eval',
   aliases: ['e', 'ev'],
-  cooldown: 0.000001,
+  cooldown: 0.1,
+  ownerOnly: true,
   run: async (client, message, args, player, lang) => {
-    if (!client.owners.some((x) => x === message.author.id)) return;
+    
     if (!args[0]) return;
 
     const code = args.join(" ");

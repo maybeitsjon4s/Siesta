@@ -3,8 +3,9 @@ const { exec } = require("child_process")
 module.exports = {
   name: 'shell',
   aliases: ['terminal', 'sh', 'sheel'],
+  cooldown: 3,
+  ownerOnly: true,
   run: async (client, message, args, player, lang) => {
-    if (!client.owners.some(x => x === message.author.id)) return;
      
     const cmd = args.join(" ")
     if(!cmd) return;

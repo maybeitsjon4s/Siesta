@@ -4,6 +4,8 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'queue',
   aliases: ['q', 'fila'],
+  cooldown: 4,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
       if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.queue.noPlayer}**`);

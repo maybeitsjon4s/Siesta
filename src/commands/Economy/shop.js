@@ -2,9 +2,9 @@ const { MessageEmbed, MessageActionRow, MessageSelectMenu, } = require('discord.
 const Emojis = require('../../Structures/Utils/emojis')
 
 module.exports = {
-  name: `shop`,
-  category: `economy`,
-  aliases: [`loja`],
+  name: 'shop',
+  aliases: ['loja'],
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
       const user = await client.db.user.findOne({ _id: message.author.id })

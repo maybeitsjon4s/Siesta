@@ -5,6 +5,8 @@ const Emojis = require(`../../Structures/Utils/emojis`);
 module.exports = {
   name: 'help',
   aliases: ['ajuda', 'commands', 'h'],
+  cooldown: 6,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
       const mod = readdirSync(`./src/commands/Mod`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)

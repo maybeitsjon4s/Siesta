@@ -4,6 +4,8 @@ const Emojis = require(`../../Structures/Utils/emojis`)
 module.exports = {
   name: 'nowplaying',
   aliases: ['np', 'tocando'],
+  cooldown: 3,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
       if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.nowplaying.noPlayer}**`);

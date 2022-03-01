@@ -3,10 +3,10 @@ const Emojis = require(`../../Structures/Utils/emojis`);
 module.exports = {
   name: `welcome`,
   aliases: [`bem-vindo`, `entrada`],
-  usage: "{prefix}welcome [on/off] [channel] [msg]",
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
-      if (!message.member.permissions.has(`MANAGE_MESSAGES`)) return message.reply(`**${Emojis.errado} » ${lang.commands.welcome.errorPerm}**`);
+      if (!message.member.permissions.has(`MANAGE_MESSAGES`) && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} » ${lang.commands.welcome.errorPerm}**`);
       if (!args[0]) return message.reply(`**${Emojis.errado} » ${lang.commands.welcome.argsError}**`);
       if(!['on', 'off'].includes(args[0])) return message.reply(`**${Emojis.errado} » ${lang.commands.welcome.argsError} **`)
 

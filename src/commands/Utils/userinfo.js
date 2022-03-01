@@ -5,8 +5,11 @@ const moment = require('moment');
 module.exports = {
   name: 'userinfo',
   aliases: ['ui', 'whois'],
+  cooldown: 3,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
-moment.locale(lang.name)
+
+        moment.locale(lang.name)
 
         let user = await client.utils.getUser(args[0], message);
 

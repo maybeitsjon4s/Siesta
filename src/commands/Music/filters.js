@@ -4,6 +4,8 @@ const { MessageActionRow, MessageButton } = require('discord.js')
 module.exports = {
   name: 'filters',
   aliases: ['filtros', 'bassboost'],
+  cooldown: 4,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
        if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.filters.noPlayer}!**`);
 

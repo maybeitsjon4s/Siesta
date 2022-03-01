@@ -1,16 +1,19 @@
-const Discord = require('discord.js');
+const { MessageActionRow, MessageButton } = require('discord.js');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
   name: 'vote',
+  aliases: [],
+  cooldown: 2,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
         message.reply({
           content: `**${Emojis.star} » ${lang.commands.vote.message}!**`,
           components: [
-            new Discord.MessageActionRow().addComponents(
-              new Discord.MessageButton()
-                .setStyle(`LINK`)
+            new MessageActionRow().addComponents(
+              new MessageButton()
+                .setStyle('LINK')
                 .setEmoji(Emojis.botlist)
                 .setLabel(lang.commands.vote.label)
                 .setURL("https://top.gg/bot/907747074118926347/vote")

@@ -5,9 +5,10 @@ module.exports = {
   name: 'mute',
   aliases: ['silenciar', 'mutar'],
   cooldown: 6,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
-        if (!message.member.permissions.has("MODERATE_MEMBERS")) return message.reply(`**${Emojis.errado} » ${lang.commands.mute.userPermision}!**`);
+        if (!message.member.permissions.has("MODERATE_MEMBERS") && !client.owners.some(id => id === message.author.id)) return message.reply(`**${Emojis.errado} » ${lang.commands.mute.userPermision}!**`);
 
         if (!message.guild.me.permissions.has("MODERATE_MEMBERS")) return message.reply(`**${Emojis.errado} » Eu ${lang.commands.mute.myPermission}!**`);
 

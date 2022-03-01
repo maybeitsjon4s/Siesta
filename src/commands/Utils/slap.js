@@ -3,6 +3,8 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'slap',
   aliases: ['tapa'],
+  cooldown: 2,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
         const list = [

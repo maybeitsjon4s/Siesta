@@ -1,17 +1,16 @@
 const { Vulkava } = require(`vulkava`);
-const nodes = require('./nodes')
 const { readdirSync } = require("fs")
 
 module.exports = async (client) => {
 
   client.music = new Vulkava({
-    nodes: nodes,
+    nodes: yml.lavalinkNodes,
     sendWS: (guildId, payload) => {
       client.guilds.cache.get(guildId)?.shard.send(payload);
     },
     spotify: {
-      clientId: yml.spotify_id,
-      clientSecret: yml.spotify_token,
+      clientId: yml.spotifyId,
+      clientSecret: yml.spotifyToken,
     },
   });
 

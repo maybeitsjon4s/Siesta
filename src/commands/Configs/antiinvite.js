@@ -4,13 +4,11 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'antiinvite',
   aliases: ['anticonvite'],
-  description: {
-    pt: 'Configura o sistema de anti convites no seu servidor.',
-    en: 'Config the anti invites system on your server.'
-  },
+  cooldown: 3,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
       
-        if (!message.member.permissions.has("MANAGE_GUILD")) return message.reply(`${Emojis.errado}** » ${lang.commands.antiinvite.errorPerm}**`);
+        if (!message.member.permissions.has("MANAGE_GUILD") && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** » ${lang.commands.antiinvite.errorPerm}**`);
 
           const guild = await Guild.findOne({ _id: message.guild.id })
 

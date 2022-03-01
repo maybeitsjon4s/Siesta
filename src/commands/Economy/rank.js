@@ -5,6 +5,7 @@ module.exports = {
   name: 'rank',
   aliases: ['topmoney', 'ldb', 'leaderboard'],
   cooldown: 20,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
     const COINS = await require("mongoose")

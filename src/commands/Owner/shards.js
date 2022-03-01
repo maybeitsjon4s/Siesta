@@ -2,9 +2,10 @@ const AsciiTable = require("ascii-table");
 
 module.exports = {
   name: 'shards',
+  aliases: [],
+  cooldown: 3,
+  ownerOnly: true,
   run: async (client, message, args, player, lang) => {
-
-    if(!client.owners.some(x => x === message.author.id)) return;
 
         
          const table = new AsciiTable(`Shards Information`),

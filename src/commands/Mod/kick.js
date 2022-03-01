@@ -4,9 +4,11 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'kick',
   aliases: ['expulsar', 'kick'],
+  cooldown: 4,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
-        if (!message.member.permissions.has([`KICK_MEMBERS`])) return message.reply(`**${Emojis.errado} » ${lang.commands.kick.userPermission}**`);
+        if (!message.member.permissions.has([`KICK_MEMBERS`]) && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} » ${lang.commands.kick.userPermission}**`);
 
         if (!message.guild.me.permissions.has([`KICK_MEMBERS`])) return message.reply(`**${Emojis.errado} » ${lang.commands.kick.myPermission}**`);
 

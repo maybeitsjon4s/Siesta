@@ -4,6 +4,8 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'avatar',
   aliases: ['av'],
+  cooldown: 2,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
         let user = await client.utils.getUser(args[0], message);

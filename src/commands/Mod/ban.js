@@ -4,10 +4,12 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'ban',
   aliases: ['ban', 'banir', 'hackban', 'banip', 'banid'],
+  cooldown: 5,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
-        if (!message.member.permissions.has(`BAN_MEMBERS`)) return message.reply(`**${Emojis.errado} » ${lang.commands.ban.userPermission}.**`);
-        if (!message.guild.me.permissions.has(`BAN_MEMBERS`)) return message.reply(`**${Emojis.errado} » ${lang.commands.ban.myPermission}**`);
+        if (!message.member.permissions.has('BAN_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} » ${lang.commands.ban.userPermission}.**`);
+        if (!message.guild.me.permissions.has('BAN_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} » ${lang.commands.ban.myPermission}**`);
 
         let user;
         let motivo = args.slice(1).join(` `);

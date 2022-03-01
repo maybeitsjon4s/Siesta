@@ -5,6 +5,8 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'serverinfo',
   aliases: ['si', 'svi', 'servericon'],
+  cooldown: 4,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     moment.locale(lang.name)
         const guild = client.guilds.cache.get(args[0]) || message.guild;

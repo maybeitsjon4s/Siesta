@@ -3,7 +3,8 @@ const Emojis = require(`../../Structures/Utils/emojis`);
 module.exports = {
   name: 'play',
   aliases: ['tocar', 'p'],
-  cooldown: 0,
+  cooldown: 0.1,
+  ownerOnly: false,
   run: async (client, message, args, p, lang) => {
 
         if (p) {

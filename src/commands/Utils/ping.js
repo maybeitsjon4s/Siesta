@@ -3,6 +3,8 @@ const Emojis = require(`../../Structures/Utils/emojis`);
 module.exports = {
   name: `ping`,
   aliases: ["latency", "latencia", "pong", "🏓"],
+  cooldown: 1,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     try {
 

@@ -3,6 +3,9 @@ const ms = require('ms')
 
 module.exports = {
   name: 'seek',
+  aliases: [],
+  cooldown: 2,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
       if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.seek.noPlayer}**`);

@@ -3,6 +3,7 @@ const Emojis = require('../../Structures/Utils/emojis')
 module.exports = {
   name: 'daily',
   aliases: ['diario'],
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
     const user = await client.db.user.findOne({ _id: message.author.id })

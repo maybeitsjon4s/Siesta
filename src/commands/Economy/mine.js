@@ -4,6 +4,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
   name: 'mine',
   aliases: ['minerar', 'm'],
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
     const user = await client.db.user.findOne({

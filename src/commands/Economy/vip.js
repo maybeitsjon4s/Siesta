@@ -3,6 +3,8 @@ const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
   name: 'vip',
+  aliases: [],
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     try {
           const G = await client.db.guild.findOne({ _id: message.guild.id })

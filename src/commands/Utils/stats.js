@@ -4,6 +4,8 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: `stats`,
   aliases: ['estatisticas', 'botinfo', 'bi', 'uptime' ],
+  cooldown: 3,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
         const embed = new MessageEmbed()

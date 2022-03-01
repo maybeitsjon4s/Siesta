@@ -4,6 +4,7 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'cooldowns',
   aliases: ['tempos', 'times', 'cd'],
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
       const user = await client.db.user.findOne({

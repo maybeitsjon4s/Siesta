@@ -1,12 +1,12 @@
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
-  name: `prefix`,
-  aliases: [`setprefix`, `prefixo`],
-  usage: "{prefix}atm <user>",
+  name: 'prefix',
+  aliases: ['setprefix', 'prefixo'],
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => { 
 
-      if (!message.member.permissions.has("MANAGE_GUILD")) return message.reply(`${Emojis.errado}** » ${lang.commands.prefix.errorPerm}**`)
+      if (!message.member.permissions.has("MANAGE_GUILD") && !client.owners.some(id => id === message.author.id) ) return message.reply(`${Emojis.errado}** » ${lang.commands.prefix.errorPerm}**`)
 
       if (!args[0]) return message.reply(`${Emojis.errado}** » ${lang.commands.prefix.noPrefix}**`)
 

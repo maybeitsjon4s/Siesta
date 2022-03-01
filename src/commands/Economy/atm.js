@@ -3,7 +3,7 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'atm',
   aliases: ['bal', 'money'],
-  usage: '{prefix}atm <user>',
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
       let user = await client.utils.getUser(args[0], message);

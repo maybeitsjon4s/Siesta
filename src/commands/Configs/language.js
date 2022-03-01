@@ -4,7 +4,7 @@ const Emojis = require(`../../Structures/Utils/emojis`);
 module.exports = {
   name: `language`,
   aliases: [`setlang`, `lang`],
-  usage: "{prefix}atm <user>",
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
       const row = new MessageActionRow().addComponents(
@@ -20,7 +20,7 @@ module.exports = {
         .setCustomId("en")
       );
 
-        if (!message.member.permissions.has("MANAGE_GUILD")) return message.reply(`${Emojis.errado}** » ${lang.commands.language.errorPerm}**`)
+        if (!message.member.permissions.has("MANAGE_GUILD") && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** » ${lang.commands.language.errorPerm}**`)
 
         const embed = new MessageEmbed()
           .setColor(client.color)

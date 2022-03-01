@@ -3,6 +3,8 @@ const Emojis = require('../../Structures/Utils/emojis')
 module.exports = {
   name: 'aboutme',
   aliases: ['sobremim', 'about', 'sobre'],
+  cooldown: 6,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
     const aboutme = args.join(' ')

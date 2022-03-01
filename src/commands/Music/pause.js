@@ -3,6 +3,8 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'pause',
   aliases: ['pausar'],
+  cooldown: 3,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
       if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.pause.noPlayer}**`);
 

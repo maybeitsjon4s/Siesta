@@ -3,6 +3,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
   name: 'invite',
+  aliases: [],
+  cooldown: 2,
+  ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
         message.reply({

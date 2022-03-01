@@ -37,7 +37,7 @@ const { cooldowns } = client;
      USER = await client.db.user.findOne({ _id: message.author.id })
   } 
 
-  if(USER.blacklist) return;
+  if(USER?.blacklist) return;
 
   let lang = GUILD.lang || 0
 

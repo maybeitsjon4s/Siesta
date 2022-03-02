@@ -1,4 +1,4 @@
-const { Collection, MessageButton, MessageActionRow } = require('discord.js');
+const { Collection, ButtonComponent, ActionRow, ButtonStyle } = require('discord.js');
 const Emojis = require('../../../Structures/Utils/emojis')
 const moment = require('moment');
 
@@ -87,17 +87,22 @@ const { cooldowns } = client;
     try {
       await command.run(client, message, args, player, lang);
     } catch (e) {
-      console.log('\n\n' + e.stack + '\n\n')
-      const row = new MessageActionRow().addComponents(
-        new MessageButton()
-        .setEmoji(Emojis.estrela)
-        .setStyle(`LINK`)
+      console.log(String(e.stack).gray)
+      const row = new ActionRow().setComponents(
+        new ButtonComponent()
+        .setEmoji({
+          name: 'lua',
+          id: '948650383562125313',
+          animated: true
+        })
+        .setStyle(ButtonStyle.Link)
         .setURL(`https://discord.com/invite/vYEutrG7gY`)
       );
       message.reply({ embeds: [{
       color: client.color,
       description: `**${Emojis.rocket} » ` + lang.events.messageCreate.error.replace('{}', command.name) + '**' + '\n\`' + e + '\`'
-      }], components: [row]})
+      }],
+      components: [row]})
     } finally {
       await client.db.user.findOneAndUpdate({ _id: message.author.id }, { $set: { lastCommandUsed: Date.now() }})
     }

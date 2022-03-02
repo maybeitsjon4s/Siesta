@@ -1,4 +1,4 @@
-const { MessageEmbed, MessageActionRow, MessageSelectMenu, } = require('discord.js')
+const { Embed, ActionRow, SelectMenuComponent, } = require('discord.js')
 const Emojis = require('../../Structures/Utils/emojis')
 
 module.exports = {
@@ -9,25 +9,33 @@ module.exports = {
 
       const user = await client.db.user.findOne({ _id: message.author.id })
 
-        const row = new MessageActionRow().addComponents(
-          new MessageSelectMenu()
-            .setCustomId(`selectCustomId`)
+        const row = new ActionRow().setComponents(
+          new SelectMenuComponent()
+            .setCustomId('selectCustomId')
             .setPlaceholder(String(lang.commands.shop.menuLabel))
-            .addOptions([
+            .addOptions(
               {
                 label: lang.commands.shop.pickaxe,
-                emoji: Emojis.picareta,
+                emoji: {
+                  name: 'pika',
+                  id: '914218970129784862',
+                  animated: false
+                },
                 value: 'pickaxe',
               },
               {
                 label: 'Vip',
-                emoji: Emojis.vip,
+                emoji: {
+                  name: 'vip',
+                  id: '910282331405832223',
+                  animated: false
+                },
                 value: 'vip',
               },
-            ])
+            )
         );
 
-        const embed = new MessageEmbed()
+        const embed = new Embed()
           .setTitle(`${Emojis.dima} | __Siesta__`)
           .setColor(client.color)
           .setFooter({
@@ -39,9 +47,10 @@ module.exports = {
 
         message.reply({ embeds: [embed], components: [row] }).then((msg) => {
           let coletor = msg.createMessageComponentCollector({
-            componentType: 'SELECT_MENU',
+            time: 300000
           });
-          coletor.on(`collect`, async (i) => {
+          coletor.on('collect', async (i) => {
+
             if (i.user.id != message.author.id)
               return i.reply({
                 content: `**${Emojis.errado} » ${lang.commands.shop.onlyAuthor}!**`,

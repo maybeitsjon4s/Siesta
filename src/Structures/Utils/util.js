@@ -27,7 +27,7 @@ async function getUser(args, message) {
   } else {
 
     try {
-      user = await message.guild.members.search({ query: args }).then((x) => x.first().user);
+      user = await message.guild.members.search({ query: args, limit: 1 }).then((x) => x.first().user);
 
     } catch {};
     try {

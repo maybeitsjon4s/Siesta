@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { Embed } = require('discord.js');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
-        const embed = new MessageEmbed()
+        const embed = new Embed()
           .setColor(client.color)
           .setDescription(
             `> **${

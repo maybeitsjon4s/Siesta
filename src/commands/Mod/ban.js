@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { Embed } = require('discord.js');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -8,8 +8,8 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
-        if (!message.member.permissions.has('BAN_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} » ${lang.commands.ban.userPermission}.**`);
-        if (!message.guild.me.permissions.has('BAN_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} » ${lang.commands.ban.myPermission}**`);
+        if (!message.member.permissions.has('BanMembers') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} » ${lang.commands.ban.userPermission}.**`);
+        if (!message.guild.me.permissions.has('BanMembers') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} » ${lang.commands.ban.myPermission}**`);
 
         let user;
         let motivo = args.slice(1).join(` `);
@@ -38,7 +38,7 @@ module.exports = {
               reason: `${motivo || lang.commands.ban.invalidReason}`,
             });
 
-            const embed = new MessageEmbed()
+            const embed = new Embed()
               .setTitle(`${Emojis.ban}| __Siesta__`)
               .addField(`${Emojis.user} » ${lang.commands.ban.user}`, `\`${user.tag}\``)
               .addField(`${Emojis.info} » ${lang.commands.ban.reason}`, `\`${motivo || lang.commands.ban.invalidReason}\``)
@@ -60,10 +60,18 @@ module.exports = {
               reason: `${motivo || lang.commands.ban.invalidReason}`,
             });
 
-            const embed1 = new MessageEmbed()
+            const embed1 = new Embed()
               .setTitle(`${Emojis.ban} | __Siesta__`)
-              .addField(`${Emojis.user} » ${lang.commands.ban.user}`, `\`${user.tag}\``)
-              .addField(`${Emojis.info} » ${lang.commands.ban.reason}`,`\`${motivo || lang.commands.ban.invalidReason}\``)
+              .addFields(
+                {
+                  name: `${Emojis.user} » ${lang.commands.ban.user}`,
+                  value: `\`${user.tag}\``
+                },
+                {
+                  name: `${Emojis.info} » ${lang.commands.ban.reason}`,
+                  value: `\`${motivo || lang.commands.ban.invalidReason}\``
+                }
+              )
               .setTimestamp()
               .setColor(client.color)
               .setFooter({

@@ -1,4 +1,4 @@
-const { MessageActionRow, MessageButton } = require('discord.js');
+const { ActionRow, ButtonComponent, ButtonStyle } = require('discord.js');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -11,10 +11,14 @@ module.exports = {
         message.reply({
           content: `**${Emojis.star} » ${lang.commands.vote.message}!**`,
           components: [
-            new MessageActionRow().addComponents(
-              new MessageButton()
-                .setStyle('LINK')
-                .setEmoji(Emojis.botlist)
+            new ActionRow().setComponents(
+              new ButtonComponent()
+                .setStyle(ButtonStyle.Link)
+                .setEmoji({
+                  name: 'topgg',
+                  id: '910275555402842212',
+                  animated: true 
+                })
                 .setLabel(lang.commands.vote.label)
                 .setURL("https://top.gg/bot/907747074118926347/vote")
             ),

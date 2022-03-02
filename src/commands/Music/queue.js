@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { Embed } = require('discord.js');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
       
       let queue = player.queue;
 
-      const QUEUE = new MessageEmbed()
+      const QUEUE = new Embed()
         .setTitle(`${Emojis.music} | __Siesta__`)
         .setColor(client.color)
         .setTimestamp();
@@ -26,10 +26,10 @@ module.exports = {
       const tracks = queue.slice(start, end);
 
       if (player.current)
-        QUEUE.addField(
-          `${lang.commands.queue.current}`,
-          `**[${player.current.title}](${player.current.uri})**`
-        );
+        QUEUE.addFields({
+           name: `${lang.commands.queue.current}`,
+          value: `**[${player.current.title}](${player.current.uri})**`
+        });
 
       if (!tracks.length)
         QUEUE.setDescription(
@@ -42,7 +42,9 @@ module.exports = {
 
       const maxPages = Math.ceil(queue.length / multiple);
 
-      QUEUE.setFooter(`${lang.commands.queue.page} ${page > maxPages ? maxPages : page}/${maxPages}`);
+      QUEUE.setFooter({
+      text: `${lang.commands.queue.page} ${page > maxPages ? maxPages : page}/${maxPages}`
+    });
 
       message.reply({ embeds: [QUEUE] });
   }

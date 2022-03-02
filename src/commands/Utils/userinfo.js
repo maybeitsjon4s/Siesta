@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { Embed } = require('discord.js');
 const Emojis = require('../../Structures/Utils/emojis');
 const moment = require('moment');
 
@@ -15,24 +15,45 @@ module.exports = {
 
         if (!user) user = message.author;
 
-          const embed = new MessageEmbed()
+          const embed = new Embed()
             .setTitle(`${Emojis.star} | __Siesta__`)
             .setColor(client.color)
-            .addField(`${Emojis.user} » User`, ` \`${user.tag}\``, true)
-            .addField(`${Emojis.estrela} » ${lang.commands.userinfo.createdAccount}`, `\`${moment.utc(user.createdAt).format(`DD/MM/YYYY`)}\` \`(${moment(user.createdAt).fromNow()})\``, true)
-            .addField(`<:members:867005290859462676> » Id`, `\`${user.id}\``, true)
+            .addFields(
+              {
+                name: `${Emojis.user} » User`,
+                value: `\`${user.tag}\``,
+                inline: true
+              },
+              {
+                name: `${Emojis.estrela} » ${lang.commands.userinfo.createdAccount}`,
+                value: `\`${moment.utc(user.createdAt).format(`DD/MM/YYYY`)}\` \`(${moment(user.createdAt).fromNow()})\``,
+                inline: true
+              },
+              {
+                name: '<:members:867005290859462676> » Id',
+                value: `\`${user.id}\``,
+                inline: true
+              }
+            )
             .setFooter({
               text: message.author.tag,
               iconURL: message.author.displayAvatarURL({ dynamic: true }),
             })
             .setTimestamp();
 
-            if (message.guild.members.cache.get(user.id)) {
-          let member = message.guild.members.cache.get(user.id);
-
-          embed.addField(`${Emojis.heart2} » ${lang.commands.userinfo.joinedAt}`, `\`${moment.utc(member.joinedAt).format(`DD/MM/YYYY`)}\` \`(${moment(member.joinedAt).fromNow()})\``, true);
+            if (message.guild.members.fetch(user.id)) {
+          const member = await message.guild.members.fetch(user.id);
+          embed.addFields({
+            name: `${Emojis.heart2} » ${lang.commands.userinfo.joinedAt}`,
+            value: `\`${moment.utc(member.joinedAt).format(`DD/MM/YYYY`)}\` \`(${moment(member.joinedAt).fromNow()})\``,
+            inline: true
+          })
           
-          if(member.premiumSince) embed.addField(`${Emojis.boost} » ${lang.commands.userinfo.boosterSince}`, `\`${moment.utc(member.premiumSince).format("DD/MM/YYYY")} \`\`(${moment.utc(member.premiumSince).fromNow()})\``, true)
+          if(member.premiumSince) embed.addFields({
+              name: `${Emojis.boost} » ${lang.commands.userinfo.boosterSince}`,
+              value: `\`${moment.utc(member.premiumSince).format("DD/MM/YYYY")} \`\`(${moment.utc(member.premiumSince).fromNow()})\``,
+              inline: true
+            })
         }
 
           message.reply({ embeds: [embed] });

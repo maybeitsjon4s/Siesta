@@ -111,6 +111,10 @@ module.exports = {
             cooldown: "Tente novamente em",
             sucess: "trabalhou e ganhou {} diamantes"
         },
+        vip: {
+            info: ['Vantagens', '**»** Dobro de diamantes no **daily e work ** \n **»** Cargo exclusivo no [Servidor da Siesta](https://discord.gg/BRQccw7HhZ)\n**»** Saber as novidades da Siesta antes de qualquer um!'],
+            price: ['Preço', '**»** Custa 250.000 diamantes para mais informações utilize o comando de loja!']
+        },
         ban: {
             myPermission: "Eu preciso da permissão de \`Banir Membros\` para este comando",
             userPermission: "Você precisa da permissão de \`Banir Membros\` para este comando",

@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { Embed } = require('discord.js');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -8,11 +8,11 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
       
-        if (!message.member.permissions.has("MANAGE_GUILD") && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** » ${lang.commands.antiinvite.errorPerm}**`);
+        if (!message.member.permissions.has('ManageGuild') && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** » ${lang.commands.antiinvite.errorPerm}**`);
 
           const guild = await client.db.guild.findOne({ _id: message.guild.id })
 
-                  const embed = new MessageEmbed()
+                  const embed = new Embed()
                     .setColor(client.color)
                     .setFooter({
                       text: message.author.tag,
@@ -20,17 +20,25 @@ module.exports = {
                         dynamic: true,
                       })
                     })
-                    .addField(`${Emojis.ban} » ${lang.commands.antiinvite.firstField.title}`, String(lang.commands.antiinvite.firstField.value))
-                    .addField(`${Emojis.config} » ${lang.commands.antiinvite.secondField.title}`, String(lang.commands.antiinvite.secondField.value))
+                    .addFields(
+                    {
+                      name: `${Emojis.ban} » ${lang.commands.antiinvite.firstField.title}`,
+                      value: String(lang.commands.antiinvite.firstField.value)
+                    },
+                    {
+                      name: `${Emojis.config} » ${lang.commands.antiinvite.secondField.title}`,
+                      value: String(lang.commands.antiinvite.secondField.value)
+                    }
+                    )
                     .setTitle(`${Emojis.config} | __Siesta__`)
 
         if (!args[0] || ![
-            "desativar",
-            "disable",
-            "ativar",
-            "enable",
-            "whitelist",
-            "ignorar",
+            'desativar',
+            'disable',
+            'ativar',
+            'enable',
+            'whitelist',
+            'ignorar',
           ].some((x) => x == args[0].toLowerCase())
         )
           return message.reply({embeds: [embed]});

@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { Embed } = require('discord.js');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
         _id: message.author.id
       })
 
-        let embed = new MessageEmbed()
+        let embed = new Embed()
           .setTimestamp()
           .setTitle(`${Emojis.rocket} | __Siesta__`)
           .setColor(client.color)

@@ -111,6 +111,10 @@ module.exports = {
             cooldown: "Try again at",
             sucess: "worked and earned {} diamonds"
         },
+        vip: {
+            info: ['Benefits', '**»** Double diamonds on **daily and work ** \n **»** Exclusive position on [Siesta Server](https://discord.gg/BRQccw7HhZ)\n**»** Know Siesta news before anyone else!'],
+            price: ['Price', '**»** It costs 250,000 diamonds for more information use the shop command!']
+        },
         ban: {
             myPermission: "I need \`Ban Members\` permission for this command",
             userPermission: "You need \`Ban Members\` permission for this command",

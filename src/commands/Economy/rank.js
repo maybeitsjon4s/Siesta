@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { Embed } = require('discord.js');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -28,7 +28,7 @@ module.exports = {
 
       const mapa = coinsMap.map((x, f) =>`**[ ${f + 1} ] - \`${x.user.tag}\` » ${client.utils.abbreviateNumber(x.money)} ${Emojis.dima}**`)
     
-    const embed = new MessageEmbed()
+    const embed = new Embed()
       .setTitle(`${Emojis.dima} | __Siesta__`)
       .setDescription(mapa.join('\n'))
       .setColor(client.color)

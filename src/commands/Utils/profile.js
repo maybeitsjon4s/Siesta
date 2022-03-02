@@ -26,15 +26,15 @@ module.exports = {
 
         if(USER.flags){
             list = USER.flags.toArray().join(" ")
-            .replace("PARTNERED_SERVER_OWNER", "<:parceiro:938035311093612544>")
-            .replace("DISCORD_CERTIFIED_MODERATOR", "<:mod:938035490836344852>")
-            .replace("EARLY_VERIFIED_BOT_DEVELOPER", "<:dev2:938036145441374238>")
-            .replace("EARLY_SUPPORTER", "<:supporter:938036320721326101>")
-            .replace("HOUSE_BALANCE", "<:balance:938043574430347284>")
-            .replace("HOUSE_BRILLIANCE", "<:briliance:938044002849128459>")
-            .replace("HOUSE_BRAVERY", "<:bravery:938044368584056863>")
-            .replace("VERIFIED_BOT", "")
-            .replace("HYPESQUAD_EVENTS", "<:hypesquad:938548922954178610>")
+            .replace("Partner", "<:parceiro:938035311093612544>")
+            .replace("CertifiedModerator", "<:mod:938035490836344852>")
+            .replace("VerifiedDeveloper", "<:dev2:938036145441374238>")
+            .replace("PremiumEarlySupporter", "<:supporter:938036320721326101>")
+            .replace("HypeSquadOnlineHouse3", "<:balance:938043574430347284>")
+            .replace("HypeSquadOnlineHouse2", "<:briliance:938044002849128459>")
+            .replace("HypeSquadOnlineHouse1", "<:bravery:938044368584056863>")
+            .replace("VerifiedBot", "")
+            .replace("Hypesquad", "<:hypesquad:938548922954178610>")
         } 
 
         const user = await client.db.user.findOne({
@@ -48,7 +48,7 @@ module.exports = {
             const canvas = createCanvas(800, 500);
             const ctx = canvas.getContext("2d");
             const avatar = await loadImage(USER.displayAvatarURL({
-                format: "jpeg",
+                extension: "jpeg",
                 size: 2048
             }));
             ctx.drawImage(avatar, 51, 161, 195, 180);

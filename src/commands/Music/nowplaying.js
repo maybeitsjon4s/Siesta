@@ -1,4 +1,4 @@
-const { MessageEmbed } = require(`discord.js`)
+const { Embed } = require(`discord.js`)
 const Emojis = require(`../../Structures/Utils/emojis`)
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
       if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.nowplaying.noPlayer}**`);
       
       const track = player.current;
-      let embed = new MessageEmbed()
+      let embed = new Embed()
         .setTitle(`${Emojis.music} | __Siesta__`)
         .setColor(client.color)
         .setTimestamp()

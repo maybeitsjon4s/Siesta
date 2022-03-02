@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { Embed } = require('discord.js');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -8,9 +8,9 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
-        if (!message.member.permissions.has("MODERATE_MEMBERS") && !client.owners.some(id => id === message.author.id)) return message.reply(`**${Emojis.errado} » ${lang.commands.mute.userPermision}!**`);
+        if (!message.member.permissions.has('ModerateMembers') && !client.owners.some(id => id === message.author.id)) return message.reply(`**${Emojis.errado} » ${lang.commands.mute.userPermision}!**`);
 
-        if (!message.guild.me.permissions.has("MODERATE_MEMBERS")) return message.reply(`**${Emojis.errado} » Eu ${lang.commands.mute.myPermission}!**`);
+        if (!message.guild.me.permissions.has('ModerateMembers')) return message.reply(`**${Emojis.errado} » Eu ${lang.commands.mute.myPermission}!**`);
 
         if (!args[0]) return message.reply(`**${Emojis.errado} » ${lang.commands.mute.noArgs}!**`);
 
@@ -40,16 +40,27 @@ module.exports = {
         let tempo = client.utils.timeToMilliseconds(time);
         if (tempo >= 2419200000) return message.reply(`**${Emojis.errado} » ${lang.commands.mute.higherThan28days}!**`);
 
-        let embed1 = new MessageEmbed()
+        let embed1 = new Embed()
           .setColor(client.color)
           .setFooter({
             text: message.author.tag,
             iconURL: message.author.displayAvatarURL({ dynamic: true }),
           })
           .setTitle(`${Emojis.ban} | __Siesta__`)
-          .addField(`${Emojis.user} » ${lang.commands.mute.user}: `, `\`${member.user.tag}\``)
-          .addField(`${Emojis.info} » ${lang.commands.mute.reason}:`, `\`${reason}\``)
-          .addField(`${Emojis.rocket} » ${lang.commands.mute.during}:`, `${client.utils.formatTime(client.utils.convertMilliseconds(tempo))}`)
+          .addFields(
+            {
+              name: `${Emojis.user} » ${lang.commands.mute.user}: `,
+              value: `\`${member.user.tag}\``,
+            },
+            {
+              name: `${Emojis.info} » ${lang.commands.mute.reason}:`,
+              value: `\`${reason}\``
+            },
+            {
+              name: `${Emojis.rocket} » ${lang.commands.mute.during}:`,
+              value: `\`${client.utils.formatTime(client.utils.convertMilliseconds(tempo))}\``
+            }
+          )
           .setTimestamp();
         message.reply({ embeds: [embed1] });
         member.timeout(tempo, reason);

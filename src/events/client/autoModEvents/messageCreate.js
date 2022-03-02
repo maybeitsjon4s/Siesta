@@ -9,7 +9,7 @@ if (!message.guild) return;
     if (!GUILD) return;
 
     if (GUILD.antiinvite.status && message.member) {
-      if (['BAN_MEMBERS', 'KICK_MEMBERS','ADMINISTRATOR', 'MANAGE_CHANNELS', 'MANAGE_GUILD', 'MANAGE_MESSAGES', 'MANAGE_ROLES'].some(perm => message.member.permissions.has(perm))) return;
+      if (['BanMembers', 'KickMembers','Administrator', 'ManageChannels', 'ManageGuild', 'ManageMessages', 'ManageRoles'].some(perm => message.member.permissions.has(perm))) return;
 
   let lang = GUILD.lang || 0
 
@@ -28,7 +28,7 @@ if (!message.guild) return;
 
       if (regex.exec(message.content) && !whitelist.some(x => x == message.channel.id)) {
         message.channel.send(`**${Emojis.errado} » ${message.author} ` + lang.events.autoModEvents.antiinvite + '**')
-        message.delete().catch((a) => {});
+        message.delete().catch(_ => {});
       }
     }
 }

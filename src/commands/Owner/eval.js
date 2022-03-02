@@ -15,16 +15,13 @@ module.exports = {
       .reply(`**${Emojis.dev} » Executando o codigo...**`)
       .then(async (m) => {
         try {
-          let pingStart = process.hrtime();
-          let result = await eval(code);
-          if (result instanceof Promise) {
-            await result;
-          }
+          const pingStart = process.hrtime();
+          let result = eval(code);
 
           if (typeof result !== "string") result = require("util").inspect(result);
 
-          let pingStop = process.hrtime(pingStart);
-          let time = Math.round((pingStop[0] * 1e9 + pingStop[1]) / 1e6);
+          const pingStop = process.hrtime(pingStart);
+          const time = Math.round((pingStop[0] * 1e9 + pingStop[1]) / 1e6);
 
           m.edit({
             content: `\`\`\`js\n${result.slice(0, 1970).replace((new RegExp(yml.token,"gi")), '******************')}\`\`\`\n\n\`\`\`${time}ms\`\`\``,

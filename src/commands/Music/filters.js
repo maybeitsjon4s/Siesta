@@ -1,5 +1,5 @@
 const Emojis = require('../../Structures/Utils/emojis');
-const { MessageActionRow, MessageButton } = require('discord.js')
+const { ActionRow, ButtonComponent, ButtonStyle } = require('discord.js')
 
 module.exports = {
   name: 'filters',
@@ -13,22 +13,22 @@ module.exports = {
 
       if (message.member.voice.channel.id !== player.voiceChannelId) return message.reply(`**${Emojis.errado} » ${lang.commands.filters.channelError2}!**`);
 
-        const row = new MessageActionRow().addComponents(
-        new MessageButton()
+        const row = new ActionRow().setComponents(
+        new ButtonComponent()
         .setLabel('NightCore')
-        .setStyle('SECONDARY')
+        .setStyle(ButtonStyle.Secondary)
         .setCustomId("nightcore"),
-        new MessageButton()
+        new ButtonComponent()
         .setLabel('BassBoost')
-        .setStyle('SECONDARY')
+        .setStyle(ButtonStyle.Secondary)
         .setCustomId('bassboost'),
-        new MessageButton()
+        new ButtonComponent()
         .setLabel('8D')
-        .setStyle('SECONDARY')
+        .setStyle(ButtonStyle.Secondary)
         .setCustomId('eightD'),
-        new MessageButton()
+        new ButtonComponent()
         .setLabel(lang.commands.filters.clearLabel)
-        .setStyle('SECONDARY')
+        .setStyle(ButtonStyle.Secondary)
         .setCustomId('clear')
       );
 
@@ -38,7 +38,6 @@ module.exports = {
     }).then(msg => {
      
           const collector = msg.createMessageComponentCollector({
-            componentType: "BUTTON",
             time: 180000
           });
 
@@ -49,6 +48,7 @@ module.exports = {
               ephemeral: true
             })
             switch(i.customId) {
+
               case 'nightcore':
                 msg.edit({
                   content: `**${Emojis.music} » ${lang.commands.filters.changedMessage.replace('{}', 'NightCore')}**`,
@@ -61,6 +61,7 @@ module.exports = {
                 .setTremolo({ depth: 0.3, frequency: 14 }, false)
                 .apply();
                 break;
+
               case 'bassboost':
                 msg.edit({
                   content: `**${Emojis.music} » ${lang.commands.filters.changedMessage.replace('{}', 'Bass Boost')}**`,
@@ -86,13 +87,13 @@ module.exports = {
                 })
                 player.filters.clear()
                 break;
+
             }
           })
       collector.on('end', () => {
         msg.delete().catch(() => {})
       })
     })
-      
   }
 }
 

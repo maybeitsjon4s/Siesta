@@ -1,5 +1,5 @@
 const Emojis = require('../../../Structures/Utils/emojis')
-const { MessageActionRow, MessageButton } = require('discord.js')
+const { ActionRow, ButtonComponent, ButtonStyle } = require('discord.js')
 
 module.exports = async (client, member) => {
 
@@ -10,21 +10,21 @@ module.exports = async (client, member) => {
 
     let channel = await member.guild.channels.cache.get(guild.welcome.channel);
 
-    const row = new MessageActionRow().addComponents(
-      new MessageButton()
+    const row = new ActionRow().setComponents(
+      new ButtonComponent()
         .setLabel(`Message configured by ${member.guild.name} team`)
-        .setCustomId("welcome")
-        .setStyle(`SECONDARY`)
+        .setCustomId('welcome')
+        .setStyle(ButtonStyle.Secondary)
         .setDisabled(true)
         .setEmoji(Emojis.ban)
     );
 
     channel.send({
       content: `${guild.welcome.message
-        .replace(`{member}`, `${member}`)
-        .replace(`{guild}`, `${member.guild.name}`)
-        .replace(`{membertag}`, `${member.user.tag}`)
-        .replace(`{count}`, `${member.guild.memberCount}`)}`,
+        .replace('{member}', `${member}`)
+        .replace('{guild}', `${member.guild.name}`)
+        .replace('{membertag}', `${member.user.tag}`)
+        .replace('{count}', `${member.guild.memberCount}`)}`,
       components: [row],
     });
   }

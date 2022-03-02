@@ -7,10 +7,10 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
-        if (!message.member.permissions.has('MANAGE_MESSAGES') && !client.owners.some(id => id === message.author.id) )
+        if (!message.member.permissions.has('ManageMessages') && !client.owners.some(id => id === message.author.id) )
           return message.reply(`**${Emojis.errado} » ${lang.commands.clear.userPermission}**`);
 
-        if (!message.guild.me.permissions.has('MANAGE_MESSAGES'))
+        if (!message.guild.me.permissions.has('ManageMessages'))
           return message.reply(
             `**${Emojis.errado} » ${lang.commands.clear.myPermission}**`
           );

@@ -1,5 +1,4 @@
-const { Client, Options, Collection } = require("discord.js")
-
+const { Client, Options, Collection, GatewayIntentBits, Util } = require("discord.js")
 const Music = require("../Music")
 
 const User = require('../Models/User')
@@ -25,10 +24,10 @@ module.exports = class extends Client {
                 UserManager: 0,
             }),
             intents: [
-                "GUILDS",
-                "GUILD_MESSAGES",
-                "GUILD_VOICE_STATES",
-                "GUILD_MEMBERS",
+                GatewayIntentBits.Guilds,
+                GatewayIntentBits.GuildMessages,
+                GatewayIntentBits.GuildMembers,
+                GatewayIntentBits.GuildVoiceStates,
             ],
             allowedMentions: {
                 parse: ["users"]
@@ -44,7 +43,7 @@ module.exports = class extends Client {
         this.utils = require('./Utils/util')
 
         this.owners = ["431768491759239211"]
-        this.color = '#ffffff'
+        this.color = Util.resolveColor('#ffffff')
 
         this.langs = {
             pt: require('../Locales/pt-BR'),

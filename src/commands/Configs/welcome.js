@@ -22,7 +22,7 @@ module.exports = {
       }
       if (args[0] == 'on') {
         let channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1]);
-        if (!channel) return message.reply(`**${Emojis.errado} « ${langs.commands.welcome.argsError}**`);
+        if (!channel) return message.reply(`**${Emojis.errado} « ${lang.commands.welcome.argsError}**`);
         let msg = args.slice(2).join(' ');
         if (!msg) return message.reply(`**${Emojis.errado} » ${lang.commands.welcome.argsError}**`);
 

@@ -88,7 +88,7 @@ module.exports = {
                 break;
             }
           })
-      collector.on('end', i => {
+      collector.on('end', () => {
         msg.delete().catch(() => {})
       })
     })

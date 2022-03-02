@@ -10,7 +10,7 @@ module.exports = {
       
         if (!message.member.permissions.has("MANAGE_GUILD") && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** » ${lang.commands.antiinvite.errorPerm}**`);
 
-          const guild = await Guild.findOne({ _id: message.guild.id })
+          const guild = await client.db.guild.findOne({ _id: message.guild.id })
 
                   const embed = new MessageEmbed()
                     .setColor(client.color)

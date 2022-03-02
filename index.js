@@ -7,7 +7,6 @@ const { ShardingManager } = require("discord.js"),
   manager = new ShardingManager('./src/index.js', {
     token: yml.token,
     totalShards: 2,
-    respawn: true,
-  });
-
-manager.spawn();
+    respawn: true
+  })
+manager.spawn()

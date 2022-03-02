@@ -23,7 +23,7 @@ module.exports = {
 
         let time = args[1];
 
-        let reason = args.slice(2).join(` `) || `Não especificado`;
+        let reason = args.slice(2).join(' ') || 'INVALID';
 
         if (!time) return message.reply(`**${Emojis.errado} » ${lang.commands.mute.noTime}!**`);
 

@@ -40,8 +40,9 @@ module.exports = {
               iconURL: message.author.displayAvatarURL({ dynamic: true }),
             })
             .setTimestamp();
+    let member;
     try{
-      const member = await message.guild.members.fetch(user.id)
+      member = await message.guild.members.fetch(user.id)
     }
     catch {}
 

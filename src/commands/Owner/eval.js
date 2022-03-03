@@ -15,7 +15,7 @@ module.exports = {
           let result = await eval(code)
           if (typeof result !== "string") result = require("util").inspect(result, { depth: 0 })
 
-          message.edit({
+          message.reply({
             content: `\`\`\`js\n${result.slice(0, 1970).replace((new RegExp(yml.token,"gi")), '******************')}\`\`\``,
           })
 

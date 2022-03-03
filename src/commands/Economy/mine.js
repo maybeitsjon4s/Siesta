@@ -86,7 +86,7 @@ module.exports = {
           },
           {
             name: `${Emojis.rocket} » ${lang.commands.mine.level}`,
-            value: '`' user.mine.level.toString() + '`'
+            value: '`' + user.mine.level.toString() + '`'
           },
           {
             name: `${Emojis.estrela} » ${lang.commands.mine.exp}`,

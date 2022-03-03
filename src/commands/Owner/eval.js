@@ -12,7 +12,7 @@ module.exports = {
     const code = args.join(" ");
     if (!code) return;
         try {
-          const result = await eval(code)
+          let result = await eval(code)
           if (typeof result !== "string") result = require("util").inspect(result, { depth: 0 })
 
           message.edit({

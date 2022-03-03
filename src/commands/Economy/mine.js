@@ -79,9 +79,20 @@ module.exports = {
           text: message.author.tag,
           iconURL: message.author.displayAvatarURL()
         })
-        .addField(`${Emojis.esmeralda} » ${lang.commands.mine.emeralds}`, "`" + user.mine.esmeraldas.toString() + "`", true)
-        .addField(`${Emojis.rocket} » ${lang.commands.mine.level}`, "`" + user.mine.level.toString() + "`", true)
-        .addField(`${Emojis.estrela} » ${lang.commands.mine.exp}`, "`" + user.mine.exp.toString() + "/2000`", true)
+        .addFields(
+          {
+            name: `${Emojis.esmeralda} » ${lang.commands.mine.emeralds}`,
+            value: '`' + user.mine.esmeraldas.toLocaleString() + '`'
+          },
+          {
+            name: `${Emojis.rocket} » ${lang.commands.mine.level}`,
+            value: '`' user.mine.level.toString() + '`'
+          },
+          {
+            name: `${Emojis.estrela} » ${lang.commands.mine.exp}`,
+            value: '`' + user.mine.exp.toString() + '/2000`'
+          }
+        )
 
         message.reply({ embeds: [embed]})
       }

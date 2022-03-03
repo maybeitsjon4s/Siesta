@@ -40,9 +40,13 @@ module.exports = {
               iconURL: message.author.displayAvatarURL({ dynamic: true }),
             })
             .setTimestamp();
+    try{
+      const member = await message.guild.members.fetch(user.id)
+    }
+    catch {}
 
-            if (message.guild.members.fetch(user.id)) {
-          const member = await message.guild.members.fetch(user.id);
+            if (member) {
+
           embed.addFields({
             name: `${Emojis.heart2} » ${lang.commands.userinfo.joinedAt}`,
             value: `\`${moment.utc(member.joinedAt).format(`DD/MM/YYYY`)}\` \`(${moment(member.joinedAt).fromNow()})\``,

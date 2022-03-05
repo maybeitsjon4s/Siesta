@@ -132,7 +132,7 @@ module.exports = {
         clear: {
             myPermission: "I need the \`Manage messages\` permission",
             userPermission: "You need \`Manage messages\` permission",
-            invalidCount: "Provide a number of up to \`99 messages\` to be deleted**",
+            invalidCount: "Provide a number of up to \`99 messages\` to be deleted",
             finalMessage: "Cleaned \`{}\` messages!"
         },
         kick: {

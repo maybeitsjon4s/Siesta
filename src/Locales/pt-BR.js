@@ -3,7 +3,7 @@ module.exports = {
     events: {
         messageCreate: {
             mention: "Olá, eu sou a **Siesta**! Meu prefixo neste servidor é **{}** se quiser saber os meus comandos use **{}help**!",
-            error: "Ocorreu um erro ao usar o comando {}, se puderes vai ate ao servidor de suporte do bot através do botão abaixo e reporta-o para ser corrigido o mais rapido possivel!",
+            error: "Ocorreu um erro ao usar o comando {}, se não for um incomodo vá ate ao servidor de suporte do bot através do botão abaixo e reporta-o para ser corrigido o mais rapido possivel!",
             cooldown: "Espere \`{}\` segundos para executar um comando novamente!"
         },
         autoModEvents: {
@@ -12,7 +12,7 @@ module.exports = {
         musicEvents: {
           trackStart: "Agora tocando: \`{track}\`, pedido por \`{user}\`",
           trackStuck: "A Musica ficou presa então vou pular ela...",
-          queueEnd: "A Musica acabou estou saindo do canal..."
+          queueEnd: "A Musica acabou, estou saindo do canal..."
         }
     },
     commands: {
@@ -20,11 +20,11 @@ module.exports = {
             errorPerm: "Você precisa da permissão \`Gerenciar servidor\` para executar este comando!",
             firstField: {
                 title: "Oque é o Anti-invite?",
-                value: "Antiinvite e um dos meus modulos de moderação automatica, quando alguem mandar um link de convite para algum servidor que não seja este e se essa pessoa não tiver alguma permissão de moderador essa mensagem será apagada."
+                value: "Antiinvite e um dos meus modulos de moderação automatica, quando alguem mandar um link de convite para algum servidor que não seja este e se essa pessoa não tiver nenhuma permissão administrativa essa mensagem será apagada."
             },
             secondField: {
               title: "E como o configuro?",
-              value: "Para configurar o modulo de antiinvite e muito simples basta você inserir uma dessas opções apos o comando: \n> \`ativar\` » Ativa o modulo\n> \`desativar\` » Desativa o modulo\n**Mas como eu configuro um canal em que os invites serão ignorados? Basta usar uma das opções de whitelist abaixo:**\n> \`whitelist add\` » Adiciona um canal a lista de canais que o bot irá ignorar convites\n> \`whitelist remove\` » Remove um canal da lista de canais que o bot ignora"
+              value: "Para configurar o modulo de antiinvite é muito simples basta você inserir uma dessas opções após o comando: \n> \`ativar\` » Ativa o modulo\n> \`desativar\` » Desativa o modulo\n**Mas como eu configuro um canal em que os invites serão ignorados? Basta usar uma das opções de whitelist abaixo:**\n> \`whitelist add\` » Adiciona um canal a lista de canais que o bot irá ignorar convites\n> \`whitelist remove\` » Remove um canal da lista de canais que o bot ignora"
             },
             enabled: "Modulo anti-convites ativado com sucesso!",
             disabled: "Modulo anti-convites desativado com sucesso!",
@@ -37,8 +37,8 @@ module.exports = {
         language: {
             errorPerm: "Você precisa da permissão \`Gerenciar servidor\` para executar este comando!",
             message: "vejo que você quer alterar a linguagem que eu uso aqui!**\n> **Para a alterar basta utilizar os botões que estão nesta mensagem!**\n\n> 🇵🇹 Português » 100%\n> 🇺🇸 Inglês » 100%\n\n> \`As traduções podem não estar 100% corretas caso você encontre algum problema nelas reporte-o a minha equipe!\`",
-            onlyAuthor: "Voce nao pode utulizar este botoes",
-            portugueseSeted: "Portugues setado com sucesso!",
+            onlyAuthor: "Voce não pode utilizar estes botões",
+            portugueseSeted: "Português setado com sucesso!",
             englishSeted: "English set successfully",
         },
         prefix: {
@@ -54,12 +54,12 @@ module.exports = {
             disabled: "Sistema de entrada destivado com sucesso!"
         },
         atm: {
-            neverUsedTheBot: "Este usuario nunca me usou por isso tem __0__ diamantes!",
-            message: "Atualmente {user} tem **{value}** diamate(s)"
+            neverUsedTheBot: "Este usuario nunca me usou logo tem __0__ diamantes!",
+            message: "Atualmente {user} tem **{value}** diamante(s)"
         },
         coinflip: {
             noValue: "Por favor insira o valor da aposta!",
-            dontHave: "Voce não tem esse(s) diamante(s)!",
+            dontHave: "Você não tem esse(s) diamante(s)!",
             invalidValue: "Você tem que colocar um valor maior que \`0\` para realizar a aposta!",
             win: "Cara!! Você ganhou",
             lose: "Coroa!! Você perdeu"
@@ -132,7 +132,7 @@ module.exports = {
         clear: {
             myPermission: "Eu preciso da permissão \`Gerenciar mensagens\`",
             userPermission: "Você precisa da permissão \`Gerenciar mensagens\`",
-            invalidCount: "Forneça um número de até \`99 mensagens\` a serem excluídas**",
+            invalidCount: "Forneça um número de até \`99 mensagens\` a serem excluídas",
             finalMessage: "Limpei \`{}\` mensagens!"
         },
         kick: {
@@ -144,7 +144,7 @@ module.exports = {
             higherRoleThanMine: "O cargo dele e mais alto que o meu!",
             user: "Usuario",
             reason: "Motivo",
-            noReason: "Nao especificado"
+            noReason: "Não especificado"
         },
         lock: {
             userPermission: "Eu não tenho a Permissão \`Gerenciar Canais\`",
@@ -152,7 +152,7 @@ module.exports = {
             sucess: "Chat trancado com sucesso!"
         },
         mute: {
-            userPermission: "Você precisas da permissão \`Moderar Membros\` para executar este comando!",
+            userPermission: "Você precisa da permissão \`Moderar Membros\` para executar este comando!",
             myPermission: "Eu preciso da permissão de \`Moderar Membros\` para executar este comando!",
             noArgs: "Mencione Alguem!",
             notFound: "Usuario não encontrado!",

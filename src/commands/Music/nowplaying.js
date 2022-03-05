@@ -22,9 +22,7 @@ module.exports = {
             player.position / 1000 / 50,
             track.duration / 1000 / 50,
             20
-          )}]\` ${formatTime(
-            client.utils.convertMilliseconds(track.duration)
-          )}\n${Emojis.estrela} » Status\n Volume: \`${player.volume}/500\`\nLoop: \`${player.trackRepeat ? lang.commands.nowplaying.enabled : lang.commands.nowplaying.disabled}\`\nStatus: \`${!player.filters.player.paused ? lang.commands.nowplaying.playing : lang.commands.nowplaying.paused}\`**`
+          )}]\` ${formatTime(track.duration)}\n${Emojis.estrela} » Status\n Volume: \`${player.volume}/500\`\nLoop: \`${player.trackRepeat ? lang.commands.nowplaying.enabled : lang.commands.nowplaying.disabled}\`\nStatus: \`${!player.filters.player.paused ? lang.commands.nowplaying.playing : lang.commands.nowplaying.paused}\`**`
         )
         .setFooter({
           text: `${message.author.tag}`,

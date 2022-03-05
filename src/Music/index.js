@@ -5,6 +5,7 @@ module.exports = async (client) => {
 
   client.music = new Vulkava({
     nodes: yml.lavalinkNodes,
+    unresolvedSearchSource: 'youtube',
     sendWS: (guildId, payload) => {
       client.guilds.cache.get(guildId)?.shard.send(payload);
     },

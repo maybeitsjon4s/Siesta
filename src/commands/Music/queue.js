@@ -26,10 +26,12 @@ module.exports = {
       const tracks = queue.slice(start, end);
 
       if (player.current)
-        QUEUE.addFields({
+        QUEUE.addFields(
+          {
            name: `${lang.commands.queue.current}`,
-          value: `**[${player.current.title}](${player.current.uri})**`
-        });
+           value: `**[${player.current.title}](${player.current.uri})**`
+          }
+        );
 
       if (!tracks.length)
         QUEUE.setDescription(
@@ -37,7 +39,7 @@ module.exports = {
         );
       else
         QUEUE.setDescription(
-          tracks.map((track, i) => `**${start + ++i} - [${client.utils.shorten(track.title, 30)}](${track.uri})< <@${track.requester.id}> >**`).join(`\n`)
+          tracks.map((track, i) => `**${start + ++i} - [${client.utils.shorten(track.title, 30).replaceAll('[', '').replaceAll(']', '')}](${track.uri}) < <@${track.requester.id}> >**`).join(`\n`)
         );
 
       const maxPages = Math.ceil(queue.length / multiple);

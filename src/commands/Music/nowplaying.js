@@ -1,5 +1,5 @@
-const { Embed } = require(`discord.js`)
-const Emojis = require(`../../Structures/Utils/emojis`)
+const { Embed } = require('discord.js')
+const Emojis = require('../../Structures/Utils/emojis.js')
 
 module.exports = {
   name: 'nowplaying',
@@ -33,19 +33,18 @@ module.exports = {
       message.reply({
         embeds: [embed]
       });
+      const formatTime = (time, format = "hh:mm:ss") => {
+      time = client.utils.convertMilliseconds(time)
+      const formats = {
+       dd: "days",
+       hh: "hours",
+       mm: "minutes",
+       ss: "seconds"
+       };
+
+      const newFormat = format.replace(/dd|hh|mm|ss/g, (match) => time[formats[match]].toString().padStart(2, "0")).replace(/^(00:)+/g, "");
+
+      return newFormat.length > 2 ? newFormat : "00:" + newFormat;
+}
   },
 };
-
-function formatTime(time, format = "hh:mm:ss") {
-  time = client.utils.convertMilliseconds(time)
-  const formats = {
-    dd: "days",
-    hh: "hours",
-    mm: "minutes",
-    ss: "seconds"
-  };
-
-  const newFormat = format.replace(/dd|hh|mm|ss/g, (match) => time[formats[match]].toString().padStart(2, "0")).replace(/^(00:)+/g, "");
-
-  return newFormat.length > 2 ? newFormat : "00:" + newFormat;
-}

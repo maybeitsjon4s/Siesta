@@ -217,7 +217,7 @@ module.exports = {
   abbreviateNumber: abbreviateNumber,
   convertAbbreviatedNum: convertAbbreviatedNum,
   convertMilliseconds: convertMilliseconds,
-  progressBarEnhanced: progressBarEnhanced,
+  progressBar: progressBarEnhanced,
   formatTime: formatTime,
   applyLineBreaks: applyLineBreaks,
   shorten: shorten,

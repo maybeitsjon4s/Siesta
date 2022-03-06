@@ -253,6 +253,12 @@ module.exports = {
             bettewnOneAnd500: "Volume must be between 1 to 500",
             sucess: "Volume changed to"
         },
+        skipto: {
+          noPlayer: "I'm not playing music on this server.",
+          channelError: "You are not on a voice channel or you are not on the same channel as me.",
+          invalidPosition: 'The position you gave me its invalid.',
+          sucess: 'Skiped to the music number {}!',
+        },
         about: {
             noArgs: "Insert something to put in the about me",
             sucess: "About me successfully changed!"

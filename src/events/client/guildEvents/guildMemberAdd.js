@@ -16,7 +16,11 @@ module.exports = async (client, member) => {
         .setCustomId('welcome')
         .setStyle(ButtonStyle.Secondary)
         .setDisabled(true)
-        .setEmoji(Emojis.ban)
+        .setEmoji({
+          name: 'lock',
+          id: '910274452632264804',
+          animated: false
+        })
     );
 
     channel.send({

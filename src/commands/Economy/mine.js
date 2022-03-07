@@ -1,5 +1,12 @@
-const Emojis = require('../../Structures/Utils/emojis');
-const { Embed } = require('discord.js');
+const { MessageAttachment, Embed } = require(`discord.js`);
+
+const Emojis = require(`../../Structures/Utils/emojis`);
+
+const { loadImage, registerFont, createCanvas } = require("canvas");
+const { fillTextWithTwemoji } = require('node-canvas-with-twemoji-and-discord-emoji');
+registerFont("src/Assets/Fonts/seguibl.ttf", {
+    family: "Segoe UI Black"
+});
 
 module.exports = {
   name: 'mine',
@@ -72,6 +79,7 @@ module.exports = {
         })
       }
       if(["status", "info"].some(x => x == args[0])) {
+
         const embed = new Embed()
         .setTitle(`${Emojis.dima} | __Siesta__`)
         .setColor(client.color)

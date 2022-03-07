@@ -1,6 +1,6 @@
 const Emojis = require('../../Structures/Utils/emojis.js')
 
-module.export = {
+module.exports = {
   name: 'skipto',
   aliases: ['goto', 'jump'],
   cooldown: 2,

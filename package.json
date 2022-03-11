@@ -1,6 +1,6 @@
 {
   "name": "Siesta",
-  "version": "1.0.0",
+  "version": "2.0.3",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -22,7 +22,7 @@
     "ms": "^2.1.3",
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1",
     "pm2": "^5.1.2",
-    "vulkava": "^1.1.1"
+    "vulkava": "^1.1.3"
   },
   "engines": {
     "node": "17.x"

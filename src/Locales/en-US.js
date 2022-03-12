@@ -218,7 +218,7 @@ module.exports = {
             noArgs: "You need to put a song or url for me to play!",
             failedToPlay: "I couldn't play this song",
             noMatches: "I didn't find this song",
-            playListLoaded: "Playlist \`{name}\` with \`{length}\` songs added to the queue",
+            playListLoaded: "Playlist \`{name}\` with \`{length}\` songs added to the queue and {time} of duration.",
             musicLoaded: "Music \`{}\` added to the queue"
         },
         queue: {

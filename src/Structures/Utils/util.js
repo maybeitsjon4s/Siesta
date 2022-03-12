@@ -99,7 +99,7 @@ function convertMilliseconds(ms) {
   };
 }
 
-function progressBarEnhanced(current, total, barSize) {
+function progressBar(current, total, barSize) {
   const progress = Math.round((barSize * current) / total);
 
   return (
@@ -212,20 +212,20 @@ async function loadEvents(client) {
 }
 
 module.exports = {
-  abbreviateNumber: abbreviateNumber,
-  convertAbbreviatedNum: convertAbbreviatedNum,
-  abbreviateNumber: abbreviateNumber,
-  convertAbbreviatedNum: convertAbbreviatedNum,
-  convertMilliseconds: convertMilliseconds,
-  progressBar: progressBarEnhanced,
-  formatTime: formatTime,
-  applyLineBreaks: applyLineBreaks,
-  shorten: shorten,
-  timeToMilliseconds: timeToMilliseconds,
-  getUser: getUser,
-  coinflip: coinflip,
-  sendLogs: sendLogs,
-  formatSizeUnits: formatSizeUnits,
-  loadEvents: loadEvents,
-  loadCommands: loadCommands,
+  abbreviateNumber,
+  convertAbbreviatedNum,
+  abbreviateNumber,
+  convertAbbreviatedNum,
+  convertMilliseconds,
+  progressBar,
+  formatTime,
+  applyLineBreaks,
+  shorten,
+  timeToMilliseconds,
+  getUser,
+  coinflip,
+  sendLogs,
+  formatSizeUnits,
+  loadEvents,
+  loadCommands,
 }

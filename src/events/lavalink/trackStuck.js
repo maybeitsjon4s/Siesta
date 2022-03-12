@@ -15,6 +15,6 @@ module.exports = async (client, player, track, playload) => {
     break;
   }
 
-  channel.send(`**${Emojis.music} » ${lang.events.musicEvents.trackStuck}**`)
+  channel.send(`**${Emojis.music} › ${lang.events.musicEvents.trackStuck}**`)
   player.skip();
 };

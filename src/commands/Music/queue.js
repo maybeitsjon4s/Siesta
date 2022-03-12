@@ -8,7 +8,7 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
-      if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.queue.noPlayer}**`);
+      if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.queue.noPlayer}**`);
       
       const queue = player.queue;
 

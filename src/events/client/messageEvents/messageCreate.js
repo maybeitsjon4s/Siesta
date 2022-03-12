@@ -71,7 +71,7 @@ const { cooldowns } = client;
 
     if (now < expirationTime) {
       const timeLeft = (expirationTime - now) / 1000;
-      return message.reply({ content: `**${Emojis.rocket} » `+ String(lang.events.messageCreate.cooldown).replace('{}', timeLeft.toFixed(1)) + '**'})
+      return message.reply({ content: `**${Emojis.rocket} › `+ String(lang.events.messageCreate.cooldown).replace('{}', timeLeft.toFixed(1)) + '**'})
     }
   }
   timestamps.set(message.author.id, now);
@@ -100,7 +100,7 @@ const { cooldowns } = client;
       );
       message.reply({ embeds: [{
       color: client.color,
-      description: `**${Emojis.rocket} » ` + lang.events.messageCreate.error.replace('{}', command.name) + '**' + '\n\`' + e + '\`'
+      description: `**${Emojis.rocket} › ` + lang.events.messageCreate.error.replace('{}', command.name) + '**' + '\n\`' + e + '\`'
       }],
       components: [row]})
     } finally {

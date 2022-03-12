@@ -22,7 +22,7 @@ module.exports = async (client, player, track) => {
     break;
   }
 
-  channel.send(`**${Emojis.music} » ${lang.events.musicEvents.trackStart.replace('{track}', track.title).replace('{user}', track.requester.tag)}**`).then(msg => {
+  channel.send(`**${Emojis.music} › ${lang.events.musicEvents.trackStart.replace('{track}', track.title).replace('{user}', track.requester.tag)}**`).then(msg => {
     player.lastPlayingMsgID = msg.id;
   })
 

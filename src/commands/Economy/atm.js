@@ -12,10 +12,10 @@ module.exports = {
 
       const doc = await client.db.user.findOne({ _id: user.id })
     
-        if(!doc) return message.reply(`${Emojis.errado}** » ${lang.commands.atm.neverUsedTheBot}**`)
+        if(!doc) return message.reply(`${Emojis.errado}** › ${lang.commands.atm.neverUsedTheBot}**`)
 
         message.reply({
-          content: `${Emojis.dima} **»** ${lang.commands.atm.message.replace('{user}', String(user)).replace('{value}', doc.money.toLocaleString())}!`,
+          content: `${Emojis.dima} **›** ${lang.commands.atm.message.replace('{user}', String(user)).replace('{value}', doc.money.toLocaleString())}!`,
         });
   },
 };

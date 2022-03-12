@@ -8,9 +8,9 @@ module.exports = {
   run: async (client, message, args, player, lang) => {
 
     const aboutme = args.join(' ')
-        if (!aboutme) return message.reply(`**${Emojis.errado} » ${lang.commands.about.noArgs}**`);
+        if (!aboutme) return message.reply(`**${Emojis.errado} › ${lang.commands.about.noArgs}**`);
 
-        message.reply(`**${Emojis.heart} » ${lang.commands.about.sucess}!**`);
+        message.reply(`**${Emojis.heart} › ${lang.commands.about.sucess}!**`);
         await client.db.user.findOneAndUpdate({ _id: message.author.id },
           {
             $set: {

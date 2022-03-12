@@ -7,15 +7,15 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
-      if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.resume.noPlayer}**`);
+      if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.resume.noPlayer}**`);
 
       if (!message.member.voice.channel || message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(
-          `**${Emojis.errado} » ${lang.commands.resume.channelError}**`
+          `**${Emojis.errado} › ${lang.commands.resume.channelError}**`
         );
 
-      if (!player.paused) return message.reply(`**${Emojis.errado} » ${lang.commands.resume.alteradyPause}!**`);
+      if (!player.paused) return message.reply(`**${Emojis.errado} › ${lang.commands.resume.alteradyPause}!**`);
 
       player.pause(false);
-      message.reply(`**${Emojis.music} » ${lang.commands.resume.sucess}!**`)
+      message.reply(`**${Emojis.music} › ${lang.commands.resume.sucess}!**`)
   },
 };

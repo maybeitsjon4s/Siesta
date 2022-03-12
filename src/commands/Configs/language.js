@@ -26,7 +26,7 @@ module.exports = {
         .setCustomId('en')
       );
 
-        if (!message.member.permissions.has('ManageGuild') && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** » ${lang.commands.language.errorPerm}**`)
+        if (!message.member.permissions.has('ManageGuild') && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** › ${lang.commands.language.errorPerm}**`)
 
         const embed = new Embed()
           .setColor(client.color)
@@ -50,7 +50,7 @@ module.exports = {
           collector.on('collect', async (i) => {
             
             if (i.user.id !== message.author.id) return i.reply({
-              content: `${Emojis.errado}** » ${lang.commands.language.onlyAuthor}**`,
+              content: `${Emojis.errado}** › ${lang.commands.language.onlyAuthor}**`,
               ephemeral: true
             })
             if (i.customId == 'pt') {
@@ -63,7 +63,7 @@ module.exports = {
                 }
               })
               msg.edit({
-                content: `**${Emojis.config} » ${lang.commands.language.portugueseSeted}!**`,
+                content: `**${Emojis.config} › ${lang.commands.language.portugueseSeted}!**`,
                 embeds: [],
                 components: []
               });
@@ -78,7 +78,7 @@ module.exports = {
                 }
               })
               msg.edit({
-                content: `**${Emojis.config} » ${lang.commands.language.englishSeted}!**`,
+                content: `**${Emojis.config} › ${lang.commands.language.englishSeted}!**`,
                 embeds: [],
                 components: []
               })

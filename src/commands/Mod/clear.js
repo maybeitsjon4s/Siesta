@@ -8,16 +8,16 @@ module.exports = {
   run: async (client, message, args, player, lang) => {
 
         if (!message.member.permissions.has('ManageMessages') && !client.owners.some(id => id === message.author.id) )
-          return message.reply(`**${Emojis.errado} » ${lang.commands.clear.userPermission}**`);
+          return message.reply(`**${Emojis.errado} › ${lang.commands.clear.userPermission}**`);
 
         if (!message.guild.me.permissions.has('ManageMessages'))
           return message.reply(
-            `**${Emojis.errado} » ${lang.commands.clear.myPermission}**`
+            `**${Emojis.errado} › ${lang.commands.clear.myPermission}**`
           );
 
         const deleteCount = parseInt(args[0], 10);
         if (!deleteCount || deleteCount < 1 || deleteCount > 99)
-          return message.reply(`**${Emojis.errado} » ${lang.commands.clear.invalidCount}**`);
+          return message.reply(`**${Emojis.errado} › ${lang.commands.clear.invalidCount}**`);
 
         let fetched = await message.channel.messages.fetch({
           limit: deleteCount + 1,
@@ -25,7 +25,7 @@ module.exports = {
 
 
         message.channel.bulkDelete(fetched);
-        message.channel.send(`**${Emojis.ban} » ${lang.commands.clear.finalMessage.replace('{}', deleteCount)}!**`).then((msg) => {
+        message.channel.send(`**${Emojis.ban} › ${lang.commands.clear.finalMessage.replace('{}', deleteCount)}!**`).then((msg) => {
             setTimeout(() => {
               msg.delete();
             }, 5000);

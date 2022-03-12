@@ -31,23 +31,23 @@ module.exports = {
           .setDescription(`> ${message.author}, ${lang.commands.help.message.replace('{}', '**' + client.commands.size + '**')}!`)
           .addFields(
             {
-              name: `${Emojis.ban} » __${lang.commands.help.moderation}__ [${mod.length}]`,
+              name: `${Emojis.ban} › __${lang.commands.help.moderation}__ [${mod.length}]`,
               value: `\`${mod.join(", ")}\``
             },
             {
-              name: `${Emojis.config} » __${lang.commands.help.config}__ [${configs.length}]`,
+              name: `${Emojis.config} › __${lang.commands.help.config}__ [${configs.length}]`,
               value: `\`${configs.join(", ")}\``
             },
             {
-              name: `${Emojis.dima} » __${lang.commands.help.economy}__ [${eco.length}]`,
+              name: `${Emojis.dima} › __${lang.commands.help.economy}__ [${eco.length}]`,
               value: `\`${eco.join(", ")}\``
             },
             {
-              name: `${Emojis.star} » __${lang.commands.help.utils}__ [${utils.length}] `,
+              name: `${Emojis.star} › __${lang.commands.help.utils}__ [${utils.length}] `,
               value: `\`${utils.join(", ")}\``
             },
             {
-              name: `${Emojis.music} » __${lang.commands.help.music}__ [${msc.length}]`,
+              name: `${Emojis.music} › __${lang.commands.help.music}__ [${msc.length}]`,
               value: `\`${msc.join(", ")}\``
             }
           )

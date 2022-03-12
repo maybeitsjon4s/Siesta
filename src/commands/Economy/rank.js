@@ -26,7 +26,7 @@ module.exports = {
       .sort((x, f) => f.money - x.money)
       .slice(0, 10);
 
-      const mapa = coinsMap.map((x, f) =>`**[ ${f + 1} ] - \`${x.user.tag}\` » ${client.utils.abbreviateNumber(x.money)} ${Emojis.dima}**`)
+      const mapa = coinsMap.map((x, f) =>`**[ ${f + 1} ] - \`${x.user.tag}\` › ${client.utils.abbreviateNumber(x.money)} ${Emojis.dima}**`)
     
     const embed = new Embed()
       .setTitle(`${Emojis.dima} | __Siesta__`)

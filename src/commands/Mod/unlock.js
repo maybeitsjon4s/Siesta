@@ -7,15 +7,15 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
         if (!message.member.permissions.has('ManageChannels') && !client.owners.some(id => id === message.author.id) )
-          return message.reply(`**${Emojis.errado} » ${lang.commands.unlock.userPermission}**`);
+          return message.reply(`**${Emojis.errado} › ${lang.commands.unlock.userPermission}**`);
 
         if (!message.guild.me.permissions.has('ManageChannels'))
-          return message.reply(`**${Emojis.errado} » ${lang.commands.unlock.myPermission}**`);
+          return message.reply(`**${Emojis.errado} › ${lang.commands.unlock.myPermission}**`);
 
         message.channel.permissionOverwrites.edit(message.guild.id, {
           SEND_MESSAGES: true,
         });
 
-        message.reply(`**${Emojis.ban} » ${lang.commands.unlock.sucess}!**`);
+        message.reply(`**${Emojis.ban} › ${lang.commands.unlock.sucess}!**`);
   }
 }

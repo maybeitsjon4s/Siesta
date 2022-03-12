@@ -7,13 +7,13 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
-      if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.skip.noPlayer}**`);
+      if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.skip.noPlayer}**`);
 
       if (!message.member.voice.channel || message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(
-          `**${Emojis.errado} » ${lang.commands.skip.channelError}**`);
+          `**${Emojis.errado} › ${lang.commands.skip.channelError}**`);
 
       player.skip();
 
-      message.reply(`**${Emojis.music} » ${lang.commands.skip.sucess}!**`);
+      message.reply(`**${Emojis.music} › ${lang.commands.skip.sucess}!**`);
   },
 };

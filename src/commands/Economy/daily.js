@@ -9,7 +9,7 @@ module.exports = {
     const user = await client.db.user.findOne({ _id: message.author.id })
 
         if (user.cooldowns.daily !== null && 86400000 - (Date.now() - user.cooldowns.daily) > 0) {
-          return message.reply(`**${Emojis.errado} » ${lang.commands.daily.cooldown} \`${client.utils.formatTime(client.utils.convertMilliseconds(86400000 - (Date.now() - user.cooldowns.daily)))}\`** `);
+          return message.reply(`**${Emojis.errado} › ${lang.commands.daily.cooldown} \`${client.utils.formatTime(client.utils.convertMilliseconds(86400000 - (Date.now() - user.cooldowns.daily)))}\`** `);
         } else {
           let amount = Math.floor(Math.random() * 5000) + 2500;
           if (user.vip) amount = amount * 2
@@ -23,7 +23,7 @@ module.exports = {
             }
           })
 
-          message.reply(`**${Emojis.dima} » ${message.author} ${lang.commands.daily.won.replace('{amount}', amount.toLocaleString())}!**`);
+          message.reply(`**${Emojis.dima} › ${message.author} ${lang.commands.daily.won.replace('{amount}', amount.toLocaleString())}!**`);
         }
   }
 }

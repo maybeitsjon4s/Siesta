@@ -53,7 +53,7 @@ module.exports = {
 
             if (i.user.id != message.author.id)
               return i.reply({
-                content: `**${Emojis.errado} » ${lang.commands.shop.onlyAuthor}!**`,
+                content: `**${Emojis.errado} › ${lang.commands.shop.onlyAuthor}!**`,
                 ephemeral: true
               });
 
@@ -61,12 +61,12 @@ module.exports = {
 
               if (user.money < Number(50000))
                 return i.reply({
-                  content: `**${Emojis.errado} » ${lang.commands.shop.noDiamonds}!**`,
+                  content: `**${Emojis.errado} › ${lang.commands.shop.noDiamonds}!**`,
                   ephemeral: true
                 });
 
               if (user.itens.picareta) return i.reply({
-                  content: `**${Emojis.errado} » ${lang.commands.shop.havePickaxe}!**`,
+                  content: `**${Emojis.errado} › ${lang.commands.shop.havePickaxe}!**`,
                   ephemeral: true
                 });
                 await client.db.user.findOneAndUpdate({ _id: message.author.id }, {
@@ -77,20 +77,20 @@ module.exports = {
                 })
 
               message.reply({
-                content: `**${Emojis.picareta} » ${lang.commands.shop.buyedPickaxe}!**`,
+                content: `**${Emojis.picareta} › ${lang.commands.shop.buyedPickaxe}!**`,
               });
             }
             if (i.values.toString() == 'vip') {
 
               if (user.money < 250000)
                 return i.reply({
-                  content: `**${Emojis.errado} » ${lang.commands.shop.noDiamonds}!**`,
+                  content: `**${Emojis.errado} › ${lang.commands.shop.noDiamonds}!**`,
                   ephemeral: true
                 });
 
               if (user.vip)
                 return i.reply({
-                  content: `**${Emojis.errado} » ${lang.commands.shop.haveVip}!**`,
+                  content: `**${Emojis.errado} › ${lang.commands.shop.haveVip}!**`,
                   ephemeral: true
                 });
 

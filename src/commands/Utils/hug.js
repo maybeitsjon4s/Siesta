@@ -31,11 +31,11 @@ module.exports = {
         const rand = list[Math.floor(Math.random() * list.length)];
         const user = await client.utils.getUser(args[0], message);
 
-        if (!user) return message.reply(`**${Emojis.errado} » ${lang.commands.hug.noMention}!**`);
+        if (!user) return message.reply(`**${Emojis.errado} › ${lang.commands.hug.noMention}!**`);
 
         message.reply({
           files: [rand],
-          content: `**${Emojis.heart} » ${message.author} ${lang.commands.hug.message} ${user}!**`,
+          content: `**${Emojis.heart} › ${message.author} ${lang.commands.hug.message} ${user}!**`,
         });
       }
 }

@@ -9,17 +9,17 @@ module.exports = {
     
         if (!message.member.permissions.has('ManageChannels') && !client.owners.some(id => id === message.author.id) )
           return message.reply(
-            `**${Emojis.errado} » ${lang.commands.lock.userPermission}**`
+            `**${Emojis.errado} › ${lang.commands.lock.userPermission}**`
           );
 
         if (!message.guild.me.permissions.has('ManageChannels'))
           return message.reply(
-            `**${Emojis.errado} » ${lang.commands.lock.myPermission}**`
+            `**${Emojis.errado} › ${lang.commands.lock.myPermission}**`
           );
 
         message.channel.permissionOverwrites.edit(message.guild.id, {
           SEND_MESSAGES: false,
         });
-        message.reply(`**${Emojis.ban} » ${lang.commands.lock.sucess}**`);
+        message.reply(`**${Emojis.ban} › ${lang.commands.lock.sucess}**`);
        }
   }

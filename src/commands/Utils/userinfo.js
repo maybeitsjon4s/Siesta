@@ -20,17 +20,17 @@ module.exports = {
             .setColor(client.color)
             .addFields(
               {
-                name: `${Emojis.user} » User`,
+                name: `${Emojis.user} › User`,
                 value: `\`${user.tag}\``,
                 inline: true
               },
               {
-                name: `${Emojis.estrela} » ${lang.commands.userinfo.createdAccount}`,
+                name: `${Emojis.estrela} › ${lang.commands.userinfo.createdAccount}`,
                 value: `\`${moment.utc(user.createdAt).format(`DD/MM/YYYY`)}\` \`(${moment(user.createdAt).fromNow()})\``,
                 inline: true
               },
               {
-                name: '<:members:867005290859462676> » Id',
+                name: '<:members:867005290859462676> › Id',
                 value: `\`${user.id}\``,
                 inline: true
               }
@@ -49,13 +49,13 @@ module.exports = {
             if (member) {
 
           embed.addFields({
-            name: `${Emojis.heart2} » ${lang.commands.userinfo.joinedAt}`,
+            name: `${Emojis.heart2} › ${lang.commands.userinfo.joinedAt}`,
             value: `\`${moment.utc(member.joinedAt).format(`DD/MM/YYYY`)}\` \`(${moment(member.joinedAt).fromNow()})\``,
             inline: true
           })
           
           if(member.premiumSince) embed.addFields({
-              name: `${Emojis.boost} » ${lang.commands.userinfo.boosterSince}`,
+              name: `${Emojis.boost} › ${lang.commands.userinfo.boosterSince}`,
               value: `\`${moment.utc(member.premiumSince).format("DD/MM/YYYY")} \`\`(${moment.utc(member.premiumSince).fromNow()})\``,
               inline: true
             })

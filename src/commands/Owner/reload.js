@@ -28,6 +28,6 @@ module.exports = {
         }
       });
     });
-    message.reply(`**${Emojis.dev} » Comandos recarregados.**`);
+    message.reply(`**${Emojis.dev} › Comandos recarregados.**`);
   },
 };

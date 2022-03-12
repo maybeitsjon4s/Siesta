@@ -6,9 +6,9 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
-      if (!message.member.permissions.has('ManageGuild') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} » ${lang.commands.welcome.errorPerm}**`);
-      if (!args[0]) return message.reply(`**${Emojis.errado} » ${lang.commands.welcome.argsError}**`);
-      if(!['on', 'off'].includes(args[0])) return message.reply(`**${Emojis.errado} » ${lang.commands.welcome.argsError} **`)
+      if (!message.member.permissions.has('ManageGuild') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} › ${lang.commands.welcome.errorPerm}**`);
+      if (!args[0]) return message.reply(`**${Emojis.errado} › ${lang.commands.welcome.argsError}**`);
+      if(!['on', 'off'].includes(args[0])) return message.reply(`**${Emojis.errado} › ${lang.commands.welcome.argsError} **`)
 
       if (args[0] == 'off') {
         await client.db.guild.findOneAndUpdate({
@@ -18,13 +18,13 @@ module.exports = {
             "welcome.status": false
           }
         })
-        return message.reply(`**${Emojis.config} » ${lang.commands.welcome.disabled}**`);
+        return message.reply(`**${Emojis.config} › ${lang.commands.welcome.disabled}**`);
       }
       if (args[0] == 'on') {
         let channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1]);
         if (!channel) return message.reply(`**${Emojis.errado} « ${lang.commands.welcome.argsError}**`);
         let msg = args.slice(2).join(' ');
-        if (!msg) return message.reply(`**${Emojis.errado} » ${lang.commands.welcome.argsError}**`);
+        if (!msg) return message.reply(`**${Emojis.errado} › ${lang.commands.welcome.argsError}**`);
 
         await client.db.guild.findOneAndUpdate({
           _id: message.guild.id
@@ -36,7 +36,7 @@ module.exports = {
           }
         })
         message.reply(
-          `**${Emojis.config} » ${lang.commands.welcome.seted}**`
+          `**${Emojis.config} › ${lang.commands.welcome.seted}**`
         );
       }
     }

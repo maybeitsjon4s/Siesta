@@ -27,7 +27,7 @@ if (!message.guild) return;
       const whitelist = GUILD.antiinvite.whitelist
 
       if (regex.exec(message.content) && !whitelist.some(x => x == message.channel.id)) {
-        message.channel.send(`**${Emojis.errado} » ${message.author} ` + lang.events.autoModEvents.antiinvite + '**')
+        message.channel.send(`**${Emojis.errado} › ${message.author} ` + lang.events.autoModEvents.antiinvite + '**')
         message.delete().catch(_ => {});
       }
     }

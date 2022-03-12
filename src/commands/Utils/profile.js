@@ -42,7 +42,7 @@ module.exports = {
         })
 
             if (!user) return message.reply({
-                content: `**${Emojis.errado} » ${lang.commands.profile.noDocument}!**`
+                content: `**${Emojis.errado} › ${lang.commands.profile.noDocument}!**`
             })
 
             const canvas = createCanvas(800, 500);

@@ -24,11 +24,11 @@ module.exports = {
             },
             secondField: {
               title: "And how do I configure it?",
-              value: "To configure the anti-invite module is very simple, just insert one of these options after the command: \n> \`activate\` » Activate the module\n> \`deactivate\` » Deactivate the module\n**But like me do i set up a channel where invites will be ignored? Just use one of the whitelist options below:**\n> \`whitelist add\` » Add a channel to the list of channels that the bot will ignore invites\n> \`whitelist remove\` » Remove a channel from the list of channels the bot ignores"
+              value: "To configure the anti-invite module is very simple, just insert one of these options after the command: \n> \`activate\` › Activate the module\n> \`deactivate\` › Deactivate the module\n**But like me do i set up a channel where invites will be ignored? Just use one of the whitelist options below:**\n> \`whitelist add\` › Add a channel to the list of channels that the bot will ignore invites\n> \`whitelist remove\` › Remove a channel from the list of channels the bot ignores"
             },
             enabled: "Anti-invitation module successfully activated!",
             disabled: "Anti-invitation module successfully deactivated!",
-            errorWhitleList: "You need to put what you want to do inside the whitelist subcommand\n> \`whitelist add\` » Add a channel to the blocked channel list\n> \`whitelist remove\ » Remove a channel from the blocked channel list",
+            errorWhitleList: "You need to put what you want to do inside the whitelist subcommand\n> \`whitelist add\` › Add a channel to the blocked channel list\n> \`whitelist remove\ › Remove a channel from the blocked channel list",
             channelAltereadySet: "This channel is already on the whitelist",
             addedChannel: "I successfully added the channel to the ignored channel list!",
             removeError: "This channel is not on my whitelist so you can't block it!",
@@ -36,7 +36,7 @@ module.exports = {
         },
         language: {
             errorPerm: "You need \`Manage Server\` permission to run this command!",
-            message: "I see that you want to change the language I use here!**\n> **To change it, just use the buttons in this message!**\n\n> 🇵🇹 Portuguese » 100%\n> 🇺🇸 English » 100%\n\n> \`The translations may not be 100% correct, if you find any problems with them, please report it to my team!\`",
+            message: "I see that you want to change the language I use here!**\n> **To change it, just use the buttons in this message!**\n\n> 🇵🇹 Portuguese › 100%\n> 🇺🇸 English › 100%\n\n> \`The translations may not be 100% correct, if you find any problems with them, please report it to my team!\`",
             onlyAuthor: "You cannot use these buttons",
             portugueseSeted: "Portugues setado com sucesso!",
             englishSeted: "English set successfully",
@@ -78,10 +78,10 @@ module.exports = {
             maxLevel: "Your pickaxe is already at maximum level \`(6)\`",
             needMoreExp: "You still don't have enough experience to level up your pickaxe",
             up: "You have successfully leveled up!",
-            help: "**mine up** » Raises your level so you can see emeralds more expensively;\n" +
-                "**mine** » You mine to try to earn as many emeralds as possible;\n" +
-                "**mine sell** » Sell all your emeralds;\n" +
-                "**mine info** » Show your info about xp, emeralds and level!",
+            help: "**mine up** › Raises your level so you can see emeralds more expensively;\n" +
+                "**mine** › You mine to try to earn as many emeralds as possible;\n" +
+                "**mine sell** › Sell all your emeralds;\n" +
+                "**mine info** › Show your info about xp, emeralds and level!",
             emeralds: "Emeralds",
             level: "Level",
             exp: "Exp",
@@ -97,7 +97,7 @@ module.exports = {
             payed: "you paid {user} with \`{value}\` diamonds!",
         },
         shop: {
-            embed: "**Purchases: \n> {Emojis.picareta} » Buy Pickaxe: 50,000 {Emojis.dima} \n> {Emojis.vip} » Buy Vip: 250,000 {Emojis.dima} \nStatus: **\n> ** » Pickaxe:** {picaxe}**/1** \n> **» VIP:** {vip}**/1**",
+            embed: "**Purchases: \n> {Emojis.picareta} › Buy Pickaxe: 50,000 {Emojis.dima} \n> {Emojis.vip} › Buy Vip: 250,000 {Emojis.dima} \nStatus: **\n> ** › Pickaxe:** {picaxe}**/1** \n> **› VIP:** {vip}**/1**",
             pickaxe: "Pickaxe",
             menuLabel: "Click here",
             onlyAuthor: "Only the message author can use the menu!",
@@ -112,8 +112,8 @@ module.exports = {
             sucess: "worked and earned {} diamonds"
         },
         vip: {
-            info: ['Benefits', '**»** Double diamonds on **daily and work ** \n **»** Exclusive position on [Siesta Server](https://discord.gg/BRQccw7HhZ)\n**»** Know Siesta news before anyone else!'],
-            price: ['Price', '**»** It costs 250,000 diamonds for more information use the shop command!']
+            info: ['Benefits', '**›** Double diamonds on **daily and work ** \n **›** Exclusive position on [Siesta Server](https://discord.gg/BRQccw7HhZ)\n**›** Know Siesta news before anyone else!'],
+            price: ['Price', '**›** It costs 250,000 diamonds for more information use the shop command!']
         },
         ban: {
             myPermission: "I need \`Ban Members\` permission for this command",

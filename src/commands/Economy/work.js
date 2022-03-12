@@ -12,7 +12,7 @@ module.exports = {
           message.reply(
             `**${
               Emojis.errado
-            } » ${lang.commands.work.cooldown} \`${client.utils.formatTime(
+            } › ${lang.commands.work.cooldown} \`${client.utils.formatTime(
               client.utils.convertMilliseconds(600000 - (Date.now() - user.cooldowns.work))
             )}\`**`
           );
@@ -21,7 +21,7 @@ module.exports = {
           if(user.vip) amount = amount * 2
 
           message.reply(
-            `**${Emojis.dima} » ${
+            `**${Emojis.dima} › ${
               message.author
             }  ${lang.commands.work.sucess.replace('{}', amount.toLocaleString())}**`
           );

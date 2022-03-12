@@ -26,12 +26,12 @@ module.exports = {
 
         if (!pessoa)
           return message.reply(
-            `**${Emojis.errado} » ${lang.commands.slap.noMention}**`
+            `**${Emojis.errado} › ${lang.commands.slap.noMention}**`
           );
 
         message.reply({
           files: [rand],
-          content: `**${Emojis.heart} » ${message.author} ${lang.commands.slap.message} ${pessoa}!**`,
+          content: `**${Emojis.heart} › ${message.author} ${lang.commands.slap.message} ${pessoa}!**`,
         });
       }
 }

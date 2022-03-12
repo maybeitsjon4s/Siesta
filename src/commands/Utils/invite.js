@@ -9,7 +9,7 @@ module.exports = {
   run: async (client, message, args, player, lang) => {
     
         message.reply({
-          content: `**${Emojis.star} » ${lang.commands.invite.message}!**`,
+          content: `**${Emojis.star} › ${lang.commands.invite.message}!**`,
           components: [
             new ActionRow().setComponents(
               new ButtonComponent()

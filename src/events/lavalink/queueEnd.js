@@ -16,6 +16,6 @@ module.exports = async (client, player) => {
     break;
   }
 
-  channel.send(`**${Emojis.music} » ${lang.events.musicEvents.queueEnd}**`)
+  channel.send(`**${Emojis.music} › ${lang.events.musicEvents.queueEnd}**`)
   player.destroy();
 };

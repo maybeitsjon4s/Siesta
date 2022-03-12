@@ -7,11 +7,11 @@ module.exports = {
   cooldown: 4,
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
-       if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.filters.noPlayer}!**`);
+       if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.filters.noPlayer}!**`);
 
-      if (!message.member.voice.channel) return message.reply(`**${Emojis.errado} » ${lang.commands.filters.channelError}!**`);
+      if (!message.member.voice.channel) return message.reply(`**${Emojis.errado} › ${lang.commands.filters.channelError}!**`);
 
-      if (message.member.voice.channel.id !== player.voiceChannelId) return message.reply(`**${Emojis.errado} » ${lang.commands.filters.channelError2}!**`);
+      if (message.member.voice.channel.id !== player.voiceChannelId) return message.reply(`**${Emojis.errado} › ${lang.commands.filters.channelError2}!**`);
 
         const row = new ActionRow().setComponents(
         new ButtonComponent()
@@ -33,7 +33,7 @@ module.exports = {
       );
 
     message.reply({
-      content: `**${Emojis.music} » ${lang.commands.filters.firstMessage}**`,
+      content: `**${Emojis.music} › ${lang.commands.filters.firstMessage}**`,
       components: [row]
     }).then(msg => {
      
@@ -44,14 +44,14 @@ module.exports = {
           collector.on('collect', async i => {
             await i.deferUpdate()
             if(i.user.id !== message.author.id) return i.followUp({
-              content: `**${Emojis.errado} » ${lang.commands.filters.onlyAuthor}**`,
+              content: `**${Emojis.errado} › ${lang.commands.filters.onlyAuthor}**`,
               ephemeral: true
             })
             switch(i.customId) {
 
               case 'nightcore':
                 msg.edit({
-                  content: `**${Emojis.music} » ${lang.commands.filters.changedMessage.replace('{}', 'NightCore')}**`,
+                  content: `**${Emojis.music} › ${lang.commands.filters.changedMessage.replace('{}', 'NightCore')}**`,
                   components: []
                 })
                 player.filters.clear();
@@ -64,7 +64,7 @@ module.exports = {
 
               case 'bassboost':
                 msg.edit({
-                  content: `**${Emojis.music} » ${lang.commands.filters.changedMessage.replace('{}', 'Bass Boost')}**`,
+                  content: `**${Emojis.music} › ${lang.commands.filters.changedMessage.replace('{}', 'Bass Boost')}**`,
                   components: []
                 })
                 player.filters.clear();
@@ -74,7 +74,7 @@ module.exports = {
 
               case 'eightD':
                 msg.edit({
-                  content: `**${Emojis.music} » ${lang.commands.filters.changedMessage.replace('{}', '8D')}**`,
+                  content: `**${Emojis.music} › ${lang.commands.filters.changedMessage.replace('{}', '8D')}**`,
                   components: []
                 })
                 player.filters.clear();
@@ -82,7 +82,7 @@ module.exports = {
                 break;
               case 'clear':
                 msg.edit({
-                  content: `**${Emojis.music} » ${lang.commands.filters.clearFiltersMessage}**`,
+                  content: `**${Emojis.music} › ${lang.commands.filters.clearFiltersMessage}**`,
                   components: []
                 })
                 player.filters.clear()

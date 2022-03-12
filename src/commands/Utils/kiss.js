@@ -25,11 +25,11 @@ module.exports = {
         const rand = list[Math.floor(Math.random() * list.length)];
         let pessoa = await client.utils.getUser(args[0], message);
 
-        if (!pessoa) return message.reply(`**${Emojis.errado} » ${lang.commands.kiss.noMention}**`);
+        if (!pessoa) return message.reply(`**${Emojis.errado} › ${lang.commands.kiss.noMention}**`);
 
         message.reply({
           files: [rand],
-          content: `**${Emojis.heart} » ${message.author} ${lang.commands.kiss.message} ${pessoa}!**`,
+          content: `**${Emojis.heart} › ${message.author} ${lang.commands.kiss.message} ${pessoa}!**`,
         });
       }
 }

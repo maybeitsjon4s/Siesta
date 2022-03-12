@@ -24,11 +24,11 @@ module.exports = {
             },
             secondField: {
               title: "E como o configuro?",
-              value: "Para configurar o modulo de antiinvite é muito simples basta você inserir uma dessas opções após o comando: \n> \`ativar\` » Ativa o modulo\n> \`desativar\` » Desativa o modulo\n**Mas como eu configuro um canal em que os invites serão ignorados? Basta usar uma das opções de whitelist abaixo:**\n> \`whitelist add\` » Adiciona um canal a lista de canais que o bot irá ignorar convites\n> \`whitelist remove\` » Remove um canal da lista de canais que o bot ignora"
+              value: "Para configurar o modulo de antiinvite é muito simples basta você inserir uma dessas opções após o comando: \n> \`ativar\` › Ativa o modulo\n> \`desativar\` › Desativa o modulo\n**Mas como eu configuro um canal em que os invites serão ignorados? Basta usar uma das opções de whitelist abaixo:**\n> \`whitelist add\` › Adiciona um canal a lista de canais que o bot irá ignorar convites\n> \`whitelist remove\` › Remove um canal da lista de canais que o bot ignora"
             },
             enabled: "Modulo anti-convites ativado com sucesso!",
             disabled: "Modulo anti-convites desativado com sucesso!",
-            errorWhitleList: "Você precisa colocar oque deseja fazer dentro do subcomando whitelist\n> \`whitelist add\` » Adiciona um canal a lista de canais bloqueados\n> \`whitelist remove\ » Remove um canal da lista de canais bloqueados",
+            errorWhitleList: "Você precisa colocar oque deseja fazer dentro do subcomando whitelist\n> \`whitelist add\` › Adiciona um canal a lista de canais bloqueados\n> \`whitelist remove\ › Remove um canal da lista de canais bloqueados",
             channelAltereadySet: "Esse canal ja está na whitelist",
             addedChannel: "Adicionei o canal a lista de canais ignorados com sucesso!",
             removeError: "Esse canal não está na minha whitelist por isso você não o pode bloquear!",
@@ -36,7 +36,7 @@ module.exports = {
         },
         language: {
             errorPerm: "Você precisa da permissão \`Gerenciar servidor\` para executar este comando!",
-            message: "vejo que você quer alterar a linguagem que eu uso aqui!**\n> **Para a alterar basta utilizar os botões que estão nesta mensagem!**\n\n> 🇵🇹 Português » 100%\n> 🇺🇸 Inglês » 100%\n\n> \`As traduções podem não estar 100% corretas caso você encontre algum problema nelas reporte-o a minha equipe!\`",
+            message: "vejo que você quer alterar a linguagem que eu uso aqui!**\n> **Para a alterar basta utilizar os botões que estão nesta mensagem!**\n\n> 🇵🇹 Português › 100%\n> 🇺🇸 Inglês › 100%\n\n> \`As traduções podem não estar 100% corretas caso você encontre algum problema nelas reporte-o a minha equipe!\`",
             onlyAuthor: "Voce não pode utilizar estes botões",
             portugueseSeted: "Português setado com sucesso!",
             englishSeted: "English set successfully",
@@ -78,10 +78,10 @@ module.exports = {
             maxLevel: "A sua picareta ja esta no nivel maximo \`(6)\`",
             needMoreExp: "Você ainda não tem experiencia suficiente para subir o nivel da sua picareta",
             up: "Você subiu de nivel com sucesso!",
-            help: "**mine up** » Eleva o seu nivel assim conseguindo ver as esmeraldas de forma mais cara;\n" +
-                "**mine** »  Voce minera para tentar ganhar o maximo de esmeraldas possiveis;\n" +
-                "**mine sell** » Vende todas as suas esmeraldas;\n" +
-                "**mine info** » Mostra as suas informaçoes sobre xp, esmeraldas e nivel!",
+            help: "**mine up** › Eleva o seu nivel assim conseguindo ver as esmeraldas de forma mais cara;\n" +
+                "**mine** ›  Voce minera para tentar ganhar o maximo de esmeraldas possiveis;\n" +
+                "**mine sell** › Vende todas as suas esmeraldas;\n" +
+                "**mine info** › Mostra as suas informaçoes sobre xp, esmeraldas e nivel!",
             emeralds: "Esmeraldas",
             level: "Nivel",
             exp: "Experiencia",
@@ -97,7 +97,7 @@ module.exports = {
             payed: "você pagou o {user} com \`{value}\` diamantes!",
         },
         shop: {
-            embed: "**Compras: \n> {Emojis.picareta} » Comprar Picareta: 50.000 {Emojis.dima} \n> {Emojis.vip} » Comprar Vip: 250.000 {Emojis.dima} \nStatus: **\n> **» Picareta:** {picareta}**/1** \n> **» Vip:** {vip}**/1**",
+            embed: "**Compras: \n> {Emojis.picareta} › Comprar Picareta: 50.000 {Emojis.dima} \n> {Emojis.vip} › Comprar Vip: 250.000 {Emojis.dima} \nStatus: **\n> **› Picareta:** {picareta}**/1** \n> **› Vip:** {vip}**/1**",
             pickaxe: "Picareta",
             menuLabel: "Clique aqui",
             onlyAuthor: "Apenas o author da mensagem pode usar o menu!",
@@ -112,8 +112,8 @@ module.exports = {
             sucess: "trabalhou e ganhou {} diamantes"
         },
         vip: {
-            info: ['Vantagens', '**»** Dobro de diamantes no **daily e work ** \n **»** Cargo exclusivo no [Servidor da Siesta](https://discord.gg/BRQccw7HhZ)\n**»** Saber as novidades da Siesta antes de qualquer um!'],
-            price: ['Preço', '**»** Custa 250.000 diamantes para mais informações utilize o comando de loja!']
+            info: ['Vantagens', '**›** Dobro de diamantes no **daily e work ** \n **›** Cargo exclusivo no [Servidor da Siesta](https://discord.gg/BRQccw7HhZ)\n**›** Saber as novidades da Siesta antes de qualquer um!'],
+            price: ['Preço', '**›** Custa 250.000 diamantes para mais informações utilize o comando de loja!']
         },
         ban: {
             myPermission: "Eu preciso da permissão de \`Banir Membros\` para este comando",

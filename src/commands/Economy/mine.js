@@ -18,18 +18,18 @@ module.exports = {
       _id: message.author.id
     })
 
-      if (!user.itens.picareta) return message.reply(`**${Emojis.errado} » ${lang.commands.mine.noPickaxe}!**`);
+      if (!user.itens.picareta) return message.reply(`**${Emojis.errado} › ${lang.commands.mine.noPickaxe}!**`);
 
       if (["sell", "vender"].some(x => x == args[0])) {
 
         if (!user.mine.esmeraldas) return message.reply({
-          content: `**${Emojis.errado} » ${lang.commands.mine.noEmeralds}!**`
+          content: `**${Emojis.errado} › ${lang.commands.mine.noEmeralds}!**`
         })
 
         const value = user.mine.level  * (user.mine.esmeraldas * 150)
 
         message.reply({
-          content: `**${Emojis.dima} » ${lang.commands.mine.sold.replace('{emeralds}', user.mine.esmeraldas.toLocaleString()).replace('value', value.toLocaleString())}**`
+          content: `**${Emojis.dima} › ${lang.commands.mine.sold.replace('{emeralds}', user.mine.esmeraldas.toLocaleString()).replace('value', value.toLocaleString())}**`
         })
 
         await client.db.user.findOneAndUpdate({
@@ -45,11 +45,11 @@ module.exports = {
       if (["up"].some(x => x == args[0])) {
 
         if (user.mine.level == 6) return message.reply({
-          content: `**${Emojis.errado} » ${lang.commands.mine.maxLevel}.**`
+          content: `**${Emojis.errado} › ${lang.commands.mine.maxLevel}.**`
         })
 
         if (user.mine.exp !== 2000) return message.reply({
-          content: `**${Emojis.errado} » ${lang.commands.mine.needMoreExp} \`${user.mine.exp}/2000\`.**`
+          content: `**${Emojis.errado} › ${lang.commands.mine.needMoreExp} \`${user.mine.exp}/2000\`.**`
         })
 
         await client.db.user.findOneAndUpdate({
@@ -61,7 +61,7 @@ module.exports = {
           }
 
         })
-        message.reply({ content: `${Emojis.dima}** » ${lang.commands.mine.up}!**`})
+        message.reply({ content: `${Emojis.dima}** › ${lang.commands.mine.up}!**`})
       }
       if (["help", "ajuda", "h"].some(x => x == args[0])) {
 
@@ -89,15 +89,15 @@ module.exports = {
         })
         .addFields(
           {
-            name: `${Emojis.esmeralda} » ${lang.commands.mine.emeralds}`,
+            name: `${Emojis.esmeralda} › ${lang.commands.mine.emeralds}`,
             value: '`' + user.mine.esmeraldas.toLocaleString() + '`'
           },
           {
-            name: `${Emojis.rocket} » ${lang.commands.mine.level}`,
+            name: `${Emojis.rocket} › ${lang.commands.mine.level}`,
             value: '`' + user.mine.level.toString() + '`'
           },
           {
-            name: `${Emojis.estrela} » ${lang.commands.mine.exp}`,
+            name: `${Emojis.estrela} › ${lang.commands.mine.exp}`,
             value: '`' + user.mine.exp.toString() + '/2000`'
           }
         )
@@ -109,7 +109,7 @@ module.exports = {
 
         if (user.cooldowns.mine !== null && 1999999 - (Date.now() - user.cooldowns.mine) > 0) {
 
-          message.reply(`**${Emojis.errado} » ${lang.commands.mine.cooldown} \`${client.utils.formatTime(client.utils.convertMilliseconds(1999999 - (Date.now() - user.cooldowns.mine)))}\`**`);
+          message.reply(`**${Emojis.errado} › ${lang.commands.mine.cooldown} \`${client.utils.formatTime(client.utils.convertMilliseconds(1999999 - (Date.now() - user.cooldowns.mine)))}\`**`);
 
         } else {
 
@@ -125,7 +125,7 @@ module.exports = {
             }
           })
 
-          message.reply(`**${Emojis.dima} » ${message.author} ${lang.commands.mine.mined.replace('{amount}', amount)}**`);
+          message.reply(`**${Emojis.dima} › ${message.author} ${lang.commands.mine.mined.replace('{amount}', amount)}**`);
         }
       }
     }

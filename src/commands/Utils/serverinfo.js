@@ -16,32 +16,32 @@ module.exports = {
           .setColor(client.color)
           .addFields(
             {
-              name: `${Emojis.user} » ${lang.commands.serverinfo.name}`,
+              name: `${Emojis.user} › ${lang.commands.serverinfo.name}`,
               value: `\`${guild.name}\``,
               inline: true
             },
             {
-              name: `${Emojis.info} » ID`, 
+              name: `${Emojis.info} › ID`, 
               value: `\`${guild.id}\``,
               inline: true
             },
             {
-              name: `${Emojis.owner} » ${lang.commands.serverinfo.owner}`,
+              name: `${Emojis.owner} › ${lang.commands.serverinfo.owner}`,
               value: `\`${await guild.fetchOwner().then((x) => x.user.tag)}\``,
               inline: true
             },
             {
-              name: `${Emojis.heart2} » ${lang.commands.serverinfo.channels}`,
+              name: `${Emojis.heart2} › ${lang.commands.serverinfo.channels}`,
               value: `> **${lang.commands.serverinfo.text}** \`${guild.channels.cache.filter((a) => a.type === 0/*text*/).size}\`\n> **${lang.commands.serverinfo.voice}** \`${guild.channels.cache.filter((a) => a.type === 2/*voice*/).size}\`\n> **${lang.commands.serverinfo.category}** \`${guild.channels.cache.filter((a) => a.type === 4/*category*/).size}\``,
               inline: true
             },
             {
-              name: `${Emojis.boost} » Boosts`,
+              name: `${Emojis.boost} › Boosts`,
               value: `\`${message.guild.premiumSubscriptionCount || `0`}\``,
               inline: true
             },
             {
-              name: `${Emojis.rocket} » ${lang.commands.serverinfo.createdAt}`,
+              name: `${Emojis.rocket} › ${lang.commands.serverinfo.createdAt}`,
               value: `\`${moment.utc(guild.createdAt).format("DD/MM/YYYY")}\` \`(${moment.utc(guild.createdAt).fromNow()})\``,
               inline: true
             }

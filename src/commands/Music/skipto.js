@@ -7,7 +7,7 @@ module.exports = {
   ownerOnly: false,
   run: async(client, message, args, player, lang) => {
 
-    if(!player || !player.queue.current) return message.reply(`**${Emojis.errado} » ${lang.commands.skipto.noPlayer}**`);
+    if(!player) return message.reply(`**${Emojis.errado} » ${lang.commands.skipto.noPlayer}**`);
 
     if (!message.member.voice.channel || message.member.voice.channel.id != message.guild.me.voice.channel.id)return message.reply(`**${Emojis.errado} » ${lang.commands.skipto.channelError}**`);
 

@@ -41,7 +41,7 @@ module.exports = {
             ctx.fillText(client.utils.shorten(track.title, 19), 20, 80)
             ctx.font = '30px "Italic"';
             ctx.fillText(client.utils.shorten(player.current.author, 20), 20, 160)
-            ctx.font = '90px "Segoe UI Black"';
+            ctx.font = '80px "Segoe UI Black"';
             ctx.fillStyle = '#ffffff'
             await fillTextWithTwemoji(ctx, '<:before:953024307628474418> <:pause:953024535924457603> <:after:953024224388317325>', 20, 270)
             ctx.font = '20px "Segoe UI Black"'

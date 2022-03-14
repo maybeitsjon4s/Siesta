@@ -48,13 +48,13 @@ module.exports = {
 
             if (member) {
 
-          MessageEmbed.addFields({
+          embed.addFields({
             name: `${Emojis.heart2} › ${lang.commands.userinfo.joinedAt}`,
             value: `\`${moment.utc(member.joinedAt).format(`DD/MM/YYYY`)}\` \`(${moment(member.joinedAt).fromNow()})\``,
             inline: true
           })
           
-          if(member.premiumSince) MessageEmbed.addFields({
+          if(member.premiumSince) embed.addFields({
               name: `${Emojis.boost} › ${lang.commands.userinfo.boosterSince}`,
               value: `\`${moment.utc(member.premiumSince).format("DD/MM/YYYY")} \`\`(${moment.utc(member.premiumSince).fromNow()})\``,
               inline: true

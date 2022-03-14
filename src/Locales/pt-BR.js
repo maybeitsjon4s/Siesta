@@ -97,7 +97,7 @@ module.exports = {
             payed: "você pagou o {user} com \`{value}\` diamantes!",
         },
         shop: {
-            MessageEmbed: "**Compras: \n> {Emojis.picareta} › Comprar Picareta: 50.000 {Emojis.dima} \n> {Emojis.vip} › Comprar Vip: 250.000 {Emojis.dima} \nStatus: **\n> **› Picareta:** {picareta}**/1** \n> **› Vip:** {vip}**/1**",
+            embed: "**Compras: \n> {Emojis.picareta} › Comprar Picareta: 50.000 {Emojis.dima} \n> {Emojis.vip} › Comprar Vip: 250.000 {Emojis.dima} \nStatus: **\n> **› Picareta:** {picareta}**/1** \n> **› Vip:** {vip}**/1**",
             pickaxe: "Picareta",
             menuLabel: "Clique aqui",
             onlyAuthor: "Apenas o author da mensagem pode usar o menu!",

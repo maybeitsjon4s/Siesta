@@ -43,7 +43,7 @@ module.exports = {
             iconURL: message.author.displayAvatarURL({ dynamic: true }),
           })
           .setTimestamp()
-          .setDescription(`${lang.commands.shop.MessageEmbed.replace('{Emojis.picareta}', Emojis.picareta).replaceAll('{Emojis.dima}', Emojis.dima).replaceAll('{Emojis.vip}', Emojis.vip).replace('{picareta}', user.itens.picareta ? 1 : 0).replace('{vip}', user.vip ? 1 : 0)}`);
+          .setDescription(`${lang.commands.shop.embed.replace('{Emojis.picareta}', Emojis.picareta).replaceAll('{Emojis.dima}', Emojis.dima).replaceAll('{Emojis.vip}', Emojis.vip).replace('{picareta}', user.itens.picareta ? 1 : 0).replace('{vip}', user.vip ? 1 : 0)}`);
 
         message.reply({ embeds: [embed], components: [row] }).then((msg) => {
           let coletor = msg.createMessageComponentCollector({

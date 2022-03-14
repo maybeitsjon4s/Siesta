@@ -1,4 +1,4 @@
-const { Embed } = require('discord.js');
+const { MessageEmbed } = require('discord.js-light');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -8,11 +8,11 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
       
-        if (!message.member.permissions.has('ManageGuild') && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** › ${lang.commands.antiinvite.errorPerm}**`);
+        if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** › ${lang.commands.antiinvite.errorPerm}**`);
 
           const guild = await client.db.guild.findOne({ _id: message.guild.id })
 
-                  const embed = new Embed()
+                  const embed = new MessageEmbed()
                     .setColor(client.color)
                     .setFooter({
                       text: message.author.tag,

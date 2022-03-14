@@ -6,10 +6,10 @@ module.exports = {
   cooldown: 2,
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
-        if (!message.member.permissions.has('ManageChannels') && !client.owners.some(id => id === message.author.id) )
+        if (!message.member.permissions.has('MANAGE_CHANNELS') && !client.owners.some(id => id === message.author.id) )
           return message.reply(`**${Emojis.errado} › ${lang.commands.unlock.userPermission}**`);
 
-        if (!message.guild.me.permissions.has('ManageChannels'))
+        if (!message.guild.me.permissions.has('MANAGE_CHANNELS'))
           return message.reply(`**${Emojis.errado} › ${lang.commands.unlock.myPermission}**`);
 
         message.channel.permissionOverwrites.edit(message.guild.id, {

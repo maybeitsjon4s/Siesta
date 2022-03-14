@@ -1,5 +1,5 @@
 const Emojis = require('../../../Structures/Utils/emojis')
-const { ActionRow, ButtonComponent, ButtonStyle } = require('discord.js')
+const { MessageActionRow, MessageButton, ButtonStyle } = require('discord.js-light')
 
 module.exports = async (client, member) => {
 
@@ -10,11 +10,11 @@ module.exports = async (client, member) => {
 
     let channel = await member.guild.channels.cache.get(guild.welcome.channel);
 
-    const row = new ActionRow().setComponents(
-      new ButtonComponent()
+    const row = new MessageActionRow().addComponents(
+      new MessageButton()
         .setLabel(`Message configured by ${member.guild.name} team`)
         .setCustomId('welcome')
-        .setStyle(ButtonStyle.Secondary)
+        .setStyle('SECONDARY')
         .setDisabled(true)
         .setEmoji({
           name: 'lock',

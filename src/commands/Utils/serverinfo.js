@@ -1,4 +1,4 @@
-const { Embed } = require('discord.js');
+const { MessageEmbed } = require('discord.js-light');
 const moment = require('moment');
 const Emojis = require('../../Structures/Utils/emojis');
 
@@ -11,7 +11,7 @@ module.exports = {
     moment.locale(lang.name)
         const guild = client.guilds.cache.get(args[0]) || message.guild;
 
-        const embed = new Embed()
+        const embed = new MessageEmbed()
           .setTitle(`${Emojis.star} | __Siesta__`)
           .setColor(client.color)
           .addFields(
@@ -32,12 +32,12 @@ module.exports = {
             },
             {
               name: `${Emojis.heart2} › ${lang.commands.serverinfo.channels}`,
-              value: `> **${lang.commands.serverinfo.text}** \`${guild.channels.cache.filter((a) => a.type === 0/*text*/).size}\`\n> **${lang.commands.serverinfo.voice}** \`${guild.channels.cache.filter((a) => a.type === 2/*voice*/).size}\`\n> **${lang.commands.serverinfo.category}** \`${guild.channels.cache.filter((a) => a.type === 4/*category*/).size}\``,
+              value: `> **${lang.commands.serverinfo.text}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_TEXT'/*text*/).size}\`\n> **${lang.commands.serverinfo.voice}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_VOICE'/*voice*/).size}\`\n> **${lang.commands.serverinfo.category}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_CATEGORY'/*category*/).size}\``,
               inline: true
             },
             {
               name: `${Emojis.boost} › Boosts`,
-              value: `\`${message.guild.premiumSubscriptionCount || `0`}\``,
+              value: `\`${message.guild.premiumSubscriptionCount || '0'}\``,
               inline: true
             },
             {

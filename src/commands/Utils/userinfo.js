@@ -1,4 +1,4 @@
-const { Embed } = require('discord.js');
+const { MessageEmbed } = require('discord.js-light');
 const Emojis = require('../../Structures/Utils/emojis');
 const moment = require('moment');
 
@@ -15,7 +15,7 @@ module.exports = {
 
         if (!user) user = message.author;
 
-          const embed = new Embed()
+          const embed = new MessageEmbed()
             .setTitle(`${Emojis.star} | __Siesta__`)
             .setColor(client.color)
             .addFields(
@@ -48,13 +48,13 @@ module.exports = {
 
             if (member) {
 
-          embed.addFields({
+          MessageEmbed.addFields({
             name: `${Emojis.heart2} › ${lang.commands.userinfo.joinedAt}`,
             value: `\`${moment.utc(member.joinedAt).format(`DD/MM/YYYY`)}\` \`(${moment(member.joinedAt).fromNow()})\``,
             inline: true
           })
           
-          if(member.premiumSince) embed.addFields({
+          if(member.premiumSince) MessageEmbed.addFields({
               name: `${Emojis.boost} › ${lang.commands.userinfo.boosterSince}`,
               value: `\`${moment.utc(member.premiumSince).format("DD/MM/YYYY")} \`\`(${moment.utc(member.premiumSince).fromNow()})\``,
               inline: true

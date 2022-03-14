@@ -1,4 +1,4 @@
-const { Embed } = require('discord.js');
+const { MessageEmbed } = require('discord.js-light');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -8,9 +8,9 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
-        if (!message.member.permissions.has('ModerateMembers') && !client.owners.some(id => id === message.author.id)) return message.reply(`**${Emojis.errado} › ${lang.commands.mute.userPermision}!**`);
+        if (!message.member.permissions.has('MODERATE_MEMBERS') && !client.owners.some(id => id === message.author.id)) return message.reply(`**${Emojis.errado} › ${lang.commands.mute.userPermision}!**`);
 
-        if (!message.guild.me.permissions.has('ModerateMembers')) return message.reply(`**${Emojis.errado} › Eu ${lang.commands.mute.myPermission}!**`);
+        if (!message.guild.me.permissions.has('MODERATE_MEMBERS')) return message.reply(`**${Emojis.errado} › Eu ${lang.commands.mute.myPermission}!**`);
 
         if (!args[0]) return message.reply(`**${Emojis.errado} › ${lang.commands.mute.noArgs}!**`);
 
@@ -38,9 +38,10 @@ module.exports = {
         if (!client.utils.timeToMilliseconds(time))return message.reply(`**${Emojis.errado} › ${lang.commands.mute.invalidTime}**`);
 
         let tempo = client.utils.timeToMilliseconds(time);
+
         if (tempo >= 2419200000) return message.reply(`**${Emojis.errado} › ${lang.commands.mute.higherThan28days}!**`);
 
-        let embed1 = new Embed()
+        const embed1 = new MessageEmbed()
           .setColor(client.color)
           .setFooter({
             text: message.author.tag,

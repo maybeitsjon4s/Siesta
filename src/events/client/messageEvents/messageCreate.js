@@ -1,4 +1,4 @@
-const { Collection, ButtonComponent, ActionRow, ButtonStyle } = require('discord.js');
+const { Collection, MessageButton, MessageActionRow, ButtonStyle } = require('discord.js-light');
 const Emojis = require('../../../Structures/Utils/emojis')
 const moment = require('moment');
 
@@ -62,19 +62,19 @@ const { cooldowns } = client;
 
   if (!cooldowns.has(command)) cooldowns.set(command, new Collection());
   
-  const now = Date.now();
+  const { now } = Date;
   const timestamps = cooldowns.get(command);
   const cooldownAmount = (command.cooldown || 3) * 1000;
 
   if (timestamps.has(message.author.id)) {
     const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
 
-    if (now < expirationTime) {
-      const timeLeft = (expirationTime - now) / 1000;
+    if (now() < expirationTime) {
+      const timeLeft = (expirationTime - now()) / 1000;
       return message.reply({ content: `**${Emojis.rocket} › `+ String(lang.events.messageCreate.cooldown).replace('{}', timeLeft.toFixed(1)) + '**'})
     }
   }
-  timestamps.set(message.author.id, now);
+  timestamps.set(message.author.id, now());
 
   setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
@@ -88,14 +88,14 @@ const { cooldowns } = client;
       await command.run(client, message, args, player, lang);
     } catch (e) {
       console.log(String(e.stack).gray)
-      const row = new ActionRow().setComponents(
-        new ButtonComponent()
+      const row = new MessageActionRow().addComponents(
+        new MessageButton()
         .setEmoji({
           name: 'lua',
           id: '948650383562125313',
           animated: true
         })
-        .setStyle(ButtonStyle.Link)
+        .setStyle('LINK')
         .setURL(`https://discord.com/invite/vYEutrG7gY`)
       );
       message.reply({ embeds: [{

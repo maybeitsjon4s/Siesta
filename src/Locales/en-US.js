@@ -97,7 +97,7 @@ module.exports = {
             payed: "you paid {user} with \`{value}\` diamonds!",
         },
         shop: {
-            embed: "**Purchases: \n> {Emojis.picareta} › Buy Pickaxe: 50,000 {Emojis.dima} \n> {Emojis.vip} › Buy Vip: 250,000 {Emojis.dima} \nStatus: **\n> ** › Pickaxe:** {picaxe}**/1** \n> **› VIP:** {vip}**/1**",
+            MessageEmbed: "**Purchases: \n> {Emojis.picareta} › Buy Pickaxe: 50,000 {Emojis.dima} \n> {Emojis.vip} › Buy Vip: 250,000 {Emojis.dima} \nStatus: **\n> ** › Pickaxe:** {picaxe}**/1** \n> **› VIP:** {vip}**/1**",
             pickaxe: "Pickaxe",
             menuLabel: "Click here",
             onlyAuthor: "Only the message author can use the menu!",
@@ -198,13 +198,8 @@ module.exports = {
        },
         nowplaying: {
             noPlayer: "I'm not playing music on this server!",
-            info: "Informations",
             name: "Name",
-            duration: "Duration",
-            enabled: "Enabled",
-            disabled: "Disabled",
-            playing: "Playing",
-            paused: "Paused"
+            requester: "Requested by:"
         },
         pause: {
             noPlayer: "I'm not playing music on this server.",

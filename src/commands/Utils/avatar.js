@@ -1,4 +1,4 @@
-const { Embed } = require('discord.js');
+const { MessageEmbed } = require('discord.js-light');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -11,13 +11,12 @@ module.exports = {
         let user = await client.utils.getUser(args[0], message);
         if (!user) user = message.author;
 
-        let avatar = user.displayAvatarURL({
-          extension: 'png',
+        const avatar = user.displayAvatarURL({
+          format: 'png',
           size: 2048,
-          forceStatic: false
         });
         
-        let embed = new Embed()
+        const embed = new MessageEmbed()
           .setColor(client.color)
           .setTitle(`${Emojis.star} | __Siesta__`)
           .setDescription(`${lang.commands.avatar.sucess.replace('{}', user.username).replace('{URL}', user.displayAvatarURL({ dynamic: true, size: 2048}))}**`)
@@ -28,6 +27,6 @@ module.exports = {
           })
           .setTimestamp();
 
-        await message.reply({ embeds: [embed] });
+         message.reply({ embeds: [embed] });
   },
 };

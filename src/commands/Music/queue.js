@@ -1,4 +1,4 @@
-const { Embed } = require('discord.js');
+const { MessageEmbed } = require('discord.js-light');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
       
       const queue = player.queue;
 
-      const QUEUE = new Embed()
+      const QUEUE = new MessageEmbed()
         .setTitle(`${Emojis.music} | __Siesta__`)
         .setColor(client.color)
         .setTimestamp();

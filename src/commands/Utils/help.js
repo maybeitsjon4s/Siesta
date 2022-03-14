@@ -1,4 +1,4 @@
-const { Embed, ActionRow, ButtonComponent, ButtonStyle } = require(`discord.js`);
+const { MessageEmbed, MessageActionRow, MessageButton, ButtonStyle } = require(`discord.js-light`);
 const { readdirSync } = require('fs');
 const Emojis = require(`../../Structures/Utils/emojis`);
 
@@ -15,18 +15,18 @@ module.exports = {
       const utils = readdirSync(`./src/commands/Utils`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
       const msc = readdirSync(`./src/commands/Music`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
       
-        const row = new ActionRow().setComponents(
-          new ButtonComponent()
+        const row = new MessageActionRow().addComponents(
+          new MessageButton()
             .setLabel('Me Adicione')
-            .setStyle(ButtonStyle.Link)
+            .setStyle('LINK')
             .setURL('https://dsc.gg/siesta-bot'),
-          new ButtonComponent()
+          new MessageButton()
             .setLabel('Servidor de Suporte')
-            .setStyle(ButtonStyle.Link)
+            .setStyle('LINK')
             .setURL('https://discord.gg/vYEutrG7gY')
         );
 
-        let embed = new Embed()
+        const embed = new MessageEmbed()
           .setColor(client.color)
           .setDescription(`> ${message.author}, ${lang.commands.help.message.replace('{}', '**' + client.commands.size + '**')}!`)
           .addFields(
@@ -56,6 +56,7 @@ module.exports = {
             iconURL: message.author.displayAvatarURL({ dynamic: true }),
           })
           .setTimestamp();
+
         message.reply({ embeds: [embed], components: [row] });
       }
   }

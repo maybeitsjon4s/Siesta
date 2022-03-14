@@ -1,4 +1,4 @@
-const { Embed } = require('discord.js');
+const { MessageEmbed } = require('discord.js-light');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -8,9 +8,9 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
-        if (!message.member.permissions.has('KickMembers') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} › ${lang.commands.kick.userPermission}**`);
+        if (!message.member.permissions.has('KICK_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} › ${lang.commands.kick.userPermission}**`);
 
-        if (!message.guild.me.permissions.has('KickMembers')) return message.reply(`**${Emojis.errado} › ${lang.commands.kick.myPermission}**`);
+        if (!message.guild.me.permissions.has('KICK_MEMBERS')) return message.reply(`**${Emojis.errado} › ${lang.commands.kick.myPermission}**`);
 
         if (!args[0]) return message.reply(`**${Emojis.errado} › ${lang.commands.kick.noMention}!**`);
 
@@ -31,7 +31,7 @@ module.exports = {
 
         message.guild.members.kick(member.id, motivo);
 
-        const kick = new Embed()
+        const kick = new MessageEmbed()
           .setTitle(`${Emojis.ban} | __Siesta__`)
           .addFields(
             {

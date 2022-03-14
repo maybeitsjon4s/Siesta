@@ -1,4 +1,4 @@
-const { Embed, ActionRow, ButtonComponent, ButtonStyle } = require(`discord.js`);
+const { MessageEmbed, MessageActionRow, MessageButton, ButtonStyle } = require(`discord.js-light`);
 const Emojis = require(`../../Structures/Utils/emojis`);
 
 module.exports = {
@@ -7,28 +7,28 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
     
-      const row = new ActionRow().setComponents(
-        new ButtonComponent()
+      const row = new MessageActionRow().addComponents(
+        new MessageButton()
         .setLabel('Português')
         .setEmoji({
           name: '🇵🇹',
           animated: false
         })
-        .setStyle(ButtonStyle.Secondary)
+        .setStyle('SECONDARY')
         .setCustomId('pt'),
-        new ButtonComponent()
+        new MessageButton()
         .setLabel('English')
         .setEmoji({
           name: '🇺🇸',
           animated: false
         })
-        .setStyle(ButtonStyle.Secondary)
+        .setStyle('SECONDARY')
         .setCustomId('en')
       );
 
-        if (!message.member.permissions.has('ManageGuild') && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** › ${lang.commands.language.errorPerm}**`)
+        if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** › ${lang.commands.language.errorPerm}**`)
 
-        const embed = new Embed()
+        const embed = new MessageEmbed()
           .setColor(client.color)
           .setFooter({
             text: message.author.tag,
@@ -38,6 +38,7 @@ module.exports = {
           })
           .setTitle(`${Emojis.config} | __Siesta__`)
           .setDescription(`${message.author}, ${lang.commands.language.message}`)
+
         message.reply({
           embeds: [embed],
           components: [row]

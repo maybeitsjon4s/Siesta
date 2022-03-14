@@ -1,4 +1,4 @@
-const { Embed, ActionRow, SelectMenuComponent, } = require('discord.js')
+const { MessageEmbed, MessageActionRow, MessageSelectMenu, } = require('discord.js-light')
 const Emojis = require('../../Structures/Utils/emojis')
 
 module.exports = {
@@ -9,8 +9,8 @@ module.exports = {
 
       const user = await client.db.user.findOne({ _id: message.author.id })
 
-        const row = new ActionRow().setComponents(
-          new SelectMenuComponent()
+        const row = new MessageActionRow().addComponents(
+          new MessageSelectMenu()
             .setCustomId('selectCustomId')
             .setPlaceholder(String(lang.commands.shop.menuLabel))
             .addOptions(
@@ -35,7 +35,7 @@ module.exports = {
             )
         );
 
-        const embed = new Embed()
+        const embed = new MessageEmbed()
           .setTitle(`${Emojis.dima} | __Siesta__`)
           .setColor(client.color)
           .setFooter({
@@ -43,7 +43,7 @@ module.exports = {
             iconURL: message.author.displayAvatarURL({ dynamic: true }),
           })
           .setTimestamp()
-          .setDescription(`${lang.commands.shop.embed.replace('{Emojis.picareta}', Emojis.picareta).replaceAll('{Emojis.dima}', Emojis.dima).replaceAll('{Emojis.vip}', Emojis.vip).replace('{picareta}', user.itens.picareta ? 1 : 0).replace('{vip}', user.vip ? 1 : 0)}`);
+          .setDescription(`${lang.commands.shop.MessageEmbed.replace('{Emojis.picareta}', Emojis.picareta).replaceAll('{Emojis.dima}', Emojis.dima).replaceAll('{Emojis.vip}', Emojis.vip).replace('{picareta}', user.itens.picareta ? 1 : 0).replace('{vip}', user.vip ? 1 : 0)}`);
 
         message.reply({ embeds: [embed], components: [row] }).then((msg) => {
           let coletor = msg.createMessageComponentCollector({

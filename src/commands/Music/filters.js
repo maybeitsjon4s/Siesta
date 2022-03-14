@@ -1,5 +1,5 @@
 const Emojis = require('../../Structures/Utils/emojis');
-const { ActionRow, ButtonComponent, ButtonStyle } = require('discord.js')
+const { MessageActionRow, MessageButton, ButtonStyle } = require('discord.js-light')
 
 module.exports = {
   name: 'filters',
@@ -13,22 +13,22 @@ module.exports = {
 
       if (message.member.voice.channel.id !== player.voiceChannelId) return message.reply(`**${Emojis.errado} › ${lang.commands.filters.channelError2}!**`);
 
-        const row = new ActionRow().setComponents(
-        new ButtonComponent()
+        const row = new MessageActionRow().addComponents(
+        new MessageButton()
         .setLabel('NightCore')
-        .setStyle(ButtonStyle.Secondary)
+        .setStyle('SECONDARY')
         .setCustomId("nightcore"),
-        new ButtonComponent()
+        new MessageButton()
         .setLabel('BassBoost')
-        .setStyle(ButtonStyle.Secondary)
+        .setStyle('SECONDARY')
         .setCustomId('bassboost'),
-        new ButtonComponent()
+        new MessageButton()
         .setLabel('8D')
-        .setStyle(ButtonStyle.Secondary)
+        .setStyle('SECONDARY')
         .setCustomId('eightD'),
-        new ButtonComponent()
+        new MessageButton()
         .setLabel(lang.commands.filters.clearLabel)
-        .setStyle(ButtonStyle.Secondary)
+        .setStyle('SECONDARY')
         .setCustomId('clear')
       );
 

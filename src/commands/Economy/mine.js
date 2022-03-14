@@ -1,4 +1,4 @@
-const { MessageAttachment, Embed } = require(`discord.js`);
+const { MessageAttachment, MessageEmbed } = require(`discord.js-light`);
 
 const Emojis = require(`../../Structures/Utils/emojis`);
 
@@ -65,7 +65,7 @@ module.exports = {
       }
       if (["help", "ajuda", "h"].some(x => x == args[0])) {
 
-        const embed = new Embed()
+        const embed = new MessageEmbed()
           .setTitle(`${Emojis.dima} | __Siesta__`)
           .setDescription(String(lang.commands.mine.help))
           .setColor(client.color)
@@ -80,7 +80,7 @@ module.exports = {
       }
       if(["status", "info"].some(x => x == args[0])) {
 
-        const embed = new Embed()
+        const embed = new MessageEmbed()
         .setTitle(`${Emojis.dima} | __Siesta__`)
         .setColor(client.color)
         .setFooter({

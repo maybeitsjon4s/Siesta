@@ -1,8 +1,8 @@
 const { create, all } = require('mathjs')
-
+const Emojis = require("../../Structures/Utils/emojis")
 module.exports = {
   name: 'calculator',
-  alises: ['calc', 'calculadora'],
+  aliases: ['calc', 'calculadora'],
   cooldown: 1,
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {

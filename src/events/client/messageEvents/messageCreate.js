@@ -16,7 +16,7 @@ const { cooldowns } = client;
     _id: message.guild.id,
   })
 
-  if (!GUILD) await client.db.guild.create({
+  if (!GUILD) GUILD = await client.db.guild.create({
     _id: message.guild.id,
   })
 
@@ -32,10 +32,7 @@ const { cooldowns } = client;
 
   if (!message.content.toLowerCase().startsWith(prefix)) return;
 
-  if (!USER) {
-    await client.db.user.create({ _id: message.author.id, })
-     USER = await client.db.user.findOne({ _id: message.author.id })
-  } 
+  if (!USER) await client.db.user.create({ _id: message.author.id, })
 
   if(USER?.blacklist) return;
 

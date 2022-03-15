@@ -12,8 +12,9 @@ module.exports = async (client, oldState, newState) => {
   if (newState.id == client.user.id && channel?.type == 'GUILD_STAGE_VOICE') {
     if (!oldState.channelId) {
       try {
-        await newState.guild.me.voice.setSuppressed(false);
-      } catch (err) {
+        newState.guild.me.voice.setSuppressed(false);
+      } 
+      catch (err) {
         newState.guild.me.voice.setRequestToSpeak(true);
         player.pause(true);
       }

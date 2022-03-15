@@ -8,25 +8,24 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
-    const COINS = await require("mongoose")
+    const diamonds = await require("mongoose")
       .connection.collection("users")
       .find({ money: { $gt: 0 } })
       .toArray();
 
-    const coins = Object.entries(COINS)
-      .map(([, x]) => x._id)
-      .sort((x, f) => x.money - f.money);
+    let array = []
+    diamonds.map(x => {
+      array.push({
+      user: x._id,
+      money: x.money
+      })
+    })
 
-    const members = [];
+    array = array.slice(0, 10).sort((a, b) => a.money - b.money).reverse()
 
-    await PUSH(coins, members);
-
-    const coinsMap = members
-      .map((x) => x)
-      .sort((x, f) => f.money - x.money)
-      .slice(0, 10);
-
-      const mapa = coinsMap.map((x, f) =>`**[ ${f + 1} ] - \`${x.user.tag}\` › ${client.utils.abbreviateNumber(x.money)} ${Emojis.dima}**`)
+      const mapa = await Promise.all(array.map(async (u, i) => {
+     return `**[ ${i + 1} ] - \`${(await client.users.fetch(u.user)).tag}\` › ${client.utils.abbreviateNumber(u.money)} ${Emojis.dima}**`
+      }))
     
     const embed = new MessageEmbed()
       .setTitle(`${Emojis.dima} | __Siesta__`)
@@ -34,19 +33,6 @@ module.exports = {
       .setColor(client.color)
       .setTimestamp()
     message.reply({ embeds: [embed] });
-
-    async function PUSH(coins, members) {
-    for (const member of coins) {
-      const doc = await client.db.user.findOne({ _id: member });
-
-      members.push({
-        user: await client.users.fetch(member).then((user) => {
-          return user;
-        }),
-        money: doc.money
-      });
-    }
-  }
-
+    
   },
 };

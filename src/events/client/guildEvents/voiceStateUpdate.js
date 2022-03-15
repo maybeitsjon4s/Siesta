@@ -14,6 +14,7 @@ module.exports = async (client, oldState, newState) => {
       try {
         await newState.guild.me.voice.setSuppressed(false);
       } catch (err) {
+        newState.guild.me.voice.setRequestToSpeak(true);
         player.pause(true);
       }
     } else if (oldState.suppress !== newState.suppress) {

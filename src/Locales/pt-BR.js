@@ -315,6 +315,11 @@ module.exports = {
     vote: {
         message: "Você pode votar em mim usando o botão abaixo!",
         label: "Clique Aqui"
+    },
+    calc: {
+    invalid: "Insira uma expressão valida!",
+    noResult: "Não e possivel determinar o resultado!",
+    sucess: "O resultado da expressão foi:\`\`\`{}\`\`\`"
     }
     }
 }

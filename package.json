@@ -17,6 +17,7 @@
     "discord.js-light": "^4.6.0",
     "glob": "^7.2.0",
     "js-yaml": "^4.1.0",
+    "mathjs": "^10.4.0",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "mongoose": "^6.2.2",

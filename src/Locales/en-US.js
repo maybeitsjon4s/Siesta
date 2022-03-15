@@ -314,6 +314,11 @@ module.exports = {
     vote: {
         message: "You can vote for me using the button below!",
         label: "Click here"
+    },
+    calc: {
+    invalid: "Please put a valid expression!!",
+    noResult: "Its not possible determine the result!",
+    sucess: "The result of the expression was:\`\`\`{}\`\`\`"
     }
     }
 }

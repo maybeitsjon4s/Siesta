@@ -36,7 +36,7 @@ module.exports = {
     return message.reply(`**${Emojis.errado} › ${lang.commands.calc.invalid}**`)
     }
 
-    if(!result || typeof result = 'function') return message.reply(`**${Emojis.errado} › ${lang.commands.calc.invalid}**`);
+    if(!result || typeof result === 'function') return message.reply(`**${Emojis.errado} › ${lang.commands.calc.invalid}**`);
     if([Infinity, -Infinity, 'NaN'].includes(result)) return message.reply((`**${Emojis.errado} › ${lang.commands.calc.noResult}**`));
 
     message.reply(`**${Emojis.star} › ${lang.commands.calc.sucess.replace('{}', result)}**`)

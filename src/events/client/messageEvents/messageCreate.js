@@ -1,4 +1,4 @@
-const { Collection, MessageButton, MessageActionRow, ButtonStyle } = require('discord.js');
+const { Collection, MessageButton, MessageActionRow, ButtonStyle } = require('discord.js-light');
 const Emojis = require('../../../Structures/Utils/emojis')
 const moment = require('moment');
 

@@ -1,4 +1,4 @@
-const { MessageEmbed, MessageActionRow, MessageSelectMenu, } = require('discord.js')
+const { MessageEmbed, MessageActionRow, MessageSelectMenu, } = require('discord.js-light')
 const Emojis = require('../../Structures/Utils/emojis')
 
 module.exports = {

@@ -1,5 +1,5 @@
 const Emojis = require('../../Structures/Utils/emojis');
-const { MessageActionRow, MessageButton, ButtonStyle } = require('discord.js')
+const { MessageActionRow, MessageButton, ButtonStyle } = require('discord.js-light')
 
 module.exports = {
   name: 'filters',

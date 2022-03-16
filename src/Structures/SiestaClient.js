@@ -1,4 +1,4 @@
-const { Client, Options, Collection } = require("discord.js")
+const { Client, Options, Collection } = require("discord.js-light")
 const Music = require("../Music")
 
 const User = require('../Models/User')

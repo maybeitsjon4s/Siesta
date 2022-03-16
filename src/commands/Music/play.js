@@ -11,7 +11,7 @@ module.exports = {
           if (message.member.voice.channel?.id != message.guild.me.voice.channel.id) return message.reply(`**${Emojis.errado} › ${lang.commands.play.wrongVoiceChannel}**`);
         }
 
-        if (!message.member.voice.channel)return message.reply(`**${Emojis.errado} › ${lang.commands.play.noVoiceChannel}**`);
+        if (!message.member.voice.channel) return message.reply(`**${Emojis.errado} › ${lang.commands.play.noVoiceChannel}**`);
 
         const music = args.join(' ');
 

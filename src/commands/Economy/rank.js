@@ -13,23 +13,24 @@ module.exports = {
       .find({ money: { $gt: 0 } })
       .toArray();
 
-    let array = []
+    let rank = [];
+
     diamonds.map(x => {
-      array.push({
+      rank.push({
       user: x._id,
       money: x.money
       })
     })
 
-    array = array.sort((a, b) => a.money - b.money).reverse().slice(0, 10);
+    rank = rank.sort((a, b) => a.money - b.money).reverse().slice(0, 10);
 
-      const mapa = await Promise.all(array.map(async (u, i) => {
+      const map = await Promise.all(rank.map(async (u, i) => {
      return `**[ ${i + 1} ] - \`${(await client.users.fetch(u.user)).tag}\` › ${client.utils.abbreviateNumber(u.money)} ${Emojis.dima}**`
-      }))
+      }));
     
     const embed = new MessageEmbed()
       .setTitle(`${Emojis.dima} | __Siesta__`)
-      .setDescription(mapa.join('\n'))
+      .setDescription(map.join('\n'))
       .setColor(client.color)
       .setTimestamp()
     message.reply({ embeds: [embed] });

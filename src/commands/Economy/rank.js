@@ -21,7 +21,7 @@ module.exports = {
       })
     })
 
-    array = array.slice(0, 10).sort((a, b) => a.money - b.money).reverse()
+    array = array.sort((a, b) => a.money - b.money).slice(0, 10).reverse()
 
       const mapa = await Promise.all(array.map(async (u, i) => {
      return `**[ ${i + 1} ] - \`${(await client.users.fetch(u.user)).tag}\` › ${client.utils.abbreviateNumber(u.money)} ${Emojis.dima}**`

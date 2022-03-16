@@ -22,8 +22,7 @@ module.exports = class SiestaClient extends Client {
                 GuildScheduledEventManager: 0,
                 PresenceManager: 0, 
                 ReactionManager: 0, 
-                ReactionUserManager: 0, 
-                StageInstanceManager: 0, 
+                ReactionUserManager: 0,  
                 ThreadManager: 0, 
                 ThreadMemberManager: 0, 
                 UserManager: 0, 
@@ -64,6 +63,6 @@ module.exports = class SiestaClient extends Client {
         await this.utils.loadCommands(this)
         await this.utils.loadEvents(this)
         await Music(this)
-        await super.login(yml.token).catch(console.error)
+        await super.login(globa.yml.token).catch(console.error)
     }
 }

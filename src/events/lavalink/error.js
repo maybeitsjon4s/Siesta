@@ -1,5 +1,5 @@
 module.exports = async (client, node, error) => {
 
   console.log(`[LAVALINK] Erro em ${node.identifier}`.red, error.message);
-  if (error.message.startsWith('Unable to connect after')) node.connect().catch(() => {});
+  if (error.message.startsWith('Unable to connect after')) client.music.reconnect();
 };

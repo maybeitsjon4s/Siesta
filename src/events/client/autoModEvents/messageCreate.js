@@ -9,7 +9,7 @@ if (!message.guild) return;
     if (!GUILD) return;
 
     if (GUILD.antiinvite.status && message.member) {
-      if (['BanMembers', 'KickMembers','Administrator', 'ManageChannels', 'MANAGE_GUILD', 'ManageMessages', 'ManageRoles'].some(perm => message.member.permissions.has(perm))) return;
+      if (['BAN_MEMBERS', 'KICK_MEMBERS','ADMINISTRATOR', 'MANAGER_CHANNELS', 'MANAGE_GUILD', 'MANAGE_MESSAGES', 'MANAGE_ROLES'].some(perm => message.member.permissions.has(perm))) return;
 
   let lang = GUILD.lang || 0
 

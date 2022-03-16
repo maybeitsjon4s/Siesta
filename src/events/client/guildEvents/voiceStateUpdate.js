@@ -7,7 +7,6 @@ module.exports = async (client, oldState, newState) => {
   const player = client.music?.players.get(newState.guild.id);
 
   if (!player) return;
-  if (!newState.guild.me.voice.channel) player.destroy();
 
   if (newState.id == client.user.id && channel?.type == 'GUILD_STAGE_VOICE') {
     if (!oldState.channelId) {
@@ -24,18 +23,15 @@ module.exports = async (client, oldState, newState) => {
   }
 
   if (oldState.id === client.user.id) return;
-  if (!oldState.guild.members.cache.get(client.user.id).voice.channelId) return;
+  if (!oldState.guild.me.voice.channelId) return;
 
   if (oldState.guild.members.cache.get(client.user.id).voice.channelId === oldState.channelId) {
     if (oldState.guild.me.voice?.channel && oldState.guild.me.voice.channel.members.filter((m) => !m.user.bot).size === 0) {
       await delay(180000);
 
-      const vcMembers = oldState.guild.me.voice.channel?.members.filter(
-        (m) => !m.user.bot
-      ).size;
-      if (!vcMembers) {
-        player.destroy();
-      }
+      const vcMembers = oldState.guild.me.voice.channel?.members.filter((m) => !m.user.bot).size;
+      if (!vcMembers) player.destroy();
+
     }
   }
 };

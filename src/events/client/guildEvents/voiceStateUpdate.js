@@ -7,7 +7,7 @@ module.exports = async (client, oldState, newState) => {
   const player = client.music?.players.get(newState.guild.id);
 
   if (!player) return;
-  if (!newState.guild.members.cache.get(client.user.id).voice.channelId) player.destroy();
+  if (!newState.guild.me.voice.channel) player.destroy();
 
   if (newState.id == client.user.id && channel?.type == 'GUILD_STAGE_VOICE') {
     if (!oldState.channelId) {

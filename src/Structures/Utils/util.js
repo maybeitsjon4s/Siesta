@@ -1,5 +1,5 @@
 const { duration } = require("moment");
-const { WebhookClient } = require("discord.js-light");
+const { WebhookClient } = require("discord.js");
 
 const { promisify } = require("util")
 const glob = promisify(require("glob"))

@@ -1,4 +1,4 @@
-const { MessageEmbed, MessageAttachment } = require('discord.js-light')
+const { MessageEmbed, MessageAttachment } = require('discord.js')
 const Emojis = require('../../Structures/Utils/emojis.js')
 
 const { loadImage, registerFont, createCanvas } = require("canvas");

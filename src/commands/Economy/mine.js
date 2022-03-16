@@ -1,4 +1,4 @@
-const { MessageAttachment, MessageEmbed } = require(`discord.js-light`);
+const { MessageAttachment, MessageEmbed } = require(`discord.js`);
 
 const Emojis = require(`../../Structures/Utils/emojis`);
 

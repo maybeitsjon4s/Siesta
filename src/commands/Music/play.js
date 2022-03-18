@@ -15,6 +15,8 @@ module.exports = {
 
         const music = args.join(' ');
 
+        if(!message.member.voice.channel.permissionsFor(client.user.id).has(['VIEW_CHANNEL', 'CONNECT', 'SPEAK'])) return message.reply(`**${Emojis.errado} › ${lang.commands.play.noPerm}**`)
+
         if (!music) return message.reply(`**${Emojis.errado} › ${lang.commands.play.noArgs}**`);
 
         const result = await client.music.search(music, message.author);

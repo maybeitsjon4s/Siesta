@@ -210,6 +210,7 @@ module.exports = {
         play: {
             wrongVoiceChannel: "You need to be on the same voice channel as me.",
             noVoiceChannel: "You need to be on a voice channel.",
+            noPerm: "I don\'t have the right permissions to play music in this channels: \`View Channel\`, \`Connect\`, \`Speak\`.",
             noArgs: "You need to put a song or url for me to play!",
             failedToPlay: "I couldn't play this song",
             noMatches: "I didn't find this song",

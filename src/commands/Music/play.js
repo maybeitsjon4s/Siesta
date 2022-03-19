@@ -7,7 +7,7 @@ module.exports = {
   ownerOnly: false,
   async run({ client, message, args, player, lang }) {
 
-        if (p) {
+        if (player) {
           if (message.member.voice.channel?.id != message.guild.me.voice.channel.id) return message.reply(`**${Emojis.errado} › ${lang.commands.play.wrongVoiceChannel}**`);
         }
 
@@ -25,7 +25,7 @@ module.exports = {
     
         if (result.loadType === 'NO_MATCHES') return message.reply(`**${Emojis.errado} › ${lang.commands.play.noMatches}.**`);
 
-        const player = client.music.createPlayer({
+        player = client.music.createPlayer({
           guildId: message.guild.id,
           voiceChannelId: message.member.voice.channel.id,
           textChannelId: message.channel.id,

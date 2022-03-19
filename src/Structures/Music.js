@@ -1,5 +1,5 @@
-const { Vulkava } = require(`vulkava`);
-const { readdirSync } = require("fs")
+const { Vulkava } = require('vulkava');
+const Emojis = require('./Utils/emojis.js');
 
 module.exports = async (client) => {
 

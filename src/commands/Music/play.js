@@ -5,7 +5,7 @@ module.exports = {
   aliases: ['tocar', 'p', 'join'],
   cooldown: 0.1,
   ownerOnly: false,
-  run: async (client, message, args, p, lang) => {
+  async run({ client, message, args, player, lang }) {
 
         if (p) {
           if (message.member.voice.channel?.id != message.guild.me.voice.channel.id) return message.reply(`**${Emojis.errado} › ${lang.commands.play.wrongVoiceChannel}**`);

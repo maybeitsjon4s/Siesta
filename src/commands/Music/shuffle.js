@@ -1,4 +1,4 @@
-const Emojis = require('../../Structures/Utils/util.js');
+const Emojis = require('../../Structures/Utils/emojis.js');
 
 module.exports = {
   name: 'shuffle',

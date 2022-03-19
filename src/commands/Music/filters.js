@@ -6,7 +6,7 @@ module.exports = {
   aliases: ['filtros', 'bassboost'],
   cooldown: 4,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
        if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.filters.noPlayer}!**`);
 
       if (!message.member.voice.channel) return message.reply(`**${Emojis.errado} › ${lang.commands.filters.channelError}!**`);

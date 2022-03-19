@@ -5,7 +5,7 @@ module.exports = {
   aliases: ['sobremim', 'about', 'sobre'],
   cooldown: 6,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
 
     const aboutme = args.join(' ')
         if (!aboutme) return message.reply(`**${Emojis.errado} › ${lang.commands.about.noArgs}**`);

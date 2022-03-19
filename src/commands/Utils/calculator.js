@@ -5,7 +5,7 @@ module.exports = {
   aliases: ['calc', 'calculadora'],
   cooldown: 1,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
     const math = create(all)
     const limited = math.evaluate
 

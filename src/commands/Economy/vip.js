@@ -6,7 +6,7 @@ module.exports = {
   aliases: [],
   cooldown: 4,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
 
         const embed = new MessageEmbed()
           .setTitle(`${Emojis.dima} | __Siesta__`)

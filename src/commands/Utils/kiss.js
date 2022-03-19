@@ -5,7 +5,7 @@ module.exports = {
   aliases: ['beijar'],
   cooldown: 2,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
 
         const list = [
           `https://media.tenor.com/images/27171b8a85bc1adf0382032a4502f491/tenor.gif`,

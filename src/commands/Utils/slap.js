@@ -5,7 +5,7 @@ module.exports = {
   aliases: ['tapa'],
   cooldown: 2,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
     
         const list = [
           `https://i.imgur.com/fm49srQ.gif`,

@@ -5,7 +5,7 @@ module.exports = {
   name: 'cooldowns',
   aliases: ['tempos', 'times', 'cd'],
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
 
       const user = await client.db.user.findOne({
         _id: message.author.id

@@ -6,7 +6,7 @@ module.exports = {
   aliases: [],
   cooldown: 2,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
     
         message.reply({
           content: `**${Emojis.star} › ${lang.commands.vote.message}!**`,

@@ -6,7 +6,7 @@ module.exports = {
   aliases: ['estatisticas', 'botinfo', 'bi', 'uptime' ],
   cooldown: 3,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
 
         const embed = new MessageEmbed()
           .setColor(client.color)

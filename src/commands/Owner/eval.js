@@ -5,7 +5,7 @@ module.exports = {
   aliases: ['e', 'ev'],
   cooldown: 0.1,
   ownerOnly: true,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
     
     if (!args[0]) return;
 

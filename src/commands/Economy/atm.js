@@ -4,7 +4,7 @@ module.exports = {
   name: 'atm',
   aliases: ['bal', 'money'],
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
     
       let user = await client.utils.getUser(args[0], message);
 

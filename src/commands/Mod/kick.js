@@ -6,7 +6,7 @@ module.exports = {
   aliases: ['expulsar'],
   cooldown: 4,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
 
         if (!message.member.permissions.has('KICK_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} › ${lang.commands.kick.userPermission}**`);
 

@@ -7,7 +7,7 @@ module.exports = {
   aliases: ['ajuda', 'commands', 'h'],
   cooldown: 6,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
 
       const mod = readdirSync(`./src/commands/Mod`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)
       const configs = readdirSync(`./src/commands/Configs`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)

@@ -5,7 +5,7 @@ module.exports = {
   aliases: ["latency", "latencia", "pong", "🏓"],
   cooldown: 1,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
     try {
 
       let pingStart = process.hrtime();

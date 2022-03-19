@@ -8,7 +8,7 @@ module.exports = {
   aliases: ['ui', 'whois'],
   cooldown: 3,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
 
         Day.locale(lang.name)
 

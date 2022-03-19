@@ -4,7 +4,7 @@ module.exports = {
   name: 'prefix',
   aliases: ['setprefix', 'prefixo'],
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => { 
+  async run({ client, message, args, player, lang }) { 
 
       if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id) ) return message.reply(`${Emojis.errado}** › ${lang.commands.prefix.errorPerm}**`)
 

@@ -5,7 +5,7 @@ module.exports = {
   aliases: ['pausar'],
   cooldown: 3,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
       if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.pause.noPlayer}**`);
 
       if (!message.member.voice.channel || message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(`**${Emojis.errado} › ${lang.commands.pause.channelError}**`);

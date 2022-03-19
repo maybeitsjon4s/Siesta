@@ -255,6 +255,12 @@ module.exports = {
           invalidPosition: "A Posição que você me forneceu e invalida!",
           sucess: "Avancei {} Músicas com sucesso!",
         },
+      shuffle: {
+        noPlayer: "Não estou tocando música neste servidor",
+        channelError: "Você não está em um canal de voz ou não está no mesmo canal que eu.",
+        noQueue: "Tem de haver mais de uma musica para eu poder embarelhar a lista de reprodução.",
+        sucess: "Embarelhei as musicas da fila de reprodução com sucesso!"
+        },
         about: {
             noArgs: "Insira algo para colocar no sobre-mim",
             sucess: "Sobre-mim alterado com sucesso!"

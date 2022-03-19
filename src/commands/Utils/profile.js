@@ -13,7 +13,7 @@ module.exports = {
     aliases: ["pr", "perfil"],
     cooldown: 5,
     ownerOnly: false,
-    run: async (client, message, args, player, lang) => {
+    async run({ client, message, args, player, lang }) {
 
         const GUILD = await client.db.guild.findOne({
             _id: message.guild.id

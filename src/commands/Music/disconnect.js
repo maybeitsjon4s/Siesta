@@ -5,7 +5,7 @@ module.exports = {
   aliases: ['leave', 'parar', 'dc', 'desconectar', 'stop'],
   cooldown: 5,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
 
       if (!player)
         return message.reply(`**${Emojis.errado} › ${lang.commands.disconnect.noPlayer}**`);

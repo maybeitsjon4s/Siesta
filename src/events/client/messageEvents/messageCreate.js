@@ -85,7 +85,7 @@ const { cooldowns } = client;
     client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``)
 
     
-      await command.run(client, message, args, player, lang).catch(err => {
+      await command.run({ client, message, args, player, lang }).catch(err => {
 
       console.log('\n\n' + `Erro no ${command.name}`.red + '\n' + String(err.stack).gray)
       const row = new MessageActionRow().addComponents(

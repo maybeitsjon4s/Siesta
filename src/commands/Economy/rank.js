@@ -6,7 +6,7 @@ module.exports = {
   aliases: ['topmoney', 'ldb', 'leaderboard'],
   cooldown: 20,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
 
     const diamonds = await require("mongoose")
       .connection.collection("users")

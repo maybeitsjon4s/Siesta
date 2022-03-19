@@ -255,6 +255,12 @@ module.exports = {
           invalidPosition: 'The position you gave me its invalid.',
           sucess: 'Skiped to the music number {}!',
         },
+        shuffle: {
+          noPLayer: "I\'m not playing music on this server.",
+          channelError: "You are not on a voice channel or you are not on the same channel as me.",
+          noQueue: "Needs to be more than one music so i can shuffle the queue.",
+          sucess: "Shuffled the queue successfully!"
+        },
         about: {
             noArgs: "Insert something to put in the about me",
             sucess: "About me successfully changed!"

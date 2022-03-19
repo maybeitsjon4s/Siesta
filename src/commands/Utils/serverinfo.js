@@ -7,7 +7,7 @@ module.exports = {
   aliases: ['si', 'svi', 'servericon'],
   cooldown: 4,
   ownerOnly: false,
-  run: async (client, message, args, player, lang) => {
+  async run({ client, message, args, player, lang }) {
 
         Day.locale(lang.name)
 

@@ -319,7 +319,7 @@ module.exports = {
     calc: {
     invalid: "Please put a valid expression!!",
     noResult: "Its not possible determine the result!",
-    sucess: "The result of the expression was:\`\`\`{}\`\`\`"
+    sucess: "The result of the expression was:\n\`\`\`{}\`\`\`"
     }
     }
 }

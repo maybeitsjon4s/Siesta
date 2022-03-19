@@ -1,4 +1,4 @@
-const { duration } = require("moment");
+const Day = require("dayjs")
 const { WebhookClient } = require("discord.js-light");
 
 const { promisify } = require("util")
@@ -50,7 +50,27 @@ async getUser(args, message) {
   return chunks.map((c) => c.trim()).join(`\n`);
 },
 
- formatTime: (time) => duration(time).format('d[d,] h[h,] m[m,] s[s,]'),
+ formatTime: (ms) => {
+  let seconds = ms / 1000;
+  let days = parseInt(seconds / 86400);
+  seconds = seconds % 86400;
+  let hours = parseInt(seconds / 3600);
+  seconds = seconds % 3600;
+  let minutes = parseInt(seconds / 60);
+  seconds = parseInt(seconds % 60);
+  
+  if (days) {
+    return `${days}d, ${hours}h, ${minutes}m, ${seconds}s`;
+  }
+  else if (hours) {
+    return `${hours}h, ${minutes}m, ${seconds}s`;
+  }
+  else if (minutes) {
+    return `${minutes}m, ${seconds}s`;
+  }
+  return `${seconds}s`;
+    
+ },
 
  abbreviateNumber(number, precision = 2) {
   const suffsFromZeros = {
@@ -105,7 +125,7 @@ async getUser(args, message) {
   return ('━'.repeat(progress > 0 ? progress - 1 : progress) + '⚪' + '─'.repeat(barSize - progress));
 },
 
- timeToMilliseconds(time) {
+ timeToMS(time) {
   const timeUnits = time
     .replace(/[\d\s]/g, (_) => '')
     .toLowerCase()
@@ -197,7 +217,7 @@ async loadCommands(client) {
   });
 },
 
-async  loadEvents(client) {
+async loadEvents(client) {
   const events = await glob(`${process.cwd()}/src/events/client/**/*.js`)
   events.forEach(eventFile => {
     delete require.cache[eventFile]

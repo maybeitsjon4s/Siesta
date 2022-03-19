@@ -320,7 +320,7 @@ module.exports = {
     calc: {
     invalid: "Insira uma expressão valida!",
     noResult: "Não e possivel determinar o resultado!",
-    sucess: "O resultado da expressão foi:\`\`\`{}\`\`\`"
+    sucess: "O resultado da expressão foi:\n\`\`\`{}\`\`\`"
     }
     }
 }

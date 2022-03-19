@@ -35,9 +35,9 @@ module.exports = {
 
         if (member.roles.highest.position >= message.guild.me.roles.highest.position) return message.reply(`**${Emojis.errado} › ${lang.commands.mute.higherRoleThanMine}!**`);
 
-        if (!client.utils.timeToMilliseconds(time))return message.reply(`**${Emojis.errado} › ${lang.commands.mute.invalidTime}**`);
+        if (!client.utils.timeToMS(time))return message.reply(`**${Emojis.errado} › ${lang.commands.mute.invalidTime}**`);
 
-        let tempo = client.utils.timeToMilliseconds(time);
+        let tempo = client.utils.timeToMS(time);
 
         if (tempo >= 2419200000) return message.reply(`**${Emojis.errado} › ${lang.commands.mute.higherThan28days}!**`);
 

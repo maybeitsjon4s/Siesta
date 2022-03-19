@@ -1,6 +1,6 @@
 const { Collection, MessageButton, MessageActionRow, ButtonStyle } = require('discord.js-light');
 const Emojis = require('../../../Structures/Utils/emojis')
-const moment = require('moment');
+const Day = require('dayjs');
 
 module.exports = async (client, message) => {
 const { cooldowns } = client;
@@ -40,10 +40,13 @@ const { cooldowns } = client;
 
   switch(lang) {
     case 1:
-    lang = client.langs.pt
+    lang = client.langs.pt;
     break;
     case 0:
-    lang = client.langs.en
+    lang = client.langs.en;
+    break;
+    default:
+    lang = client.langs.en; 
     break;
   }
 
@@ -79,12 +82,12 @@ const { cooldowns } = client;
   
   if(command.ownerOnly && !client.owners.some(id => id === message.author.id)) return;
 
-    client.utils.sendLogs(`\`---\`\nData: **${moment(Date.now()).format('L LT')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``)
+    client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``)
 
-    try {
-      await command.run(client, message, args, player, lang);
-    } catch (e) {
-      console.log(String(e.stack).gray)
+    
+      await command.run(client, message, args, player, lang).catch(err => {
+
+      console.log('\n\n' + `Erro no ${command.name}`.red + '\n' + String(err.stack).gray)
       const row = new MessageActionRow().addComponents(
         new MessageButton()
         .setEmoji({
@@ -95,13 +98,15 @@ const { cooldowns } = client;
         .setStyle('LINK')
         .setURL(`https://discord.com/invite/vYEutrG7gY`)
       );
-      message.reply({ embeds: [{
+      message.reply({ embeds: [
+      {
       color: client.color,
-      description: `**${Emojis.rocket} › ` + lang.events.messageCreate.error.replace('{}', command.name) + '**' + '\n\`' + e + '\`'
-      }],
+      description: `**${Emojis.rocket} › ` + lang.events.messageCreate.error.replace('{}', command.name) + '**' + '\n\n\`\`\`' + err + '\`\`\`'
+      }
+      ],
       components: [row]})
-    } finally {
-      await client.db.user.findOneAndUpdate({ _id: message.author.id }, { $set: { lastCommandUsed: Date.now() }})
-    }
+    })
+    await client.db.user.findOneAndUpdate({ _id: message.author.id }, { $set: { lastCommandUsed: Date.now() }})
+    
   
 };

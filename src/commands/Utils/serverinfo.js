@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js-light');
-const moment = require('moment');
+const Day = require('dayjs');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -8,7 +8,9 @@ module.exports = {
   cooldown: 4,
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
-    moment.locale(lang.name)
+
+        Day.locale(lang.name)
+
         const guild = client.guilds.cache.get(args[0]) || message.guild;
 
         const embed = new MessageEmbed()
@@ -42,7 +44,7 @@ module.exports = {
             },
             {
               name: `${Emojis.rocket} › ${lang.commands.serverinfo.createdAt}`,
-              value: `\`${moment.utc(guild.createdAt).format("DD/MM/YYYY")}\` \`(${moment.utc(guild.createdAt).fromNow()})\``,
+              value: `\`${Day(guild.createdAt).format("DD/MM/YYYY")}\` \`(${Day(guild.createdAt).fromNow()})\``,
               inline: true
             }
           )

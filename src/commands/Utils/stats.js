@@ -19,8 +19,7 @@ module.exports = {
               .fetchClientValues("guilds.cache.size")
               .then((x) =>
                 x.reduce((f, y) => f + y)
-              )}\`\n> Uptime \`${client.utils.formatTime(
-              client.utils.convertMilliseconds(client.uptime)
+              )}\`\n> Uptime \`${client.utils.formatTime(client.uptime
             )}\`\n> RAM \`${client.utils.formatSizeUnits(
               process.memoryUsage().heapUsed
             )}/${client.utils.formatSizeUnits(require("os").totalmem())}\`\n${
@@ -29,7 +28,9 @@ module.exports = {
           )
           .setTitle(` ${Emojis.star} | __Siesta__`)
           .setFooter({
-            text: `${lang.commands.stats.createdBy}: ${await client.users.fetch("431768491759239211").then((x) => x.tag)}`,
+            text: `${lang.commands.stats.createdBy}: ${await client.users
+            .fetch("431768491759239211")
+            .then((x) => x.tag)}`,
             iconURL: await client.users
               .fetch("431768491759239211")
               .then((x) => x.displayAvatarURL({ dynamic: true })),
@@ -38,6 +39,4 @@ module.exports = {
 
         message.reply({ embeds: [embed] });
   }
-}
-    
-
+};

@@ -109,7 +109,7 @@ module.exports = {
 
         if (user.cooldowns.mine !== null && 1999999 - (Date.now() - user.cooldowns.mine) > 0) {
 
-          message.reply(`**${Emojis.errado} › ${lang.commands.mine.cooldown} \`${client.utils.formatTime(client.utils.convertMilliseconds(1999999 - (Date.now() - user.cooldowns.mine)))}\`**`);
+          message.reply(`**${Emojis.errado} › ${lang.commands.mine.cooldown} \`${client.utils.formatTime(1999999 - (Date.now() - user.cooldowns.mine))}\`**`);
 
         } else {
 

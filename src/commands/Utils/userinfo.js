@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js-light');
 const Emojis = require('../../Structures/Utils/emojis');
-const moment = require('moment');
+
+const Day = require('dayjs');
 
 module.exports = {
   name: 'userinfo',
@@ -9,7 +10,7 @@ module.exports = {
   ownerOnly: false,
   run: async (client, message, args, player, lang) => {
 
-        moment.locale(lang.name)
+        Day.locale(lang.name)
 
         let user = await client.utils.getUser(args[0], message);
 
@@ -26,7 +27,7 @@ module.exports = {
               },
               {
                 name: `${Emojis.estrela} › ${lang.commands.userinfo.createdAccount}`,
-                value: `\`${moment.utc(user.createdAt).format(`DD/MM/YYYY`)}\` \`(${moment(user.createdAt).fromNow()})\``,
+                value: `\`${Day(user.createdAt).format('DD/MM/YYYY')}\` \`(${Day(user.createdAt).fromNow()})\``,
                 inline: true
               },
               {
@@ -50,13 +51,13 @@ module.exports = {
 
           embed.addFields({
             name: `${Emojis.heart2} › ${lang.commands.userinfo.joinedAt}`,
-            value: `\`${moment.utc(member.joinedAt).format(`DD/MM/YYYY`)}\` \`(${moment(member.joinedAt).fromNow()})\``,
+            value: `\`${Day(member.joinedAt).format(`DD/MM/YYYY`)}\` \`(${Day(member.joinedAt).fromNow()})\``,
             inline: true
           })
           
           if(member.premiumSince) embed.addFields({
               name: `${Emojis.boost} › ${lang.commands.userinfo.boosterSince}`,
-              value: `\`${moment.utc(member.premiumSince).format("DD/MM/YYYY")} \`\`(${moment.utc(member.premiumSince).fromNow()})\``,
+              value: `\`${Day(member.premiumSince).format("DD/MM/YYYY")} \`\`(${Day(member.premiumSince).fromNow()})\``,
               inline: true
             })
         }

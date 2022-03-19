@@ -12,9 +12,7 @@ module.exports = {
           message.reply(
             `**${
               Emojis.errado
-            } › ${lang.commands.work.cooldown} \`${client.utils.formatTime(
-              client.utils.convertMilliseconds(600000 - (Date.now() - user.cooldowns.work))
-            )}\`**`
+            } › ${lang.commands.work.cooldown} \`${client.utils.formatTime(600000 - (Date.now() - user.cooldowns.work))}\`**`
           );
         } else {
           let amount = Math.floor(Math.random() * 2500) + 2000;

@@ -5,6 +5,8 @@ module.exports = {
   aliases: ['pausar'],
   cooldown: 3,
   ownerOnly: false,
+  description: '[ 🎵 Music ] Pauses the currently playing track.',
+  options: [],
   async run({ client, message, args, player, lang }) {
       if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.pause.noPlayer}**`);
 

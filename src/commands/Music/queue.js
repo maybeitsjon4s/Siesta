@@ -6,6 +6,8 @@ module.exports = {
   aliases: ['q', 'fila'],
   cooldown: 4,
   ownerOnly: false,
+  description: '[ 🎵 Music ] See the queue',
+  options: [],
   async run({ client, message, args, player, lang }) {
 
       if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.queue.noPlayer}**`);

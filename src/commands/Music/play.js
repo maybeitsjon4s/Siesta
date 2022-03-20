@@ -5,6 +5,15 @@ module.exports = {
   aliases: ['tocar', 'p', 'join'],
   cooldown: 0.1,
   ownerOnly: false,
+  description: "[ 🎵 Music ] Add an song/playlist to the queue and plays it.",
+  options: [
+    {
+      name: 'song',
+      description: 'Song/Playlist URL/Name',
+      type: 'STRING',
+      required: true
+    }
+  ],
   async run({ client, message, args, player, lang }) {
 
         if (player) {

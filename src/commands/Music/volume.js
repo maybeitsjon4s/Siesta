@@ -5,6 +5,15 @@ module.exports = {
   aliases: ['vol'],
   cooldown: 2,
   ownerOnly: false,
+  description: '[ 🎵 Music ] Changes the player volume.',
+  options: [
+    {
+      name: 'volume',
+      description: 'The volume number 1 - 500',
+      type: 'NUMBER',
+      required: true
+    }
+  ],
   async run({ client, message, args, player, lang }) {
 
     

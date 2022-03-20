@@ -5,6 +5,8 @@ module.exports = {
   aliases: ['s', 'pular', 'forceskip', 'fs'],
   cooldown: 3,
   ownerOnly: false,
+  description: '[ 🎵 Music ] Skips the currently track.',
+  options: [],
   async run({ client, message, args, player, lang }) {
     
       if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.skip.noPlayer}**`);

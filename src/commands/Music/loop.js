@@ -5,6 +5,8 @@ module.exports = {
   aliases: ['repetir', 'repeat'],
   cooldown: 3,
   ownerOnly: false,
+  description: '[ 🎵 Music ] Enable/Disable the track/queue loop.',
+  options: [],
   async run({ client, message, args, player, lang }) {
        if (!player)
         return message.reply(

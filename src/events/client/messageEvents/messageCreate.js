@@ -88,16 +88,6 @@ const { cooldowns } = client;
       await command.run({ client, message, args, player, lang }).catch(err => {
 
       console.log('\n\n' + `Erro no ${command.name}`.red + '\n' + String(err.stack).gray)
-      const row = new MessageActionRow().addComponents(
-        new MessageButton()
-        .setEmoji({
-          name: 'lua',
-          id: '948650383562125313',
-          animated: true
-        })
-        .setStyle('LINK')
-        .setURL(`https://discord.com/invite/vYEutrG7gY`)
-      );
       message.reply({ embeds: [
       {
       color: client.color,

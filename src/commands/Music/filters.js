@@ -6,6 +6,7 @@ module.exports = {
   aliases: ['filtros', 'bassboost'],
   cooldown: 4,
   ownerOnly: false,
+  descripions: '[ 🎵 Music ] Add/remove filters to the player.',
   async run({ client, message, args, player, lang }) {
        if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.filters.noPlayer}!**`);
 
@@ -34,7 +35,8 @@ module.exports = {
 
     message.reply({
       content: `**${Emojis.music} › ${lang.commands.filters.firstMessage}**`,
-      components: [row]
+      components: [row],
+      fetchReply: true
     }).then(msg => {
      
           const collector = msg.createMessageComponentCollector({

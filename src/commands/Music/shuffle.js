@@ -5,6 +5,8 @@ module.exports = {
   aliases: ['embaralhar', 'misturar'],
   cooldown: 3,
   ownerOnly: false,
+  description: '[ 🎵 Music ] Shuffle the queue.',
+  options: [],
   async run({ client, message, args, player, lang }) {
     if(!player) return message.reply(`**${Emojis.errado} › ${lang.commands.shuffle.noPlayer}**`);
     if(!message.member.voice.channel || message.member.voice.channel?.id !== message.guild.me.voice.channel.id) return message.reply(`**${Emojis.errado} › ${lang.commands.shuffle.channelError}**`);

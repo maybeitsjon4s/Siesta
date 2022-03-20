@@ -5,6 +5,15 @@ module.exports = {
   aliases: ['goto', 'jump'],
   cooldown: 2,
   ownerOnly: false,
+  description: '[ 🎵 Music ] Skips to a specific song.',
+  options: [
+    {
+      name: 'song',
+      description: 'The number of the song in the queue',
+      type: 'NUMBER',
+      required: true
+    }
+  ],
   async run({ client, message, args, player, lang }) {
 
     if(!player) return message.reply(`**${Emojis.errado} › ${lang.commands.skipto.noPlayer}**`);

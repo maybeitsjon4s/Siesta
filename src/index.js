@@ -13,7 +13,7 @@ const client = new SiestaClient();
 client.start();
 
 const filter = (err) => { 
-  if(['missing access', 'missing permissions'].includes(err.toLowerCase())) console.log('\n\n' + String(err.stack).gray) 
+  if(!['Missing Access', 'Missing Permissions'].includes(err)) console.log('\n\n' + String(err.stack).gray) 
 }
 
 process.on('unhandledRejection', filter)

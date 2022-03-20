@@ -5,6 +5,8 @@ module.exports = {
   aliases: ['leave', 'parar', 'dc', 'desconectar', 'stop'],
   cooldown: 5,
   ownerOnly: false,
+  description: "[ 🎵 Music ] Disconnect the bot from the voice channel.",
+  options: [],
   async run({ client, message, args, player, lang }) {
 
       if (!player)

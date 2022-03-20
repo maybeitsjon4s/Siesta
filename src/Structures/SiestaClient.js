@@ -13,8 +13,7 @@ dayjs.extend(relativeTime)
 module.exports = class SiestaClient extends Client {
     constructor() {
         super({
-            makeCache: Options.cacheWithLimits({
-                ApplicationCommandManager: 0, 
+            makeCache: Options.cacheWithLimits({ 
                 BaseGuildEmojiManager: 0,
                 GuildBanManager: 0, 
                 GuildInviteManager: 0, 

@@ -16,7 +16,7 @@ module.exports = {
           if (typeof result !== "string") result = require("util").inspect(result, { depth: 0 })
 
           message.reply({
-            content: `\`\`\`js\n${result.slice(0, 1970).replace((new RegExp(globall.config.token,"gi")), '******************')}\`\`\``,
+            content: `\`\`\`js\n${result.slice(0, 1970).replace((new RegExp(global.config.token,"gi")), '******************')}\`\`\``,
           })
 
         } catch (e) {

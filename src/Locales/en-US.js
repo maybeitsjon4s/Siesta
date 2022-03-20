@@ -11,7 +11,7 @@ module.exports = {
         },
         musicEvents: {
           trackStart: "Now playing: \`{track}\`, requested by \`{user}\`",
-          trackStuck: "Music got stuck so I'll skip it...",
+          trackException: "There was an error while playing this music so I'll skip it...",
           queueEnd: "Music is over I'm leaving the channel..."
         }
     },

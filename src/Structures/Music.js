@@ -23,9 +23,11 @@ module.exports = async (client) => {
         }, 45000);
   })
   .on("error", (node, error) => console.log(`[ ${node.identifier} ] Erro`.red + '\n' + String(error.message).gray))
+
   .on("nodeDisconnect", (node, code, reason) => console.log(`[ ${node.options.id } ] Node desconectado`.red + '\n' + String(reason).gray))
+
   .on("queueEnd", async (player) => {
-    const doc = await client.db.guild.findOne({ _id: channel.guild.id })
+    const doc = await client.db.guild.findOne({ _id: player.guildId })
   
     let lang = doc.lang || 0
   
@@ -40,6 +42,7 @@ module.exports = async (client) => {
     client.channels.cache.get(player.textChannelId).send(`**${Emojis.music} › ${lang.events.musicEvents.queueEnd}**`)
     player.destroy();
   })
+
   .on("trackStart", async (player, track) => {
   
     const channel = client.channels.cache.get(player.textChannelId);
@@ -63,6 +66,26 @@ module.exports = async (client) => {
       player.lastPlayingMsgID = msg.id;
     })
   })
-  .on("trackStuck", (player, track) => player.skip())
-  .on("trackException", (player, track) => player.skip())
-}
+
+  .on("trackStuck", async (player, track) => player.skip())
+
+  .on("trackException", (player, track, exception) => {
+    player.skip()
+
+    const doc = await client.db.guild.findOne({ _id: message.author.id })
+
+    let lang = doc.lang || 0;
+
+    switch(lang) {
+      case 1:
+        lang = client.langs.pt;
+        break;
+      case 0:
+        lang = client.langs.en;
+        break;
+    }
+
+    client.channels.cache.get(player.textChannelId).send({ content: `**${Emojis.music} › ${lang.musicEvents.trackException} **` + '```\n' + exception.message + '```'})
+
+  })
+};

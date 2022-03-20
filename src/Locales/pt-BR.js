@@ -11,7 +11,7 @@ module.exports = {
         },
         musicEvents: {
           trackStart: "Agora tocando: \`{track}\`, pedido por \`{user}\`",
-          trackStuck: "A Musica ficou presa então vou pular ela...",
+          trackException: "Ocorreu um erro ao tentar tocar esta música logo vou pular ela...",
           queueEnd: "A Musica acabou, estou saindo do canal..."
         }
     },
@@ -323,10 +323,5 @@ module.exports = {
         message: "Você pode votar em mim usando o botão abaixo!",
         label: "Clique Aqui"
     },
-    calc: {
-    invalid: "Insira uma expressão valida!",
-    noResult: "Não e possivel determinar o resultado!",
-    sucess: "O resultado da expressão foi:\n\`\`\`{}\`\`\`"
-    }
     }
 }

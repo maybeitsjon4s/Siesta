@@ -1,9 +1,9 @@
 require('colors');
-const yaml = require('js-yaml');
+const { load } = require('js-yaml');
 const { readFileSync } = require('fs');
-global.config = yaml.load(readFileSync('./env.yml', 'utf8'));
+global.config = load(readFileSync('./env.yml', 'utf8'));
 
-const { connect } = require('mongoose')
+const { connect } = require('mongoose');
 
 connect(global.config.database, { useNewUrlParser: true, useUnifiedTopology: true }).catch(console.error)
 
@@ -13,7 +13,7 @@ const client = new SiestaClient();
 client.start();
 
 const filter = (err) => { 
-  if(!err.toString().toLowerCase().includes('missing permissions') || !err.toString().toLowerCase().includes('missing acess')) console.log(String(err.stack).gray) 
+  if(['missing access', 'missing permissions'].includes(err.toLowerCase())) console.log('\n\n' + String(err.stack).gray) 
 }
 
 process.on('unhandledRejection', filter)

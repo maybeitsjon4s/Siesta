@@ -64,6 +64,6 @@ module.exports = class SiestaClient extends Client {
         await this.utils.loadCommands(this)
         await this.utils.loadEvents(this)
         await Music(this)
-        await super.login(global.globa.config.token).catch(console.error)
+        await super.login(globall.config.token).catch(console.error)
     }
 }

@@ -5,7 +5,7 @@ global.config = yaml.load(readFileSync('./env.yml', 'utf8'));
 
 const { connect } = require('mongoose')
 
-connect(globa.config.database, { useNewUrlParser: true, useUnifiedTopology: true }).catch(console.error)
+connect(global.config.database, { useNewUrlParser: true, useUnifiedTopology: true }).catch(console.error)
 
 const SiestaClient = require('./Structures/SiestaClient');
 const client = new SiestaClient();

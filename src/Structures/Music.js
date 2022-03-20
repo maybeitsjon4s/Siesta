@@ -4,14 +4,14 @@ const Emojis = require('./Utils/emojis.js');
 module.exports = async (client) => {
 
   client.music = new Vulkava({
-    nodes: globa.config.lavalinkNodes,
+    nodes: global.config.lavalinkNodes,
     unresolvedSearchSource: 'youtube',
     sendWS: (guildId, payload) => {
       client.guilds.cache.get(guildId)?.shard.send(payload);
     },
     spotify: {
-      clientId: globa.config.spotifyId,
-      clientSecret: globa.config.spotifyToken,
+      clientId: global.config.spotifyId,
+      clientSecret: global.config.spotifyToken,
     },
   })
   .on("nodeConnect", async (node) => {

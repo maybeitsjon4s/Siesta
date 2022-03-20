@@ -10,8 +10,8 @@ module.exports = {
 
 async sendLogs(content) {
   const webhookClient = new WebhookClient({
-    token: yml.logsToken,
-    id: yml.logsId
+    token: globa.config.logsToken,
+    id: globa.config.logsId
   });
   webhookClient.send({
     content: String(content)

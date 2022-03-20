@@ -52,7 +52,7 @@ module.exports = {
           track.setRequester(message.author);
           player.queue.push(track);
 
-          if (p) message.reply(`**${Emojis.music} › ${lang.commands.play.musicLoaded.replace('{}', track.title)}**`);
+          if (player) message.reply(`**${Emojis.music} › ${lang.commands.play.musicLoaded.replace('{}', track.title)}**`);
           
 
           if (!player.playing) player.play();

@@ -2,7 +2,7 @@ const Emojis = require(`../../Structures/Utils/emojis`);
 
 module.exports = {
   name: 'work',
-  aliases: ['trabalhar'],
+  aliases: ['trabalhar', 'w'],
   ownerOnly: false,
   async run({ client, message, args, player, lang }) {
 

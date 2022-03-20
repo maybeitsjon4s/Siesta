@@ -1,7 +1,7 @@
 const Emojis = require('../../../Structures/Utils/emojis.js');
 const Day = require('dayjs')
 
-module.exports = async(client) => {
+module.exports = async(client, interaction) => {
 
   if(interaction.isCommand()) {
     const command = client.commands.get(interaction.commandName)
@@ -48,7 +48,7 @@ module.exports = async(client) => {
 
     client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``)
 
-    if(command) command.run({ client, message, args, player, lang }).catch(err => {
+    await command.run({ client, message, args, player, lang }).catch(err => {
       console.log(`\n\nErro no comando ${command.name}`.red + String(err.stack).gray)
 
       interaction.reply({

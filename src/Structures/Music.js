@@ -69,7 +69,7 @@ module.exports = async (client) => {
 
   .on("trackStuck", async (player, track) => player.skip())
 
-  .on("trackException", (player, track, exception) => {
+  .on("trackException", async(player, track, exception) => {
     player.skip()
 
     const doc = await client.db.guild.findOne({ _id: message.author.id })

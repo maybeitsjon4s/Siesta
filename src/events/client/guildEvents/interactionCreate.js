@@ -29,7 +29,7 @@ module.exports = async(client, interaction) => {
 
     interaction.edit = interaction.editReply;
     interaction.author = interaction.user;
-    interaction.member = interaction.guild.member.cache.get(interaction.user.id);
+    interaction.member = interaction.guild.members.cache.get(interaction.user.id);
 
      const args = [];
 
@@ -42,13 +42,11 @@ module.exports = async(client, interaction) => {
             } else if (option.value) args.push(option.value);
         }
 
-    const message = interaction;
-
     const player = client.music.players.get(interaction.guild.id)
 
     client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``)
 
-    await command.run({ client, message, args, player, lang }).catch(err => {
+    await command.run({ client, interaction, args, player, lang }).catch(err => {
       console.log(`\n\nErro no comando ${command.name}`.red + String(err.stack).gray)
 
       interaction.reply({

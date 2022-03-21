@@ -8,15 +8,15 @@ module.exports = async(client, interaction) => {
 
     if(!interaction.guild) return
 
-    let user = client.db.user.findOne({ _id: interaction.user.id })
-    let guild = client.db.guild.findOne({ _id: interaction.guild.id })
+    let user = await client.db.user.findOne({ _id: interaction.user.id })
+    let guild = await client.db.guild.findOne({ _id: interaction.guild.id })
 
     if(!guild) guild = await client.db.guild.create({ _id: interaction.guild.id })
     if(!user) user = await client.db.user.create({ _id: interaction.user.id })
 
     if(user?.blacklist) return;
 
-    let lang = guild.lang || 0;
+    let lang = guild.lang || 0
 
     switch(lang) {
       case 1:

@@ -6,6 +6,8 @@ module.exports = {
   aliases: ['estatisticas', 'botinfo', 'bi', 'uptime' ],
   cooldown: 3,
   ownerOnly: false,
+  description: '[ 📚 Utils ] Show some infos about me.',
+  options: [],
   async run({ client, message, args, player, lang }) {
 
         const embed = new MessageEmbed()

@@ -13,6 +13,8 @@ module.exports = {
     aliases: ["pr", "perfil"],
     cooldown: 5,
     ownerOnly: false,
+    description: '[ 📚 Utils ] Show yours/someones profile.',
+    options: [],
     async run({ client, message, args, player, lang }) {
 
         const GUILD = await client.db.guild.findOne({

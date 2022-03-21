@@ -5,6 +5,8 @@ module.exports = {
   aliases: ["latency", "latencia", "pong", "🏓"],
   cooldown: 1,
   ownerOnly: false,
+  description: '[ 📚 Utils ] Shows my ping/latency in milliseconds.',
+  options: [],
   async run({ client, message, args, player, lang }) {
     try {
 

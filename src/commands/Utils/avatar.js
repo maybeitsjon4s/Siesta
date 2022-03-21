@@ -6,6 +6,13 @@ module.exports = {
   aliases: ['av'],
   cooldown: 2,
   ownerOnly: false,
+  description: '[ 📚 Utils ] See yours/others avatars!',
+  options: [{
+    name: 'user',
+    decription: 'The user name/id/mention that you wanna see the avatar!',
+    type: 'STRING',
+    required: false
+  }],
   async run({ client, message, args, player, lang }) {
 
         let user = await client.utils.getUser(args[0], message);

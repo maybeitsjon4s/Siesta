@@ -6,6 +6,8 @@ module.exports = {
   aliases: [],
   cooldown: 2,
   ownerOnly: false,
+  description: '[ 📚 Utils ] Show my invite links!',
+  options: [],
   async run({ client, message, args, player, lang }) {
     
         message.reply({

@@ -7,7 +7,7 @@ module.exports = {
   ownerOnly: false,
   async run({ client, message, args, player, lang }) {
 
-        const list = [
+        const gifList = [
           `https://media.tenor.com/images/27171b8a85bc1adf0382032a4502f491/tenor.gif`,
           `https://media1.tenor.com/images/bad0b56de3d8dd30751abd8a74d91a0f/tenor.gif?itemid=22535007`,
           `https://media1.tenor.com/images/2adea55d1415e5c7add98e8e4095b259/tenor.gif?itemid=22535024`,
@@ -22,13 +22,13 @@ module.exports = {
           `https://media1.tenor.com/images/9bced8f065fdcc5a029a9ece04264909/tenor.gif?itemid=14969754`,
         ];
 
-        const rand = list[Math.floor(Math.random() * list.length)];
+        const randomGif = gifList[Math.floor(Math.random() * gifList.length)];
         let pessoa = await client.utils.getUser(args[0], message);
 
         if (!pessoa) return message.reply(`**${Emojis.errado} › ${lang.commands.kiss.noMention}**`);
 
         message.reply({
-          files: [rand],
+          files: [randomGif],
           content: `**${Emojis.heart} › ${message.author} ${lang.commands.kiss.message} ${pessoa}!**`,
         });
       }

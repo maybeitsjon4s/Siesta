@@ -5,6 +5,13 @@ module.exports = {
   aliases: ['sobremim', 'about', 'sobre'],
   cooldown: 6,
   ownerOnly: false,
+  description: '[ 📚 Utils ] Change your about-me in the profile.',
+  options: [{
+      name: 'text',
+      description: 'The text that will be seted as your aboutme.',
+      type: 'STRING',
+      required: true
+    }],
   async run({ client, message, args, player, lang }) {
 
     const aboutme = args.join(' ')

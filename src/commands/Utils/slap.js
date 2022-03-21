@@ -7,7 +7,7 @@ module.exports = {
   ownerOnly: false,
   async run({ client, message, args, player, lang }) {
     
-        const list = [
+        const gifList = [
           `https://i.imgur.com/fm49srQ.gif`,
           `https://c.tenor.com/E3OW-MYYum0AAAAC/no-angry.gif`,
           `https://c.tenor.com/wOCOTBGZJyEAAAAC/chikku-neesan-girl-hit-wall.gif`,
@@ -21,16 +21,14 @@ module.exports = {
           `https://c.tenor.com/fy60RaCWq08AAAAC/shikamaru-temari.gif`,
         ];
 
-        const rand = list[Math.floor(Math.random() * list.length)];
-        let pessoa = await client.utils.getUser(args[0], message);
+        const randomGif = gifList[Math.floor(Math.random() * gifList.length)];
 
-        if (!pessoa)
-          return message.reply(
-            `**${Emojis.errado} › ${lang.commands.slap.noMention}**`
-          );
+        const pessoa = await client.utils.getUser(args[0], message);
+
+        if (!pessoa) return message.reply(`**${Emojis.errado} › ${lang.commands.slap.noMention}**`);
 
         message.reply({
-          files: [rand],
+          files: [randomGif],
           content: `**${Emojis.heart} › ${message.author} ${lang.commands.slap.message} ${pessoa}!**`,
         });
       }

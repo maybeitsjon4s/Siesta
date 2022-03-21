@@ -7,6 +7,8 @@ module.exports = {
   aliases: ['ajuda', 'commands', 'h'],
   cooldown: 6,
   ownerOnly: false,
+  description: '[ 📚 Utils ] Show the list of commands and some important links.',
+  options: [],
   async run({ client, message, args, player, lang }) {
 
       const mod = readdirSync(`./src/commands/Mod`).map((arquivo) => `${arquivo.replace(/.js/g, ``)}`)

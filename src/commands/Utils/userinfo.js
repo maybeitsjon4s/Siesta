@@ -8,6 +8,13 @@ module.exports = {
   aliases: ['ui', 'whois'],
   cooldown: 3,
   ownerOnly: false,
+  description: '[ 📚 Utils ] Show yours/someones infos.',
+  options: [{
+    name: 'user',
+    description: 'The user that you wanna see infos about.',
+    type: 'STRING',
+    required: false
+  }],
   async run({ client, message, args, player, lang }) {
 
         Day.locale(lang.name)

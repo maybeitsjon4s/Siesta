@@ -5,9 +5,16 @@ module.exports = {
   aliases: ['abraçar'],
   cooldown: 2,
   ownerOnly: false,
+  description: '[ 📚 Utils ] Hugs someone.',
+  options: [{
+    name: 'user',
+    description: 'The user id/mention/name that you wanna hug.',
+    type: 'STRING',
+    required: true
+  }],
   async run({ client, message, args, player, lang }) {
 
-        const list = [
+        const gifList = [
           `https://c.tenor.com/JTqXUbfSSkYAAAAC/anime-bed.gif`,
           `https://i.imgur.com/r9aU2xv.gif`,
           `https://i.imgur.com/wOmoeF8.gif`,
@@ -28,13 +35,13 @@ module.exports = {
           `https://c.tenor.com/D4HrmF302vYAAAAC/naruto-anime.gif`,
         ];
 
-        const rand = list[Math.floor(Math.random() * list.length)];
+        const randomGif = gifList[Math.floor(Math.random() * gifList.length)];
         const user = await client.utils.getUser(args[0], message);
 
         if (!user) return message.reply(`**${Emojis.errado} › ${lang.commands.hug.noMention}!**`);
 
         message.reply({
-          files: [rand],
+          files: [randomGif],
           content: `**${Emojis.heart} › ${message.author} ${lang.commands.hug.message} ${user}!**`,
         });
       }

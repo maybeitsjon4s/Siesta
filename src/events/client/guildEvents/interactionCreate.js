@@ -21,8 +21,10 @@ module.exports = async(client, interaction) => {
     switch(lang) {
       case 1:
         lang = client.langs.pt;
+        break;
       case 0:
         lang = client.langs.en;
+        break;
     }
 
     if(command && command.ownerOnly && !client.owners.some(id => id === interaction.user.id)) return
@@ -61,7 +63,7 @@ module.exports = async(client, interaction) => {
       })
     })
 
-    await client.db.user.findOneAndUpdate({ _id: interaction.auhtor.id },
+    await client.db.user.findOneAndUpdate({ _id: interaction.author.id },
     {
     $set: {
     lastCommandUsed: Date.now()

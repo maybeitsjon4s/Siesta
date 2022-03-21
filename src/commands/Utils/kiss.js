@@ -5,6 +5,8 @@ module.exports = {
   aliases: ['beijar'],
   cooldown: 2,
   ownerOnly: false,
+  description: '[ 📚 Utils ] Kisses someone.',
+  options: [],
   async run({ client, message, args, player, lang }) {
 
         const gifList = [

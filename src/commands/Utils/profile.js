@@ -14,7 +14,12 @@ module.exports = {
     cooldown: 5,
     ownerOnly: false,
     description: '[ 📚 Utils ] Show yours/someones profile.',
-    options: [],
+    options: [{
+      name: 'user',
+      description: 'The user you wanna see the profile',
+      type: 'STRING',
+      required: false
+    }],
     async run({ client, message, args, player, lang }) {
 
         const GUILD = await client.db.guild.findOne({

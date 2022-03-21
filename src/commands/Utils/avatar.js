@@ -9,7 +9,7 @@ module.exports = {
   description: '[ 📚 Utils ] See yours/others avatars!',
   options: [{
     name: 'user',
-    decription: 'The user name/id/mention that you wanna see the avatar!',
+    description: 'The user name/id/mention that you wanna see the avatar!',
     type: 'STRING',
     required: false
   }],

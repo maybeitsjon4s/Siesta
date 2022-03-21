@@ -44,7 +44,7 @@ module.exports = async(client, interaction) => {
 
     const player = client.music.players.get(interaction.guild.id)
 
-    client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``)
+    client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${interaction.guild.name}** (\`${interaction.guild.id}\`)\nUsuario: **${interaction.author.tag}** (\`${interaction.author.id}\`)\n\`---\``)
 
     await command.run({ client, interaction, args, player, lang }).catch(err => {
       console.log(`\n\nErro no comando ${command.name}`.red + String(err.stack).gray)
@@ -60,7 +60,7 @@ module.exports = async(client, interaction) => {
       })
     })
 
-    await client.db.user.findOneAndUpdate({ _id: message.auhtor.id },
+    await client.db.user.findOneAndUpdate({ _id: interaction.auhtor.id },
     {
     $set: {
     lastCommandUsed: Date.now()

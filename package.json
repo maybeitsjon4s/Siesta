@@ -3,7 +3,7 @@
   "version": "2.0.3",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node --max_old_space_size=512 --optimize_for_size --expose-gc --gc-interval=1 ."
   },
   "author": "yJon4s_",
   "license": "ISC",

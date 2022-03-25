@@ -15,16 +15,16 @@ module.exports = async (client) => {
     },
   })
   .on("nodeConnect", async (node) => {
-    console.log(`[ ${node.options.id} ] Node Conectado!`.magenta)
+    console.log(`[ ${node.options.id} ] Node Conectado! (${client.shard.ids})`.magenta)
         setInterval(() => {
           node.send({
             op: 'pong'
           })
         }, 45000);
   })
-  .on("error", (node, error) => console.log(`[ ${node.identifier} ] Erro`.red + '\n' + String(error.message).gray))
+  .on("error", (node, error) => console.log(`[ ${node.identifier} ] Erro (${client.shard.ids})`.red + '\n' + String(error.message).gray))
 
-  .on("nodeDisconnect", (node, code, reason) => console.log(`[ ${node.options.id } ] Node desconectado`.red + '\n' + String(reason).gray))
+  .on("nodeDisconnect", (node, code, reason) => console.log(`[ ${node.options.id } ] Node desconectado (${client.shard.ids})`.red + '\n' + String(reason).gray))
 
   .on("queueEnd", async (player) => {
     const doc = await client.db.guild.findOne({ _id: player.guildId })

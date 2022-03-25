@@ -4,11 +4,11 @@ const Music = require('./Music')
 const User = require('../Models/User')
 const Guild = require('../Models/Guild')
 
-const dayjs = require("dayjs")
+const { extend } = require("dayjs")
 require('dayjs/locale/pt')
 require('dayjs/locale/en')
 const relativeTime = require('dayjs/plugin/relativeTime')
-dayjs.extend(relativeTime)
+extend(relativeTime)
 
 module.exports = class SiestaClient extends Client {
     constructor() {

@@ -44,12 +44,11 @@ module.exports = {
             .replace("HYPESQUAD_EVENTS", "<:hypesquad:938548922954178610>")
         } 
 
-        const user = await client.db.user.findOne({
+        let user = await client.db.user.findOne({
             _id: USER.id
         })
 
             if (!user) user = {
-              money: 0,
               about: null
             }
 
@@ -80,7 +79,7 @@ module.exports = {
             await fillTextWithTwemoji(ctx, list, 251, 280)
 
             ctx.font = '17px "Segoe UI Black"'
-            await fillTextWithTwemoji(ctx, Emojis.dima + client.utils.abbreviateNumber(user.money), 2, 20)
+            //await fillTextWithTwemoji(ctx, Emojis.dima + client.utils.abbreviateNumber(user.money), 2, 20)
 
             ctx.font = '21px "Segoe UI Black"'
             ctx.fillText(`Sobre mim:\n${client.utils.applyLineBreaks(client.utils.shorten(user.about, 180), 70) || lang.commands.profile.defaultAboutMe.replace('{}', GUILD.prefix)}`, 50, 402)

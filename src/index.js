@@ -1,7 +1,7 @@
 require('colors');
 const { load } = require('js-yaml');
 const { readFileSync } = require('fs');
-global.config = load(readFileSync('./env.yml', 'utf8'));
+global.config = load(readFileSync('./config.yml', 'utf8'));
 
 const { connect } = require('mongoose');
 

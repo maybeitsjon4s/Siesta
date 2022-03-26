@@ -1,6 +1,6 @@
 const yaml = require('js-yaml')
 const { readFileSync } = require('fs')
-const config = yaml.load(readFileSync('./env.yml', 'utf8'))
+const config = yaml.load(readFileSync('./config.yml', 'utf8'))
 const { ShardingManager } = require('discord.js-light')
 
 const manager = new ShardingManager('./src/index.js', {

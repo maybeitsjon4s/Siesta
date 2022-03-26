@@ -47,7 +47,8 @@ module.exports = async(client, interaction) => {
 
     client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${interaction.guild.name}** (\`${interaction.guild.id}\`)\nUsuario: **${interaction.author.tag}** (\`${interaction.author.id}\`)\n\`---\``)
 
-    await command.exec({ client, interaction, args, player, lang }).catch(err => {
+    const message = interaction;
+    await command.exec({ client, message, args, player, lang }).catch(err => {
       console.log(`\n\nErro no comando ${command.name}`.red + String(err.stack).gray)
 
       interaction.reply({

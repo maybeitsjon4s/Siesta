@@ -48,7 +48,7 @@ module.exports = {
             _id: USER.id
         })
 
-            if (!user) USER = {
+            if (!user) user = {
               money: 0,
               about: null
             }

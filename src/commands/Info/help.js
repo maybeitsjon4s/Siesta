@@ -30,7 +30,7 @@ module.exports = {
 
         message.reply({ embeds: [{
           color: client.color,
-          description: `> ${message.author}, ${lang.commands.help.message.reply('{}', '**' + client.commands.size + '**')}!`,
+          description: `> ${message.author}, ${lang.commands.help.message('{}', '**' + client.commands.size + '**')}!`,
           fields: [{
               name: `${Emojis.ban} › __${lang.commands.help.moderation}__ [${mod.length}]`,
               value: `\`${mod.join(", ")}\``

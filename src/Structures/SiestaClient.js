@@ -14,7 +14,7 @@ module.exports = class SiestaClient extends Client {
     constructor() {
         super({
             makeCache: Options.cacheWithLimits({
-                      ApplicationCommandManager: 0, // guild.commands
+        ApplicationCommandManager: 0, // guild.commands
         BaseGuildEmojiManager: 0, // guild.emojis
         GuildBanManager: 0, // guild.bans
         GuildInviteManager: 0, // guild.invites
@@ -26,7 +26,6 @@ module.exports = class SiestaClient extends Client {
         PresenceManager: 0, // guild.presences
         ReactionManager: 0, // message.reactions
         ReactionUserManager: 0, // reaction.users
-        RoleManager: 0, // guild.roles
         StageInstanceManager: 0, // guild.stageInstances
         ThreadManager: 0, // channel.threads
         ThreadMemberManager: 0, // threadchannel.members

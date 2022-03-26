@@ -6,7 +6,7 @@ module.exports = {
   aliases: ['rr'],
   cooldown: 3,
   ownerOnly: true,
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
 
     client.commands.sweep(() => true);
 

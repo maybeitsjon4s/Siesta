@@ -14,7 +14,7 @@ module.exports = {
       required: true
     }
   ],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
 
     if(!player) return message.reply(`**${Emojis.errado} › ${lang.commands.skipto.noPlayer}**`);
 

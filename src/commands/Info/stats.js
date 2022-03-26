@@ -8,7 +8,7 @@ module.exports = {
   ownerOnly: false,
   description: '[ 📚 Utils ] Show some infos about me.',
   options: [],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
 
         const embed = new MessageEmbed()
           .setColor(client.color)

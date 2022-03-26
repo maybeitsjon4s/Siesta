@@ -7,7 +7,7 @@ module.exports = {
   ownerOnly: false,
   description: '[ 🎵 Music ] Pauses the currently playing track.',
   options: [],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
       if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.pause.noPlayer}**`);
 
       if (!message.member.voice.channel || message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(`**${Emojis.errado} › ${lang.commands.pause.channelError}**`);

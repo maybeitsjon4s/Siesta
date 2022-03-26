@@ -7,7 +7,7 @@ module.exports = {
   ownerOnly: false,
   description: '[ 📚 Utils ] Kisses someone.',
   options: [],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
 
         const gifList = [
           `https://media.tenor.com/images/27171b8a85bc1adf0382032a4502f491/tenor.gif`,

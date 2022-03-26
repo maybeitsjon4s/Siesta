@@ -7,7 +7,7 @@ module.exports = {
   ownerOnly: false,
   description: '[ 🎵 Music ] Enable/Disable the track/queue loop.',
   options: [],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
        if (!player)
         return message.reply(
           `**${Emojis.errado} › ${lang.commands.loop.noPlayer}!**`

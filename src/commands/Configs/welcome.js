@@ -4,7 +4,7 @@ module.exports = {
   name: `welcome`,
   aliases: [`bem-vindo`, `entrada`],
   ownerOnly: false,
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
     
       if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} › ${lang.commands.welcome.errorPerm}**`);
       if (!args[0]) return message.reply(`**${Emojis.errado} › ${lang.commands.welcome.argsError}**`);

@@ -5,7 +5,7 @@ module.exports = {
   aliases: ['tapa'],
   cooldown: 2,
   ownerOnly: false,
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
     
         const gifList = [
           `https://i.imgur.com/fm49srQ.gif`,

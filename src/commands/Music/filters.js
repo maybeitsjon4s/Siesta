@@ -7,7 +7,7 @@ module.exports = {
   cooldown: 4,
   ownerOnly: false,
   descripions: '[ 🎵 Music ] Add/remove filters to the player.',
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
        if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.filters.noPlayer}!**`);
 
       if (!message.member.voice.channel) return message.reply(`**${Emojis.errado} › ${lang.commands.filters.channelError}!**`);

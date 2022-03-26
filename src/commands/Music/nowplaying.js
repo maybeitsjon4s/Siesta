@@ -14,7 +14,7 @@ module.exports = {
   ownerOnly: false,
   description: '[ 🎵 Music ] Show some infos about the currently playing song.',
   options: [],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
       if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.nowplaying.noPlayer}**`);
 
 

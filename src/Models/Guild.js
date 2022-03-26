@@ -13,10 +13,6 @@ const guildSchema = new Schema({
     type: Number,
     default: null
   },
-  logs: {
-    type: String,
-    default: null
-  },
   antiinvite: {
     status: {
       type: Boolean,

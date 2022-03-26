@@ -5,7 +5,7 @@ module.exports = {
   aliases: ['terminal', 'sh', 'sheel'],
   cooldown: 3,
   ownerOnly: true,
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
      
     const cmd = args.join(" ")
     if(!cmd) return;

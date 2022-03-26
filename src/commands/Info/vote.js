@@ -8,7 +8,7 @@ module.exports = {
   ownerOnly: false,
   description: '[ 📚 Utils ] Show the link so you can vote me and help me grow!',
   options: [],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
     
         message.reply({
           content: `**${Emojis.star} › ${lang.commands.vote.message}!**`,

@@ -9,7 +9,7 @@ module.exports = {
   ownerOnly: false,
   description: '[ 📚 Utils ] Show some infos about this guild.',
   options: [],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
 
         Day.locale(lang.name)
 

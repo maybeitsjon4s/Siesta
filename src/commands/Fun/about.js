@@ -12,7 +12,7 @@ module.exports = {
       type: 'STRING',
       required: true
     }],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
 
     const aboutme = args.join(' ')
         if (!aboutme) return message.reply(`**${Emojis.errado} › ${lang.commands.about.noArgs}**`);

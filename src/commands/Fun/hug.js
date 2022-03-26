@@ -12,7 +12,7 @@ module.exports = {
     type: 'STRING',
     required: true
   }],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
 
         const gifList = [
           `https://c.tenor.com/JTqXUbfSSkYAAAAC/anime-bed.gif`,

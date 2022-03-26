@@ -6,7 +6,7 @@ module.exports = {
   aliases: ['anticonvite'],
   cooldown: 3,
   ownerOnly: false,
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
       
         if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** › ${lang.commands.antiinvite.errorPerm}**`);
 

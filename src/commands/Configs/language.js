@@ -5,7 +5,7 @@ module.exports = {
   name: 'language',
   aliases: ['setlang', 'lang'],
   ownerOnly: false,
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
     
       const row = new MessageActionRow().addComponents(
         new MessageButton()

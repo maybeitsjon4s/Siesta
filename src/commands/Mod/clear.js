@@ -5,7 +5,7 @@ module.exports = {
   aliases: ['limpar', 'clean'],
   cooldown: 2,
   ownerOnly: false,
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
 
         if (!message.member.permissions.has('MANAGE_MESSAGES') && !client.owners.some(id => id === message.author.id) )
           return message.reply(`**${Emojis.errado} › ${lang.commands.clear.userPermission}**`);

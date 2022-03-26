@@ -15,7 +15,7 @@ module.exports = {
     type: 'STRING',
     required: false
   }],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
 
         Day.locale(lang.name)
 

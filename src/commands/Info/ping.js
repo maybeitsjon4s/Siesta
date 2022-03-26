@@ -7,8 +7,7 @@ module.exports = {
   ownerOnly: false,
   description: '[ 📚 Utils ] Shows my ping/latency in milliseconds.',
   options: [],
-  async run({ client, message, args, player, lang }) {
-    try {
+  async exec({ client, message, args, player, lang }) {
 
       let pingStart = process.hrtime();
       await client.db.guild.findOne({ _id: message.guild.id, })
@@ -18,8 +17,5 @@ module.exports = {
       message.reply({
         content: `**🏓Pong!\n💻Api › __${client.ws.ping}__ms\n${Emojis.db}Database › __${pingDb}__ms\n📡Shards › __${message.guild.shard.id + 1}/${client.shard.count}__**`,
       });
-    } catch (e) {
-      console.log(e);
-    }
   },
 };

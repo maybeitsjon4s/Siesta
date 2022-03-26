@@ -8,7 +8,7 @@ module.exports = {
   ownerOnly: false,
   description: '[ 📚 Utils ] Show my invite links!',
   options: [],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
     
         message.reply({
           content: `**${Emojis.star} › ${lang.commands.invite.message}!**`,

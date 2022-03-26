@@ -182,7 +182,7 @@ async getUser(args, message) {
   return text.substr(0, size).trim() + '...';
 },
 
- coinflip: _ => Math.random() < 0.5,
+ coinflip: () => Math.random() < 0.5,
 
  formatSizeUnits(bytes) {
   if (bytes >= 1073741824) {

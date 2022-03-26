@@ -13,14 +13,14 @@ module.exports = {
     type: 'STRING',
     required: false
   }],
-  async run({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, lang }) {
 
         let user = await client.utils.getUser(args[0], message);
         if (!user) user = message.author;
 
         const avatar = user.displayAvatarURL({
-          format: 'png',
-          size: 2048,
+          dynamic: true,
+          size: 2048
         });
         
         const embed = new MessageEmbed()

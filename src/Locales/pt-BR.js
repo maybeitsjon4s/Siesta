@@ -53,68 +53,6 @@ module.exports = {
             seted: "Sistema de entrada configurado com sucesso!",
             disabled: "Sistema de entrada destivado com sucesso!"
         },
-        atm: {
-            neverUsedTheBot: "Este usuario nunca me usou logo tem __0__ diamantes!",
-            message: "Atualmente {user} tem **{value}** diamante(s)"
-        },
-        coinflip: {
-            noValue: "Por favor insira o valor da aposta!",
-            dontHave: "Você não tem esse(s) diamante(s)!",
-            invalidValue: "Você tem que colocar um valor maior que \`0\` para realizar a aposta!",
-            win: "Cara!! Você ganhou",
-            lose: "Coroa!! Você perdeu"
-        },
-        cooldowns: {
-            canUse: "Já pode utilizar o comando novamente!",
-        },
-        daily: {
-            cooldown: "Tente novamente em",
-            won: "ganhou no seu daily \`{amount}\` diamantes!"
-        },
-        mine: {
-            noPickaxe: "Você precisa de um picareta para minerar!",
-            noEmeralds: "Você não tem nenhuma esmeralda!",
-            sold: "Você vendeu \`{emeralds}\` esmeraldas por \`value\` diamantes!",
-            maxLevel: "A sua picareta ja esta no nivel maximo \`(6)\`",
-            needMoreExp: "Você ainda não tem experiencia suficiente para subir o nivel da sua picareta",
-            up: "Você subiu de nivel com sucesso!",
-            help: "**mine up** › Eleva o seu nivel assim conseguindo ver as esmeraldas de forma mais cara;\n" +
-                "**mine** ›  Voce minera para tentar ganhar o maximo de esmeraldas possiveis;\n" +
-                "**mine sell** › Vende todas as suas esmeraldas;\n" +
-                "**mine info** › Mostra as suas informaçoes sobre xp, esmeraldas e nivel!",
-            emeralds: "Esmeraldas",
-            level: "Nivel",
-            exp: "Experiencia",
-            cooldown: "Tente novamente em",
-            mined: "você minerou e conseguiu \`{amount}\` esmeraldas e \`100\` de experiencia!"
-        },
-        pay: {
-            noMention: "Você tem que mencionar alguem para pagar!",
-            payYourSelf: "Não podes pagar a ti proprio!",
-            validValue: "Coloque um valor válido para o pagamento!",
-            noDiamonds: "Você não possui diamantes suficiente para realizar o pagamento!",
-            neverUsed: "Esse usuario nunca me usou por isso voce não lhe pode pagar!",
-            payed: "você pagou o {user} com \`{value}\` diamantes!",
-        },
-        shop: {
-            embed: "**Compras: \n> {Emojis.picareta} › Comprar Picareta: 50.000 {Emojis.dima} \n> {Emojis.vip} › Comprar Vip: 250.000 {Emojis.dima} \nStatus: **\n> **› Picareta:** {picareta}**/1** \n> **› Vip:** {vip}**/1**",
-            pickaxe: "Picareta",
-            menuLabel: "Clique aqui",
-            onlyAuthor: "Apenas o author da mensagem pode usar o menu!",
-            noDiamonds: "Você não tem diamantes suficientes!",
-            havePickaxe: "Você ja tem uma picareta!",
-            buyedPickaxe: "Você comprou uma picareta com sucesso!",
-            haveVip: "Você ja tem vip!",
-            buyedVip: "Você comprou vip com sucesso!"
-        },
-        work: {
-            cooldown: "Tente novamente em",
-            sucess: "trabalhou e ganhou {} diamantes"
-        },
-        vip: {
-            info: ['Vantagens', '**›** Dobro de diamantes no **daily e work ** \n **›** Cargo exclusivo no [Servidor da Siesta](https://discord.gg/BRQccw7HhZ)\n**›** Saber as novidades da Siesta antes de qualquer um!'],
-            price: ['Preço', '**›** Custa 250.000 diamantes para mais informações utilize o comando de loja!']
-        },
         ban: {
             myPermission: "Eu preciso da permissão de \`Banir Membros\` para este comando",
             userPermission: "Você precisa da permissão de \`Banir Membros\` para este comando",
@@ -268,16 +206,16 @@ module.exports = {
         avatar: {
             sucess: "Avatar de  {} **Clique [aqui]({URL}) para baixar a imagem!"
         },
-            help: {
-        moderation: "Moderação",
-        config: "Configuraçao",
-        economy: "Economia",
-        utils: "Utils/Info",
-        music: "Musica",
-        filters: "Filtros",
-        inviteMe: "Me Adicione",
-        support: "Servidor de Suporte",
-        message: "estes são todos os meus comandos, atualmente eu tenho {} comandos!"
+        help: {
+            moderation: "Moderação",
+            config: "Configuraçao",
+            fun: "Diversão",
+            info: "Info",
+            music: "Musica",
+            filters: "Filtros",
+            inviteMe: "Me Adicione",
+            support: "Servidor de Suporte",
+            message: "estes são todos os meus comandos, atualmente eu tenho {} comandos!"
     },
     hug: {
         noMention: "Mencione alguém para abraçar",

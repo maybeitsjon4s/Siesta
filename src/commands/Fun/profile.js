@@ -20,7 +20,7 @@ module.exports = {
       type: 'STRING',
       required: false
     }],
-    async run({ client, message, args, player, lang }) {
+    async exec({ client, message, args, player, lang }) {
 
         const GUILD = await client.db.guild.findOne({
             _id: message.guild.id
@@ -48,9 +48,10 @@ module.exports = {
             _id: USER.id
         })
 
-            if (!user) return message.reply({
-                content: `**${Emojis.errado} › ${lang.commands.profile.noDocument}!**`
-            })
+            if (!user) USER = {
+              money: 0,
+              about: null
+            }
 
             const canvas = createCanvas(800, 500);
             const ctx = canvas.getContext("2d");

@@ -53,68 +53,6 @@ module.exports = {
             seted: "Welcome system successfully configured!",
             disabled: "Welcome system successfully deactivated!"
         },
-        atm: {
-            neverUsedTheBot: "This user has never used me so he has __0__ diamonds!",
-            message: "Currently {user} has **{value}** diamond(s)"
-        },
-        coinflip: {
-            noValue: "Please enter the bet amount!",
-            dontHave: "You don't have that diamond(s)!",
-            invalidValue: "You have to place a value greater than \`0\` to place the bet!",
-            win: "Tails!! You won",
-            lose: "Crown!! You lost"
-        },
-        cooldowns: {
-            canUse: "You can now use the command again!",
-        },
-        daily: {
-            cooldown: "Try again at",
-            won: "won in your daily \`{amount}\` diamonds!"
-        },
-        mine: {
-            noPickaxe: "You need a pickaxe to mine!",
-            noEmeralds: "You don't have any emeralds!",
-            sold: "You sold \`{emeralds}\` emeralds for \`value\` diamonds!",
-            maxLevel: "Your pickaxe is already at maximum level \`(6)\`",
-            needMoreExp: "You still don't have enough experience to level up your pickaxe",
-            up: "You have successfully leveled up!",
-            help: "**mine up** › Raises your level so you can see emeralds more expensively;\n" +
-                "**mine** › You mine to try to earn as many emeralds as possible;\n" +
-                "**mine sell** › Sell all your emeralds;\n" +
-                "**mine info** › Show your info about xp, emeralds and level!",
-            emeralds: "Emeralds",
-            level: "Level",
-            exp: "Exp",
-            cooldown: "Try again in",
-            mined: "you mined and got \`{amount}\` emeralds and \`100\` experience!"
-        },
-        pay: {
-            noMention: "You have to mention someone to pay!",
-            payYourSelf: "You can't pay yourself!",
-            validValue: "Enter a valid amount for payment!",
-            noDiamonds: "You don't have enough diamonds to make the payment!",
-            neverUsed: "This user has never used me so you can't pay him!",
-            payed: "you paid {user} with \`{value}\` diamonds!",
-        },
-        shop: {
-            embed: "**Purchases: \n> {Emojis.picareta} › Buy Pickaxe: 50,000 {Emojis.dima} \n> {Emojis.vip} › Buy Vip: 250,000 {Emojis.dima} \nStatus: **\n> ** › Pickaxe:** {picaxe}**/1** \n> **› VIP:** {vip}**/1**",
-            pickaxe: "Pickaxe",
-            menuLabel: "Click here",
-            onlyAuthor: "Only the message author can use the menu!",
-            noDiamonds: "You don't have enough diamonds!",
-            havePickaxe: "You already have a pickaxe!",
-            buyedPickaxe: "You have successfully purchased a pickaxe!",
-            haveVip: "You already have VIP!",
-            buyedVip: "You have successfully purchased VIP!"
-        },
-        work: {
-            cooldown: "Try again at",
-            sucess: "worked and earned {} diamonds"
-        },
-        vip: {
-            info: ['Benefits', '**›** Double diamonds on **daily and work ** \n **›** Exclusive position on [Siesta Server](https://discord.gg/BRQccw7HhZ)\n**›** Know Siesta news before anyone else!'],
-            price: ['Price', '**›** It costs 250,000 diamonds for more information use the shop command!']
-        },
         ban: {
             myPermission: "I need \`Ban Members\` permission for this command",
             userPermission: "You need \`Ban Members\` permission for this command",
@@ -271,8 +209,8 @@ module.exports = {
             help: {
         moderation: "Moderation",
         config: "Configs",
-        economy: "Economy",
-        utils: "Utils/Info",
+        fun: "Fun",
+        info: "Info",
         music: "Music",
         inviteMe: "Invite Me",
         support: "Support Server",

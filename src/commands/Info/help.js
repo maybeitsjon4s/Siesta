@@ -40,7 +40,7 @@ module.exports = {
               value: `\`${configs.join(", ")}\``
             },
             {
-              name: `${Emojis.estrela} › __${lang.commands.help.fun}__ [${fun.lenght}]`,
+              name: `${Emojis.estrela} › __${lang.commands.help.fun}__ [${fun.length}]`,
               value: `\`${fun.join(", ")}\``
             },
             {

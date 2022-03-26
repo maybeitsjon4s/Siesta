@@ -69,13 +69,10 @@ module.exports = async (client, message) => {
       await command.exec({ client, message, args, player, lang }).catch((err) => {
 
       console.log('\n\n' + `Erro no ${command.name}`.red + '\n' + String(err.stack).gray)
-      message.reply({ embeds: [
-      {
+      message.reply({ embeds: [{
       color: client.color,
       description: `**${Emojis.rocket} › ` + lang.events.messageCreate.error.replace('{}', command.name) + '**' + '\n\n\`\`\`' + err + '\`\`\`'
-      }
-      ],
-      components: [row]})
+      }]})
     })
     await client.db.user.findOneAndUpdate({ _id: message.author.id }, { $set: { lastCommandUsed: Date.now() }})  
 };

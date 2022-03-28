@@ -1,3 +1,3 @@
 module.exports = async(client) => {
-  console.log(`[ SHARDS ] › Shard ${client.shard.ids} reconectando...`.green)
+  client.logger.sucess(`[ SHARDS ] Shard ${client.shard.ids} reconectando.`)
 };

@@ -6,7 +6,12 @@ module.exports = {
   cooldown: 2,
   ownerOnly: false,
   description: '[ 📚 Utils ] Kisses someone.',
-  options: [],
+  options: [{
+    name: 'user',
+    description: 'The user you wanna kiss',
+    type: 'STRING',
+    required: true
+  }],
   async exec({ client, message, args, player, lang }) {
 
         const gifList = [

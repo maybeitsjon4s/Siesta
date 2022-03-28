@@ -15,17 +15,20 @@ module.exports = async (client) => {
     },
   })
   .on("nodeConnect", async (node) => {
-    console.log(`[ ${node.options.id} ] Node Conectado! (${client.shard.ids})`.magenta)
+    client.logger.sucess(`[ ${node.options.id} ] Node Conectado (${client.shard.ids})`)
         setInterval(() => {
           node.send({
             op: 'pong'
           })
         }, 45000);
   })
-  .on("error", (node, error) => console.log(`[ ${node.identifier} ] Erro (${client.shard.ids})`.red + '\n' + String(error.message).gray))
-
-  .on("nodeDisconnect", (node, code, reason) => console.log(`[ ${node.options.id } ] Node desconectado (${client.shard.ids})`.red + '\n' + String(reason).gray))
-
+  .on("error", (node, error) => {
+    client.logger.error(`[ ${node.identifier} ] Erro (${client.shard.ids})`)
+    client.logger.stack(error.message)
+  })
+  .on("nodeDisconnect", (node, code, reason) => {
+    client.logger.error(`[ ${node.options.id} ] Node desconectado.`)
+  })
   .on("queueEnd", async (player) => {
     const doc = await client.db.guild.findOne({ _id: player.guildId })
   
@@ -49,7 +52,7 @@ module.exports = async (client) => {
   
     const doc = await client.db.guild.findOne({ _id: channel.guild.id })
   
-    if (player.lastPlayingMsgID) channel.messages.forge(player.lastPlayingMsgID).delete()
+    if (player.lastPlayingMsgID) channel.messages.forge(player.lastPlayingMsgID).delete().catch(() => {})
 
      let lang = doc.lang || 0
   

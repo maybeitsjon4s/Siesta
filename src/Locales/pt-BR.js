@@ -234,8 +234,7 @@ module.exports = {
         message: "Você pode me adicionar ao seu servidor usando o botão abaixo",
     },
     profile: {
-        noDocument: "Este usuario nunca usou um comando meu logo não tem um perfil!",
-        defaultAboutMe: "Utilize {}about para alterar esta mensagem!"
+        defaultAboutMe: "Utilize {}about para alterar esta mensagem!",
     },
     serverinfo: {
         name: "Nome",

@@ -78,9 +78,6 @@ module.exports = {
             ctx.font = '30px "Segoe UI Black"'
             await fillTextWithTwemoji(ctx, list, 251, 280)
 
-            ctx.font = '17px "Segoe UI Black"'
-            //await fillTextWithTwemoji(ctx, Emojis.dima + client.utils.abbreviateNumber(user.money), 2, 20)
-
             ctx.font = '21px "Segoe UI Black"'
             ctx.fillText(`Sobre mim:\n${client.utils.applyLineBreaks(client.utils.shorten(user.about, 180), 70) || lang.commands.profile.defaultAboutMe.replace('{}', GUILD.prefix)}`, 50, 402)
 

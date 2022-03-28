@@ -4,7 +4,7 @@ const { glob } = require('glob')
 const globPromise = promisify(glob)
 
 module.exports = async(client) => {
-  console.log(`[ SHARDS ] › Shard ${client.shard.ids} conectada!`.green)
+  client.logger.sucess(`[ SHARDS ] Shard ${client.shard.ids} conectada`)
 
   client.music.start(client.user.id);
   await delay(10000)

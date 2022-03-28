@@ -49,25 +49,21 @@ module.exports = async(client, interaction) => {
 
     const message = interaction;
     await command.exec({ client, message, args, player, lang }).catch(err => {
-      console.log(`\n\nErro no comando ${command.name}`.red + String(err.stack).gray)
+      client.logger.error(`Erro em ${command.name}`)
+      client.logger.stack(err.stack)
 
       interaction.reply({
-        embeds: [
-          {
+        embeds: [{
           color: client.color,
           description: `**${Emojis.rocket} › ` + lang.events.messageCreate.error.replace('{}', command.name) + '**' + '\`\`\`\n' + err + '\`\`\`'
-          }
-        ],
+          }],
         ephemeral: true
       })
     })
 
-    await client.db.user.findOneAndUpdate({ _id: interaction.author.id },
-    {
+    await client.db.user.findOneAndUpdate({ _id: interaction.author.id } , {
     $set: {
     lastCommandUsed: Date.now()
-    }
-    })
-
+    }})
   }
 } 

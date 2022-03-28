@@ -8,7 +8,7 @@ module.exports = async (client, member) => {
   
   if (guild.welcome.status && !member.user.bot) {
 
-    let channel = await member.guild.channels.cache.get(guild.welcome.channel);
+    const channel = await member.guild.channels.cache.get(guild.welcome.channel);
 
     const row = new MessageActionRow().addComponents(
       new MessageButton()

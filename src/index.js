@@ -1,11 +1,13 @@
-require('colors');
 const { load } = require('js-yaml');
 const { readFileSync } = require('fs');
 global.config = load(readFileSync('./config.yml', 'utf8'));
 
 const { connect } = require('mongoose');
 
-connect(global.config.database, { useNewUrlParser: true, useUnifiedTopology: true }).catch(console.error)
+connect(global.config.database, 
+  { useNewUrlParser: true,
+    useUnifiedTopology: true 
+  }).then(() => {}).catch(console.error)
 
 const SiestaClient = require('./Structures/SiestaClient');
 const client = new SiestaClient();
@@ -13,7 +15,7 @@ const client = new SiestaClient();
 client.start();
 
 const filter = (err) => { 
-  if(!['Missing Access', 'Missing Permissions'].includes(err)) console.log('\n\n' + String(err.stack).gray) 
+  if(!['Missing Access', 'Missing Permissions'].includes(err)) console.log('\n\n'); client.logger.stack(err.stack) 
 }
 
 process.on('unhandledRejection', filter)

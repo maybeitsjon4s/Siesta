@@ -29,9 +29,11 @@ module.exports = async (client, message) => {
     prefix = GUILD.prefix
   }
 
+  if(client.user.id == '871825521779036201'/*Siesta Canary*/) prefix = '.'
+
   if (!message.content.toLowerCase().startsWith(prefix)) return;
 
-  if (!USER) await client.db.user.create({ _id: message.author.id, })
+  if (!USER) USER = await client.db.user.create({ _id: message.author.id, })
 
   if(USER?.blacklist) return;
 
@@ -52,9 +54,8 @@ module.exports = async (client, message) => {
 
   if (message.content == `<@${client.user.id}>` || message.content == `<@!${client.user.id}>`) return message.reply({ content: String(lang.events.messageCreate.mention).replaceAll('{}', GUILD.prefix) })
 
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/g);
 
-  const cmd = args.shift().toLowerCase();
   if (cmd.length === 0) return;
   const command = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
 
@@ -67,12 +68,14 @@ module.exports = async (client, message) => {
     client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``)
 
       await command.exec({ client, message, args, player, lang }).catch((err) => {
-
-      console.log('\n\n' + `Erro no ${command.name}`.red + '\n' + String(err.stack).gray)
+      client.logger.error(`Erro no commando ${command.name}`)
+      client.logger.stack(err.stack)
       message.reply({ embeds: [{
       color: client.color,
       description: `**${Emojis.rocket} › ` + lang.events.messageCreate.error.replace('{}', command.name) + '**' + '\n\n\`\`\`' + err + '\`\`\`'
       }]})
     })
-    await client.db.user.findOneAndUpdate({ _id: message.author.id }, { $set: { lastCommandUsed: Date.now() }})  
+    await client.db.user.findOneAndUpdate({ _id: message.author.id }, { 
+      $set: { lastCommandUsed: Date.now() 
+      }})  
 };

@@ -1,3 +1,3 @@
 module.exports = async(client) => {
-  console.log(`[ SHARDS ] › Shard ${client.shard.ids} morreu`.green)
+  client.logger.error(`[ SHARDS ] Shard ${client.shard.ids} morreu.`)
 };

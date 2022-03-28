@@ -234,7 +234,7 @@ module.exports = {
     },
     profile: {
         noDocument: "This user has never used a command of mine so he doesn't have a profile!",
-        defaultAboutMe: "Use {}about to change this message!"
+        defaultAboutMe: "Use {}about to change this message!",
     },
     serverinfo: {
         name: "Name",

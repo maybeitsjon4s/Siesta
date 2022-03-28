@@ -17,7 +17,7 @@ module.exports = {
   async exec({ client, message, args, player, lang }) {
 
         if (player) {
-          if (message.member.voice.channel?.id != message.guild.me.voice.channel.id) return message.reply(`**${Emojis.errado} › ${lang.commands.play.wrongVoiceChannel}**`);
+          if (message.member.voice.channel?.id != player.voiceChannelId) return message.reply(`**${Emojis.errado} › ${lang.commands.play.wrongVoiceChannel}**`);
         }
 
         if (!message.member.voice.channel) return message.reply(`**${Emojis.errado} › ${lang.commands.play.noVoiceChannel}**`);

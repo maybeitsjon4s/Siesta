@@ -2,7 +2,7 @@ const Emojis = require('../../Structures/Utils/emojis.js');
 
 module.exports = {
   name: 'blacklist',
-  alises: ['bl'],
+  aliases: ['bl'],
   ownerOnly: true,
   async exec({ client, message, args, player, lang }) {
 
@@ -12,13 +12,13 @@ module.exports = {
 
     if(['add', 'remove'].some(arg => args[0] == arg)) {
       if(args[0] == 'add') {
-        client.db.user.findOneAndUpdate({ _id: user.id }, {
+       await client.db.user.findOneAndUpdate({ _id: user.id }, {
           $set: {
             blacklist: true
           }})
         message.reply('ok.')
       } else if(args[0] == 'remove') {
-        client.db.user.findOneAndUpdate({ _id: user.id }, { 
+       await client.db.user.findOneAndUpdate({ _id: user.id }, { 
           $set: {
             blacklist: false
         }})

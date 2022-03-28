@@ -2,6 +2,5 @@
 
 killall node
 
-
 yarn
 yarn start

@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 1000
+    ignore:
+      - dependency-name: 'node-fetch'
+        versions: ["3.x"]

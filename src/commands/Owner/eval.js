@@ -3,7 +3,6 @@ const Emojis = require('../../Structures/Utils/emojis.js');
 module.exports = {
   name: 'eval',
   aliases: ['e', 'ev'],
-  cooldown: 0.1,
   ownerOnly: true,
   async exec({ client, message, args, player, lang }) {
     

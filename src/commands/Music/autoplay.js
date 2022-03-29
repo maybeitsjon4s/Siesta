@@ -9,7 +9,7 @@ module.exports = {
   async exec({ client, message, args, player, lang }) {
 
     if(!player) return message.reply(`**${Emojis.errado} › ${lang.commands.autoplay.noPlayer} **`);
-    if(!message.member.voice?.channel || message.member.voice.channel !== player.voiceChannelId) return message.reply(`**${Emojis.errado} › ${lang.commands.autoplay.channelError}**`);
+    if(!message.member.voice?.channel || message.member.voice.channel.id !== player.voiceChannelId) return message.reply(`**${Emojis.errado} › ${lang.commands.autoplay.channelError}**`);
     
     if(player.autoplay) {
       player.autoplay = false;

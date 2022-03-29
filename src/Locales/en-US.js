@@ -199,6 +199,12 @@ module.exports = {
           noQueue: "Needs to be more than one music so i can shuffle the queue.",
           sucess: "Shuffled the queue successfully!"
         },
+        autoplay: {
+        noPlayer: "I\'m not playing music on this server.",
+        channelError: "You\'re not on a voice channel or you\'re not on the same channel as me.",
+        disabled: "I disabled the autoplay successfully.",
+        activated: "I actived the autoplay successfully."
+        },
         about: {
             noArgs: "Insert something to put in the about me",
             sucess: "About me successfully changed!"

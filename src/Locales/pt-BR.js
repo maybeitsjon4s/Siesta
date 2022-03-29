@@ -199,6 +199,12 @@ module.exports = {
         noQueue: "Tem de haver mais de uma musica para eu poder embarelhar a lista de reprodução.",
         sucess: "Embarelhei as musicas da fila de reprodução com sucesso!"
         },
+        autoplay: {
+        noPlayer: "Não estou tocando música neste servidor",
+        channelError: "Você não está em um canal de voz ou não está no mesmo canal que eu.",
+        disabled: "Desativei o autoplay com sucesso.",
+        activated: "Ativei o autoplay com sucesso."
+        },
         about: {
             noArgs: "Insira algo para colocar no sobre-mim",
             sucess: "Sobre-mim alterado com sucesso!"

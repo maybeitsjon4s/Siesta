@@ -42,8 +42,17 @@ module.exports = async (client) => {
       lang = client.langs.en
       break;
     }
+
+    if(player.autoplay) {
+      const results = await client.music.search(player.current.title)
+      if(!results.length || result.loadType == 'LOAD_FAILED') return player.destroy();
+      const track = results.tracks[Math.floor(Math.random() * Math.floor(results.tracks.length))] 
+      player.queue.push(track)
+      if(!player.playing) player.play()
+    } else {
     client.channels.cache.get(player.textChannelId).send(`**${Emojis.music} › ${lang.events.musicEvents.queueEnd}**`)
     player.destroy();
+    }
   })
 
   .on("trackStart", async (player, track) => {

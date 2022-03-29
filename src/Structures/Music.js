@@ -22,7 +22,9 @@ module.exports = async (client) => {
           })
         }, 45000);
   })
-  .on("error", (node, error) => {
+  .on("error", (node, error, code) => {
+
+    if(error.message.includes('503') || error.message.includes('1006')) return;
     client.logger.error(`[ ${node.identifier} ] Erro (${client.shard.ids})`)
     client.logger.stack(error.message)
   })
@@ -44,9 +46,11 @@ module.exports = async (client) => {
     }
 
     if(player.autoplay) {
-      const results = await client.music.search(player.current.title)
-      if(!results.length || result.loadType == 'LOAD_FAILED') return player.destroy();
-      const track = results.tracks[Math.floor(Math.random() * Math.floor(results.tracks.length))] 
+      const results = await client.music.search(player.current.title.slice(0, 10))
+      console.log(results)
+      if(!results.tracks.length) return player.destroy();
+      const track = results.tracks[5];
+      track.setRequester(player.current.requester)
       player.queue.push(track)
       if(!player.playing) player.play()
     } else {

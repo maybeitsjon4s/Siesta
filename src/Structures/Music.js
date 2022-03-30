@@ -49,7 +49,7 @@ module.exports = async (client) => {
       const mixURL = `https://www.youtube.com/watch?v=${player.current.identifier}&list=RD${player.current.identifier}`;
       const results = await client.music.search(mixURL);
       if(!results.tracks.length) return player.destroy();
-      const track = results.tracks[Math.floor(Math.random() * Math.floor(results.tracks.length))]
+      const track = results.tracks.filter(x => x.title !== player.current.title)[Math.floor(Math.random() * Math.floor(results.tracks.length)]
       track.setRequester(player.current.requester)
       player.queue.push(track)
       if(!player.playing) player.play()

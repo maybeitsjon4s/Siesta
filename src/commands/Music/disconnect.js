@@ -9,10 +9,9 @@ module.exports = {
   options: [],
   async exec({ client, message, args, player, lang }) {
 
-      if (!player)
-        return message.reply(`**${Emojis.errado} › ${lang.commands.disconnect.noPlayer}**`);
+      if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.disconnect.noPlayer}**`);
 
-      if (!message.member.voice.channel || message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(`**${Emojis.errado} › ${lang.commands.disconnect.channelError}**`);
+      if (!message.member.voice.channel || message.member.voice.channel.id != message.guild.me.voice?.channel?.id) return message.reply(`**${Emojis.errado} › ${lang.commands.disconnect.channelError}**`);
 
       player.destroy();
       message.reply(`**${Emojis.music} › ${lang.commands.disconnect.sucess}**`);

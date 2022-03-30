@@ -49,10 +49,14 @@ module.exports = async (client) => {
       const mixURL = `https://www.youtube.com/watch?v=${player.current.identifier}&list=RD${player.current.identifier}`;
       const results = await client.music.search(mixURL);
       if(!results.tracks.length) return player.destroy();
-      const track = results.tracks.filter(x => x.title !== player.current.title)[Math.floor(Math.random() * Math.floor(results.tracks.filter(x => x.title !== player.current.title).length))]
-      track.setRequester(player.current.requester)
-      player.queue.push(track)
-      if(!player.playing) player.play()
+      const tracks = results.tracks.filter((track) => track.title !== player.current.title);
+      const track = tracks[Math.floor(Math.random() * tracks.length)];
+      track.setRequester({
+        tag: 'AUTOPLAY#0000',
+        id: client.user.id
+      });
+      player.queue.push(track);
+      player.play().catch(() => {});
     } else {
     client.channels.cache.get(player.textChannelId).send(`**${Emojis.music} › ${lang.events.musicEvents.queueEnd}**`)
     player.destroy();
@@ -60,7 +64,8 @@ module.exports = async (client) => {
   })
 
   .on("trackStart", async (player, track) => {
-  
+
+    console.log(player.queue, track)
     const channel = client.channels.cache.get(player.textChannelId);
   
     const doc = await client.db.guild.findOne({ _id: channel.guild.id })

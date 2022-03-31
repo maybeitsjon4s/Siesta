@@ -1,30 +1,30 @@
-const { promisify } = require('util')
-const delay = promisify(setTimeout)
-const { glob } = require('glob')
-const globPromise = promisify(glob)
+const { promisify } = require('util');
+const delay = promisify(setTimeout);
+const { glob } = require('glob');
+const globPromise = promisify(glob);
 
 module.exports = async(client) => {
-  client.logger.sucess(`[ SHARDS ] Shard ${client.shard.ids} conectada`)
+	client.logger.sucess(`[ CLIENT ] Fui iniciado em ${client.guilds.cache.size} servidores com sucesso`);
 
-  client.music.start(client.user.id);
-  await delay(10000)
+	client.music.start(client.user.id);
+	await delay(10000);
 
-  client.user.setActivity(`<help - ${await client.shard.fetchClientValues("guilds.cache.size").then((x) => x.reduce((f, y) => f + y))} Guilds | Shard [${client.shard.ids}]`)
+	client.user.setActivity(`<help - ${client.guilds.cache.size} Guilds | Shard [${client.ws.shards.id}]`);
 
-// Slash Commands.
+	// Slash Commands.
 
-const slashCommands = await globPromise(`${process.cwd()}/src/commands/*/*.js`)
+	const slashCommands = await globPromise(`${global.process.cwd()}/src/commands/*/*.js`);
 
-const arrayOfSlashCommands = [];
+	const arrayOfSlashCommands = [];
 
-slashCommands.map((value) => {
-const file = require(value)
+	slashCommands.map((value) => {
+		const file = require(value);
 
-if(!file?.name || !file.description ||!file.options) return;
+		if(!file?.name || !file.description ||!file.options) return;
 
-arrayOfSlashCommands.push(file);
-})
+		arrayOfSlashCommands.push(file);
+	});
 
-await client.application.commands.set(arrayOfSlashCommands);
+	await client.application.commands.set(arrayOfSlashCommands);
 //
 };

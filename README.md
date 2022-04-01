@@ -4,16 +4,11 @@
 **Made by [yJon4ss](https://github.com/yJon4ss) with Javascript and ❤️**
 
 # **🚀 Some Siesta Features:**
-
-> ・ Music,
-> 
-> ・ Global Economy System,
-> 
-> ・ Moderation,
-> 
-> ・ Fun,
-> 
-> ・ Information Commands 
+- Music,
+- Global Economy System,
+- Moderation, 
+- Fun,
+- Information Commands 
 
 **And much more! What are you waiting for [inviting Siesta to your Server](https://discord.com/api/oauth2/authorize?client_id=907747074118926347&permissions=271641686&scope=applications.commands%20bot)?**
 

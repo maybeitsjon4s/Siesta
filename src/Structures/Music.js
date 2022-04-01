@@ -65,7 +65,6 @@ module.exports = async (client) => {
 
 		.on('trackStart', async (player, track) => {
 
-			console.log(player.queue, track);
 			const channel = client.channels.cache.get(player.textChannelId);
   
 			const doc = await client.db.guild.findOne({ _id: channel.guild.id });

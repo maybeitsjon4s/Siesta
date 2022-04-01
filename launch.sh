@@ -3,4 +3,4 @@
 killall node
 
 yarn
-yarn start &
+yarn start

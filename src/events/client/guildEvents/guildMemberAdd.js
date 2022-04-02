@@ -32,7 +32,7 @@ module.exports = async (client, member) => {
     });
   }
   // AutoRole
-  if(guild.autorole.status && guild.autorole.roles.length) {
+  if(guild.autorole.status) {
 
     const { roles } = guild.autorole;
 

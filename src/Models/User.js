@@ -1,22 +1,19 @@
-const { Schema } = require('mongoose');
-const mongoose = require('mongoose');
-const userSchema = new Schema({
-	_id: {
-		type: String,
-		default: null
-	},
-	about: {
-		type: String,
-		default: null
-	},
-	blacklist: {
-		type: Boolean,
-		default: false
-	},
-	lastCommandUsed: {
-		type: Date, default: null
-	}
-});
+const { Schema, model } = require('mongoose');
 
-const User = mongoose.model('Users', userSchema);
-module.exports = User;
+module.exports = model('Users', new Schema({
+  _id: {
+    type: String,
+    default: null
+  },
+  about: {
+    type: String,
+    default: null
+  },
+  blacklist: {
+    type: Boolean,
+    default: false
+  },
+  lastCommandUsed: {
+    type: Date, default: null
+  }
+}));

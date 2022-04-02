@@ -16,7 +16,7 @@ module.exports = {
     const doc = await client.db.guild.findOne({ _id: message.guild.id });
 
     if(args[0] == 'status') {
-      if(doc.autorole.status) {
+      if(!doc.autorole.status) {
         message.reply(`**${Emojis.config} › ${lang.commands.autorole.enabled}**`);
         doc.autorole.status = false;
         await doc.save();

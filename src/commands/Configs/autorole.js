@@ -18,11 +18,11 @@ module.exports = {
     if(args[0] == 'status') {
       if(!doc.autorole.status) {
         message.reply(`**${Emojis.config} › ${lang.commands.autorole.enabled}**`);
-        doc.autorole.status = false;
+        doc.autorole.status = true;
         await doc.save();
       } else {
         message.reply(`**${Emojis.config} › ${lang.commands.autorole.disabled}**`);
-        doc.autorole.status = true;
+        doc.autorole.status = false;
         await doc.save();
       }
     } else if(args[0] == 'role') {

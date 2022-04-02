@@ -33,9 +33,7 @@ module.exports = async (client, member) => {
   }
   // AutoRole
   if(guild.autorole.status) {
-
     const { roles } = guild.autorole;
-
     roles.forEach((role) => {
       member.roles.add(role).catch(() => {});
     });

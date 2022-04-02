@@ -7,7 +7,7 @@ module.exports = {
   async exec({ client, message, args, lang }) {
 
     if(!message.member.permissions.has('MANAGE_GUILD')) return message.reply(`**${Emojis.errado} › **`);
-    if(!args[0] || ['status', 'role'].includes(args[0]) || args[0] == 'help') return message.reply({ embeds: [{
+    if(!args[0] || !['status', 'role'].includes(args[0]) || args[0] == 'help') return message.reply({ embeds: [{
       color: client.color,
       title: Emojis.config + '__Siesta__',
       fields: [lang.commands.autorole.embed[0], lang.commands.autorole.embed[1]]

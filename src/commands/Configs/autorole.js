@@ -29,7 +29,7 @@ module.exports = {
       const role = message.mentions.roles.first() || message.guild.roles.cache.get(args[1]);
       if(!role) return message.reply(`${Emojis.errado}** › ${lang.commands.autorole.invalidRole}**`);
 
-      if(!doc.autorole.roles.has(role.id)) {
+      if(!doc.autorole.roles.includes(role.id)) {
         if(doc.autorole.roles.length == 5) return message.reply(`**${Emojis.errado} › ${lang.commands.autorole.maxRoles}**`);
         message.reply(`**${Emojis.config} › ${lang.commands.autorole.added}**`);
         doc.autorole.roles.push(role.id);

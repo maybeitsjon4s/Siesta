@@ -19,7 +19,7 @@ module.exports = {
       .setDescription(
         `**${Emojis.aurora} » ${lang.commands.nowplaying.info}\n${lang.commands.nowplaying.name}: [${track.title.replace('`', '\'')}](${track.uri}) \n ${lang.commands.nowplaying.duration}: ${formatTime(
           client.utils.convertMilliseconds(player.position)
-        )}\`[${client.utils.progressBarEnhanced(
+        )}\`[${client.utils.progressBar(
           player.position / 1000 / 50,
           track.duration / 1000 / 50,
           20

@@ -11,7 +11,7 @@ module.exports = {
     client.commands.sweep(() => true);
 
     glob(`${global.process.cwd()}/src/commands/**/*js`, async (err, filePaths) => {
-      if (err) return console.log(err);
+      if (err) return message.reply('```' + err.stack + '```');
 
       filePaths.forEach((file) => {
 
@@ -29,5 +29,18 @@ module.exports = {
       });
     });
     message.reply(`**${Emojis.dev} › Comandos recarregados.**`);
+    glob(`${global.process.cwd()}/src/Locales/**/*js`, async(err, filePaths) => {
+      if(err) return;
+      filePaths.forEach((file) => {
+        delete require.cache[require.resolve(file)];
+        const pull = require(file);
+        if(pull.name == 'en-US') { 
+          client.langs.en = pull; 
+        } else { 
+          client.langs.pt = pull; 
+        }
+      })
+      message.reply(`**${Emojis.dev} › Locales recarregados.**`)
+    })
   },
 };

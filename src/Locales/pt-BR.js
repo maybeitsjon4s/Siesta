@@ -36,7 +36,7 @@ module.exports = {
     },
     language: {
       errorPerm: 'Você precisa da permissão `Gerenciar servidor` para executar este comando!',
-      message: 'vejo que você quer alterar a linguagem que eu uso aqui!**n> **Para a alterar basta utilizar os botões que estão nesta mensagem!**nn> 🇵🇹 Português › 100%n> 🇺🇸 Inglês › 100%nn> `As traduções podem não estar 100% corretas caso você encontre algum problema nelas reporte-o a minha equipe!`',
+      message: 'vejo que você quer alterar a linguagem que eu uso aqui!**\n> **Para a alterar basta utilizar os botões que estão nesta mensagem!**\n> 🇵🇹 Português › 100%\n> 🇺🇸 Inglês › 100%\n> `As traduções podem não estar 100% corretas caso você encontre algum problema nelas reporte-o a minha equipe!`',
       onlyAuthor: 'Voce não pode utilizar estes botões',
       portugueseSeted: 'Português setado com sucesso!',
       englishSeted: 'English set successfully',
@@ -49,7 +49,7 @@ module.exports = {
     },
     welcome: {
       errorPerm: 'Você precisa da permissão `Gerenciar servidor` para executar este comando!',
-      argsError: 'Você não usou o comando da forma certa utilize `<welcome on/off [canal] [mensagem de entrada]` se quiser saber algums placeholders confira esta pequena lista: n `{guild}` - Exibe o nome do servidor. n `{member}` - Menciona o usuario que entrou n `{membertag}` - Exibe o nome e a tag do usuario.n `{count}` - Mostra a quantidade de membros do servidor.',
+      argsError: 'Você não usou o comando da forma certa utilize `<welcome on/off [canal] [mensagem de entrada]` se quiser saber algums placeholders confira esta pequena lista: \n `{guild}` - Exibe o nome do servidor. \n `{member}` - Menciona o usuario que entrou \n `{membertag}` - Exibe o nome e a tag do usuario.\n `{count}` - Mostra a quantidade de membros do servidor.',
       seted: 'Sistema de entrada configurado com sucesso!',
       disabled: 'Sistema de entrada destivado com sucesso!'
     },

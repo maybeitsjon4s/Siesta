@@ -36,7 +36,7 @@ module.exports = {
     },
     language: {
       errorPerm: 'You need `Manage Server` permission to run this command!',
-      message: 'I see that you want to change the language I use here!**n> **To change it, just use the buttons in this message!**nn> 🇵🇹 Portuguese › 100%n> 🇺🇸 English › 100%nn> `The translations may not be 100% correct, if you find any problems with them, please report it to my team!`',
+      message: 'I see that you want to change the language I use here!**\n> **To change it, just use the buttons in this message!**\n> 🇵🇹 Portuguese › 100%\n> 🇺🇸 English › 100%\n> `The translations may not be 100% correct, if you find any problems with them, please report it to my team!`',
       onlyAuthor: 'You cannot use these buttons',
       portugueseSeted: 'Portugues setado com sucesso!',
       englishSeted: 'English set successfully',

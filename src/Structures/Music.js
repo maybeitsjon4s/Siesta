@@ -32,18 +32,7 @@ module.exports = async (client) => {
       client.logger.error(`[ ${node.options.id} ] Node desconectado.`);
     })
     .on('queueEnd', async (player) => {
-      const doc = await client.db.guild.findOne({ _id: player.guildId });
-  
-      let lang = doc.lang || 0;
-  
-      switch(lang) {
-      case 1:
-        lang = client.langs.pt;
-        break;
-      case 0:
-        lang = client.langs.en;
-        break;
-      }
+      const lang = getLanguage(player.guildId);
 
       if(player.autoplay) {
         const mixURL = `https://www.youtube.com/watch?v=${player.current.identifier}&list=RD${player.current.identifier}`;
@@ -67,23 +56,12 @@ module.exports = async (client) => {
 
       const channel = client.channels.cache.get(player.textChannelId);
   
-      const doc = await client.db.guild.findOne({ _id: channel.guild.id });
-  
-      if (player.lastPlayingMsgID) channel.messages.forge(player.lastPlayingMsgID).delete().catch(() => {});
-
-      let lang = doc.lang || 0;
-  
-      switch(lang) {
-      case 1:
-        lang = client.langs.pt;
-        break;
-      case 0:
-        lang = client.langs.en;
-        break;
-      }
+      const lang = getLanguage(player.guildId);
   
       channel.send(`**${Emojis.music} › ${lang.events.musicEvents.trackStart.replace('{track}', track.title).replace('{user}', track.requester.tag)}**`).then(msg => {
-        player.lastPlayingMsgID = msg.id;
+        setTimeout(() => {
+          msg.delete(); 
+        }, 3 * 60 * 1000);
       });
     })
 
@@ -92,20 +70,23 @@ module.exports = async (client) => {
     .on('trackException', async({ player, exception }) => {
       player.skip();
 
-      const doc = await client.db.guild.findOne({ _id: player.guildId });
+      const lang = getLanguage(player.guildId);
 
-      let lang = doc.lang || 0;
-
-      switch(lang) {
-      case 1:
-        lang = client.langs.pt;
-        break;
-      case 0:
-        lang = client.langs.en;
-        break;
-      }
 
       client.channels.cache.get(player.textChannelId).send({ content: `**${Emojis.music} › ${lang.musicEvents.trackException} **` + '```\n' + exception.message + '```' });
 
     });
+  const getLanguage = async (guildId) => {
+    const guildDocument = await client.db.guild.findOne({ _id: guildId });
+    let lang = guildDocument.lang || 0;
+    switch(lang) {
+    case 1:
+      lang = client.langs.pt;
+      break;
+    case 0:
+      lang = client.langs.en;
+      break;
+    }
+    return lang;
+  };
 };

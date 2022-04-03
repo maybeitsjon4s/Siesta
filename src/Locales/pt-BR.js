@@ -152,8 +152,13 @@ module.exports = {
     },
     nowplaying: {
       noPlayer: 'Não estou a tocar música neste servidor!',
+      info: 'Informações',
       name: 'Nome',
-      requester: 'Pedido por:'
+      duration: 'Duração',
+      enabled: 'Ativado',
+      disabled: 'Desativado',
+      playing: 'Tocando',
+      paused: 'Pausado'
     },
     pause: {
       noPlayer: 'Não estou tocando música neste servidor.',

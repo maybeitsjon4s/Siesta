@@ -39,8 +39,8 @@ module.exports = {
         } else { 
           client.langs.pt = pull; 
         }
-      })
-      message.reply(`**${Emojis.dev} › Locales recarregados.**`)
-    })
+      });
+      message.reply(`**${Emojis.dev} › Locales recarregados.**`);
+    });
   },
 };

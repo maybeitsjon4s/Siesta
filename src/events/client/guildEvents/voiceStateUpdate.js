@@ -24,7 +24,7 @@ module.exports = async (client, oldState, newState) => {
 
   if (oldState.id === client.user.id) return;
   if (!oldState.guild.me.voice.channelId) return;
-
+  /*
   if (oldState.guild.members.cache.get(client.user.id).voice.channelId === oldState.channelId) {
     if (oldState.guild.me.voice?.channel && oldState.guild.me.voice.channel.members.filter((m) => !m.user.bot).size === 0) {
       await delay(180000);
@@ -34,4 +34,5 @@ module.exports = async (client, oldState, newState) => {
 
     }
   }
+  */
 };

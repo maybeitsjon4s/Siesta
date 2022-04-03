@@ -18,7 +18,7 @@ module.exports = class Siesta extends Client {
         GuildBanManager: 0,
         GuildInviteManager: 0,
         GuildManager: Infinity,
-        GuildMemberManager: 0,
+        GuildMemberManager: Infinity,
         GuildStickerManager: 0,
         GuildScheduledEventManager: 0, 
         MessageManager: 0,

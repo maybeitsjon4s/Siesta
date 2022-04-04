@@ -10,16 +10,12 @@ module.exports = {
 
     if(['add', 'remove'].some(arg => args[0] == arg)) {
       if(args[0] == 'add') {
-        await client.db.user.findOneAndUpdate({ _id: user.id }, {
-          $set: {
-            blacklist: true
-          } });
+        doc.blacklist = true;
+        await doc.save()
         message.reply('ok.');
       } else if(args[0] == 'remove') {
-        await client.db.user.findOneAndUpdate({ _id: user.id }, { 
-          $set: {
-            blacklist: false
-          } });
+        doc.blacklist = false;
+        await doc.save()
         message.reply('ok.');
       }
     } else {

@@ -217,7 +217,7 @@ callsites@^3.0.0:
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-3.1.0.tgz#b3630abd8943432f54b3f0519238e33cd7df2f73"
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
-canvas@2.9.1, canvas@^2.5.0, canvas@^2.7.0:
+canvas@^2.5.0, canvas@^2.7.0, canvas@^2.9.1:
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/canvas/-/canvas-2.9.1.tgz#58ec841cba36cef0675bc7a74ebd1561f0b476b0"
   integrity sha512-vSQti1uG/2gjv3x6QLOZw7TctfufaerTWbVe+NSduHxxLGB+qf3kFgQ6n66DSnuoINtVUjrLLIK2R+lxrBG07A==
@@ -343,7 +343,7 @@ discord-api-types@^0.26.0:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.26.1.tgz#726f766ddc37d60da95740991d22cb6ef2ed787b"
   integrity sha512-T5PdMQ+Y1MEECYMV5wmyi9VEYPagEDEi4S0amgsszpWY0VB9JJ/hEvM6BgLhbdnKky4gfmZEXtEEtojN8ZKJQQ==
 
-discord.js-light@^4.6.2:
+discord.js-light@^4.6.5:
   version "4.6.5"
   resolved "https://registry.yarnpkg.com/discord.js-light/-/discord.js-light-4.6.5.tgz#67b91f046bc29328a26a08e1bb12d57e6d797239"
   integrity sha512-txfiH/g8DswNI3DaDf/ueEaybrrHlKlKuZRF3n3jZdvPlDYy5gbooHCowhjz1bmasHs7zSA2mN3CxdYy1VXDvQ==
@@ -826,7 +826,7 @@ mongodb@4.3.1:
   optionalDependencies:
     saslprep "^1.0.3"
 
-mongoose@6.2.9:
+mongoose@^6.2.9:
   version "6.2.9"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.2.9.tgz#6318dceeebdd23d30a5a414a98bdfeab13fc83ef"
   integrity sha512-6ApgF3rKYah5pUEO/1H+QrT0GT05OR7FprtVM45yzcrT/IKKlXizPyttrMiK1mLPt+55pGU7PMsBWY7yx/xZ4g==
@@ -1193,7 +1193,7 @@ v8-compile-cache@^2.0.3:
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz#2de19618c66dc247dcfb6f99338035d8245a2cee"
   integrity sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==
 
-vulkava@^1.1.3:
+vulkava@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/vulkava/-/vulkava-1.2.1.tgz#b576bdd7a2d454fc3ed0771a926bc84274d8c8b1"
   integrity sha512-pfLNeOYMbmNufuJUhgwUbucIN0BZ+Es2aVU/Nk/gZej4tmXKrG4NQwzC2KaB7iFaqP6edBjUXJk8KRoRz2wZOA==

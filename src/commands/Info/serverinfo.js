@@ -46,7 +46,7 @@ module.exports = {
         },
         {
           name: `${Emojis.rocket} › ${lang.commands.serverinfo.createdAt}`,
-          value: `<t:${(guild.createdAt / 1000).toFixed()}> (<t:${(guild.createdAt / 1000).toFixed()}:>)`,
+          value: `<t:${(guild.createdAt / 1000).toFixed()}> (<t:${(guild.createdAt / 1000).toFixed()}:R>)`,
           inline: true
         }
       )

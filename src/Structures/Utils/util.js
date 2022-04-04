@@ -28,7 +28,11 @@ module.exports = {
   
     }
 
-    if(user) return user;
+    if(user) {
+      return user;
+    } else {
+      return null;
+    }
   },
 
   applyLineBreaks(string, maxCharLengthPerLine) {

@@ -46,7 +46,7 @@ module.exports = {
         },
         {
           name: `${Emojis.rocket} › ${lang.commands.serverinfo.createdAt}`,
-          value: `\`${Day(guild.createdAt).format('DD/MM/YYYY')}\` \`(${Day(guild.createdAt).fromNow()})\``,
+          value: `<t:${(guild.createdAt / 1000).toFixed()}> (<t:${(guild.createdAt / 1000).toFixed()}:>)`,
           inline: true
         }
       )

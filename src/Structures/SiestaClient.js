@@ -8,6 +8,9 @@ require('dayjs/locale/pt');
 require('dayjs/locale/en');
 const relativeTime = require('dayjs/plugin/relativeTime');
 extend(relativeTime);
+const { promisify } = require('util');
+const glob = promisify(require('glob'));
+const { parse } = require('path');
 
 module.exports = class Siesta extends Client {
   constructor() {
@@ -61,9 +64,35 @@ module.exports = class Siesta extends Client {
     };
   }
   async start() {
-    await this.utils.loadCommands(this);
-    await this.utils.loadEvents(this);
-    await Music(this);
-    await super.login(global.config.token).catch(this.logger.stack);
+    this.loadEvents();
+    this.loadCommands();
+    Music(this);
+    await super.login(global.config.token);
+  }
+  async loadCommands() {
+    await glob(`${global.process.cwd()}/src/commands/**/*js`, async (err, filePaths) => {
+      if (err) return console.log(err);
+
+      filePaths.forEach((file) => {
+
+        const pull = require(file);
+        if (pull.name) {
+          this.commands.set(pull.name, pull);
+        }
+        if (pull.aliases && Array.isArray(pull.aliases)) {
+          pull.aliases.forEach((alias) => {
+            this.aliases.set(alias, pull.name);
+          });
+        }
+      });
+    });
+  }
+  async loadEvents() {
+    const events = await glob(`${global.process.cwd()}/src/events/client/**/*.js`);
+    events.forEach(eventFile => {
+      const file = require(eventFile);
+      const { name } = parse(eventFile);
+      super.on(name, file.bind(null, this));
+    });
   }
 };

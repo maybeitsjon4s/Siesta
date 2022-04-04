@@ -1,8 +1,5 @@
 const { WebhookClient } = require('discord.js-light');
 const { promisify } = require('util');
-const glob = promisify(require('glob'));
-const { parse } = require('path');
-const { readdirSync } = require('fs');
 
 module.exports = {
 
@@ -195,31 +192,4 @@ module.exports = {
     }
     return bytes;
   },
-
-  async loadCommands(client) {
-    readdirSync('./src/commands/').forEach((local) => {
-      const comandos = readdirSync(`./src/commands/${local}`).filter((arquivo) => arquivo.endsWith('.js'));
-
-      for (const file of comandos) {
-        const puxar = require(`../../commands/${local}/${file}`);
-
-        if (puxar.name) {
-          client.commands.set(puxar.name, puxar);
-        }
-        if (puxar.aliases && Array.isArray(puxar.aliases))
-          puxar.aliases.forEach((x) => client.aliases.set(x, puxar.name));
-      }
-    });
-  },
-
-  async loadEvents(client) {
-    const events = await glob(`${global.process.cwd()}/src/events/client/**/*.js`);
-    events.forEach(eventFile => {
-      delete require.cache[eventFile];
-      const file = require(eventFile);
-      const { name } = parse(eventFile);
-      client.on(name, file.bind(null, client));
-    });
-  },
-
 };

@@ -44,6 +44,7 @@ module.exports = class Siesta extends Client {
       },
       shardCount: 2
     });
+
     this.commands = new Collection();
     this.aliases = new Collection();
     this.utils = require('./Utils/util');

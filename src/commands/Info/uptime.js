@@ -5,6 +5,6 @@ module.exports =  {
   aliases: ['up'],
   ownerOnly: false,
   async exec({ client, message }) {
-    message.reply(`**${Emojis.star} › Uptime: __${client.utils.formatTime(client.uptime)}__**`)
+    message.reply(`**${Emojis.star} › Uptime: __${client.utils.formatTime(client.uptime)}__**`);
   } 
-}
+};

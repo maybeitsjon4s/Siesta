@@ -344,9 +344,9 @@ discord-api-types@^0.26.0:
   integrity sha512-T5PdMQ+Y1MEECYMV5wmyi9VEYPagEDEi4S0amgsszpWY0VB9JJ/hEvM6BgLhbdnKky4gfmZEXtEEtojN8ZKJQQ==
 
 discord.js-light@^4.6.2:
-  version "4.6.4"
-  resolved "https://registry.yarnpkg.com/discord.js-light/-/discord.js-light-4.6.4.tgz#9a7f5d9feadf3638375dc0a71041f4cf9ca993d2"
-  integrity sha512-nhLV9She8z4+ihT1l4mm/F8mj1jh55ySiyeKxhBbTSv+iOPUMq4ABEkdfmRky7kVN01wG1nqgS6ZhisvXvnQSQ==
+  version "4.6.5"
+  resolved "https://registry.yarnpkg.com/discord.js-light/-/discord.js-light-4.6.5.tgz#67b91f046bc29328a26a08e1bb12d57e6d797239"
+  integrity sha512-txfiH/g8DswNI3DaDf/ueEaybrrHlKlKuZRF3n3jZdvPlDYy5gbooHCowhjz1bmasHs7zSA2mN3CxdYy1VXDvQ==
   dependencies:
     discord.js "^13.6.0"
 

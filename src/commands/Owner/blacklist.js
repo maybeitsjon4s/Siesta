@@ -5,7 +5,7 @@ module.exports = {
   async exec({ client, message, args }) {
 
     const user = client.utils.getUser(args[1]);
-    const doc = client.db.user.findOne({ _id: user?.id });
+    const doc = await client.db.user.findOne({ _id: user?.id });
     if(!user || !doc) return message.reply('usuario não encontrado.');
 
     if(['add', 'remove'].some(arg => args[0] == arg)) {

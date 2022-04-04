@@ -3,7 +3,7 @@ const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
   name: 'stats',
-  aliases: ['estatisticas', 'botinfo', 'bi', 'uptime' ],
+  aliases: ['estatisticas', 'botinfo', 'bi'],
   cooldown: 3,
   ownerOnly: false,
   description: '[ 📚 Utils ] Show some infos about me.',

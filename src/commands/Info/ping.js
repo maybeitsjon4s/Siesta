@@ -1,5 +1,3 @@
-const Emojis = require('../../Structures/Utils/emojis');
-
 module.exports = {
   name: 'ping',
   aliases: ['latency', 'latencia', 'pong', '🏓'],

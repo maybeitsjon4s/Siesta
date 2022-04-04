@@ -1,5 +1,4 @@
 const { WebhookClient } = require('discord.js-light');
-const { promisify } = require('util');
 
 module.exports = {
 

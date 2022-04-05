@@ -33,7 +33,7 @@ module.exports = {
     }
 
     const embed = new MessageEmbed()
-      .setTitle(`${Emojis.star} | \`${user.tag}\` ${badges}`)
+      .setTitle(`${Emojis.star} | \`${user.tag}\` ${badges ? badges : ''}`)
       .setColor(client.color)
       .addFields({
           name: `${Emojis.estrela} › ${lang.commands.userinfo.createdAccount}`,

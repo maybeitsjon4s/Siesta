@@ -9,7 +9,7 @@ module.exports = async (client, message) => {
   if (!GUILD) return;
 
   if (GUILD.antiinvite.status && message.member) {
-    if (!message.member.permissions.has('MANAGE_MESSAGES')) return;
+    if (message.member.permissions.has('MANAGE_MESSAGES')) return;
 
     let lang = GUILD.lang || 0;
 

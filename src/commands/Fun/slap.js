@@ -26,6 +26,10 @@ module.exports = {
     const user = await client.utils.getUser(args[0], message);
 
     if (!user) return message.reply(`**${Emojis.errado} › ${lang.commands.slap.noMention}**`);
+    if(user.id === client.user.id) {
+      user = message.author;
+      message.author = client.user;
+    }
 
     message.reply({
       files: [randomGif],

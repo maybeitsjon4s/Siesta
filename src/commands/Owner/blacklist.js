@@ -19,7 +19,7 @@ module.exports = {
       } else if(args[0] == 'remove') {
         doc.blacklist = false;
         await doc.save();
-        message.reply(`**${Emojis.dev} › Usuario \`${user.tag}\` removido da blacklis.`);
+        message.reply(`**${Emojis.dev} › Usuario \`${user.tag}\` removido da blacklist.**`);
       }
     }
   }

@@ -4,7 +4,7 @@ module.exports = {
   ownerOnly: true,
   async exec({ client, message, args }) {
 
-    const user = await client.utils.getUser(args[1]);
+    const user = await client.utils.getUser(args[1], message);
     if(!user) return;
     const doc = await client.db.user.findOne(user.id);
     if(!doc) return;

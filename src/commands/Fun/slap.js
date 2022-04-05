@@ -23,7 +23,7 @@ module.exports = {
 
     const randomGif = gifList[Math.floor(Math.random() * gifList.length)];
 
-    const user = await client.utils.getUser(args[0], message);
+    let user = await client.utils.getUser(args[0], message);
 
     if (!user) return message.reply(`**${Emojis.errado} › ${lang.commands.slap.noMention}**`);
     if(user.id === client.user.id) {

@@ -12,11 +12,11 @@ module.exports = {
     if(['add', 'remove'].some(arg => args[0] == arg)) {
       if(args[0] == 'add') {
         doc.blacklist = true;
-        await doc.save()
+        await doc.save();
         message.reply('ok.');
       } else if(args[0] == 'remove') {
         doc.blacklist = false;
-        await doc.save()
+        await doc.save();
         message.reply('ok.');
       }
     }

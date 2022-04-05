@@ -36,10 +36,10 @@ module.exports = {
       .setTitle(`${Emojis.star} | \`${user.tag}\` ${badges ? badges : ''}`)
       .setColor(client.color)
       .addFields({
-          name: `${Emojis.estrela} › ${lang.commands.userinfo.createdAccount}`,
-          value: `<t:${(user.createdAt / 1000).toFixed()}> (<t:${(user.createdAt / 1000).toFixed()}:R>)`,
-          inline: true
-        })
+        name: `${Emojis.estrela} › ${lang.commands.userinfo.createdAccount}`,
+        value: `<t:${(user.createdAt / 1000).toFixed()}> (<t:${(user.createdAt / 1000).toFixed()}:R>)`,
+        inline: true
+      })
       .setFooter({
         text: message.author.tag,
         iconURL: message.author.displayAvatarURL({ dynamic: true }),

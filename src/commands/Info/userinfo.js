@@ -17,23 +17,8 @@ module.exports = {
 
     const user = await client.utils.getUser(args[0], message) || message.author;
 
-    let badges;
-
-    if(user.flags){
-      badges = user.flags.toArray().join(' ')
-        .replace('PARTNERED_SERVER_OWNER', '<:parceiro:938035311093612544>')
-        .replace('DISCORD_CERTIFIED_MODERATOR', '<:mod:938035490836344852>')
-        .replace('EARLY_VERIFIED_BOT_DEVELOPER', '<:dev2:938036145441374238>')
-        .replace('EARLY_SUPPORTER', '<:supporter:938036320721326101>')
-        .replace('HOUSE_BALANCE', '<:balance:938043574430347284>')
-        .replace('HOUSE_BRILLIANCE', '<:briliance:938044002849128459>')
-        .replace('HOUSE_BRAVERY', '<:bravery:938044368584056863>')
-        .replace('VERIFIED_BOT', '')
-        .replace('HYPESQUAD_EVENTS', '<:hypesquad:938548922954178610>');
-    }
-
     const embed = new MessageEmbed()
-      .setTitle(`${Emojis.star} | \`${user.tag}\` ${badges ? badges : ''}`)
+      .setTitle(`${Emojis.star} | \`${user.tag}\` ${client.utils.getUserFlags(user)}`)
       .setColor(client.color)
       .addFields({
         name: `${Emojis.estrela} › ${lang.commands.userinfo.createdAccount}`,
@@ -57,7 +42,7 @@ module.exports = {
 
     member && member.premiumSince && embed.fields.push({
       name: Emojis.boost + ` › ${lang.commands.userinfo.boosterSince}`,
-      value: `<t:${(member.premiumSince / 1000).toFixed()}:F> (<t:${(member.premiumSince / 1000).toFixed()}:R>)`
+      value: `<t:${(member.premiumSince / 1000).toFixed()}> (<t:${(member.premiumSince / 1000).toFixed()}:R>)`
     });
     message.reply({ embeds: [embed] });
   }

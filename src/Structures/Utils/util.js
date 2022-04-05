@@ -11,6 +11,25 @@ module.exports = {
       content: String(content)
     });
   },
+  getUserFlags (user) {
+    const flagsList = [];
+    if(user.flags) {
+      user.flags.toArray().forEach((flag) => {
+        flag 
+          .replace('PARTNERED_SERVER_OWNER', '<:parceiro:938035311093612544>')
+          .replace('DISCORD_CERTIFIED_MODERATOR', '<:mod:938035490836344852>')
+          .replace('EARLY_VERIFIED_BOT_DEVELOPER', '<:dev2:938036145441374238>')
+          .replace('EARLY_SUPPORTER', '<:supporter:938036320721326101>')
+          .replace('HOUSE_BALANCE', '<:balance:938043574430347284>')
+          .replace('HOUSE_BRILLIANCE', '<:briliance:938044002849128459>')
+          .replace('HOUSE_BRAVERY', '<:bravery:938044368584056863>')
+          .replace('VERIFIED_BOT', '')
+          .replace('HYPESQUAD_EVENTS', '<:hypesquad:938548922954178610>');
+        flagsList.push(flag);
+      });
+    }
+    return flagsList.length > 0 ? flagsList.join(' ') : '';
+  },
 
   async getUser(args, message) {
     if (!args || !message) return;

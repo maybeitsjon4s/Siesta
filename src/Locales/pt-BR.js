@@ -242,7 +242,9 @@ module.exports = {
       filters: 'Filtros',
       inviteMe: 'Me Adicione',
       support: 'Servidor de Suporte',
-      message: 'estes são todos os meus comandos, atualmente eu tenho {} comandos!'
+      message: 'estes são todos os meus comandos, atualmente eu tenho {} comandos!',
+      commandDescription: 'Descrição do comando:',
+      aliases: 'Sinônimos:'
     },
     hug: {
       noMention: 'Mencione alguém para abraçar',

@@ -241,7 +241,9 @@ module.exports = {
       music: 'Music',
       inviteMe: 'Invite Me',
       support: 'Support Server',
-      message: 'these are all my commands, currently i have {} commands!'
+      message: 'these are all my commands, currently i have {} commands!',
+      commandDescription: 'Command description:',
+      aliases: 'Aliases:'
     },
     hug: {
       noMention: 'Mention someone to hug',

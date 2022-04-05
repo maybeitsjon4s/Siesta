@@ -9,7 +9,7 @@ module.exports = {
   ownerOnly: false,
   description: '[ 📚 Utils ] Show the list of commands and some important links.',
   options: [],
-  async exec({ client, message, lang }) {
+  async exec({ client, message, args, lang }) {
 
     const mod = readdirSync('./src/commands/Mod').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
     const configs = readdirSync('./src/commands/Configs').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
@@ -25,8 +25,21 @@ module.exports = {
       new MessageButton()
         .setLabel(lang.commands.help.support)
         .setStyle('LINK')
-        .setURL('https://discord.gg/vYEutrG7gY')
-    );
+        .setURL('https://discord.gg/vYEutrG7gY'));
+
+    if(args[0] && client.commands.get(args[0]) || client.aliases.get(args[0])) {
+      const command = client.commands.get(args[0]) || client.commands.get(client.aliases.get(args[0]));
+
+      return message.reply({
+        embeds: [{
+          color: client.color,
+          fields: [{
+            name: `${Emojis.rocket} ${this.formatName(command.name)}`,
+            value: `**${lang.commands.help.commandDescription} ›** \`${command.description || '???'}\`\n**${lang.commands.help.aliases} ›** \`${command.aliases.length > 0 ? command.aliases.join(', ') : ''}\``
+          }]
+        }]
+      });
+    }
 
     message.reply({ embeds: [{
       color: client.color,
@@ -58,5 +71,8 @@ module.exports = {
     }], 
     components: [row] });
 
+  },
+  formatName(name) {
+    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
   }
 };

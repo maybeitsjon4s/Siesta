@@ -2,7 +2,7 @@ const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
   name: 'disconnect',
-  aliases: ['leave', 'parar', 'dc', 'desconectar', 'stop'],
+  aliases: ['leave', 'parar', 'dc', 'desconectar', 'stop', 'clearqueue'],
   cooldown: 5,
   ownerOnly: false,
   description: '[ 🎵 Music ] Disconnect the bot from the voice channel.',

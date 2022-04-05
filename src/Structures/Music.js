@@ -22,15 +22,7 @@ module.exports = async (client) => {
         });
       }, 45000);
     })
-    .on('error', (node, error) => {
-
-      if(error.message.includes('503') || error.message.includes('1006')) return;
-      client.logger.error(`[ ${node.identifier} ] Erro`);
-      client.logger.stack(error.message);
-    })
-    .on('nodeDisconnect', (node) => {
-      client.logger.error(`[ ${node.options.id} ] Node desconectado.`);
-    })
+    .on('nodeDisconnect', (node) => client.logger.error(`[ ${node.options.id} ] Node desconectado.`))
     .on('queueEnd', async (player) => {
       const lang = await getLanguage(player.guildId);
 

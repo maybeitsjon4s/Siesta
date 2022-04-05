@@ -1,15 +1,13 @@
 const { promisify } = require('util');
-const delay = promisify(setTimeout);
 const { glob } = require('glob');
 const globPromise = promisify(glob);
 
 module.exports = async(client) => {
-  client.logger.sucess(`[ CLIENT ] Fui iniciado em ${client.guilds.cache.size} servidores com sucesso`);
+  client.logger.sucess(`[ CLIENT ] Fui iniciada como ${client.user.username} com ${client.guilds.cache.size.toLocaleString()} servers.`);
 
   client.music.start(client.user.id);
-  await delay(10000);
 
-  client.user.setActivity(`<help - ${client.guilds.cache.size} Guilds | Shard [${client.ws.shards.id}]`);
+  client.user.setActivity(`<help - ${client.guilds.cache.size.toLocaleString()} Guilds`);
 
   // Slash Commands.
 
@@ -25,6 +23,6 @@ module.exports = async(client) => {
     arrayOfSlashCommands.push(file);
   });
 
-  await client.application.commands.set(arrayOfSlashCommands);
+  //await client.application.commands.set(arrayOfSlashCommands);
 //
 };

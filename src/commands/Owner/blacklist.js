@@ -6,7 +6,7 @@ module.exports = {
 
     const user = await client.utils.getUser(args[1], message);
     if(!user) return;
-    const doc = await client.db.user.findOne(user.id);
+    const doc = await client.db.user.findById(user.id);
     if(!doc) return;
 
     if(['add', 'remove'].some(arg => args[0] == arg)) {

@@ -26,7 +26,7 @@ module.exports = {
     let USER = await client.utils.getUser(args[0], message);
     if (!USER) USER = message.author;
 
-    const list = client.utils.getUserFlags(USER)
+    const list = client.utils.getUserFlags(USER);
 
     let user = await client.db.user.findOne({
       _id: USER.id

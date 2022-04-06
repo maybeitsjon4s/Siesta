@@ -4,6 +4,8 @@ module.exports = {
   name: 'welcome',
   aliases: ['bem-vindo', 'entrada'],
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   async exec({ client, message, args, lang }) {
     
     if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} › ${lang.commands.welcome.errorPerm}**`);

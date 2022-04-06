@@ -4,6 +4,8 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'language',
   aliases: ['setlang', 'lang'],
+  playerOnly: false,
+  sameChannel: false,
   ownerOnly: false,
   async exec({ client, message, lang }) {
     

@@ -8,8 +8,9 @@ registerFont('src/Assets/Fonts/seguibl.ttf', {
 module.exports = {
   name: 'profile',
   aliases: ['pr', 'perfil'],
-  cooldown: 5,
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   description: '[ 📚 Utils ] Show yours/someones profile.',
   options: [{
     name: 'user',

@@ -4,6 +4,8 @@ module.exports = {
   name: 'blacklist',
   aliases: ['bl'],
   ownerOnly: true,
+  playerOnly: false,
+  sameChannel: false,
   async exec({ client, message, args }) {
 
     const user = await client.utils.getUser(args[1], message);

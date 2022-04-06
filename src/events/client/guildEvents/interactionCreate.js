@@ -46,8 +46,24 @@ module.exports = async(client, interaction) => {
     const player = client.music.players.get(interaction.guild.id);
 
     client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${interaction.guild.name}** (\`${interaction.guild.id}\`)\nUsuario: **${interaction.author.tag}** (\`${interaction.author.id}\`)\n\`---\``);
-
     const message = interaction;
+
+    if(command.playerOnly) {
+      if(!player) return message.reply({
+        content: `**${Emojis.errado} › ${lang.music.noPlayer}**`,
+        ephemeral: true
+      });
+    }
+  
+    if(command.sameChannel) {
+      if(!message.member.voice.channel || !message.guild.me.voice.channel || message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
+        return message.reply({
+          content: `**${Emojis.errado} › ${lang.music.channelError}**`,
+          ephemeral: true
+        });
+      }
+    }
+
     await command.exec({ client, message, args, player, lang }).catch(err => {
       client.logger.error(`Erro em ${command.name}`);
       client.logger.stack(err.stack);

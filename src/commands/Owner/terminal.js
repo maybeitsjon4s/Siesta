@@ -2,9 +2,10 @@ const { exec } = require('child_process');
 const ANSI_REGEX = /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g;
 module.exports = {
   name: 'shell',
-  aliases: ['terminal', 'sh', 'sheel'],
-  cooldown: 3,
+  aliases: ['terminal', 'sh'],
   ownerOnly: true,
+  playerOnly: false,
+  sameChannel: false,
   async exec({ message, args }) {
      
     const cmd = args.join(' ');

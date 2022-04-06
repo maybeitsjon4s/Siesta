@@ -3,6 +3,8 @@ const Emojis = require('../../Structures/Utils/emojis.js');
 module.exports = {
   name: 'autorole',
   aliases: [],
+  playerOnly: false,
+  sameChannel: false,
   ownerOnly: false,
   async exec({ client, message, args, lang }) {
 

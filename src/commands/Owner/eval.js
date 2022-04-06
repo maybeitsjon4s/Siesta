@@ -2,6 +2,8 @@ module.exports = {
   name: 'eval',
   aliases: ['e', 'ev'],
   ownerOnly: true,
+  playerOnly: false,
+  sameChannel: false,
   async exec({ message, client, args }) {
     
     if (!args[0]) return;

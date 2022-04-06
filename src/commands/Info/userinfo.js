@@ -4,8 +4,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'userinfo',
   aliases: ['ui', 'whois'],
-  cooldown: 3,
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   description: '[ 📚 Utils ] Show yours/someones infos.',
   options: [{
     name: 'user',

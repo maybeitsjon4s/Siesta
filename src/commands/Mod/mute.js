@@ -4,8 +4,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'mute',
   aliases: ['silenciar', 'mutar'],
-  cooldown: 6,
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   async exec({ client, message, args, lang }) {
     
     if (!message.member.permissions.has('MODERATE_MEMBERS') && !client.owners.some(id => id === message.author.id)) return message.reply(`**${Emojis.errado} › ${lang.commands.mute.userPermision}!**`);

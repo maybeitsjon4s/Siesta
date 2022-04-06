@@ -4,8 +4,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'avatar',
   aliases: ['av'],
-  cooldown: 2,
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   description: '[ 📚 Utils ] See yours/others avatars!',
   options: [{
     name: 'user',

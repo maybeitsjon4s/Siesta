@@ -4,10 +4,7 @@ global.config = load(readFileSync('./config.yml', 'utf8'));
 
 const { connect } = require('mongoose');
 
-connect(global.config.database, 
-  { useNewUrlParser: true,
-    useUnifiedTopology: true 
-  }).then(() => {}).catch(console.error);
+connect(global.config.database).then(() => {}).catch(console.error);
 
 const SiestaClient = require('./Structures/SiestaClient');
 const client = new SiestaClient();

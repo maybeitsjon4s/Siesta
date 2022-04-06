@@ -4,15 +4,11 @@ const { MessageActionRow, MessageButton } = require('discord.js-light');
 module.exports = {
   name: 'filters',
   aliases: ['filtros', 'bassboost'],
-  cooldown: 4,
   ownerOnly: false,
+  playerOnly: true,
+  sameChannel: true,
   descripions: '[ 🎵 Music ] Add/remove filters to the player.',
   async exec({  message, player, lang }) {
-    if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.filters.noPlayer}!**`);
-
-    if (!message.member.voice.channel) return message.reply(`**${Emojis.errado} › ${lang.commands.filters.channelError}!**`);
-
-    if (message.member.voice.channel.id !== player.voiceChannelId) return message.reply(`**${Emojis.errado} › ${lang.commands.filters.channelError2}!**`);
 
     const row = new MessageActionRow().addComponents(
       new MessageButton()

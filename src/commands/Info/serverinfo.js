@@ -5,8 +5,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'serverinfo',
   aliases: ['si', 'svi', 'servericon'],
-  cooldown: 4,
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   description: '[ 📚 Utils ] Show some infos about this guild.',
   options: [],
   async exec({ client, message, args, lang }) {

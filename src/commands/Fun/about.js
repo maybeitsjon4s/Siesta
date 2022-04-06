@@ -3,8 +3,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'aboutme',
   aliases: ['sobremim', 'about', 'sobre'],
-  cooldown: 6,
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   description: '[ 📚 Utils ] Change your about-me in the profile.',
   options: [{
     name: 'text',

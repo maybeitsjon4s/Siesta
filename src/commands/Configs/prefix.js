@@ -3,6 +3,8 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'prefix',
   aliases: ['setprefix', 'prefixo'],
+  playerOnly: false,
+  sameChannel: false,
   ownerOnly: false,
   async exec({ client, message, args, lang }) { 
 

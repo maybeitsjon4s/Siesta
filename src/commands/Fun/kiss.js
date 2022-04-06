@@ -3,8 +3,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'kiss',
   aliases: ['beijar'],
-  cooldown: 2,
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   description: '[ 📚 Utils ] Kisses someone.',
   options: [{
     name: 'user',

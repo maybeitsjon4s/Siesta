@@ -3,8 +3,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'play',
   aliases: ['tocar', 'p', 'join'],
-  cooldown: 0.1,
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   description: '[ 🎵 Music ] Add an song/playlist to the queue and plays it.',
   options: [
     {

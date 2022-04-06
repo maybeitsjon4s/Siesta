@@ -15,6 +15,10 @@ module.exports = {
       queueEnd: 'Music is over I\'m leaving the channel...'
     }
   },
+  music: {
+    noPlayer: 'I\'m not playing music in this server.',
+    channelError: 'You\'re not in a voice channel or not at the same as me.'
+  },
   commands: {
     antiinvite: {
       errorPerm: 'You need `Manage Server` permission to run this command!',
@@ -87,6 +91,7 @@ module.exports = {
       myPermission: 'I need the `Manage messages` permission',
       userPermission: 'You need `Manage messages` permission',
       invalidCount: 'Provide a number of up to `99 messages` to be deleted',
+      impossibleToDelete: 'Some of the messages that you are trying to delete have more than 14 days, so its impossible to a bot delete.',
       finalMessage: 'Cleaned `{}` messages!'
     },
     kick: {
@@ -225,6 +230,9 @@ module.exports = {
       channelError: 'You\'re not on a voice channel or you\'re not on the same channel as me.',
       disabled: 'I disabled the autoplay successfully.',
       activated: 'I actived the autoplay successfully.'
+    },
+    remove: {
+      invalidTrack: 'You need to gave me the number you wanna remove the track!'
     },
     about: {
       noArgs: 'Insert something to put in the about me',

@@ -4,7 +4,8 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'antiinvite',
   aliases: ['anticonvite'],
-  cooldown: 3,
+  playerOnly: false,
+  sameChannel: false,
   ownerOnly: false,
   async exec({ client, message, args, lang }) {
       

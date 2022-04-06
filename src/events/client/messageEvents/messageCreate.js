@@ -66,6 +66,16 @@ module.exports = async (client, message) => {
 
   client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``);
 
+  if(command.playerOnly) {
+    if(!player) return message.reply(`**${Emojis.errado} › ${lang.music.noPlayer}**`);
+  }
+
+  if(command.sameChannel) {
+    if(!message.member.voice.channel || !message.guild.me.voice.channel || message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
+      return message.reply(`**${Emojis.errado} › ${lang.music.channelError}**`);
+    }
+  }
+
   await command.exec({ client, message, args, player, lang }).catch((err) => {
     client.logger.error(`Erro no commando ${command.name}`);
     client.logger.stack(err.stack);

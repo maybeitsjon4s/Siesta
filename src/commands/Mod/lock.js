@@ -3,8 +3,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'lock',
   aliases: ['trancar'],
-  cooldown: 2,
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   async exec({ client, message, lang }) {
     
     if (!message.member.permissions.has('MANAGE_CHANNELS') && !client.owners.some(id => id === message.author.id) )

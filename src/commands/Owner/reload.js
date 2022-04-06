@@ -4,8 +4,9 @@ const Emojis = require('../../Structures/Utils/emojis.js');
 module.exports = {
   name: 'reload',
   aliases: ['rr'],
-  cooldown: 3,
   ownerOnly: true,
+  playerOnly: false,
+  sameChannel: false,
   async exec({ client, message }) {
 
     client.commands.sweep(() => true);

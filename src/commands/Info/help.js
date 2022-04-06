@@ -5,8 +5,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'help',
   aliases: ['ajuda', 'commands', 'h'],
-  cooldown: 6,
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   description: '[ 📚 Utils ] Show the list of commands and some important links.',
   options: [],
   async exec({ client, message, args, lang }) {

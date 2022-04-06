@@ -4,13 +4,18 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'queue',
   aliases: ['q', 'fila'],
-  cooldown: 4,
   ownerOnly: false,
+  playerOnly: true,
+  sameChannel: false,
   description: '[ 🎵 Music ] See the queue',
-  options: [],
+  options: [{
+    name: 'page',
+    description: 'The page of the queue you wanna see, by default its the page 1',
+    type: 'NUMBER',
+    required: false
+  }],
   async exec({ client, message, args, player, lang }) {
 
-    if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.queue.noPlayer}**`);
       
     const queue = player.queue;
 

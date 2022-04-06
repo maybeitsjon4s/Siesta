@@ -15,6 +15,10 @@ module.exports = {
       queueEnd: 'A Musica acabou, estou saindo do canal...'
     }
   },
+  music: {
+    noPlayer: 'Não estou tocando música neste servidor.',
+    channelError: 'Você não está num canal de voz ou não está no mesmo canal de voz que eu.'
+  },
   commands: {
     antiinvite: {
       errorPerm: 'Você precisa da permissão `Gerenciar servidor` para executar este comando!',
@@ -87,6 +91,7 @@ module.exports = {
       myPermission: 'Eu preciso da permissão `Gerenciar mensagens`',
       userPermission: 'Você precisa da permissão `Gerenciar mensagens`',
       invalidCount: 'Forneça um número de até `99 mensagens` a serem excluídas',
+      impossibleToDelete: 'Algumas das mensagens que você está tentando eleminar têm mais de 14 dias, e não e possivel para um bot eleminalas.',
       finalMessage: 'Limpei `{}` mensagens!'
     },
     kick: {
@@ -127,31 +132,22 @@ module.exports = {
       sucess: 'Chat destrancado com sucesso!'
     },
     disconnect: {
-      noPlayer: 'Não estou tocando música neste servidor.',
-      channelError: 'Você não está em um canal de voz ou não está no mesmo canal que eu',
       sucess: 'Disconectei-me do canal de voz com sucesso'
     },
     loop: {
-      noPlayer: 'Não estou a tocar música neste servidor!',
-      channelError: 'Você precisa de estar em um canal de voz!',
-      channelError2: 'Você não esta no mesmo canal de voz que eu!',
       trackSucess: 'a repetição da Musica Atual!',
-      queueSucess: 'a repetição do queue!',
+      queueSucess: 'a repetição da fila de reprodução!',
       enable: 'Ativei',
       disable: 'Desativei'
     },
     filters: {
-      noPlayer: 'Não estou a tocar música neste servidor!',
       onlyAuthor: 'Apenas o autor da mensagem pode interagir!',
-      channelError: 'Você precisa de estar em um canal de voz!',
-      channelError2: 'Você não esta no mesmo canal de voz que eu!',
       firstMessage: 'Voce pode ativar/retirar os filtros usando a mensagem abaixo!',
       changedMessage: 'Limpei todos os filtros e adicionei o filtro {}!',
       clearFiltersMessage: 'Removi todos os filtros!',
       clearLabel: 'Remover Filtros'
     },
     nowplaying: {
-      noPlayer: 'Não estou a tocar música neste servidor!',
       info: 'Informações',
       name: 'Nome',
       duration: 'Duração',
@@ -161,14 +157,10 @@ module.exports = {
       paused: 'Pausado'
     },
     pause: {
-      noPlayer: 'Não estou tocando música neste servidor.',
-      channelError: 'Você não está em um canal de voz ou não está no mesmo canal que eu',
       alteradyPause: 'A musica ja esta pausado atualmente!',
       sucess: 'Musica pausada com sucesso!'
     },
     play: {
-      wrongVoiceChannel: 'Você precisa estar no mesmo canal de voz que eu.',
-      noVoiceChannel: 'Você precisa estar em um canal de voz.',
       noPerm: 'Eu não tenho as devidas permissões para poder tocar musica nesse canal `Ver Canal`, `Conectar`, `Falar`.',
       noArgs: 'Você precisa colocar uma musica ou url para eu tocar!',
       failedToPlay: 'Não consegui tocar essa música',
@@ -177,54 +169,43 @@ module.exports = {
       musicLoaded: 'Música `{}` adicionada ao queue'
     },
     queue: {
-      noPlayer: 'Não estou tocando música neste servidor.',
       page: 'Pagina',
       current: 'Atualmente',
       noTracks: 'Sem musicas na',
       queue: 'na queue'
     },
     resume: {
-      noPlayer: 'Não estou tocando música neste servidor.',
-      channelError: 'Você não está em um canal de voz ou não está no mesmo canal que eu',
       alteradyPause: 'A musica nao esta pausada atualmente!',
       sucess: 'Musica retomada com sucesso!'
     },
     seek: {
-      noPlayer: 'Não estou tocando música neste servidor.',
-      channelError: 'Você não está em um canal de voz ou não está no mesmo canal que eu',
       invalidTime: 'Insira o tempo para eu pular e que seja valido.',
       goingTo: 'Avançando para',
       backingTo: 'Rebobinando para',
       exceeds: 'Esse tempo excede o tempo da música',
     },
     skip: {
-      noPlayer: 'Não estou tocando música neste servidor.',
-      channelError: 'Você não está em um canal de voz ou não está no mesmo canal que eu',
       sucess: 'Musica pulada!'
     },
     volume: {
-      noPlayer: 'Não estou tocando música neste servidor.',
-      channelError: 'Você não está em um canal de voz ou não está no mesmo canal que eu',
       bettewnOneAnd500: 'O Volume deve ser entre 1 a 500',
       sucess: 'Volume alterado para'
     },
     skipto: {
-      noPlayer: 'Não estou tocando musica neste servidor.',
-      channelError: 'Você Não está em um canal de voz ou não está no mesmo canal que eu.',
       invalidPosition: 'A Posição que você me forneceu e invalida!',
       sucess: 'Avancei {} Músicas com sucesso!',
     },
     shuffle: {
-      noPlayer: 'Não estou tocando música neste servidor',
-      channelError: 'Você não está em um canal de voz ou não está no mesmo canal que eu.',
       noQueue: 'Tem de haver mais de uma musica para eu poder embarelhar a lista de reprodução.',
       sucess: 'Embarelhei as musicas da fila de reprodução com sucesso!'
     },
     autoplay: {
-      noPlayer: 'Não estou tocando música neste servidor',
-      channelError: 'Você não está em um canal de voz ou não está no mesmo canal que eu.',
       disabled: 'Desativei o autoplay com sucesso.',
       activated: 'Ativei o autoplay com sucesso.'
+    },
+    remove: {
+      invalidTrack: 'Por favor forneça um numero valido de uma musica da fila de reprodução',
+      removed: 'Música `{track}` removida da fila de reprodução com sucesso.'
     },
     about: {
       noArgs: 'Insira algo para colocar no sobre-mim',

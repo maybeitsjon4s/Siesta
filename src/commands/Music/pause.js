@@ -3,14 +3,12 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'pause',
   aliases: ['pausar'],
-  cooldown: 3,
+  playerOnly: true,
+  sameChannel: true,
   ownerOnly: false,
   description: '[ 🎵 Music ] Pauses the currently playing track.',
   options: [],
   async exec({ message, player, lang }) {
-    if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.pause.noPlayer}**`);
-
-    if (!message.member.voice.channel || message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(`**${Emojis.errado} › ${lang.commands.pause.channelError}**`);
 
     if (player.paused) return message.reply(`**${Emojis.errado} › ${lang.commands.pause.alteradyPause}!**`);
 

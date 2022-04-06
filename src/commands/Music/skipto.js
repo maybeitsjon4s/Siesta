@@ -3,8 +3,9 @@ const Emojis = require('../../Structures/Utils/emojis.js');
 module.exports = {
   name: 'skipto',
   aliases: ['goto', 'jump'],
-  cooldown: 2,
   ownerOnly: false,
+  playerOnly: true,
+  sameChannel: true,
   description: '[ 🎵 Music ] Skips to a specific song.',
   options: [
     {
@@ -15,10 +16,6 @@ module.exports = {
     }
   ],
   async exec({ message, args, player, lang }) {
-
-    if(!player) return message.reply(`**${Emojis.errado} › ${lang.commands.skipto.noPlayer}**`);
-
-    if (!message.member.voice.channel || message.member.voice.channel.id != message.guild.me.voice.channel.id)return message.reply(`**${Emojis.errado} › ${lang.commands.skipto.channelError}**`);
 
     const position = Number(args[0]);
 

@@ -3,8 +3,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'clear',
   aliases: ['limpar', 'clean'],
-  cooldown: 2,
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   async exec({ client, message, args, lang }) {
 
     if (!message.member.permissions.has('MANAGE_MESSAGES') && !client.owners.some(id => id === message.author.id) )
@@ -24,7 +25,10 @@ module.exports = {
     });
 
 
-    message.channel.bulkDelete(fetched);
+    message.channel.bulkDelete(fetched).catch(() => {
+      return message.reply(`**${Emojis.errado} ${lang.commands.clear.impossibleToDelete}**`);
+    });
+
     message.channel.send(`**${Emojis.ban} › ${lang.commands.clear.finalMessage.replace('{}', deleteCount)}!**`).then((msg) => {
       setTimeout(() => {
         msg.delete();

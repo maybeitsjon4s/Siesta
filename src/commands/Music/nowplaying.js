@@ -3,13 +3,13 @@ const { MessageEmbed } = require('discord.js-light');
 module.exports = {
   name: 'nowplaying',
   aliases: ['np', 'tocando'],
-  cooldown: 3,
   ownerOnly: false,
+  playerOnly: true,
+  sameChannel: false,
   description: '[ 🎵 Music ] Show some infos about the currently playing song.',
   options: [],
   async exec({ client, message, player, lang }) {
     
-    if (!player) return message.reply(`**${Emojis.errado} » ${lang.commands.nowplaying.noPlayer}**`);
       
     const track = player.current;
     const embed = new MessageEmbed()

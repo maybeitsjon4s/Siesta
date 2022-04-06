@@ -4,8 +4,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'invite',
   aliases: [],
-  cooldown: 2,
   ownerOnly: false,
+  playerOnly: false,
+  sameChannel: false,
   description: '[ 📚 Utils ] Show my invite links!',
   options: [],
   async exec({ message, lang }) {

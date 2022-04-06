@@ -3,8 +3,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'volume',
   aliases: ['vol'],
-  cooldown: 2,
   ownerOnly: false,
+  playerOnly: true,
+  sameChannel: true,
   description: '[ 🎵 Music ] Changes the player volume.',
   options: [
     {
@@ -15,12 +16,6 @@ module.exports = {
     }
   ],
   async exec({ message, args, player, lang }) {
-
-    
-    if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.volume.noPlayer}**`);
-
-    if (!message.member.voice.channel || message.member.voice.channel.id != message.guild.me.voice.channel.id)return message.reply(
-      `**${Emojis.errado} › ${lang.commands.volume.channelError}**`);
 
     if (Number(args[0]) <= 0 || Number(args[0]) > 500 || isNaN(args[0])) return message.reply(`**${Emojis.errado} › ${lang.commands.volume.bettewnOneAnd500}**`);
 

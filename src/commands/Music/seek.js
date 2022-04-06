@@ -3,8 +3,9 @@ const Emojis = require('../../Structures/Utils/emojis');
 module.exports = {
   name: 'seek',
   aliases: [],
-  cooldown: 2,
   ownerOnly: false,
+  playerOnly: true,
+  sameChannel: true,
   description: '[ 🎵 Music ] Seek to a specific time.',
   options: [
     {
@@ -15,11 +16,6 @@ module.exports = {
     }
   ],
   async exec({ client, message, args, player, lang }) {
-
-    if (!player) return message.reply(`**${Emojis.errado} › ${lang.commands.seek.noPlayer}**`);
-
-    if (!message.member.voice.channel || message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(
-      `**${Emojis.errado} › ${lang.commands.seek.channelError}**`);
 
     if (!args[0] || !client.utils.timeToMS(args[0])) return message.reply(`**${Emojis.errado} › ${lang.commands.seek.invalidTime}**`);
 

@@ -132,22 +132,15 @@ module.exports = {
       sucess: 'Chat successfully unlocked!'
     },
     disconnect: {
-      noPlayer: 'I\'m not playing music on this server.',
-      channelError: 'You are not on a voice channel or you are not on the same channel as me',
       sucess: 'I disconnected from the voice channel successfully'
     },
     loop: {
-      noPlayer: 'I\'m not playing music on this server!',
-      channelError: 'You need to be on a voice channel!',
-      channelError2: 'You\'re not on the same voice channel as me!',
       trackSucess: 'the repetition of the Current Music!',
       queueSucess: 'the repeat of the queue!',
       enable: 'activated',
       disable: 'I disabled'
     },
     filters: {
-      noPlayer: 'I\'m not playing music on this server!',
-      channelError: 'You need to be on a voice channel!',
       onlyAuthor: 'Only Message author can interact!',
       channelError2: 'You\'re not on the same voice channel as me!',
       firstMessage: 'You can activate/deactivate filters using the message below!',
@@ -156,7 +149,6 @@ module.exports = {
       clearLabel: 'Clear Filters'
     },
     nowplaying: {
-      noPlayer: 'I\'m not playing music on this server!',
       info: 'Informations',
       name: 'Name',
       duration: 'Duration',
@@ -166,8 +158,6 @@ module.exports = {
       paused: 'Paused'
     },
     pause: {
-      noPlayer: 'I\'m not playing music on this server.',
-      channelError: 'You\'re not on a voice channel or you\'re not on the same channel as me',
       alteradyPause: 'Music is currently paused!',
       sucess: 'Music successfully paused!'
     },
@@ -182,52 +172,37 @@ module.exports = {
       musicLoaded: 'Music `{}` added to the queue'
     },
     queue: {
-      noPlayer: 'I\'m not playing music on this server.',
       page: 'Page',
       current: 'Current',
       noTracks: 'no tracks in',
       queue: 'in the queue'
     },
     resume: {
-      noPlayer: 'I\'m not playing music on this server.',
-      channelError: 'You are not on a voice channel or you are not on the same channel as me',
       alteradyPause: 'Music is currently not paused!',
       sucess: 'Music resumed successfully!'
     },
     seek: {
-      noPlayer: 'I\'m not playing music on this server.',
-      channelError: 'You are not on a voice channel or you are not on the same channel as me',
       invalidTime: 'Enter the time for me to jump and let it be valid.',
       goingTo: 'Advancing to',
       backingTo: 'rewinding to',
       exceeds: 'This time exceeds the time of the song',
     },
     skip: {
-      noPlayer: 'I\'m not playing music on this server.',
-      channelError: 'You are not on a voice channel or you are not on the same channel as me',
       sucess: 'Music skiped!'
     },
     volume: {
-      noPlayer: 'I\'m not playing music on this server.',
-      channelError: 'You are not on a voice channel or you are not on the same channel as me',
       bettewnOneAnd500: 'Volume must be between 1 to 500',
       sucess: 'Volume changed to'
     },
     skipto: {
-      noPlayer: 'I\'m not playing music on this server.',
-      channelError: 'You are not on a voice channel or you are not on the same channel as me.',
       invalidPosition: 'The position you gave me its invalid.',
       sucess: 'Skiped to the music number {}!',
     },
     shuffle: {
-      noPLayer: 'I\'m not playing music on this server.',
-      channelError: 'You are not on a voice channel or you are not on the same channel as me.',
       noQueue: 'Needs to be more than one music so i can shuffle the queue.',
       sucess: 'Shuffled the queue successfully!'
     },
     autoplay: {
-      noPlayer: 'I\'m not playing music on this server.',
-      channelError: 'You\'re not on a voice channel or you\'re not on the same channel as me.',
       disabled: 'I disabled the autoplay successfully.',
       activated: 'I actived the autoplay successfully.'
     },

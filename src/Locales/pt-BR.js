@@ -161,6 +161,8 @@ module.exports = {
       sucess: 'Musica pausada com sucesso!'
     },
     play: {
+      wrongVoiceChannel: 'Você precisa estar no mesmo canal de voz que eu.',
+      noVoiceChannel: 'Você precisa estar em um canal de voz.',
       noPerm: 'Eu não tenho as devidas permissões para poder tocar musica nesse canal `Ver Canal`, `Conectar`, `Falar`.',
       noArgs: 'Você precisa colocar uma musica ou url para eu tocar!',
       failedToPlay: 'Não consegui tocar essa música',

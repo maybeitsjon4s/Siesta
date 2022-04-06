@@ -45,9 +45,6 @@ module.exports = async (client, message) => {
   case 0:
     lang = client.langs.en;
     break;
-  default:
-    lang = client.langs.en; 
-    break;
   }
   if(!message.channel.permissionsFor(client.user.id).has('READ_MESSAGE_HISTORY')) message.reply = message.channel.send;
 
@@ -63,18 +60,10 @@ module.exports = async (client, message) => {
   const player = client.music.players.get(message.guild.id);
   
   if(command.ownerOnly && !client.owners.some(id => id === message.author.id)) return;
+  if(command.playerOnly && !player) return message.reply(`**${Emojis.errado} › ${lang.music.noPlayer}**`);
+  if(command.sameChannel && !message.member.voice.channel || message.member.voice.channel?.id !== message.guild.me.voice.channel?.id) return message.reply(`**${Emojis.errado} › ${lang.music.channelError}**`);
 
   client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``);
-
-  if(command.playerOnly) {
-    if(!player) return message.reply(`**${Emojis.errado} › ${lang.music.noPlayer}**`);
-  }
-
-  if(command.sameChannel) {
-    if(!message.member.voice.channel || !message.guild.me.voice.channel || message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
-      return message.reply(`**${Emojis.errado} › ${lang.music.channelError}**`);
-    }
-  }
 
   await command.exec({ client, message, args, player, lang }).catch((err) => {
     client.logger.error(`Erro no commando ${command.name}`);

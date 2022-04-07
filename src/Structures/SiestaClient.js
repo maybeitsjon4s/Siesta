@@ -67,7 +67,6 @@ module.exports = class Siesta extends Client {
   async start() {
     this.loadEvents();
     this.loadCommands();
-    Music(this);
     await super.login(global.config.token);
   }
   async loadCommands() {

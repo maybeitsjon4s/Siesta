@@ -61,7 +61,10 @@ module.exports = async (client, message) => {
   
   if(command.ownerOnly && !client.owners.some(id => id === message.author.id)) return;
   if(command.playerOnly && !player) return message.reply(`**${Emojis.errado} › ${lang.music.noPlayer}**`);
-  if(command.sameChannel && !message.member.voice.channel || message.member.voice.channel?.id !== message.guild.me.voice.channel?.id) return message.reply(`**${Emojis.errado} › ${lang.music.channelError}**`);
+  if(command.sameChannel) {
+    if(!message.member.voice.channel) return message.reply(`**${Emojis.errado} › ${lang.music.channelError}**`);
+    if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply(`**${Emojis.errado} › ${lang.music.channelError}**`);
+  }
 
   client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``);
 

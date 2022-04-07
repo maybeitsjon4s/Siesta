@@ -96,4 +96,19 @@ module.exports = class Siesta extends Client {
       super.on(name, file.bind(null, this));
     });
   }
+  async loadSlashCommands() {
+    const slashCommands = await glob(`${global.process.cwd()}/src/commands/*/*.js`);
+
+    const arrayOfSlashCommands = [];
+  
+    slashCommands.map((value) => {
+      const file = require(value);
+  
+      if(!file?.name || !file.description ||!file.options) return;
+  
+      arrayOfSlashCommands.push(file);
+    });
+  
+    await this.application.commands.set(arrayOfSlashCommands);
+  }
 };

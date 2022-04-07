@@ -25,12 +25,11 @@ module.exports = async (client) => {
     .on('nodeDisconnect', (node) => client.logger.error(`[ ${node.options.id} ] Node desconectado.`))
     .on('queueEnd', async (player) => {
       const lang = await getLanguage(player.guildId);
-
-      if(player.autoplay) {
-        const mixURL = `https://www.youtube.com/watch?v=${player.current.identifier}&list=RD${player.current.identifier}`;
+      if(player.autoplay?.status) {
+        const mixURL = `https://www.youtube.com/watch?v=${player.autoplay.track.identifier}&list=RD${player.autoplay.track.identifier}`;
         const results = await client.music.search(mixURL);
         if(!results.tracks.length) return player.destroy();
-        const tracks = results.tracks.filter((track) => track.title !== player.current.title);
+        const tracks = results.tracks.map((track) => track.title !== player.autoplay.track ? track : '').filter((f) => f);
         const track = tracks[Math.floor(Math.random() * tracks.length)];
         track.setRequester({
           tag: 'AUTOPLAY#0000',
@@ -45,7 +44,7 @@ module.exports = async (client) => {
     })
 
     .on('trackStart', async (player, track) => {
-
+      if(player.autoplay?.status) player.autoplay.track = track;
       const channel = client.channels.cache.get(player.textChannelId);
   
       const lang = await getLanguage(player.guildId);

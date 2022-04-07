@@ -11,10 +11,14 @@ module.exports = {
   async exec({  message, player, lang }) {
 
     if(player.autoplay) {
-      player.autoplay = false;
+      player.autoplay.status = false;
+      player.autoplay.track = null;
       message.reply(`**${Emojis.music} › ${lang.commands.autoplay.disabled}**`);
     } else {
-      player.autoplay = true;
+      player.autoplay = {
+        status: true,
+        track: player.current
+      };
       message.reply(`**${Emojis.music} › ${lang.commands.autoplay.activated}**`);
     }
   },

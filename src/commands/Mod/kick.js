@@ -7,6 +7,18 @@ module.exports = {
   ownerOnly: false,
   playerOnly: false,
   sameChannel: false,
+  description: '[ 🔨 Moderation ] Kicks someone fromt the server',
+  options: [{
+    name: 'user',
+    description: 'The user you wanna kick',
+    type: 'STRING',
+    required: true
+  }, {
+    name: 'reason',
+    description: 'The reason for the member be kicked',
+    type: 'STRING',
+    required: false
+  }],
   async exec({ client, message, args, lang }) {
 
     if (!message.member.permissions.has('KICK_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} › ${lang.commands.kick.userPermission}**`);
@@ -17,9 +29,7 @@ module.exports = {
 
     let member;
     try {
-      member =
-            message.mentions.members.first() ||
-            (await message.guild.members.fetch(args[0]));
+      member = message.mentions.members.first() || await message.guild.members.fetch(args[0]);
     } catch {
       return message.reply(`**${Emojis.errado} › ${lang.commands.kick.notFound}!**`);
     }
@@ -30,7 +40,7 @@ module.exports = {
 
     const motivo = args.slice(1).join(' ') || lang.commands.kick.noReason;
 
-    message.guild.members.kick(member.id, motivo);
+    message.guild.members.kick(member.id, `By: ${message.author.tag} -- ${motivo}`);
 
     const kick = new MessageEmbed()
       .setTitle(`${Emojis.ban} | __Siesta__`)

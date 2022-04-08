@@ -9,7 +9,12 @@ module.exports = {
   playerOnly: false,
   sameChannel: false,
   description: '[ 📚 Utils ] Show the list of commands and some important links.',
-  options: [],
+  options: [{
+    name: 'command',
+    description: 'The command you wanna see infos about',
+    type: 'STRING',
+    required: false
+  }],
   async exec({ client, message, args, lang }) {
 
     const mod = readdirSync('./src/commands/Mod').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);

@@ -6,6 +6,8 @@ module.exports = {
   ownerOnly: false,
   playerOnly: false,
   sameChannel: false,
+  description: '[ 🔨 Moderation ] Unlocks the channel',
+  options: [],
   async exec({ client, message, lang }) {
     if (!message.member.permissions.has('MANAGE_CHANNELS') && !client.owners.some(id => id === message.author.id) )
       return message.reply(`**${Emojis.errado} › ${lang.commands.unlock.userPermission}**`);

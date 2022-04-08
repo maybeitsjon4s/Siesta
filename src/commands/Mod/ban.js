@@ -7,24 +7,30 @@ module.exports = {
   ownerOnly: false,
   playerOnly: false,
   sameChannel: false,
+  description: '[ 🔨 Moderation ] Bans some one from the server',
+  options: [{
+    name: 'user',
+    description: 'The user you wanna ban',
+    type: 'STRING',
+    required: true
+  },
+  {
+    name: 'reason',
+    description: 'The reason the user will get banned',
+    type: 'STRING',
+    required: false
+  }],
   async exec({ client, message, args, lang }) {
     
     if (!message.member.permissions.has('BAN_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} › ${lang.commands.ban.userPermission}.**`);
     if (!message.guild.me.permissions.has('BAN_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} › ${lang.commands.ban.myPermission}**`);
 
-    let user;
     const motivo = args.slice(1).join(' ');
     if (!args[0]) return message.reply(`**${Emojis.errado} › ${lang.commands.ban.noMention}**`);
-        
-    try {
-      user =
-            message.mentions.users.first() ||
-            (await client.users.fetch(args[0]));
-    } catch (e) {
-      return message.reply(
-        `**${Emojis.errado} › ${lang.commands.ban.invalidUser}**`
-      );
-    }
+       
+    const user = client.utils.getUser(args[0]);
+
+    if(!user) return message.reply(`**${Emojis.errado} › ${lang.commands.ban.invalidUser}**`);
 
     message.guild.bans.fetch().then(async (bans) => {
       const Found = bans.find((m) => m.user.id === user.id);

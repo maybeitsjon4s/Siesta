@@ -48,6 +48,8 @@ module.exports = async(client, interaction) => {
     client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${interaction.guild.name}** (\`${interaction.guild.id}\`)\nUsuario: **${interaction.author.tag}** (\`${interaction.author.id}\`)\n\`---\``);
     const message = interaction;
 
+    if(command.ownerOnly && !client.owners.some(id => id === interaction.user.id)) return;
+
     if(command.playerOnly && !player) return message.reply({
       content: `**${Emojis.errado} › ${lang.music.noPlayer}**`,
       ephemeral: true

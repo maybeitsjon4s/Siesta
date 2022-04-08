@@ -4,6 +4,13 @@ module.exports = {
   ownerOnly: true,
   playerOnly: false,
   sameChannel: false,
+  description: '[ ❄️ Developers ] Evaluates a code.',
+  options: [{
+    name: 'code',
+    description: 'The code',
+    type: 'STRING',
+    required: true
+  }],
   async exec({ message, client, args }) {
     
     if (!args[0]) return;

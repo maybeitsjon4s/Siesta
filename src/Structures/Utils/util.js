@@ -57,7 +57,7 @@ module.exports = {
     return chunks.map((c) => c.trim()).join('\n');
   },
 
-  formatTime: (ms) => {
+  formatTime(ms) {
     let seconds = ms / 1000;
     const days = parseInt(seconds / 86400);
     seconds = seconds % 86400;
@@ -76,7 +76,6 @@ module.exports = {
       return `${minutes}m, ${seconds}s`;
     }
     return `${seconds}s`;
-    
   },
 
   abbreviateNumber(number, precision = 2) {

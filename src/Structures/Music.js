@@ -24,7 +24,7 @@ module.exports = class SiestaMusic extends Vulkava {
     this.on('error', (node, error) => {
       if(error.message.includes('503') || error.message.includes('1006')) return;
       client.logger.error(`[ ${node.identifier} ] Erro, ${error.message}`);
-    })
+    });
     this.on('nodeDisconnect', (node) => this.client.logger.error(`[ ${node.options.id} ] Node Disconectado.`));
     this.on('queueEnd', async (player) => {
       const lang = await this.getLanguage(player.guildId);

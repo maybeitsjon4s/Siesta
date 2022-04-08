@@ -6,6 +6,13 @@ module.exports = {
   ownerOnly: false,
   playerOnly: false,
   sameChannel: false,
+  description: '[ 🔨 Moderation ] Deletes an amount of messages in the channel',
+  options: [{
+    name: 'messages',
+    description: 'The amount of messages you wanna delete',
+    type: 'NUMBER',
+    required: true
+  }],
   async exec({ client, message, args, lang }) {
 
     if (!message.member.permissions.has('MANAGE_MESSAGES') && !client.owners.some(id => id === message.author.id) )
@@ -29,9 +36,12 @@ module.exports = {
       return message.reply(`**${Emojis.errado} ${lang.commands.clear.impossibleToDelete}**`);
     });
 
-    message.channel.send(`**${Emojis.ban} › ${lang.commands.clear.finalMessage.replace('{}', deleteCount)}!**`).then((msg) => {
+    message.channel.send({
+      content: `**${Emojis.ban} › ${lang.commands.clear.finalMessage.replace('{}', deleteCount)}!**`,
+      ephemeral: true
+    }).then((msg) => {
       setTimeout(() => {
-        msg.delete();
+        msg.delete().catch(() => {});
       }, 5000);
     });
   },

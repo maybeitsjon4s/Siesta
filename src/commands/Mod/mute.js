@@ -7,6 +7,25 @@ module.exports = {
   ownerOnly: false,
   playerOnly: false,
   sameChannel: false,
+  description: '[ 🔨 Moderation ] Mutes someone in the server',
+  options: [{
+    name: 'user',
+    description: 'The user you wanna mute',
+    type: 'STRING',
+    required: true
+  }, 
+  {
+    name: 'Time',
+    description: 'The time for the user be unmuted',
+    type: 'STRING',
+    required: true
+  },
+  {
+    name: 'reason',
+    description: 'The reason for the mute',
+    type: 'STRING',
+    required: false
+  }],
   async exec({ client, message, args, lang }) {
     
     if (!message.member.permissions.has('MODERATE_MEMBERS') && !client.owners.some(id => id === message.author.id)) return message.reply(`**${Emojis.errado} › ${lang.commands.mute.userPermision}!**`);
@@ -65,6 +84,6 @@ module.exports = {
       )
       .setTimestamp();
     message.reply({ embeds: [embed1] });
-    member.timeout(tempo, reason);
+    member.timeout(tempo, `By: ${message.author.tag} -- ${reason}`);
   }
 };

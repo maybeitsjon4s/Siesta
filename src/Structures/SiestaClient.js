@@ -9,7 +9,6 @@ const relativeTime = require('dayjs/plugin/relativeTime');
 extend(relativeTime);
 const { promisify } = require('util');
 const glob = promisify(require('glob'));
-const { parse } = require('path');
 
 module.exports = class Siesta extends Client {
   constructor() {
@@ -71,17 +70,10 @@ module.exports = class Siesta extends Client {
   async loadCommands() {
     await glob(`${global.process.cwd()}/src/commands/**/*js`, async (err, filePaths) => {
       if (err) return console.log(err);
-
       filePaths.forEach((file) => {
-
         const pull = require(file);
-        if (pull.name) {
-          this.commands.set(pull.name, pull);
-        }
-        if (pull.aliases && Array.isArray(pull.aliases)) {
-          pull.aliases.forEach((alias) => {
-            this.aliases.set(alias, pull.name);
-          });
+        if (pull.name) this.commands.set(pull.name, pull);
+        if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach((alias) => this.aliases.set(alias, pull.name));
         }
       });
     });
@@ -90,8 +82,7 @@ module.exports = class Siesta extends Client {
     const events = await glob(`${global.process.cwd()}/src/events/client/**/*.js`);
     events.forEach(eventFile => {
       const file = require(eventFile);
-      const { name } = parse(eventFile);
-      super.on(name, file.bind(null, this));
+      super.on(file.name, file.exec.bind(null, this));
     });
   }
   async loadSlashCommands() {

@@ -15,7 +15,7 @@ module.exports = {
     required: true
   }, 
   {
-    name: 'Time',
+    name: 'time',
     description: 'The time for the user be unmuted',
     type: 'STRING',
     required: true

@@ -13,7 +13,8 @@ module.exports = {
     description: 'The user you wanna kick',
     type: 'STRING',
     required: true
-  }, {
+  }, 
+  {
     name: 'reason',
     description: 'The reason for the member be kicked',
     type: 'STRING',

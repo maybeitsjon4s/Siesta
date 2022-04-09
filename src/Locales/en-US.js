@@ -258,10 +258,10 @@ module.exports = {
       createdAt: 'Created at'
     },
     stats: {
-      message: 'my name is Siesta and I\'m the multifunctional bot made to help your server and entertain your members with various utilities from music to moderation',
+      message: 'my name is **Siesta** and I\'m the **multifunctional bot focused in music** but i have **alot of other features** that **all servers needs!**',
       stats: 'Statistics',
-      inviteMe: 'Add me',
-      createdBy: 'I was created by'
+      createdBy: 'I was created by',
+      label: ['Invite me', 'Support Server']
     },
     userinfo: {
       createdAccount: 'Created the account',
@@ -272,10 +272,5 @@ module.exports = {
       message: 'You can vote for me using the button below!',
       label: 'Click here'
     },
-    calc: {
-      invalid: 'Please put a valid expression!!',
-      noResult: 'Its not possible determine the result!',
-      sucess: 'The result of the expression was:n```{}```'
-    }
   }
 };

@@ -258,10 +258,10 @@ module.exports = {
       createdAt: 'Criado em'
     },
     stats: {
-      message: 'o meu nome e Siesta e sou o bot multifuncional feito pra ajudar o teu servidor e entreter os seus membros com varias utilidades desde música até moderação',
+      message: 'o meu nome e **Siesta** uma bot **multifuncional focada em música** mas também tenho muitas outras funções que **todos os servidores precisam!**',
       stats: 'Estatísticas',
-      inviteMe: 'Me Adicione',
-      createdBy: 'Fui criada pelo'
+      createdBy: 'Fui criada pelo:',
+      label: ['Me adicione', 'Servidor de Suporte']
     },
     userinfo: {
       createdAccount: 'Criou a Conta',

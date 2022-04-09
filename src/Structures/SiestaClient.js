@@ -1,5 +1,4 @@
 const { Client, Options, Collection } = require('discord.js-light');
-const Music = require('./Music');
 const { gray, green, red } = require('colors');
 const User = require('../Models/User');
 const Guild = require('../Models/Guild');
@@ -108,6 +107,6 @@ module.exports = class Siesta extends Client {
       arrayOfSlashCommands.push(file);
     });
   
-    await super.application.commands.set(arrayOfSlashCommands);
+    await this.application.commands.set(arrayOfSlashCommands);
   }
 };

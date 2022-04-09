@@ -36,7 +36,7 @@ module.exports = {
 
     let member;
     try {
-      member = await message.guild.members.fetch(await client.utils.getUser(args[0]))
+      member = await message.guild.members.fetch(await client.utils.getUser(args[0]));
     } catch {
       return message.reply(`**${Emojis.errado} › ${lang.commands.mute.notFound}!**`);
     }

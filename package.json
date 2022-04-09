@@ -20,6 +20,7 @@
     "js-yaml": "^4.1.0",
     "mongoose": "^6.2.9",
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1",
+    "topgg-autoposter": "^2.0.1",
     "vulkava": "^1.2.1"
   },
   "engines": {

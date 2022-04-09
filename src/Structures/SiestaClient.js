@@ -76,8 +76,8 @@ module.exports = class Siesta extends Client {
         if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach((alias) => this.aliases.set(alias, pull.name));
         })
       });
-    });
-  }
+    };
+  
   async loadEvents() {
     const events = await glob(`${global.process.cwd()}/src/events/client/**/*.js`);
     events.forEach(eventFile => {

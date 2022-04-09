@@ -16,5 +16,5 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.FTP_KEY }}
           REMOTE_HOST: ${{ secrets.FTP_HOSTNAME }}
           REMOTE_USER: ${{ secrets.FTP_USERNAME }}
-          TARGET: '/home/admin/Siesta-Canary'
+          TARGET: '/home/admin/Siesta'
           EXCLUDE: "/node_modules/, config.yml" 

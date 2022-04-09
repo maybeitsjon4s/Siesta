@@ -15,7 +15,7 @@ module.exports = {
   }],
   async exec({ args, message, player, lang }) {
 
-    if(!Number(args[0]) || Number(args[0]) > player.queue.length) return message.reply(`**${Emojis.errado} › ${lang.commands.remove.invalidTrack}**`);
+    if(!Number(args[0]) || Number(args[0]) > player.queue.length || Number(args[0] < 0)) return message.reply(`**${Emojis.errado} › ${lang.commands.remove.invalidTrack}**`);
 
     message.reply(`**${Emojis.music} › ${lang.commands.remove.removed.replace('{track}', player.queue[Number(args[0] - 1)].title)}**`);
 

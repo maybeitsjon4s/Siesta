@@ -108,6 +108,6 @@ module.exports = class Siesta extends Client {
       arrayOfSlashCommands.push(file);
     });
   
-    await this.application.commands.set(arrayOfSlashCommands);
+    await super.application.commands.set(arrayOfSlashCommands);
   }
 };

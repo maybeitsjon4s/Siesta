@@ -74,7 +74,7 @@ module.exports = class Siesta extends Client {
         const pull = require(file);
         if (pull.name) this.commands.set(pull.name, pull);
         if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach((alias) => this.aliases.set(alias, pull.name));
-        }
+        })
       });
     });
   }

@@ -25,6 +25,8 @@ module.exports = {
 
     const music = args.join(' ');
 
+    if(!music && message.attachments.first() && message.attachments.first()?.contentType == 'video/quicktime' || message.attachments.first()?.contentType == 'audio/mpeg') music = message.attachments.first().proxyURL;
+
     if(!message.member.voice.channel.permissionsFor(client.user.id).has(['VIEW_CHANNEL', 'CONNECT', 'SPEAK'])) return message.reply(`**${Emojis.errado} › ${lang.commands.play.noPerm}**`);
 
     if (!music) return message.reply(`**${Emojis.errado} › ${lang.commands.play.noArgs}**`);

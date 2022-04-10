@@ -8,7 +8,7 @@ module.exports = {
   ownerOnly: false,
   async exec({ client, message, args, lang }) {
 
-    if(!message.member.permissions.has('MANAGE_GUILD')) return message.reply(`**${Emojis.errado} › **`);
+    if(!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id)) return message.reply(`**${Emojis.errado} › ${lang.commands.autorole.errorPerm}**`)
     if(!args[0] || !['status', 'role'].includes(args[0]) || args[0] == 'help') return message.reply({ embeds: [{
       color: client.color,
       title: Emojis.config + '__Siesta__',

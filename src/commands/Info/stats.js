@@ -21,8 +21,8 @@ module.exports = {
         color: client.color,
         description: `> ${message.author}, ${lang.commands.stats.message}`,
         fields: [{
-          name: `${Emojis.aurora} ${lang.commands.stats.stats}`,
-          value: `\`\`\`prolong\n🚀 Servers: ${client.guilds.cache.size}\n⏱️ Uptime: ${client.utils.formatTime(client.uptime)}\n🚧 RAM: ${client.utils.formatSizeUnits(global.process.memoryUsage().heapUsed)}\n🧬 Shards: ${client.ws.shards.size}\n🎵 Players: ${client.music.players.size}\`\`\``,
+          name: `${Emojis.star} ${lang.commands.stats.stats}`,
+          value: `> **${Emojis.rocket} Servers:** \`${client.guilds.cache.size}\`\n> **${Emojis.heart2}Uptime:** \`${client.utils.formatTime(client.uptime)}\`\n> **${Emojis.config} RAM:** \`${client.utils.formatSizeUnits(global.process.memoryUsage().heapUsed)}\`\n> **${Emojis.heart} Shards:** \`${client.ws.shards.size}\`\n> **${Emojis.aurora} Players:** \`${client.music.players.size}\``,
           inline: true
         }],
         footer: {

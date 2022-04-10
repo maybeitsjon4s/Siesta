@@ -23,7 +23,7 @@ module.exports = {
 
     if (!message.member.voice.channel) return message.reply(`**${Emojis.errado} › ${lang.commands.play.noVoiceChannel}**`);
 
-    const music = args.join(' ');
+    let music = args.join(' ');
 
     if(!music && message.attachments.first() && message.attachments.first()?.contentType == 'video/mp4' || message.attachments.first()?.contentType == 'audio/mpeg') music = message.attachments.first().proxyURL;
 

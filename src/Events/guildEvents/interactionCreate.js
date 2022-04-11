@@ -58,10 +58,18 @@ module.exports = {
         ephemeral: true
       });
 
-      if(command.sameChannel && !message.member.voice.channel || message.member.voice.channel?.id !== message.guild.me.voice.channel?.id) return message.reply({
+      if(command.sameChannel) {
+      if(!message.member.voice.channel) return message.reply({
         content: `**${Emojis.errado} › ${lang.music.channelError}**`,
         ephemeral: true
       });
+      if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply({
+        content: `**${Emojis.errado} › ${lang.music.channelError}**`,
+        ephemeral: true
+      });
+    }
+
+
 
       await command.exec({ client, message, args, player, lang }).catch(err => {
         client.logger.error(`Erro em ${command.name}`);

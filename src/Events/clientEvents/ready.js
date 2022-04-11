@@ -1,4 +1,4 @@
-const Music = require('../../../Structures/Music.js');
+const Music = require('../../Structures/Music.js');
 
 module.exports = {
   name: 'ready',

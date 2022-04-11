@@ -1,7 +1,6 @@
 const { Client, Options, Collection } = require('discord.js-light');
 const { gray, green, red } = require('colors');
-const User = require('../Models/User');
-const Guild = require('../Models/Guild');
+const { Guild, User } = require('../Models/index.js');
 const { extend } = require('dayjs');
 require('dayjs/locale/pt');
 require('dayjs/locale/en');
@@ -49,8 +48,8 @@ module.exports = class Siesta extends Client {
     this.owners = ['431768491759239211'];
     this.color = '#ffffff';
     this.langs = {
-      pt: require('../Locales/pt-BR'),
-      en: require('../Locales/en-US')
+      pt: require('../Locales/pt-BR.json'),
+      en: require('../Locales/en-US.json')
     };
     this.db = {
       user: User,
@@ -68,25 +67,25 @@ module.exports = class Siesta extends Client {
     await super.login(global.config.token);
   }
   async loadCommands() {
-    await glob(`${global.process.cwd()}/src/commands/**/*js`, async (err, filePaths) => {
+    await glob(`${global.process.cwd()}/src/Commands/**/*js`, async (err, filePaths) => {
       if (err) return console.log(err);
       filePaths.forEach((file) => {
         const pull = require(file);
         if (pull.name) this.commands.set(pull.name, pull);
         if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach((alias) => this.aliases.set(alias, pull.name));
-        })
       });
-    };
+    });
+  }
   
   async loadEvents() {
-    const events = await glob(`${global.process.cwd()}/src/events/client/**/*.js`);
+    const events = await glob(`${global.process.cwd()}/src/Events/**/*.js`);
     events.forEach(eventFile => {
       const file = require(eventFile);
       super.on(file.name, file.exec.bind(null, this));
     });
   }
   async loadSlashCommands() {
-    const slashCommands = await glob(`${global.process.cwd()}/src/commands/*/*.js`);
+    const slashCommands = await glob(`${global.process.cwd()}/src/Commands/*/*.js`);
 
     const arrayOfSlashCommands = [];
   

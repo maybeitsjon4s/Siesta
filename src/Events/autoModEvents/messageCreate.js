@@ -1,4 +1,4 @@
-const Emojis = require('../../../Structures/Utils/emojis');
+const Emojis = require('../../Structures/Utils/emojis.js');
 
 module.exports =  {
   name: 'messageCreate',

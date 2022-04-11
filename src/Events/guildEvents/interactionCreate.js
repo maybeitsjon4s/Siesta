@@ -1,4 +1,4 @@
-const Emojis = require('../../../Structures/Utils/emojis.js');
+const Emojis = require('../../Structures/Utils/emojis.js');
 const Day = require('dayjs');
 
 module.exports = {

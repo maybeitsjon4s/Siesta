@@ -11,7 +11,7 @@ module.exports = {
 
     client.commands.sweep(() => true);
 
-    glob(`${global.process.cwd()}/src/commands/**/*js`, async (err, filePaths) => {
+    glob(`${global.process.cwd()}/src/Commands/**/*js`, async (err, filePaths) => {
       if (err) return message.reply('```' + err.stack + '```');
 
       filePaths.forEach((file) => {

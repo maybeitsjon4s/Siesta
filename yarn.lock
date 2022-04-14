@@ -1308,9 +1308,9 @@ v8-compile-cache@^2.0.3:
   integrity sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==
 
 vulkava@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/vulkava/-/vulkava-1.2.1.tgz#b576bdd7a2d454fc3ed0771a926bc84274d8c8b1"
-  integrity sha512-pfLNeOYMbmNufuJUhgwUbucIN0BZ+Es2aVU/Nk/gZej4tmXKrG4NQwzC2KaB7iFaqP6edBjUXJk8KRoRz2wZOA==
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/vulkava/-/vulkava-1.2.4.tgz#46856d30af25834a2f2a45f5c50480d58006e4ce"
+  integrity sha512-fh0BuRh0pZMEA/GqvPdYFOkq+rvATBDjv/WvY0djB015fvykcKzGMKDe/rbRhogrHMzm7EaHaGQgBXHm23Oc9A==
   dependencies:
     undici "^5.0.0"
     ws "^8.5.0"

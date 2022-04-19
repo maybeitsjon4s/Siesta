@@ -61,7 +61,7 @@ module.exports = class Siesta extends Client {
   async start() {
     this.loadEvents();
     this.loadCommands();
-    this.langs = new LocaleManager(this).loadLocales();
+    this.localeManager = new LocaleManager(this).loadLocales();
     this.music = new Music(this)
     await super.login(global.config.token);
   }

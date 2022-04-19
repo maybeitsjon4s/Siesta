@@ -31,7 +31,7 @@ module.exports = {
     });
     message.reply(`**${Emojis.dev} › Comandos recarregados.**`);
     
-    await i18next.reloadResources(['pt-BR', 'en-US']);
+    client.localeManager.reload()
     message.reply(`**${Emojis.dev} › Locales recarregados.**`);
   },
 };

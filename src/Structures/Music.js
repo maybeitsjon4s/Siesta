@@ -1,5 +1,7 @@
 const { Vulkava } = require('vulkava');
 const Emojis = require('./Utils/emojis.js');
+const i18next = require('i18next');
+const { cyan, green, red } = require('colors');
 
 module.exports = class SiestaMusic extends Vulkava {
   constructor(client) {
@@ -14,7 +16,7 @@ module.exports = class SiestaMusic extends Vulkava {
     });
     this.client = client;
     this.on('nodeConnect', (node) => {
-      this.client.logger.sucess(`[ ${node.options.id} ] Node Conectado.`);
+      console.log(cyan(`[ ${node.options.id} ]`), green('Node Conectado.'))
       setInterval(() => {
         node.send({
           op: 'pong'
@@ -23,11 +25,12 @@ module.exports = class SiestaMusic extends Vulkava {
     });
     this.on('error', (node, error) => {
       if(error.message.includes('503') || error.message.includes('1006')) return;
-      client.logger.error(`[ ${node.identifier} ] Erro, ${error.message}`);
+      console.log(cyan(`[ ${node.identifier} ]`), green(`Erro, ${error.message}`));
     });
-    this.on('nodeDisconnect', (node) => this.client.logger.error(`[ ${node.options.id} ] Node Disconectado.`));
+    this.on('nodeDisconnect', (node) => console.log(red(`[ ${node.options.id} ]`), green('Node Desconectado')));
+
     this.on('queueEnd', async (player) => {
-      const lang = await this.getLanguage(player.guildId);
+      const t = await this.getLanguage(player.guildId);
       if(player.autoplay?.status) {
         const mixURL = `https://www.youtube.com/watch?v=${player.autoplay.track.identifier}&list=RD${player.autoplay.track.identifier}`;
         const results = await client.music.search(mixURL);
@@ -41,7 +44,7 @@ module.exports = class SiestaMusic extends Vulkava {
         player.queue.push(track);
         player.play().catch(() => {});
       } else {
-        client.channels.cache.get(player.textChannelId).send(`**${Emojis.music} › ${lang.events.musicEvents.queueEnd}**`);
+        client.channels.cache.get(player.textChannelId).send(`**${Emojis.music} › ${t('events:musicEvents.queueEnd')}**`);
         player.destroy();
       }
     });
@@ -49,9 +52,12 @@ module.exports = class SiestaMusic extends Vulkava {
       if(player.autoplay?.status) player.autoplay.track = track;
       const channel = this.client.channels.cache.get(player.textChannelId);
     
-      const lang = await this.getLanguage(player.guildId);
+      const t = await this.getLanguage(player.guildId);
     
-      channel.send(`**${Emojis.music} › ${lang.events.musicEvents.trackStart.replace('{track}', track.title).replace('{user}', track.requester.tag)}**`).then(msg => {
+      channel.send(`**${Emojis.music} › ${t('events:musicEvents.trackStart', {
+        track: track.title,
+        user: track.requester.tag
+      })}**`).then(msg => {
         setTimeout(() => {
           msg.delete(); 
         }, 3 * 60 * 1000);
@@ -60,19 +66,21 @@ module.exports = class SiestaMusic extends Vulkava {
     this.on('trackStuck', (player) => player.skip());
     this.on('trackException', async({ player, exception }) => {
       player.skip();
-      const lang = await this.getLanguage(player.guildId);
-      client.channels.cache.get(player.textChannelId).send({ content: `**${Emojis.music} › ${lang.musicEvents.trackException} **` + '```\n' + exception.message + '```' });
+      const t = await this.getLanguage(player.guildId);
+      client.channels.cache.get(player.textChannelId).send({ content: `**${Emojis.music} › ${t('events:musicEvents.trackException')} **` + '```\n' + exception.message + '```' });
     });
   }
+
   async getLanguage(guildId) {
     const guildDocument = await this.client.db.guild.findOne({ _id: guildId });
     let lang = guildDocument.lang || 0;
+    let t;
     if(lang == 1) {
-      lang = this.client.langs.pt;
+      t = i18next.getFixedT('pt-BR');
     } else {
-      lang = this.client.langs.en;
+      t = i18next.getFixedT('en-US');
     }
-    return lang;
+    return t;
   }
 };
 

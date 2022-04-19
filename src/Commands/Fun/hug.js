@@ -13,7 +13,7 @@ module.exports = {
     type: 'STRING',
     required: true
   }],
-  async exec({ client, message, args, lang }) {
+  async exec({ client, message, args, t }) {
 
     const gifList = [
       'https://c.tenor.com/JTqXUbfSSkYAAAAC/anime-bed.gif',
@@ -39,11 +39,11 @@ module.exports = {
     const randomGif = gifList[Math.floor(Math.random() * gifList.length)];
     const user = await client.utils.getUser(args[0], message);
 
-    if (!user) return message.reply(`**${Emojis.errado} › ${lang.commands.hug.noMention}!**`);
+    if (!user) return message.reply(`**${Emojis.errado} › ${t('commands:hug.noMention')}!**`);
 
     message.reply({
       files: [randomGif],
-      content: `**${Emojis.heart} › ${message.author} ${lang.commands.hug.message} ${user}!**`,
+      content: `**${Emojis.heart} › ${message.author} ${t('commands:hug.message')} ${user}!**`,
     });
   }
 };

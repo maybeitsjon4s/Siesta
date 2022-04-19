@@ -15,27 +15,27 @@ module.exports = {
       required: true
     }
   ],
-  async exec({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, t }) {
 
     if (player) {
-      if (message.member.voice.channel?.id != player.voiceChannelId) return message.reply(`**${Emojis.errado} › ${lang.commands.play.wrongVoiceChannel}**`);
+      if (message.member.voice.channel?.id != player.voiceChannelId) return message.reply(`**${Emojis.errado} › ${t('commands:play.wrongVoiceChannel')}**`);
     }
 
-    if (!message.member.voice.channel) return message.reply(`**${Emojis.errado} › ${lang.commands.play.noVoiceChannel}**`);
+    if (!message.member.voice.channel) return message.reply(`**${Emojis.errado} › ${t('commands:play.noVoiceChannel')}**`);
 
     let music = args.join(' ');
 
     if(!music && message.attachments?.first() && message.attachments?.first()?.contentType == 'video/mp4' || message.attachments?.first()?.contentType == 'audio/mpeg') music = message.attachments?.first().proxyURL;
 
-    if(!message.member.voice.channel.permissionsFor(client.user.id).has(['VIEW_CHANNEL', 'CONNECT', 'SPEAK'])) return message.reply(`**${Emojis.errado} › ${lang.commands.play.noPerm}**`);
+    if(!message.member.voice.channel.permissionsFor(client.user.id).has(['VIEW_CHANNEL', 'CONNECT', 'SPEAK'])) return message.reply(`**${Emojis.errado} › ${t('commands:play.noPerm')}**`);
 
-    if (!music) return message.reply(`**${Emojis.errado} › ${lang.commands.play.noArgs}**`);
+    if (!music) return message.reply(`**${Emojis.errado} › ${t('commands:play.noArgs')}**`);
 
     const result = await client.music.search(music, message.author);
 
-    if (result.loadType === 'LOAD_FAILED') return message.reply(`**${Emojis.errado} › ${lang.commands.play.failedToPlay}**`);
+    if (result.loadType === 'LOAD_FAILED') return message.reply(`**${Emojis.errado} › ${t('commands:play.failedToPlay')}**`);
     
-    if (result.loadType === 'NO_MATCHES') return message.reply(`**${Emojis.errado} › ${lang.commands.play.noMatches}.**`);
+    if (result.loadType === 'NO_MATCHES') return message.reply(`**${Emojis.errado} › ${t('commands:play.noMatches')}.**`);
 
     player = client.music.createPlayer({
       guildId: message.guild.id,
@@ -56,7 +56,11 @@ module.exports = {
 
       if (!player.playing) player.play();
 
-      message.reply(`**${Emojis.music} › ${lang.commands.play.playListLoaded.replace('{name}', result.playlistInfo?.name).replace('{length}', result.tracks.length).replace('{time}', client.utils.formatTime(result.playlistInfo.duration))}**`);
+      message.reply(`**${Emojis.music} › ${t('commands:play.playListLoaded', {
+        name: result.playlistInfo?.name,
+        length: result.tracks.length,
+        time: client.utils.formatTime(result.playlistInfo.duration)
+      })}**`);
 
     } else {
 
@@ -64,7 +68,9 @@ module.exports = {
       track.setRequester(message.author);
       player.queue.push(track);
 
-      if (player) message.reply(`**${Emojis.music} › ${lang.commands.play.musicLoaded.replace('{}', track.title)}**`);
+      if (player) message.reply(`**${Emojis.music} › ${t('commands:play.musicLoaded', {
+        track: track.title
+      })}**`);
           
 
       if (!player.playing) player.play();

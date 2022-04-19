@@ -1,6 +1,6 @@
 const Emojis = require('../../Structures/Utils/emojis.js');
 const Day = require('dayjs');
-
+const i18next = require('i18next');
 module.exports = {
   name: 'interactionCreate',
   async exec (client, interaction) {
@@ -18,14 +18,14 @@ module.exports = {
 
       if(user?.blacklist) return;
 
-      let lang = guild.lang || 0;
+      let t = guild.lang || 0;
 
-      switch(lang) {
+      switch(t) {
       case 1:
-        lang = client.langs.pt;
+        t = i18next.getFixedT('pt-BR');
         break;
       case 0:
-        lang = client.langs.en;
+        t = i18next.getFixedT('en-US');
         break;
       }
 
@@ -49,37 +49,37 @@ module.exports = {
       const player = client.music.players.get(interaction.guild.id);
 
       client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${interaction.guild.name}** (\`${interaction.guild.id}\`)\nUsuario: **${interaction.author.tag}** (\`${interaction.author.id}\`)\n\`---\``);
+
       const message = interaction;
 
       if(command.ownerOnly && !client.owners.some(id => id === interaction.user.id)) return;
 
       if(command.playerOnly && !player) return message.reply({
-        content: `**${Emojis.errado} › ${lang.music.noPlayer}**`,
+        content: `**${Emojis.errado} › ${t('music:noPlayer')}**`,
         ephemeral: true
       });
 
       if(command.sameChannel) {
-      if(!message.member.voice.channel) return message.reply({
-        content: `**${Emojis.errado} › ${lang.music.channelError}**`,
-        ephemeral: true
-      });
-      if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply({
-        content: `**${Emojis.errado} › ${lang.music.channelError}**`,
-        ephemeral: true
-      });
-    }
+        if(!message.member.voice.channel) return message.reply({
+          content: `**${Emojis.errado} › ${t('music:channelError')}**`,
+          ephemeral: true
+        });
+        if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply({
+          content: `**${Emojis.errado} › ${t('music:channelError')}**`,
+          ephemeral: true
+        });
+      }
 
 
 
-      await command.exec({ client, message, args, player, lang }).catch(err => {
-        client.logger.error(`Erro em ${command.name}`);
+      await command.exec({ client, message, args, player, t }).catch(err => {
+        client.logger.error(`Erro em ${command.name}, Servidor: ${message.guild.id}, Usuario: ${interaction.user.id}`);
         client.logger.stack(err.stack);
 
         interaction.reply({
-          embeds: [{
-            color: client.color,
-            description: `**${Emojis.rocket} › ` + lang.events.messageCreate.error.replace('{}', command.name) + '**' + '```\n' + err + '```'
-          }],
+          content: `**${Emojis.errado} › ${t('events:messageCreate.error', {
+            command: command.name
+          })}`,
           ephemeral: true
         });
       });

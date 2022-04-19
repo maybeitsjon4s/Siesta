@@ -8,12 +8,12 @@ module.exports = {
   sameChannel: true,
   description: '[ 🎵 Music ] Shuffle the queue.',
   options: [],
-  async exec({ message,  player, lang }) {
+  async exec({ message,  player, t }) {
     
-    if(!player.queue.length) return message.reply(`**${Emojis.errado} › ${lang.commands.suffle.noQueue}**`);
+    if(!player.queue.length) return message.reply(`**${Emojis.errado} › ${t('commands:suffle.noQueue')}**`);
 
     player.shuffleQueue();
 
-    message.reply(`**${Emojis.music} › ${lang.commands.shuffle.sucess}**`);
+    message.reply(`**${Emojis.music} › ${t('commands:shuffle.sucess')}**`);
   }
 };

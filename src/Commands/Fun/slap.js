@@ -6,7 +6,7 @@ module.exports = {
   ownerOnly: false,
   playerOnly: false,
   sameChannel: false,
-  async exec({ client, message, args, lang }) {
+  async exec({ client, message, args, t }) {
     
     const gifList = [
       'https://i.imgur.com/fm49srQ.gif',
@@ -26,7 +26,7 @@ module.exports = {
 
     let user = await client.utils.getUser(args[0], message);
 
-    if (!user) return message.reply(`**${Emojis.errado} › ${lang.commands.slap.noMention}**`);
+    if (!user) return message.reply(`**${Emojis.errado} › ${t('commands:slap.noMention')}**`);
     if(user.id === client.user.id) {
       user = message.author;
       message.author = client.user;
@@ -34,7 +34,7 @@ module.exports = {
 
     message.reply({
       files: [randomGif],
-      content: `**${Emojis.heart} › ${message.author} ${lang.commands.slap.message} ${user}!**`,
+      content: `**${Emojis.heart} › ${message.author} ${t('commands:slap.message')} ${user}!**`,
     });
   }
 };

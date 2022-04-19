@@ -1,6 +1,6 @@
 const glob = require('glob');
 const Emojis = require('../../Structures/Utils/emojis.js');
-
+const i18next = require('i18next')
 module.exports = {
   name: 'reload',
   aliases: ['rr'],
@@ -30,18 +30,8 @@ module.exports = {
       });
     });
     message.reply(`**${Emojis.dev} › Comandos recarregados.**`);
-    glob(`${global.process.cwd()}/src/Locales/**/*js`, async(err, filePaths) => {
-      if(err) return;
-      filePaths.forEach((file) => {
-        delete require.cache[require.resolve(file)];
-        const pull = require(file);
-        if(pull.name == 'en-US') { 
-          client.langs.en = pull; 
-        } else { 
-          client.langs.pt = pull; 
-        }
-      });
-      message.reply(`**${Emojis.dev} › Locales recarregados.**`);
-    });
+    
+    await i18next.reloadResources(['pt-BR', 'en-US']);
+    message.reply(`**${Emojis.dev} › Locales recarregados.**`);
   },
 };

@@ -8,17 +8,17 @@ module.exports = {
   sameChannel: true,
   description: '[ 🎵 Music ] Enable/Disable the track/queue loop.',
   options: [],
-  async exec({ message, player, lang }) {
+  async exec({ message, player, t }) {
 
     if (!player.queue.length) {
       player.setTrackLoop(!player.trackRepeat);
-      const trackRepeat = player.trackRepeat ? lang.commands.loop.enable : lang.commands.loop.disable;
-      message.reply(`**${Emojis.music} › ${trackRepeat} ${lang.commands.loop.trackSucess}!**`);
+      const trackRepeat = player.trackRepeat ? t('commands:loop.enable') : t('commands:loop.disable');
+      message.reply(`**${Emojis.music} › ${trackRepeat} ${t('commands:loop.trackSucess')}!**`);
 
     } else {
       player.setQueueLoop(!player.queueRepeat);
-      const queueRepeat = player.queueRepeat ? lang.commands.loop.enable : lang.commands.loop.disable;
-      message.reply(`**${Emojis.music} › ${queueRepeat} ${lang.commands.loop.queueSucess}!**`);
+      const queueRepeat = player.queueRepeat ? t('commands:loop.enable') : t('commands:loop.disable');
+      message.reply(`**${Emojis.music} › ${queueRepeat} ${t('commands:loop.queueSucess')}!**`);
     }
   }
 };

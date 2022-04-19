@@ -13,7 +13,7 @@ module.exports = {
     type: 'STRING',
     required: true
   }],
-  async exec({ client, message, args, lang }) {
+  async exec({ client, message, args, t }) {
 
     const gifList = [
       'https://media.tenor.com/images/27171b8a85bc1adf0382032a4502f491/tenor.gif',
@@ -31,13 +31,13 @@ module.exports = {
     ];
 
     const randomGif = gifList[Math.floor(Math.random() * gifList.length)];
-    const pessoa = await client.utils.getUser(args[0], message);
+    const user = await client.utils.getUser(args[0], message);
 
-    if (!pessoa) return message.reply(`**${Emojis.errado} › ${lang.commands.kiss.noMention}**`);
+    if (!user) return message.reply(`**${Emojis.errado} › ${t('commands:kiss.noMention')}**`);
 
     message.reply({
       files: [randomGif],
-      content: `**${Emojis.heart} › ${message.author} ${lang.commands.kiss.message} ${pessoa}!**`,
+      content: `**${Emojis.heart} › ${message.author} ${t('commands:kiss.message')} ${user}!**`,
     });
   }
 };

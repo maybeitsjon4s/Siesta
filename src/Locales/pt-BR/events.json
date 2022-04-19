@@ -1,0 +1,14 @@
+{
+"messageCreate": {
+    "mention": "Olá, eu sou a **Siesta**! Meu prefixo neste servidor é **{{prefix}}** se quiser saber os meus comandos use **{{prefix}}help**!",
+    "error": "Ocorreu um erro ao usar o comando `{{command}}`, se não for um incomodo vá ate ao `servidor de suporte` da Siesta através do botão abaixo e `reporta-o para ser corrigido o mais rapido possivel!`"
+  },
+  "autoModEvents": {
+    "antiinvite": "Você não pode mandar convites de servidores aqui!"
+  },
+  "musicEvents": {
+    "trackStart": "Agora tocando: `{{track}}`, pedido por `{{user}}`",
+    "trackException": "Ocorreu um erro ao tentar tocar esta música logo vou pular ela...",
+    "queueEnd": "A Musica acabou, estou saindo do canal..."
+  }
+}

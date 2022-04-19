@@ -8,7 +8,7 @@ module.exports = {
   playerOnly: true,
   sameChannel: true,
   descripions: '[ 🎵 Music ] Add/remove filters to the player.',
-  async exec({  message, player, lang }) {
+  async exec({  message, player, t }) {
 
     const row = new MessageActionRow().addComponents(
       new MessageButton()
@@ -24,13 +24,13 @@ module.exports = {
         .setStyle('SECONDARY')
         .setCustomId('eightD'),
       new MessageButton()
-        .setLabel(lang.commands.filters.clearLabel)
+        .setLabel(t('commands:filters.clearLabel'))
         .setStyle('SECONDARY')
         .setCustomId('clear')
     );
 
     message.reply({
-      content: `**${Emojis.music} › ${lang.commands.filters.firstMessage}**`,
+      content: `**${Emojis.music} › ${t('commands:filters.firstMessage')}**`,
       components: [row],
       fetchReply: true
     }).then(msg => {
@@ -39,17 +39,18 @@ module.exports = {
         time: 180000
       });
 
-      collector.on('collect', async i => {
+      collector.on('collect', async (i) => {
         await i.deferUpdate();
         if(i.user.id !== message.author.id) return i.followUp({
-          content: `**${Emojis.errado} › ${lang.commands.filters.onlyAuthor}**`,
+          content: `**${Emojis.errado} › ${t('commands:filters.onlyAuthor')}**`,
           ephemeral: true
         });
         switch(i.customId) {
-
         case 'nightcore':
           msg.edit({
-            content: `**${Emojis.music} › ${lang.commands.filters.changedMessage.replace('{}', 'NightCore')}**`,
+            content: `**${Emojis.music} › ${t('commands:filters.changedMessage', {
+              filter: 'NightCore'
+            })}**`,
             components: []
           });
           player.filters.clear();
@@ -59,20 +60,22 @@ module.exports = {
             .setTremolo({ depth: 0.3, frequency: 14 }, false)
             .apply();
           break;
-
         case 'bassboost':
           msg.edit({
-            content: `**${Emojis.music} › ${lang.commands.filters.changedMessage.replace('{}', 'Bass Boost')}**`,
+            content: `**${Emojis.music} › ${t('commands:filters.changedMessage', {
+              filter: 'Bass Boost'
+            })}**`,
             components: []
           });
           player.filters.clear();
           player.filters.setEqualizer([0.29, 0.23, 0.19, 0.16, 0.08]).apply();
           player.bassboost = true;
           break;
-
         case 'eightD':
           msg.edit({
-            content: `**${Emojis.music} › ${lang.commands.filters.changedMessage.replace('{}', '8D')}**`,
+            content: `**${Emojis.music} › ${t('commands:filters.changedMessage', {
+              filter: '8D'
+            })}**`,
             components: []
           });
           player.filters.clear();
@@ -80,17 +83,14 @@ module.exports = {
           break;
         case 'clear':
           msg.edit({
-            content: `**${Emojis.music} › ${lang.commands.filters.clearFiltersMessage}**`,
+            content: `**${Emojis.music} › ${t('commands:filters.clearFiltersMessage')}**`,
             components: []
           });
           player.filters.clear();
           break;
-
         }
       });
-      collector.on('end', () => {
-        msg.delete().catch(() => {});
-      });
+      collector.on('end', () => msg.delete().catch(() => {}));
     });
   }
 };

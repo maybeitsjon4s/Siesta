@@ -8,7 +8,8 @@ const relativeTime = require('dayjs/plugin/relativeTime');
 extend(relativeTime);
 const { promisify } = require('util');
 const glob = promisify(require('glob'));
-
+const LocaleManager = require('./LocaleManager.js');
+const Music = require('./Music.js')
 module.exports = class Siesta extends Client {
   constructor() {
     super({
@@ -47,10 +48,6 @@ module.exports = class Siesta extends Client {
     this.utils = require('./Utils/util');
     this.owners = ['431768491759239211'];
     this.color = '#ffffff';
-    this.langs = {
-      pt: require('../Locales/pt-BR.json'),
-      en: require('../Locales/en-US.json')
-    };
     this.db = {
       user: User,
       guild: Guild
@@ -64,6 +61,8 @@ module.exports = class Siesta extends Client {
   async start() {
     this.loadEvents();
     this.loadCommands();
+    this.langs = new LocaleManager(this).loadLocales();
+    this.music = new Music(this)
     await super.login(global.config.token);
   }
   async loadCommands() {
@@ -79,7 +78,7 @@ module.exports = class Siesta extends Client {
   
   async loadEvents() {
     const events = await glob(`${global.process.cwd()}/src/Events/**/*.js`);
-    events.forEach(eventFile => {
+    events.forEach((eventFile) => {
       const file = require(eventFile);
       super.on(file.name, file.exec.bind(null, this));
     });

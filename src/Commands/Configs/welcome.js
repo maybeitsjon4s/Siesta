@@ -6,11 +6,11 @@ module.exports = {
   ownerOnly: false,
   playerOnly: false,
   sameChannel: false,
-  async exec({ client, message, args, lang }) {
+  async exec({ client, message, args, t }) {
     
-    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} › ${lang.commands.welcome.errorPerm}**`);
-    if (!args[0]) return message.reply(`**${Emojis.errado} › ${lang.commands.welcome.argsError}**`);
-    if(!['on', 'off'].includes(args[0])) return message.reply(`**${Emojis.errado} › ${lang.commands.welcome.argsError} **`);
+    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} › ${t('commands:welcome.errorPerm')}**`);
+    if (!args[0]) return message.reply(`**${Emojis.errado} › ${t('commands:welcome.argsError')}**`);
+    if(!['on', 'off'].includes(args[0])) return message.reply(`**${Emojis.errado} › ${t('commands:welcome.argsError')} **`);
 
     if (args[0] == 'off') {
       await client.db.guild.findOneAndUpdate({
@@ -20,13 +20,13 @@ module.exports = {
           'welcome.status': false
         }
       });
-      return message.reply(`**${Emojis.config} › ${lang.commands.welcome.disabled}**`);
+      return message.reply(`**${Emojis.config} › ${t.commands.welcome.disabled}**`);
     }
     if (args[0] == 'on') {
       const channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1]);
-      if (!channel) return message.reply(`**${Emojis.errado} « ${lang.commands.welcome.argsError}**`);
+      if (!channel) return message.reply(`**${Emojis.errado} › ${t('commands:welcome.argsError')}**`);
       const msg = args.slice(2).join(' ');
-      if (!msg) return message.reply(`**${Emojis.errado} › ${lang.commands.welcome.argsError}**`);
+      if (!msg) return message.reply(`**${Emojis.errado} › ${t('commands.welcome.argsError')}**`);
 
       await client.db.guild.findOneAndUpdate({
         _id: message.guild.id
@@ -37,9 +37,9 @@ module.exports = {
           'welcome.message': msg
         }
       });
-      message.reply(
-        `**${Emojis.config} › ${lang.commands.welcome.seted}**`
-      );
+      message.reply({
+        content: `**${Emojis.config} › ${t('commands.welcome.seted')}**`
+      });
     }
   }
 };

@@ -15,21 +15,21 @@ module.exports = {
     type: 'STRING',
     required: false
   }],
-  async exec({ client, message, args, lang }) {
+  async exec({ client, message, args, t }) {
 
-    const mod = readdirSync('./src/commands/Mod').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
-    const configs = readdirSync('./src/commands/Configs').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
-    const fun = readdirSync('./src/commands/Fun').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
-    const info = readdirSync('./src/commands/Info').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
-    const msc = readdirSync('./src/commands/Music').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
+    const mod = readdirSync('./src/Commands/Mod').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
+    const configs = readdirSync('./src/Commands/Configs').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
+    const fun = readdirSync('./src/Commands/Fun').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
+    const info = readdirSync('./src/Commands/Info').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
+    const msc = readdirSync('./src/Commands/Music').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
       
     const row = new MessageActionRow().addComponents(
       new MessageButton()
-        .setLabel(lang.commands.help.inviteMe)
+        .setLabel(t('commands:help.inviteMe'))
         .setStyle('LINK')
         .setURL('https://dsc.gg/siesta-bot'),
       new MessageButton()
-        .setLabel(lang.commands.help.support)
+        .setLabel(t('commands:help.support'))
         .setStyle('LINK')
         .setURL('https://discord.gg/vYEutrG7gY'));
 
@@ -41,7 +41,7 @@ module.exports = {
           color: client.color,
           fields: [{
             name: `${Emojis.rocket} ${this.formatName(command.name)}`,
-            value: `**${lang.commands.help.commandDescription} ›** \`${command.description || '???'}\`\n**${lang.commands.help.aliases} ›** \`${command.aliases.length > 0 ? command.aliases.join(', ') : ''}\``
+            value: `**${t('commands:help.commandDescription')} ›** \`${command.description || '???'}\`\n**${t('commands:help.aliases')} ›** \`${command.aliases.length > 0 ? command.aliases.join(', ') : ''}\``
           }]
         }]
       });
@@ -49,25 +49,27 @@ module.exports = {
 
     message.reply({ embeds: [{
       color: client.color,
-      description: `> ${message.author}, ${lang.commands.help.message.replace('{}', '**' + client.commands.size + '**')}!`,
+      description: `> ${message.author}, ${t('commands.help.message', {
+        commands: client.commands.size
+      })}!`,
       fields: [{
-        name: `${Emojis.ban} › __${lang.commands.help.moderation}__ [${mod.length}]`,
+        name: `${Emojis.ban} › __${t('commands:help.moderation')}__ [${mod.length}]`,
         value: `\`${mod.join(', ')}\``
       },
       {
-        name: `${Emojis.config} › __${lang.commands.help.config}__ [${configs.length}]`,
+        name: `${Emojis.config} › __${t('commands:help.config')}__ [${configs.length}]`,
         value: `\`${configs.join(', ')}\``
       },
       {
-        name: `${Emojis.estrela} › __${lang.commands.help.fun}__ [${fun.length}]`,
+        name: `${Emojis.estrela} › __${t('commands:help.fun')}__ [${fun.length}]`,
         value: `\`${fun.join(', ')}\``
       },
       {
-        name: `${Emojis.star} › __${lang.commands.help.info}__ [${info.length}] `,
+        name: `${Emojis.star} › __${t('commands:help.info')}__ [${info.length}] `,
         value: `\`${info.join(', ')}\``
       },
       {
-        name: `${Emojis.music} › __${lang.commands.help.music}__ [${msc.length}]`,
+        name: `${Emojis.music} › __${t('commands:help.music')}__ [${msc.length}]`,
         value: `\`${msc.join(', ')}\``
       }],
       footer: {

@@ -8,11 +8,11 @@ module.exports = {
   sameChannel: true,
   description: '[ 🎵 Music ] Resumes the player.',
   options: [],
-  async exec({ message, player, lang }) {
+  async exec({ message, player, t }) {
 
-    if (!player.paused) return message.reply(`**${Emojis.errado} › ${lang.commands.resume.alteradyPause}!**`);
+    if (!player.paused) return message.reply(`**${Emojis.errado} › ${t('commands:resume.alteradyPause')}!**`);
 
     player.pause(false);
-    message.reply(`**${Emojis.music} › ${lang.commands.resume.sucess}!**`);
+    message.reply(`**${Emojis.music} › ${t('commands:resume.sucess')}!**`);
   },
 };

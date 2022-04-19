@@ -15,9 +15,9 @@ module.exports = {
       required: true
     }
   ],
-  async exec({ client, message, args, player, lang }) {
+  async exec({ client, message, args, player, t }) {
 
-    if (!args[0] || !client.utils.timeToMS(args[0])) return message.reply(`**${Emojis.errado} › ${lang.commands.seek.invalidTime}**`);
+    if (!args[0] || !client.utils.timeToMS(args[0])) return message.reply(`**${Emojis.errado} › ${t('commands:seek.invalidTime')}**`);
 
     const time = client.utils.timeToMS(args[0]);
     const position = player.position;
@@ -27,16 +27,16 @@ module.exports = {
       if (time > position) {
         player.seek(time);
         return message.reply({
-          content: `**${Emojis.music} ›** ***${lang.commands.seek.goingTo} ${client.utils.formatTime(time)}...***`,
+          content: `**${Emojis.music} ›** ***${t('commands:seek.goingTo')} ${client.utils.formatTime(time)}...***`,
         });
       } else {
         player.seek(time);
         return message.reply({
-          content: `**${Emojis.music} ›** ***${lang.commands.seek.backingTo} ${client.utils.formatTime(time)}...***`,
+          content: `**${Emojis.music} ›** ***${t('commands:seek.backingTo')} ${client.utils.formatTime(time)}...***`,
         });
       }
     } else {
-      return message.reply(`**${Emojis.errado} › ${lang.commands.seek.exceeds}**`);
+      return message.reply(`**${Emojis.errado} › ${t('commands:seek.exceeds')}**`);
     }
   },
 };

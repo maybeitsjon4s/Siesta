@@ -13,11 +13,13 @@ module.exports = {
     type: 'NUMBER',
     required: true
   }],
-  async exec({ args, message, player, lang }) {
+  async exec({ args, message, player, t }) {
 
-    if(!Number(args[0]) || Number(args[0]) > player.queue.length || Number(args[0] < 0)) return message.reply(`**${Emojis.errado} › ${lang.commands.remove.invalidTrack}**`);
+    if(!Number(args[0]) || Number(args[0]) > player.queue.length || Number(args[0] < 0)) return message.reply(`**${Emojis.errado} › ${t('commands:remove.invalidTrack')}**`);
 
-    message.reply(`**${Emojis.music} › ${lang.commands.remove.removed.replace('{track}', player.queue[Number(args[0] - 1)].title)}**`);
+    message.reply(`**${Emojis.music} › ${t('commands:remove.removed', {
+      track: player.queue[Number(args[0] - 1)].title
+    })}**`);
 
     player.queue.splice(Number(args[0]) - 1, 1);
   }

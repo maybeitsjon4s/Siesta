@@ -8,10 +8,10 @@ module.exports = {
   sameChannel: true,
   description: '[ 🎵 Music ] Skips the currently track.',
   options: [],
-  async exec({ message, player, lang }) {
+  async exec({ message, player, t }) {
      
     player.skip();
 
-    message.reply(`**${Emojis.music} › ${lang.commands.skip.sucess}!**`);
+    message.reply(`**${Emojis.music} › ${t('commands:skip.sucess')}!**`);
   },
 };

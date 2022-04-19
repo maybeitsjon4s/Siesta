@@ -1,4 +1,5 @@
 const Emojis = require('../../Structures/Utils/emojis.js');
+const i18next = require('i18next');
 
 module.exports =  {
   name: 'messageCreate',
@@ -13,14 +14,14 @@ module.exports =  {
     if (GUILD.antiinvite.status && message.member) {
       if (message.member.permissions.has('MANAGE_MESSAGES')) return;
 
-      let lang = GUILD.lang || 0;
+      let t = GUILD.lang || 0;
 
-      switch(lang) {
+      switch(t) {
       case 1:
-        lang = client.langs.pt;
+        t = i18next.getFixedT('pt-BR');
         break;
       case 0:
-        lang = client.langs.en;
+        t = i18next.getFixedT('en-US');
         break;
       }
 
@@ -29,7 +30,7 @@ module.exports =  {
       const whitelist = GUILD.antiinvite.whitelist;
 
       if (regex.exec(message.content) && !whitelist.some(x => x == message.channel.id)) {
-        message.channel.send(`**${Emojis.errado} › ${message.author} ` + lang.events.autoModEvents.antiinvite + '**');
+        message.channel.send(`**${Emojis.errado} › ${message.author} ` + t('events.autoModEvents.antiinvite') + '**');
         message.delete().catch(() => {});
       }
     }

@@ -1,5 +1,4 @@
 const { MessageEmbed } = require('discord.js-light');
-const Day = require('dayjs');
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
@@ -10,9 +9,7 @@ module.exports = {
   sameChannel: false,
   description: '[ 📚 Utils ] Show some infos about this guild.',
   options: [],
-  async exec({ client, message, args, lang }) {
-
-    Day.locale(lang.name);
+  async exec({ client, message, args, t }) {
 
     const guild = client.guilds.cache.get(args[0]) || message.guild;
 
@@ -21,7 +18,7 @@ module.exports = {
       .setColor(client.color)
       .addFields(
         {
-          name: `${Emojis.user} › ${lang.commands.serverinfo.name}`,
+          name: `${Emojis.user} › ${t('commands:serverinfo.name')}`,
           value: `\`${guild.name}\``,
           inline: true
         },
@@ -31,13 +28,13 @@ module.exports = {
           inline: true
         },
         {
-          name: `${Emojis.owner} › ${lang.commands.serverinfo.owner}`,
+          name: `${Emojis.owner} › ${t('commands:serverinfo.owner')}`,
           value: `\`${await guild.fetchOwner().then((x) => x.user.tag)}\``,
           inline: true
         },
         {
-          name: `${Emojis.heart2} › ${lang.commands.serverinfo.channels}`,
-          value: `> **${lang.commands.serverinfo.text}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_TEXT'/*text*/).size}\`\n> **${lang.commands.serverinfo.voice}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_VOICE'/*voice*/).size}\`\n> **${lang.commands.serverinfo.category}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_CATEGORY'/*category*/).size}\``,
+          name: `${Emojis.heart2} › ${t('commands:serverinfo.channels')}`,
+          value: `> **${t('commands:serverinfo.text')}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_TEXT'/*text*/).size}\`\n> **${t('commands:serverinfo.voice')}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_VOICE'/*voice*/).size}\`\n> **${t('commands:serverinfo.category')}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_CATEGORY'/*category*/).size}\``,
           inline: true
         },
         {
@@ -46,7 +43,7 @@ module.exports = {
           inline: true
         },
         {
-          name: `${Emojis.rocket} › ${lang.commands.serverinfo.createdAt}`,
+          name: `${Emojis.rocket} › ${t('commands:serverinfo.createdAt')}`,
           value: `<t:${(guild.createdAt / 1000).toFixed()}> (<t:${(guild.createdAt / 1000).toFixed()}:R>)`,
           inline: true
         }

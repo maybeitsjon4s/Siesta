@@ -8,10 +8,10 @@ module.exports = {
   sameChannel: true,
   description: '[ 🎵 Music ] Disconnect the bot from the voice channel.',
   options: [],
-  async exec({ message, player, lang }) {
+  async exec({ message, player, t }) {
 
     player.destroy();
-    message.reply(`**${Emojis.music} › ${lang.commands.disconnect.sucess}**`);
+    message.reply(`**${Emojis.music} › ${t('commands:disconnect.sucess')}**`);
     
   }
 };

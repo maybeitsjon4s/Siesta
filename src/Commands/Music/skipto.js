@@ -15,13 +15,15 @@ module.exports = {
       required: true
     }
   ],
-  async exec({ message, args, player, lang }) {
+  async exec({ message, args, player, t }) {
 
     const position = Number(args[0]);
 
-    if(!position || isNaN(position) || position < 0 || position > player.queue.length) return message.reply(`**${Emojis.errado} › ${lang.commands.skipto.invalidPosition}**`);
+    if(!position || isNaN(position) || position < 0 || position > player.queue.length) return message.reply(`**${Emojis.errado} › ${t('commands:skipto.invalidPosition')}**`);
 
     player.skip(position);
-    message.reply(`**${Emojis.music} › ${lang.commands.skipto.sucess.replace('{}', position)}**`);
+    message.reply(`**${Emojis.music} › ${t('commands:skipto.sucess',{
+      position: position
+    })}**`);
   }
 };

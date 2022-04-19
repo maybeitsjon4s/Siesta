@@ -18,7 +18,7 @@ module.exports = {
     type: 'STRING',
     required: false
   }],
-  async exec({ client, message, args, lang }) {
+  async exec({ client, message, args, t }) {
 
     const GUILD = await client.db.guild.findOne({
       _id: message.guild.id
@@ -64,7 +64,9 @@ module.exports = {
     await fillTextWithTwemoji(ctx, list, 251, 280);
 
     ctx.font = '21px "Segoe UI Black"';
-    ctx.fillText(`Sobre mim:\n${client.utils.applyLineBreaks(client.utils.shorten(user.about, 180), 70) || lang.commands.profile.defaultAboutMe.replace('{}', GUILD.prefix)}`, 50, 402);
+    ctx.fillText(`Sobre mim:\n${client.utils.applyLineBreaks(client.utils.shorten(user.about, 180), 70) || t('commands:profile.defaultAboutMe', {
+      prefix: GUILD.prefix
+    })}`, 50, 402);
 
     const attach = new MessageAttachment(canvas.toBuffer(), 'Profile.png');
 

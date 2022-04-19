@@ -8,12 +8,12 @@ module.exports = {
   ownerOnly: false,
   description: '[ 🎵 Music ] Pauses the currently playing track.',
   options: [],
-  async exec({ message, player, lang }) {
+  async exec({ message, player, t }) {
 
-    if (player.paused) return message.reply(`**${Emojis.errado} › ${lang.commands.pause.alteradyPause}!**`);
+    if (player.paused) return message.reply(`**${Emojis.errado} › ${t('commands:pause.alteradyPause')}!**`);
 
     player.pause(true);
-    message.reply(`**${Emojis.music} › ${lang.commands.pause.sucess}!**`);
+    message.reply(`**${Emojis.music} › ${t('commands:pause.sucess')}!**`);
     
   }
 };

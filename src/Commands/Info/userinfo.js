@@ -14,7 +14,7 @@ module.exports = {
     type: 'STRING',
     required: false
   }],
-  async exec({ client, message, args, lang }) {
+  async exec({ client, message, args, t }) {
 
     const user = await client.utils.getUser(args[0], message) || message.author;
 
@@ -22,7 +22,7 @@ module.exports = {
       .setTitle(`__${user.tag.replaceAll('_', '')}__ ${client.utils.getUserFlags(user)}`)
       .setColor(client.color)
       .addFields({
-        name: `${Emojis.estrela} › ${lang.commands.userinfo.createdAccount}`,
+        name: `${Emojis.estrela} › ${t('commands:userinfo.createdAccount')}`,
         value: `<t:${(user.createdAt / 1000).toFixed()}> (<t:${(user.createdAt / 1000).toFixed()}:R>)`,
         inline: true
       })
@@ -36,13 +36,13 @@ module.exports = {
 
 
     member && embed.fields.push({
-      name: Emojis.heart2 + ` › ${lang.commands.userinfo.joinedAt}`,
+      name: Emojis.heart2 + ` › ${t('commands:userinfo.joinedAt')}`,
       value: `<t:${(member.joinedAt / 1000).toFixed()}> (<t:${(member.joinedAt / 1000).toFixed()}:R>)`,
       inline: true
     });
 
     member && member.premiumSince && embed.fields.push({
-      name: Emojis.boost + ` › ${lang.commands.userinfo.boosterSince}`,
+      name: Emojis.boost + ` › ${t('commands:userinfo.boosterSince')}`,
       value: `<t:${(member.premiumSince / 1000).toFixed()}> (<t:${(member.premiumSince / 1000).toFixed()}:R>)`
     });
     message.reply({ embeds: [embed] });

@@ -13,31 +13,30 @@ module.exports = {
     type: 'NUMBER',
     required: true
   }],
-  async exec({ client, message, args, lang }) {
+  async exec({ client, message, args, t }) {
 
-    if (!message.member.permissions.has('MANAGE_MESSAGES') && !client.owners.some(id => id === message.author.id) )
-      return message.reply(`**${Emojis.errado} › ${lang.commands.clear.userPermission}**`);
+    if (!message.member.permissions.has('MANAGE_MESSAGES') && !client.owners.some(id => id === message.author.id)) return message.reply(`**${Emojis.errado} › ${t('commands:clear.userPermission')}**`);
 
-    if (!message.guild.me.permissions.has('MANAGE_MESSAGES'))
-      return message.reply(
-        `**${Emojis.errado} › ${lang.commands.clear.myPermission}**`
-      );
+    if (!message.guild.me.permissions.has('MANAGE_MESSAGES')) return message.reply(`**${Emojis.errado} › ${t('commands:clear.myPermission')}**`);
 
     const deleteCount = parseInt(args[0], 10);
-    if (!deleteCount || deleteCount < 1 || deleteCount > 99)
-      return message.reply(`**${Emojis.errado} › ${lang.commands.clear.invalidCount}**`);
+
+    if (!deleteCount || deleteCount < 1 || deleteCount > 99) return message.reply(`**${Emojis.errado} › ${t('commands:clear.invalidCount')}**`);
 
     const fetched = await message.channel.messages.fetch({
       limit: deleteCount + 1,
-    });
+    }).filter((msg) => !msg.pinned);
 
-
-    message.channel.bulkDelete(fetched).catch(() => {
-      return message.reply(`**${Emojis.errado} ${lang.commands.clear.impossibleToDelete}**`);
-    });
+    try{
+      await message.channel.bulkDelete(fetched);
+    } catch {
+      return message.reply(`**${Emojis.errado} › ${t('commands:clear.impossibleToDelete')}`);
+    }
 
     message.channel.send({
-      content: `**${Emojis.ban} › ${lang.commands.clear.finalMessage.replace('{}', deleteCount)}!**`,
+      content: `**${Emojis.ban} › ${t('commands:clear.finalMessage', {
+        count: deleteCount
+      })}!**`,
       ephemeral: true
     }).then((msg) => {
       setTimeout(() => {

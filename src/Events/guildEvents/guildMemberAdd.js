@@ -7,7 +7,7 @@ module.exports = {
     const guild = await client.db.guild.findOne({ _id: member.guild.id, });
     if(!guild) return;
     // welcome
-    if (guild.welcome.status && !member.user.bot) {
+    if (guild.welcome.status) {
 
       const channel = await member.guild.channels.cache.get(guild.welcome.channel);
 

@@ -1,16 +1,16 @@
 const glob = require('glob');
 const Emojis = require('../../Structures/Utils/emojis.js');
-const i18next = require('i18next');
+const { reloadResources } = require('i18next');
 module.exports = {
   name: 'reload',
-  aliases: ['rr'],
+  aliases: ['rl'],
   ownerOnly: true,
   playerOnly: false,
   sameChannel: false,
   async exec({ client, message }) {
 
+    // Commands
     client.commands.sweep(() => true);
-
     glob(`${global.process.cwd()}/src/Commands/**/*js`, async (err, filePaths) => {
       if (err) return message.reply('```' + err.stack + '```');
 
@@ -30,8 +30,9 @@ module.exports = {
       });
     });
     message.reply(`**${Emojis.dev} › Comandos recarregados.**`);
-    
-    client.localeManager.reload({ all: true });
+
+    // Locales
+    await reloadResources(['pt-BR', 'en-US'])
     message.reply(`**${Emojis.dev} › Locales recarregados.**`);
   },
 };

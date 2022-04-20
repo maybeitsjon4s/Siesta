@@ -23,11 +23,4 @@ module.exports = class LocaleManager {
       returnObjects: true
     });
   }
-  async reload({ all, langs}) {
-    if(all) {
-      await i18next.reloadResources(); 
-    } else if(langs.length <= 1) {
-      await i18next.reloadResources(langs);
-    }
-  }
 };

@@ -26,7 +26,7 @@ module.exports = {
       const channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1]);
       if (!channel) return message.reply(`**${Emojis.errado} › ${t('commands:welcome.argsError')}**`);
       const msg = args.slice(2).join(' ');
-      if (!msg) return message.reply(`**${Emojis.errado} › ${t('commands.welcome.argsError')}**`);
+      if (!msg) return message.reply(`**${Emojis.errado} › ${t('commands:welcome.argsError')}**`);
 
       await client.db.guild.findOneAndUpdate({
         _id: message.guild.id
@@ -38,7 +38,7 @@ module.exports = {
         }
       });
       message.reply({
-        content: `**${Emojis.config} › ${t('commands.welcome.seted')}**`
+        content: `**${Emojis.config} › ${t('commands:welcome.seted')}**`
       });
     }
   }

@@ -1,6 +1,7 @@
 const Emojis = require('../../Structures/Utils/emojis.js');
 const Day = require('dayjs');
 const i18next = require('i18next');
+const { MessageActionRow, MessageButton } = require('discord.js');
 module.exports = {
   name: 'interactionCreate',
   async exec (client, interaction) {
@@ -29,7 +30,6 @@ module.exports = {
       if(command && command.ownerOnly && !client.owners.some(id => id === interaction.user.id)) return;
 
       interaction.edit = interaction.editReply;
-      interaction.delete = interaction.deleteReply;
       interaction.author = interaction.user;
 
       const args = [];
@@ -76,7 +76,14 @@ module.exports = {
         interaction.reply({
           content: `**${Emojis.errado} › ${t('events:messageCreate.error', {
             command: command.name
-          })}`,
+          })}**`,
+          components: [
+            new MessageActionRow().addComponents(new MessageButton()
+              .setStyle('LINK')
+              .setLabel(t('events:messageCreate.support'))
+              .setURL('https://discord.com/invite/vYEutrG7gY')
+            )
+          ],
           ephemeral: true
         });
       });

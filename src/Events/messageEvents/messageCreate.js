@@ -1,6 +1,6 @@
 const Emojis = require('../../Structures/Utils/emojis');
 const Day = require('dayjs');
-const { MessageActionRow, MessageButton } = require('discord.js')
+const { MessageActionRow, MessageButton } = require('discord.js');
 const i18next = require('i18next');
 module.exports = {
   name: 'messageCreate',
@@ -80,13 +80,13 @@ module.exports = {
       client.logger.stack(err.stack);
       message.reply({ 
         content: `**${Emojis.errado} › ${t('events:messageCreate.error', {
-        command: command.name
-      })}**`,
+          command: command.name
+        })}**`,
         components: [new MessageActionRow().addComponents(
           new MessageButton()
-          .setStyle('LINK')
-          .setLabel(t('events:messageCreate.support'))
-          .setURL('https://discord.com/invite/vYEutrG7gY'))]
+            .setStyle('LINK')
+            .setLabel(t('events:messageCreate.support'))
+            .setURL('https://discord.com/invite/vYEutrG7gY'))]
       });
     });
     await client.db.user.findOneAndUpdate({ _id: message.author.id }, { 

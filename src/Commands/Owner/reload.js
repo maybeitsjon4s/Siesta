@@ -32,7 +32,7 @@ module.exports = {
     message.reply(`**${Emojis.dev} › Comandos recarregados.**`);
 
     // Locales
-    await reloadResources(['pt-BR', 'en-US'])
+    await reloadResources(['pt-BR', 'en-US']);
     message.reply(`**${Emojis.dev} › Locales recarregados.**`);
   },
 };

@@ -25,9 +25,9 @@ module.exports = {
 
     const fetched = await message.channel.messages.fetch({
       limit: deleteCount + 1,
-    })
+    });
 
-      await message.channel.bulkDelete(fetched, true);
+    await message.channel.bulkDelete(fetched, true);
 
     message.channel.send({
       content: `**${Emojis.ban} › ${t('commands:clear.finalMessage', {

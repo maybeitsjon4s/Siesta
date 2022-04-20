@@ -1,6 +1,6 @@
 const glob = require('glob');
 const Emojis = require('../../Structures/Utils/emojis.js');
-const i18next = require('i18next')
+const i18next = require('i18next');
 module.exports = {
   name: 'reload',
   aliases: ['rr'],
@@ -31,7 +31,7 @@ module.exports = {
     });
     message.reply(`**${Emojis.dev} › Comandos recarregados.**`);
     
-    client.localeManager.reload({ all: true })
+    client.localeManager.reload({ all: true });
     message.reply(`**${Emojis.dev} › Locales recarregados.**`);
   },
 };

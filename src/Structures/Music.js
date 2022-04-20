@@ -16,7 +16,7 @@ module.exports = class SiestaMusic extends Vulkava {
     });
     this.client = client;
     this.on('nodeConnect', (node) => {
-      console.log(blue(`[ ${node.options.id} ]`), green('Node Conectado.'))
+      console.log(blue(`[ ${node.options.id} ]`), green('Node Conectado.'));
       setInterval(() => {
         node.send({
           op: 'pong'

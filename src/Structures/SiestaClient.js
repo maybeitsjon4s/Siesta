@@ -9,7 +9,7 @@ extend(relativeTime);
 const { promisify } = require('util');
 const glob = promisify(require('glob'));
 const LocaleManager = require('./LocaleManager.js');
-const Music = require('./Music.js')
+const Music = require('./Music.js');
 module.exports = class Siesta extends Client {
   constructor() {
     super({
@@ -62,7 +62,7 @@ module.exports = class Siesta extends Client {
     this.loadEvents();
     this.loadCommands();
     this.localeManager = new LocaleManager(this).loadLocales();
-    this.music = new Music(this)
+    this.music = new Music(this);
     await super.login(global.config.token);
   }
   async loadCommands() {

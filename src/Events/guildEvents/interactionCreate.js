@@ -21,9 +21,9 @@ module.exports = {
       let t;
 
       if(interaction.locale === 'pt-BR') {
-        t = i18next.getFixedT('pt-BR')
+        t = i18next.getFixedT('pt-BR');
       } else {
-        t = i18next.getFixedT('en-US')
+        t = i18next.getFixedT('en-US');
       }
 
       if(command && command.ownerOnly && !client.owners.some(id => id === interaction.user.id)) return;

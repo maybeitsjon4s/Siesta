@@ -18,15 +18,12 @@ module.exports = {
 
       if(user?.blacklist) return;
 
-      let t = guild.lang || 0;
+      let t;
 
-      switch(t) {
-      case 1:
-        t = i18next.getFixedT('pt-BR');
-        break;
-      case 0:
-        t = i18next.getFixedT('en-US');
-        break;
+      if(interaction.locale === 'pt-BR') {
+        t = i18next.getFixedT('pt-BR')
+      } else {
+        t = i18next.getFixedT('en-US')
       }
 
       if(command && command.ownerOnly && !client.owners.some(id => id === interaction.user.id)) return;

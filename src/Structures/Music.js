@@ -1,7 +1,7 @@
 const { Vulkava } = require('vulkava');
 const Emojis = require('./Utils/emojis.js');
 const i18next = require('i18next');
-const { cyan, green, red } = require('colors');
+const { blue, green, red } = require('colors');
 
 module.exports = class SiestaMusic extends Vulkava {
   constructor(client) {
@@ -16,7 +16,7 @@ module.exports = class SiestaMusic extends Vulkava {
     });
     this.client = client;
     this.on('nodeConnect', (node) => {
-      console.log(cyan(`[ ${node.options.id} ]`), green('Node Conectado.'))
+      console.log(blue(`[ ${node.options.id} ]`), green('Node Conectado.'))
       setInterval(() => {
         node.send({
           op: 'pong'
@@ -25,7 +25,7 @@ module.exports = class SiestaMusic extends Vulkava {
     });
     this.on('error', (node, error) => {
       if(error.message.includes('503') || error.message.includes('1006')) return;
-      console.log(cyan(`[ ${node.identifier} ]`), green(`Erro, ${error.message}`));
+      console.log(blue(`[ ${node.identifier} ]`), green(`Erro, ${error.message}`));
     });
     this.on('nodeDisconnect', (node) => console.log(red(`[ ${node.options.id} ]`), green('Node Desconectado')));
 

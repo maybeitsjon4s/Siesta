@@ -31,7 +31,7 @@ module.exports = {
     });
     message.reply(`**${Emojis.dev} › Comandos recarregados.**`);
     
-    client.localeManager.reload()
+    client.localeManager.reload({ all: true })
     message.reply(`**${Emojis.dev} › Locales recarregados.**`);
   },
 };

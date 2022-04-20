@@ -1,7 +1,8 @@
 {
 "messageCreate": {
     "mention": "Olá, eu sou a **Siesta**! Meu prefixo neste servidor é **{{prefix}}** se quiser saber os meus comandos use **{{prefix}}help**!",
-    "error": "Ocorreu um erro ao usar o comando `{{command}}`, se não for um incomodo vá ate ao `servidor de suporte` da Siesta através do botão abaixo e `reporta-o para ser corrigido o mais rapido possivel!`"
+    "error": "Ocorreu um erro ao usar o comando `{{command}}`, se não for um incomodo vá ate ao `servidor de suporte` da Siesta através do botão abaixo e `reporta-o para ser corrigido o mais rapido possivel!`",
+    "support": "Servidor de Suporte"
   },
   "autoModEvents": {
     "antiinvite": "Você não pode mandar convites de servidores aqui!"

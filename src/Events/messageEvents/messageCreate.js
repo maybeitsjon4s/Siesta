@@ -1,5 +1,6 @@
 const Emojis = require('../../Structures/Utils/emojis');
 const Day = require('dayjs');
+const { MessageActionRow, MessageButton } = require('discord.js')
 const i18next = require('i18next');
 module.exports = {
   name: 'messageCreate',
@@ -77,9 +78,16 @@ module.exports = {
     await command.exec({ client, message, args, player, t }).catch((err) => {
       client.logger.error(`Erro no commando ${command.name}, Servidor: ${message.guild.id}, Usuario: ${message.author.id}.`);
       client.logger.stack(err.stack);
-      message.reply({ content: `**${Emojis.errado} › ${t('events:messageCreate.error', {
+      message.reply({ 
+        content: `**${Emojis.errado} › ${t('events:messageCreate.error', {
         command: command.name
-      })}**` });
+      })}**`,
+        components: [new MessageActionRow().addComponents(
+          new MessageButton()
+          .setStyle('LINK')
+          .setLabel(t('events:messageCreate.support'))
+          .setURL('https://discord.com/invite/vYEutrG7gY'))]
+      });
     });
     await client.db.user.findOneAndUpdate({ _id: message.author.id }, { 
       $set: { lastCommandUsed: Date.now() 

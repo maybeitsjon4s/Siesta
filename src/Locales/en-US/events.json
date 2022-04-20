@@ -1,7 +1,8 @@
 {
     "messageCreate": {
         "mention": "Hi, I\"m **Siesta**! My prefix on this server is **{{prefix}}** if you want to know my commands use **{{prefix}}help**!",
-        "error": "There was an error using the command `{{command}}`, if you can go to the Siesta `support server` using the button below and report it to be `fixed as soon as possible`!"
+        "error": "There was an error using the command `{{command}}`, if you can go to the Siesta `support server` using the button below and report it to be `fixed as soon as possible`!",
+        "support": "Support Server"
       },
       "autoModEvents": {
         "antiinvite": "You cannot send server links here!"

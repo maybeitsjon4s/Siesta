@@ -49,7 +49,7 @@ module.exports = {
 
     message.reply({ embeds: [{
       color: client.color,
-      description: `> ${message.author}, ${t('commands.help.message', {
+      description: `> ${message.author}, ${t('commands:help.message', {
         commands: client.commands.size
       })}!`,
       fields: [{

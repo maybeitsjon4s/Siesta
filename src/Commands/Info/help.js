@@ -50,7 +50,7 @@ module.exports = {
     message.reply({ embeds: [{
       color: client.color,
       description: `> ${message.author}, ${t('commands:help.message', {
-        commands: client.commands.size
+        commands: client.commands.size.toString()
       })}!`,
       fields: [{
         name: `${Emojis.ban} › __${t('commands:help.moderation')}__ [${mod.length}]`,

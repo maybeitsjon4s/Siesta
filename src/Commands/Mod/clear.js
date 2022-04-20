@@ -27,11 +27,7 @@ module.exports = {
       limit: deleteCount + 1,
     })
 
-    try{
-      await message.channel.bulkDelete(fetched);
-    } catch {
-      return message.reply(`**${Emojis.errado} › ${t('commands:clear.impossibleToDelete')}`);
-    }
+      await message.channel.bulkDelete(fetched, true);
 
     message.channel.send({
       content: `**${Emojis.ban} › ${t('commands:clear.finalMessage', {

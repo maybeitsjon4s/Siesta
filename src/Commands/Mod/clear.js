@@ -25,7 +25,7 @@ module.exports = {
 
     const fetched = await message.channel.messages.fetch({
       limit: deleteCount + 1,
-    }).filter((msg) => !msg.pinned);
+    })
 
     try{
       await message.channel.bulkDelete(fetched);

@@ -26,7 +26,7 @@ module.exports = {
 
     const member = await message.guild.members.fetch(await client.utils.getUser(args[0]).catch(() => {})).catch(() => {})
 
-    if(!member) return message.reply(`**${Emojis.errado} › ${t('commands:unmute.noUser')}!**`);
+    if(!member || member.id === message.author.id) return message.reply(`**${Emojis.errado} › ${t('commands:unmute.noUser')}!**`);
 
     if(!member.communicationDisabledUntilTimestamp) return message.reply(`**${Emojis.errado} › ${t('commands:unmute.userNotMuted')}!**`);
 

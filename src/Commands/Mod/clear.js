@@ -31,7 +31,7 @@ module.exports = {
 
     message.channel.send({
       content: `**${Emojis.ban} › ${t('commands:clear.finalMessage', {
-        count: deleteCount
+        count: deleteCount.toString()
       })}!**`,
       ephemeral: true
     }).then((msg) => {

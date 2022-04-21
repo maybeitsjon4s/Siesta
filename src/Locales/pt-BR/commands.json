@@ -108,6 +108,13 @@
     "reason": "Motivo",
     "during": "Durante"
   },
+  "unmute": {
+    "userPermission": "Você precisa da permissão `Moderar Membros` para executar este comando!",
+    "myPermission": "Eu preciso da permissão de `Moderar Membros` para executar este comando!",
+    "noUser": "Usuario não encontrado ou não mencionado!",
+    "userNotMuted": "O usuario não está mutado/castigado logo o mute não pode ser removido",
+    "sucess": "Removi o Mute/Castigo do `{{user}}` com sucesso!"
+  },
   "unlock": {
     "userPermission": "Eu não tenho a Permissão `Gerenciar Canais`.",
     "myPermission": "Você não tem a Permissão `Gerenciar Canais`.",

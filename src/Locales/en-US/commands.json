@@ -106,6 +106,13 @@
         "reason": "Reason",
         "during": "During"
       },
+      "unmute": {
+        "userPermission": "You need the `Moderate Members` permission to execute this command",
+        "myPermission": "I need the `Moderate Members` permission to execute this command",
+        "noUser": "User not found or not mentioned",
+        "userNotMuted": "That user its not muted",
+        "sucess": "I've unmuted `{{user}}` successfully"
+      },
       "unlock": {
         "userPermission": "I do not have the `Manage Channels` Permission.",
         "myPermission": "You do not have the `Manage Channels` Permission.",

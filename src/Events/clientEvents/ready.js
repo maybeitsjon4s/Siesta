@@ -1,4 +1,3 @@
-const Music = require('../../Structures/Music.js');
 const { blue, green } = require('colors');
 module.exports = {
   name: 'ready',

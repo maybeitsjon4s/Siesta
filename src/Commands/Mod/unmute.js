@@ -24,18 +24,18 @@ module.exports = {
 
     if(!message.guild.me.permissions.has('MODERATE_MEMBERS')) return message.reply(`**${Emojis.errado} › ${t('commands:unmute.myPermission')}!**`);
 
-    const member = await message.guild.members.fetch(await client.utils.getUser(args[0]).catch(() => {})).catch(() => {})
+    const member = await message.guild.members.fetch(await client.utils.getUser(args[0]).catch(() => {})).catch(() => {});
 
     if(!member || member.id === message.author.id) return message.reply(`**${Emojis.errado} › ${t('commands:unmute.noUser')}!**`);
 
     if(!member.communicationDisabledUntilTimestamp) return message.reply(`**${Emojis.errado} › ${t('commands:unmute.userNotMuted')}!**`);
 
-    const reason = args[1] || 'Removing timeout'
+    const reason = args[1] || 'Removing timeout';
 
-    await member.timeout(0, `By: ${message.author.tag} - ${reason}`).catch(() => {})
+    await member.timeout(0, `By: ${message.author.tag} - ${reason}`).catch(() => {});
 
     message.reply(`**${Emojis.ban} › ${t('commands:unmute.sucess', {
       user: member.user.tag
-    })}!**`)
+    })}!**`);
   }
-}
+};

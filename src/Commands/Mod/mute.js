@@ -49,7 +49,7 @@ module.exports = {
 
     if (member.id === message.author.id) return message.reply(`**${Emojis.errado} › ${t('commands:mute.muteYourSelf')}!**`);
 
-    if (member.id === client.id) return message.reply(`**${Emojis.errado} › ${t('commands:mute.punishMe')}!**`);
+    if (member.id === client.user.id) return message.reply(`**${Emojis.errado} › ${t('commands:mute.punishMe')}!**`);
 
     if (message.member.roles.highest.position <= member.roles.highest.position) return message.reply(`**${Emojis.errado} › ${t('commands:mute.higherRole')}!**`);
 

@@ -73,7 +73,10 @@ module.exports = {
       if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply(`**${Emojis.errado} › ${t('music:channelError')}**`);
     }
 
-    client.utils.sendLogs(`\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``);
+    client.utils.sendLogs({
+      type: 'command',
+      content: `\`---\`\nData: **${Day(Date.now()).format('DD/MM/YYYY HH:mm:ss')}**\nComando **${command.name}** executado no servidor **${message.guild.name}** (\`${message.guild.id}\`)\nUsuario: **${message.author.tag}** (\`${message.author.id}\`)\n\`---\``
+    });
 
     await command.exec({ client, message, args, player, t }).catch((err) => {
       client.logger.error(`Erro no commando ${command.name}, Servidor: ${message.guild.id}, Usuario: ${message.author.id}.`);

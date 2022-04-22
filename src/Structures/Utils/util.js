@@ -2,14 +2,19 @@ const { WebhookClient } = require('discord.js-light');
 
 module.exports = {
 
-  async sendLogs(content) {
-    const webhookClient = new WebhookClient({
-      token: global.config.logsToken,
-      id: global.config.logsId
-    });
-    webhookClient.send({
-      content: String(content)
-    });
+  async sendLogs({ content, type }) {
+    switch(type) {
+    case 'command':
+      new WebhookClient({
+        url: global.config.commandsWebhook
+      }).send({ content });
+      break;
+    case 'guild':
+      new WebhookClient({
+        url: global.config.guildsWebhook
+      }).send({ content });
+      break;
+    }
   },
   getUserFlags (user) {
     const flagsList = [];

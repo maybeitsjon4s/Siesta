@@ -1,6 +1,6 @@
 module.exports = {
-  name: 'raw',
-  exec (client, packet) {
-    client.music?.handleVoiceUpdate(packet)?.catch(() => {});
-  }
+    name: 'raw',
+    exec (client, packet) {
+        client.music?.handleVoiceUpdate(packet)?.catch(() => {});
+    }
 };

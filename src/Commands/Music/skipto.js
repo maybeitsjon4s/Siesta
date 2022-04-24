@@ -23,7 +23,7 @@ module.exports = {
 
         player.skip(position);
         message.reply(`**${Emojis.music} › ${t('commands:skipto.sucess',{
-            position: position
+            position: String(position)
         })}**`);
     }
 };

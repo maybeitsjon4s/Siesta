@@ -29,7 +29,7 @@ module.exports = {
     async exec({ client, message, args, t }) {
     
         if (!message.member.permissions.has('MODERATE_MEMBERS') && !client.owners.some(id => id === message.author.id)) return message.reply(`**${Emojis.errado} › ${t('commands:mute.userPermision')}!**`);
-        if (!message.guild.me.permissions.has('MODERATE_MEMBERS')) return message.reply(`**${Emojis.errado} › Eu ${t('commands:mute.myPermission')}!**`);
+        if (!message.guild.me.permissions.has('MODERATE_MEMBERS')) return message.reply(`**${Emojis.errado} › ${t('commands:mute.myPermission')}!**`);
         if (!args[0]) return message.reply(`**${Emojis.errado} › ${t('commands:mute.noArgs')}!**`);
         const member = await message.guild.members.fetch(await client.utils.getUser(args[0]).catch(() => {})).catch(() => {});
         if(!member) return message.reply(`**${Emojis.errado} › ${t('commands:mute.notFound')}!**`);

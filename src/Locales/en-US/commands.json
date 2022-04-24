@@ -212,7 +212,7 @@
         "music": "Music",
         "inviteMe": "Invite Me",
         "support": "Support Server",
-        "message": "these are all my commands, currently i have {{commands}} commands!",
+        "message": "these are all my commands, currently i have **{{commands}}** commands!",
         "commandDescription": "Command description:",
         "aliases": "Aliases:"
       },

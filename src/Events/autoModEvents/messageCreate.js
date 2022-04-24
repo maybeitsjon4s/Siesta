@@ -30,7 +30,7 @@ module.exports =  {
             const whitelist = GUILD.antiinvite.whitelist;
 
             if (regex.exec(message.content) && !whitelist.some(x => x == message.channel.id)) {
-                message.channel.send(`**${Emojis.errado} › ${message.author} ` + t('events.autoModEvents.antiinvite') + '**');
+                message.channel.send(`**${Emojis.errado} › ${message.author} ` + t('events:autoModEvents.antiinvite') + '**');
                 message.delete().catch(() => {});
             }
         }

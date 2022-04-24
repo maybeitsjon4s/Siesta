@@ -214,7 +214,7 @@
     "filters": "Filtros",
     "inviteMe": "Me Adicione",
     "support": "Servidor de Suporte",
-    "message": "estes são todos os meus comandos, atualmente eu tenho **{{commands}} comandos!",
+    "message": "estes são todos os meus comandos, atualmente eu tenho **{{commands}}** comandos!",
     "commandDescription": "Descrição do comando:",
     "aliases": "Sinônimos:"
   },

@@ -1,13 +1,13 @@
 {
   "name": "siesta",
-  "version": "1.5.9",
+  "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
     "start": "node --max_old_space_size=512 --optimize_for_size --expose-gc --gc-interval=1 .",
     "lint": "eslint src --fix"
   },
   "author": "yJon4s_",
-  "license": "ISC",
+  "license": "AGPL-3.0",
   "description": "",
   "dependencies": {
     "canvas": "^2.9.1",

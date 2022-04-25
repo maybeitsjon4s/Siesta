@@ -31,7 +31,7 @@ module.exports = {
             prefix = GUILD.prefix;
         }
 
-        if(client.user.id == '871825521779036201'/*Siesta Canary*/) prefix = '.';
+        if(client.user.id == '897914623796338740'/*Siesta Canary*/) prefix = '.';
 
         if (!message.content.toLowerCase().startsWith(prefix)) return;
 
@@ -73,7 +73,7 @@ module.exports = {
         if(command.sameChannel) {
             if(!message.member.voice.channel) return message.reply(`**${Emojis.errado} › ${t('music:channelError')}**`);
             if(message.guild.me.voice.channel) {
-            if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply(`**${Emojis.errado} › ${t('music:channelError')}**`);
+                if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply(`**${Emojis.errado} › ${t('music:channelError')}**`);
             }
         }
 

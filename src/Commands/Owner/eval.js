@@ -11,7 +11,7 @@ module.exports = {
         type: 'STRING',
         required: true
     }],
-    async exec({ message, client, args, t }) {
+    async exec({ message, client, player, args, t }) {
     
         if (!args[0]) return;
 

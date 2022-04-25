@@ -2,6 +2,8 @@ const { Vulkava } = require('vulkava');
 const Emojis = require('./Utils/emojis.js');
 const i18next = require('i18next');
 const { blue, green, red } = require('colors');
+const { promisify } = require('util');
+const delay = promisify(setTimeout);
 
 module.exports = class SiestaMusic extends Vulkava {
     constructor(client) {
@@ -16,7 +18,7 @@ module.exports = class SiestaMusic extends Vulkava {
         });
         this.client = client;
         this.on('nodeConnect', (node) => {
-            console.log(blue(`[ ${node.options.id} ]`), green('Node Conectado.'));
+            console.log(blue(`[ ${node.options.id} ]`), green('Node Connected.'));
             setInterval(() => {
                 node.send({
                     op: 'pong'
@@ -25,9 +27,9 @@ module.exports = class SiestaMusic extends Vulkava {
         });
         this.on('error', (node, error) => {
             if(error.message.includes('503') || error.message.includes('1006')) return;
-            console.log(blue(`[ ${node.identifier} ]`), green(`Erro, ${error.message}`));
+            console.log(blue(`[ ${node.identifier} ]`), green(`Error, ${error.message}`));
         });
-        this.on('nodeDisconnect', (node) => console.log(red(`[ ${node.options.id} ]`), green('Node Desconectado')));
+        this.on('nodeDisconnect', (node) => console.log(red(`[ ${node.options.id} ]`), green('Node Disconnected')));
 
         this.on('queueEnd', async (player) => {
             const t = await this.getLanguage(player.guildId);
@@ -44,8 +46,12 @@ module.exports = class SiestaMusic extends Vulkava {
                 player.queue.push(track);
                 player.play().catch(() => {});
             } else {
-                client.channels.cache.get(player.textChannelId).send(`**${Emojis.music} › ${t('events:musicEvents.queueEnd')}**`);
-                player.destroy();
+                const guild = player.guildId;
+                await delay(3 * 60 * 1000); // 3 mins
+                if(!client.music.players.get(guild).playing) {
+                    client.channels.cache.get(player.textChannelId).send(`**${Emojis.music} › ${t('events:musicEvents.queueEnd')}**`).catch(() => {});
+                    player.destroy();
+                }
             }
         });
         this.on('trackStart', async (player, track) => {

@@ -14,8 +14,7 @@ module.exports = {
         const pingDb = Math.round((pingStop[0] * 1e9 + pingStop[1]) / 1e6);
 
         message.reply({
-            content: `**🏓Pong!\n💻Api › __${client.ws.ping}__ms\n🛰️ Database › __${pingDb}__ms\n📡Shards › __${message.guild.shard.id + 1}/${client.ws.shards.size}__\n
-⏱️Uptime › __${client.utils.formatTime(client.uptime)}__**`,
+            content: `**🏓Pong!\n💻Api › __${client.ws.ping}__ms\n🛰️ Database › __${pingDb}__ms\n📡Shards › __${message.guild.shard.id + 1}/${client.ws.shards.size}__\n⏱️Uptime › __${client.utils.formatTime(client.uptime)}__**`,
         });
     },
 };

@@ -40,7 +40,9 @@ module.exports = class Siesta extends Client {
             allowedMentions: {
                 parse: ['users']
             },
-            shardCount: 2
+            shardCount: 2,
+            failIfNotExists: false,
+            
         });
 
         this.commands = new Collection();

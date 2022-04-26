@@ -12,11 +12,13 @@ module.exports = {
 
         if (!player.queue.length) {
             player.setTrackLoop(!player.trackRepeat);
+            player.setQueueLoop(false);
             const trackRepeat = player.trackRepeat ? t('commands:loop.enable') : t('commands:loop.disable');
             message.reply(`**${Emojis.music} › ${trackRepeat} ${t('commands:loop.trackSucess')}!**`);
 
         } else {
             player.setQueueLoop(!player.queueRepeat);
+            player.setTrackLoop(false)
             const queueRepeat = player.queueRepeat ? t('commands:loop.enable') : t('commands:loop.disable');
             message.reply(`**${Emojis.music} › ${queueRepeat} ${t('commands:loop.queueSucess')}!**`);
         }

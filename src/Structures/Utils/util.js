@@ -6,12 +6,12 @@ module.exports = {
         switch(type) {
         case 'command':
             new WebhookClient({
-                url: global.config.commandsWebhook
+                url: global.config.logs.commands
             }).send({ content });
             break;
         case 'guild':
             new WebhookClient({
-                url: global.config.guildsWebhook
+                url: global.config.logs.guilds
             }).send({ content });
             break;
         }

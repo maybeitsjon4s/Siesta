@@ -12,8 +12,8 @@ module.exports = class SiestaMusic extends Vulkava {
             unresolvedSearchSource: 'youtube',
             sendWS: (guildId, payload) => client.guilds.cache.get(guildId)?.shard.send(payload),
             spotify: {
-                clientId: global.config.spotifyId,
-                clientSecret: global.config.spotifyToken
+                clientId: global.config.spotify.id,
+                clientSecret: global.config.spotify.secret
             }
         });
         this.client = client;

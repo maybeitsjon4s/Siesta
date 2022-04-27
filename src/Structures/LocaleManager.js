@@ -24,4 +24,11 @@ module.exports = class LocaleManager {
             returnObjects: true
         });
     }
+    async reload({ all, specific }) {
+      if(all) {
+        client
+      } else if(specific) {
+
+      }
+    }
 };

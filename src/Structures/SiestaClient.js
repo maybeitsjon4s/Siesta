@@ -10,6 +10,7 @@ const { promisify } = require('util');
 const glob = promisify(require('glob'));
 const LocaleManager = require('./LocaleManager.js');
 const Music = require('./Music.js');
+
 module.exports = class Siesta extends Client {
     constructor() {
         super({

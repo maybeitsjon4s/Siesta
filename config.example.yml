@@ -1,0 +1,24 @@
+# Tokens
+token: ''
+
+# Connections
+connections:
+  database: ''
+  topgg: '' # If you don't have your bot aproved on top.gg go to src/index.js and comment line 12
+
+# Logs
+logs:
+  commands: ''
+  guilds: ''
+
+# Music
+spotify:
+  id: ''
+  secret: ''
+
+lavalinkNodes:
+  - {
+    hostname: 'localhost'
+    port: 2333,
+    password: 'youshallnotpass'
+  }

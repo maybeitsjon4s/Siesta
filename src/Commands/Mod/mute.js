@@ -53,7 +53,7 @@ module.exports = {
             .setTitle(`${Emojis.ban} | __Siesta__`)
             .addFields({
                 name: `${Emojis.user} › ${t('commands:mute.user')}: `,
-                value: `\`${member.user.tag}\``,
+                value: `\`${member.user?.tag}\``,
             },
             {
                 name: `${Emojis.info} › ${t('commands:mute.reason')}:`,
@@ -65,6 +65,6 @@ module.exports = {
             })
             .setTimestamp();
         message.reply({ embeds: [embed1] });
-        member.timeout(tempo, `By: ${message.author.tag} -- ${reason}`);
+        member.timeout(tempo, `By: ${message.author.tag} -- ${reason}`).catch(() => {});
     }
 };

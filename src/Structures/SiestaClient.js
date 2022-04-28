@@ -1,13 +1,17 @@
 const { Client, Options, Collection } = require('discord.js-light');
+
 const { gray, green, red } = require('colors');
+const { connect } = require('mongoose')
 const { Guild, User } = require('../Models/index.js');
 const { extend } = require('dayjs');
 require('dayjs/locale/pt');
 require('dayjs/locale/en');
 const relativeTime = require('dayjs/plugin/relativeTime');
 extend(relativeTime);
+
 const { promisify } = require('util');
 const glob = promisify(require('glob'));
+
 const LocaleManager = require('./LocaleManager.js');
 const Music = require('./Music.js');
 
@@ -63,10 +67,16 @@ module.exports = class Siesta extends Client {
         };
     }
     async start() {
+        // Loads Everything
         this.loadEvents();
         this.loadCommands();
         this.localeManager.loadLocales();
         this.music = new Music(this);
+        
+        // Connecting to the database
+        connect(global.config.connections.database).catch(() => {})
+
+        // Login the client
         await super.login(global.config.token);
     }
     async loadCommands() {

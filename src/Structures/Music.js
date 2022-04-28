@@ -48,7 +48,7 @@ module.exports = class SiestaMusic extends Vulkava {
             } else {
                 const guild = player.guildId;
                 await delay(3 * 60 * 1000); // 3 mins
-                if(!client.music.players.get(guild).playing) {
+                if(!client.music.players.get(guild)?.playing) {
                     client.channels.cache.get(player.textChannelId).send(`**${Emojis.music} › ${t('events:musicEvents.queueEnd')}**`).catch(() => {});
                     player.destroy();
                 }

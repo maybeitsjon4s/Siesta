@@ -6,7 +6,7 @@ module.exports = {
         const channel = newState.guild.channels.cache.get(
             newState.channel?.id ?? newState.channelId
         );
-        const player = client.music?.players.get(newState.guild.id);
+        const player = client.music.players.get(newState.guild.id);
 
         if (player) {
             if (newState.id == client.user.id && channel?.type == 'GUILD_STAGE_VOICE') {

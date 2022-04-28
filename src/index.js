@@ -10,7 +10,8 @@ const client = new SiestaClient();
 client.start();
 AutoPoster(global.config.connections.topgg, client);
 const filter = (err) => { 
-    if(!['Missing Access', 'Missing Permissions', 'Unknown Message'].includes(err.stack.toString())) console.log('\n\n'); client.logger.stack(err.stack); 
+    if(String(err).includes(['Unknown Message', 'Missing Permissions', 'Missing Acess'])) return;
+    console.log('\n\n'); client.logger.stack(err.stack);
 };
 global.process.on('unhandledRejection', filter);
 global.process.on('uncaughtException', filter);

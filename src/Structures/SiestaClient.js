@@ -45,15 +45,13 @@ module.exports = class Siesta extends Client {
             allowedMentions: {
                 parse: ['users']
             },
-            shardCount: 2,
-            failIfNotExists: false,
-            
+            shardCount: 2
         });
 
         this.commands = new Collection();
         this.aliases = new Collection();
         this.utils = require('./Utils/util');
-        this.owners = ['431768491759239211'];
+        this.owners = ['431768491759239211', '499356551535001610'];
         this.color = '#ffffff';
         this.localeManager = new LocaleManager(this);
         this.db = {

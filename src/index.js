@@ -1,17 +1,21 @@
 const { load } = require('js-yaml');
 const { readFileSync } = require('fs');
-global.config = load(readFileSync('./config.yml', 'utf8'));
 const { AutoPoster } = require('topgg-autoposter');
 
 
+global.config = load(readFileSync('./config.yml', 'utf8'));
+
 const SiestaClient = require('./Structures/SiestaClient');
 const client = new SiestaClient();
-
 client.start();
+
 AutoPoster(global.config.connections.topgg, client);
-const filter = (err) => { 
-    if(String(err).includes(['Unknown Message', 'Missing Permissions', 'Missing Acess'])) return;
-    console.log('\n\n'); client.logger.stack(err.stack);
-};
-global.process.on('unhandledRejection', filter);
-global.process.on('uncaughtException', filter);
+
+// Handling some errors
+const callback = (error) => {
+  if(error.includes('Missing Permissions') || error.includes('Missing acess')) return;
+  console.log('\n\n'); client.logger.stack(error.stack)
+}
+
+global.process.on('unhandledRejection', callback);
+global.process.on('uncaughtException', callback);

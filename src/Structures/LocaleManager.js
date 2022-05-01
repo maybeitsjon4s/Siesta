@@ -6,7 +6,6 @@ module.exports = class LocaleManager {
   constructor() {}
 
   async loadLocales() {
-    this.client.i18next = i18next;
     await i18next.use(i18nbackend).init({
       ns: ['commands', 'events', 'music'],
       defaultNS: 'commands',

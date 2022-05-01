@@ -13,9 +13,9 @@ AutoPoster(global.config.connections.topgg, client);
 
 // Handling some errors
 const callback = (error) => {
-  if(error.includes('Missing Permissions') || error.includes('Missing acess')) return;
-  console.log('\n\n'); client.logger.stack(error.stack)
-}
+  if(error.toString().includes('Missing Permissions') || error.toString().includes('Missing acess')) return;
+  console.log('\n\n'); client.logger.stack(error.stack);
+};
 
 global.process.on('unhandledRejection', callback);
 global.process.on('uncaughtException', callback);

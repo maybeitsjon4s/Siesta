@@ -1,27 +1,27 @@
 const Emojis = require('../../Structures/Utils/emojis');
 
 module.exports = {
-    name: 'loop',
-    aliases: ['repetir', 'repeat'],
-    ownerOnly: false,
-    playerOnly: true,
-    sameChannel: true,
-    description: '[ 🎵 Music ] Enable/Disable the track/queue loop.',
-    options: [],
-    async exec({ message, player, t }) {
+  name: 'loop',
+  aliases: ['repetir', 'repeat'],
+  ownerOnly: false,
+  playerOnly: true,
+  sameChannel: true,
+  description: '[ 🎵 Music ] Enable/Disable the track/queue loop.',
+  options: [],
+  async exec({ message, player, t }) {
 
-        if (!player.queue.length) {
-            player.setTrackLoop(!player.trackRepeat);
-            player.setQueueLoop(false);
-            const trackRepeat = player.trackRepeat ? t('commands:loop.enable') : t('commands:loop.disable');
-            message.reply(`**${Emojis.music} › ${trackRepeat} ${t('commands:loop.trackSucess')}!**`);
+    if (!player.queue.length) {
+      player.setTrackLoop(!player.trackRepeat);
+      player.setQueueLoop(false);
+      const trackRepeat = player.trackRepeat ? t('commands:loop.enable') : t('commands:loop.disable');
+      message.reply(`**${Emojis.music} › ${trackRepeat} ${t('commands:loop.trackSucess')}!**`);
 
-        } else {
-            player.setQueueLoop(!player.queueRepeat);
-            player.setTrackLoop(false)
-            const queueRepeat = player.queueRepeat ? t('commands:loop.enable') : t('commands:loop.disable');
-            message.reply(`**${Emojis.music} › ${queueRepeat} ${t('commands:loop.queueSucess')}!**`);
-        }
+    } else {
+      player.setQueueLoop(!player.queueRepeat);
+      player.setTrackLoop(false);
+      const queueRepeat = player.queueRepeat ? t('commands:loop.enable') : t('commands:loop.disable');
+      message.reply(`**${Emojis.music} › ${queueRepeat} ${t('commands:loop.queueSucess')}!**`);
     }
+  }
 };
 

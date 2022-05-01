@@ -1,6 +1,6 @@
-const { blue, green } = require('colors')
+const { blue, green } = require('colors');
 
 module.exports = {
   name: 'apiResponse',
-  exec: (client, res, req) => console.log(blue('[ REQUEST ]'), green(`${res.method.toUpperCase()} ${res.path}`))
-}
+  exec: (client, req, res) => console.log(blue('[ REQUEST ]'), green(`${req.method.toUpperCase()} ${blue('|')} ${req.path} ${blue('|')} ${res.statusText}`))
+};

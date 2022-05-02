@@ -46,7 +46,7 @@ module.exports = {
         });
 
         const embed = new MessageEmbed()
-          .setTitle(`${Emojis.ban}・__Siesta__`)
+          .setTitle(`${Emojis.ban} • __Siesta__`)
           .addField(`${Emojis.user} › ${t('commands:ban.user')}`, `\`${user.tag}\``)
           .addField(`${Emojis.info} › ${t('commands:ban.reason')}`, `\`${motivo || t('commands:ban.invalidReason')}\``)
           .setTimestamp()
@@ -68,7 +68,7 @@ module.exports = {
         });
 
         const embed1 = new MessageEmbed()
-          .setTitle(`${Emojis.ban}・__Siesta__`)
+          .setTitle(`${Emojis.ban} • __Siesta__`)
           .addFields(
             {
               name: `${Emojis.user} › ${t('commands:ban.user')}`,

@@ -14,7 +14,7 @@ module.exports = {
     message.reply({ 
       embeds: [{
         author: {
-          name: 'Siesta',
+          name: 'Status • Siesta',
           iconURL: client.user.displayAvatarURL(),
           url: 'https://top.gg/bot/907747074118926347'
         },

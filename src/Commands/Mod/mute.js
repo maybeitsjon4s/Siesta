@@ -52,7 +52,7 @@ module.exports = {
         text: message.author.tag,
         iconURL: message.author.displayAvatarURL({ dynamic: true }),
       })
-      .setTitle(`${Emojis.ban}・__Siesta__`)
+      .setTitle(`${Emojis.ban} • __Siesta__`)
       .addFields({
         name: `${Emojis.user} › ${t('commands:mute.user')}: `,
         value: `\`${member.user?.tag}\``,

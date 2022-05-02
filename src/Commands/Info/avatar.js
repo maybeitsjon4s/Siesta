@@ -26,7 +26,7 @@ module.exports = {
         
     const embed = new MessageEmbed()
       .setColor(client.color)
-      .setTitle(`${Emojis.star}・__Siesta__`)
+      .setTitle(`${Emojis.star} • __Siesta__`)
       .setDescription(`${t('commands:avatar.sucess', {
         user: user.username,
         URL: user.displayAvatarURL({ dynamic: true, size: 2048})

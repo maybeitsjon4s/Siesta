@@ -13,7 +13,7 @@ module.exports = {
       
     const track = player.current;
     const embed = new MessageEmbed()
-      .setTitle(`${Emojis.music}・__Siesta__`)
+      .setTitle(`${Emojis.music} • __Siesta__`)
       .setColor(client.color)
       .setTimestamp()
       .setDescription(`**${Emojis.aurora} › ${t('commands:nowplaying.info')}\n${t('commands:nowplaying.name')}: [${track.title.replace('`', '\'')}](${track.uri}) \n ${t('commands:nowplaying.duration')}: ${formatTime(

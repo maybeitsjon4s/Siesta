@@ -44,7 +44,7 @@ module.exports = {
     message.guild.members.kick(member.id, `By: ${message.author.tag} -- ${motivo}`);
 
     const kick = new MessageEmbed()
-      .setTitle(`${Emojis.ban}・__Siesta__`)
+      .setTitle(`${Emojis.ban} • __Siesta__`)
       .addFields(
         {
           name: `${Emojis.user} ${t('commands:kick.user')}`,

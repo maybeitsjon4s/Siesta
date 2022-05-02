@@ -31,7 +31,7 @@ module.exports = {
           value: String(t('commands:antiinvite.secondField.value'))
         }
       )
-      .setTitle(`${Emojis.config} | __Siesta__`);
+      .setTitle(`${Emojis.config} • __Siesta__`);
 
     if (!args[0] || ![
       'desativar',

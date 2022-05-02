@@ -40,7 +40,7 @@ module.exports = {
           dynamic: true
         })
       })
-      .setTitle(`${Emojis.config} | __Siesta__`)
+      .setTitle(`${Emojis.config} • __Siesta__`)
       .setDescription(`${message.author}, ${t('commands:language.message')}`);
 
     message.reply({

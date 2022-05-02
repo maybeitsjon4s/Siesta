@@ -19,7 +19,7 @@ module.exports = {
     const user = await client.utils.getUser(args[0], message) || message.author;
 
     const embed = new MessageEmbed()
-      .setTitle(`__${user.tag.replaceAll('_', '')}__・${client.utils.getUserFlags(user) || Emojis.user}`)
+      .setTitle(`__${user.tag.replaceAll('_', '')}__ • ${client.utils.getUserFlags(user) || Emojis.user}`)
       .setColor(client.color)
       .addFields({
         name: `${Emojis.estrela} › ${t('commands:userinfo.createdAccount')}`,

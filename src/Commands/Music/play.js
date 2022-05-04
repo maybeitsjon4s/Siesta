@@ -42,8 +42,8 @@ module.exports = {
       voiceChannelId: message.member.voice.channel.id,
       textChannelId: message.channel.id,
       selfDeaf: true,
-      volume: 50,
     });
+    player.filters.setVolume(50)
 
     if (player.state === 2) player.connect();
 

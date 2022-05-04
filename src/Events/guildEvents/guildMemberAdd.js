@@ -25,13 +25,9 @@ module.exports = {
       );
 
       channel.send({
-        content: `${guild.welcome.message
-          .replace('{member}', `${member}`)
-          .replace('{guild}', `${member.guild.name}`)
-          .replace('{membertag}', `${member.user.tag}`)
-          .replace('{count}', `${member.guild.memberCount}`)}`,
+        content: String(guild.welcome.message).replace('{member}', member.toString()).replace('{guild}', member.guild.name).replace('{membertag}', member.user.tag).replace('{count}', member.guild.memberCount.toString()),
         components: [row],
-      });
+      }).catch(() => {});
     }
     // AutoRole
     if(guild.autorole.status) {

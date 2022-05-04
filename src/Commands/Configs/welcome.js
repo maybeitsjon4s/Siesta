@@ -8,38 +8,41 @@ module.exports = {
   sameChannel: false,
   async exec({ client, message, args, t }) {
     
-    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${Emojis.errado} › ${t('commands:welcome.errorPerm')}**`);
-    if (!args[0]) return message.reply(`**${Emojis.errado} › ${t('commands:welcome.argsError')}**`);
-    if(!['on', 'off'].includes(args[0])) return message.reply(`**${Emojis.errado} › ${t('commands:welcome.argsError')} **`);
+    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.includes(message.author.id)) return message.reply({
+      content: `**${Emojis.errado} › ${t('commands:welcome.errorPerm')}**`});
 
-    if (args[0] == 'off') {
-      await client.db.guild.findOneAndUpdate({
-        _id: message.guild.id
-      }, {
-        $set: {
-          'welcome.status': false
-        }
-      });
-      return message.reply(`**${Emojis.config} › ${t.commands.welcome.disabled}**`);
+    const doc = await client.db.guild.findOne({ _id: message.guild.id });
+
+    const errorMessage = {embeds: [{
+      title: `${Emojis.config} • Siesta`,
+      description: t('commands:welcome.argsError', {
+        prefix: doc.prefix
+      }),
+      color: client.color
+    }]}
+    const sucessMessage = {
+      content: t('commands:welcome.seted')
     }
-    if (args[0] == 'on') {
-      const channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1]);
-      if (!channel) return message.reply(`**${Emojis.errado} › ${t('commands:welcome.argsError')}**`);
-      const msg = args.slice(2).join(' ');
-      if (!msg) return message.reply(`**${Emojis.errado} › ${t('commands:welcome.argsError')}**`);
 
-      await client.db.guild.findOneAndUpdate({
-        _id: message.guild.id
-      }, {
-        $set: {
-          'welcome.status': true,
-          'welcome.channel': channel.id,
-          'welcome.message': msg
-        }
-      });
-      message.reply({
-        content: `**${Emojis.config} › ${t('commands:welcome.seted')}**`
-      });
+    if (!args[0] || !['channel', 'status', 'message'].includes(args[0])) return message.reply(errorMessage);
+
+    if(args[0] === 'channel') {
+      const channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
+      if(!channel) return message.reply(errorMessage);
+      doc.welcome.channel = channel.id;
+      await doc.save()
+      message.reply(sucessMessage)
+    } else if(args[0] === 'status') {
+      const newStatus = !doc.welcome.status;
+      doc.welcome.status = newStatus;
+      await doc.save();
+      message.reply(sucessMessage)
+    } else if(args[0] === 'message') {
+      const msg = args.slice(1).join(' ');
+      if(!msg) return message.reply(errorMessage);
+      doc.welcome.message = msg;
+      await doc.save();
+      message.reply(sucessMessage)
     }
   }
 };

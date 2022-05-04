@@ -32,9 +32,8 @@
   },
   "welcome": {
     "errorPerm": "Você precisa da permissão `Gerenciar servidor` para executar este comando!",
-    "argsError": "Você não usou o comando da forma certa utilize `<welcome on/off [canal] [mensagem de entrada]` se quiser saber algums placeholders confira esta pequena lista: \n `{guild}` - Exibe o nome do servidor. \n `{member}` - Menciona o usuario que entrou \n `{membertag}` - Exibe o nome e a tag do usuario.\n `{count}` - Mostra a quantidade de membros do servidor.",
-    "seted": "Sistema de entrada configurado com sucesso!",
-    "disabled": "Sistema de entrada destivado com sucesso!"
+    "argsError": "**Oquê é o sistema de welcome?**\n> O sistema de welcome e um modulo que envia sempre uma mensagem automaticamente quando alguém entra no servidor.\n**E como o configuro?**\n> Para isso este comando tem alguns sub comandos:\n> `{{prefix}}welcome status` › Alterna o status do sistema entre ligado e desligado\n> `{{prefix}}welcome channel [canal]` › Escolha o canal em que será enviada a mensagem (utilize sem as \"[]\")\n> `{{prefix}}welcome message [mensagem]` › Comando utilizado para escolher a mensagem que será enviada no canal escolhido (utilize sem as \"[]\")\n**Nós tambem temos uma pequena lista de placeholders que você pode colocar na mensagem para personalizar ela:**\n> `{guild}` › Exibe o nome do servidor\n> `{membertag}` › Exibe o nome e a tag do membro que entrou\n> `{member}` › Menciona o membro que entrou\n> `{count}` › Mostra a quantidade de membros que o servidor tem",
+    "seted": "Sistema de entrada configurado com sucesso!"
   },
   "autorole": {
     "errorPerm": "Você precisa da permissão `Gerenciar Servidor` para executar este comando!",

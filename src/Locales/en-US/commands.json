@@ -32,9 +32,8 @@
       },
       "welcome": {
         "errorPerm": "You need `Manage Server` permission to run this command!",
-        "argsError": "You didn\"t use the command correctly use `<welcome on/off [channel] [incoming message]` if you want to know some placeholders check out this short list: \n `{guild}` - Displays the name of the server. \n `{member}` - Mention the user who entered n `{membertag}` - Display the name and tag of the user.\n `{count}` - Display the number of members of the server.",
-        "seted": "Welcome system successfully configured!",
-        "disabled": "Welcome system successfully deactivated!"
+        "argsError": "**What is the welcome system?**\n> The welcome system is a module that always sends a message automatically when someone enters the server.\n**And how do I configure it?**\n> For that this command has some subcommands:\n> `{{prefix}}welcome status` › Toggles the system status between on and off\n> `{{prefix}}welcome channel [channel]` › Choose the channel in which the message will be sent (use without the \"[]\")\n> `{{prefix}}welcome message [message]` › Command used to choose the message that will be sent on the chosen channel (use without as \"[]\")\n**We also have a small list of placeholders that you can place in the message to personalize it:**\n> `{guild}` › Displays the server name\n> `{membertag }` › Displays the name and tag of the member who joined\n> `{member}` › Mentions the member who joined\n> `{count}` › Shows the number of members the server has",
+        "seted": "Welcome system successfully configured!"
       },
       "autorole": {
         "errorPerm": "You need `Manage Server` permission to run this command!",

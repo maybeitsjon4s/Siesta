@@ -54,7 +54,6 @@ module.exports = class Siesta extends Client {
     this.utils = require('./Utils/util');
     this.owners = ['431768491759239211', '499356551535001610'];
     this.color = '#ffffff';
-    this.localeManager = new LocaleManager(this);
     this.db = {
       user: User,
       guild: Guild
@@ -69,6 +68,7 @@ module.exports = class Siesta extends Client {
     // Loads Everything
     this.loadEvents();
     this.loadCommands();
+    this.localeManager = new LocaleManager(this)
     this.localeManager.loadLocales();
     this.music = new Music(this);
         
@@ -76,7 +76,7 @@ module.exports = class Siesta extends Client {
     connect(global.config.connections.database).catch(() => {});
 
     // Login the client
-    await super.login(global.config.token);
+    await super.login(global.config.canaryToken);
   }
   async loadCommands() {
     await glob(`${global.process.cwd()}/src/Commands/**/*js`, async (err, filePaths) => {

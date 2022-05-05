@@ -18,7 +18,7 @@ spotify:
 
 lavalinkNodes:
   - {
-    hostname: 'localhost'
+    hostname: 'localhost',
     port: 2333,
     password: 'youshallnotpass'
   }

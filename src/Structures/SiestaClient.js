@@ -46,6 +46,7 @@ module.exports = class Siesta extends Client {
         parse: ['users'],
         repliedUser: false
       },
+      ws: { properties: { $browser: "Discord iOS" }},
       shardCount: 2
     });
 

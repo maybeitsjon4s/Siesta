@@ -76,7 +76,7 @@ module.exports = class Siesta extends Client {
     connect(global.config.connections.database).catch(() => {});
 
     // Login the client
-    await super.login(global.config.canaryToken);
+    await super.login(global.config.token);
   }
   async loadCommands() {
     await glob(`${global.process.cwd()}/src/Commands/**/*js`, async (err, filePaths) => {

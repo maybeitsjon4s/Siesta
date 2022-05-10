@@ -28,7 +28,7 @@ module.exports = {
     const motivo = args.slice(1).join(' ');
     if (!args[0]) return message.reply(`**${Emojis.errado} › ${t('commands:ban.noMention')}**`);
        
-    const user = await client.utils.getUser(args[0]);
+    const user = await client.utils.getUser(args[0], message);
 
     if(!user) return message.reply(`**${Emojis.errado} › ${t('commands:ban.invalidUser')}**`);
 

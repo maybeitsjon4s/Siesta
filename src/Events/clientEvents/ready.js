@@ -1,8 +1,8 @@
-const { blue, green } = require('colors');
+const { blue } = require('chalk')
 module.exports = {
   name: 'ready',
   async exec(client) {
-    console.log(blue('[ CLIENT ]'), green(`Logged in as ${blue(client.user.username)} with ${blue(client.guilds.cache.size.toLocaleString())} Servers`));
+    client.logger.sucess('CLIENT', `Logged in as ${blue(client.user.username)}`)
 
     client.music.start(client.user.id);
 

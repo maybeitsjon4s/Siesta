@@ -1,6 +1,6 @@
 const { Client, Options, Collection } = require('discord.js-light');
 
-const { gray, green, red } = require('colors');
+const { blue, gray, green, red } = require('chalk');
 const { connect } = require('mongoose');
 const { Guild, User } = require('../Models/index.js');
 const { extend } = require('dayjs');
@@ -60,9 +60,9 @@ module.exports = class Siesta extends Client {
       guild: Guild
     };
     this.logger = {
-      sucess: (text) => console.log(green(text)),
-      error: (text) => console.log('\n' + red(text)),
-      stack: (text) => console.log(gray(String(text))),
+      sucess: (type, text) => console.log(`${blue('[ ' + type + ' ]')} › ${green(text)}`),
+      error: (text) => console.log(`${red(text)}`),
+      stack: (text) => console.log(gray(String(text.toString()))),
     };
   }
   async start() {

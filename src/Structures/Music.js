@@ -1,7 +1,6 @@
 const { Vulkava } = require('vulkava');
 const Emojis = require('./Utils/emojis.js');
 const i18next = require('i18next');
-const { blue, green, red } = require('colors');
 const { promisify } = require('util');
 const delay = promisify(setTimeout);
 
@@ -17,18 +16,21 @@ module.exports = class SiestaMusic extends Vulkava {
       }
     });
     this.client = client;
+
     this.on('nodeConnect', (node) => {
-      console.log(blue(`[ ${node.options.id} ]`), green('Node Connected.'));
+      this.client.logger.sucess(node.options.id, 'Node Connected')
       setInterval(() => {
         node.send({
           op: 'pong'
         });
       }, 45000);
+
     });
     this.on('error', (node, error) => {
       if(error.message.includes('503') || error.message.includes('1006')) return;
-      console.log(blue(`[ ${node.identifier} ]`), green(`Error, ${error.message}`));
+      this.client.logger.error(error.message)
     });
+
     this.on('nodeDisconnect', (node) => console.log(red(`[ ${node.options.id} ]`), green('Node Disconnected')));
 
     this.on('queueEnd', async (player) => {
@@ -54,6 +56,7 @@ module.exports = class SiestaMusic extends Vulkava {
         }
       }
     });
+
     this.on('trackStart', async (player, track) => {
       if(player.autoplay?.status) player.autoplay.track = track;
       const channel = this.client.channels.cache.get(player.textChannelId);
@@ -69,12 +72,15 @@ module.exports = class SiestaMusic extends Vulkava {
         }, 3 * 60 * 1000);
       });
     });
+
     this.on('trackStuck', (player) => player.skip());
+
     this.on('trackException', async({ player, exception }) => {
       player.skip();
       const t = await this.getLanguage(player.guildId);
       client.channels.cache.get(player.textChannelId).send({ content: `**${Emojis.music} › ${t('events:musicEvents.trackException')} **` + '```\n' + exception.message + '```' });
     });
+
   }
 
   async getLanguage(guildId) {

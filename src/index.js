@@ -2,7 +2,6 @@ const { load } = require('js-yaml');
 const { readFileSync } = require('fs');
 const { AutoPoster } = require('topgg-autoposter');
 
-
 global.config = load(readFileSync('./config.yml', 'utf8'));
 
 const SiestaClient = require('./Structures/SiestaClient');

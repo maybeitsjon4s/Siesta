@@ -41,6 +41,8 @@ module.exports = {
       inline: true
     });
 
+    user.displayAvatarURL() && embed.setThumbnail(user.displayAvatarURL())
+
     member && member.premiumSince && embed.fields.push({
       name: Emojis.boost + ` › ${t('commands:userinfo.boosterSince')}`,
       value: `<t:${(member.premiumSince / 1000).toFixed()}> (<t:${(member.premiumSince / 1000).toFixed()}:R>)`

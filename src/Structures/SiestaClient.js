@@ -106,6 +106,8 @@ module.exports = class Siesta extends Client {
       const file = require(value);
   
       if(!file?.name || !file.description ||!file.options) return;
+
+      file.dm_permission = false;
   
       arrayOfSlashCommands.push(file);
     });

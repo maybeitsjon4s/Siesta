@@ -34,3 +34,17 @@
 
 **If you found any Bug/Error [contact us](https://discord.com/invite/BRQccw7HhZ) or if you know how to fix it fell free to open a Pull Request!**
 
+# **💻 Self Hosting**
+
+- `1.` Install node 16.9.x or higher
+- `2.` Run on your terminal or powershell if you are on windows
+```bash
+npm i -g yarn
+yarn
+```
+- `3.` Fill the `config.example.yml` and rename it to `config.yml`
+- `4.` To turn on the bot just run 
+```bash
+yarn start
+```
+**We won't give support for selfhosted instances, you need to know how to troubleshoot the issues yourself. We tried to make the selfhost process as painless as possible, but it is impossible to know all the different issues you may find.**

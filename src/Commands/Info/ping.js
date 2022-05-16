@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: 'ping',
   aliases: ['latency', 'latencia', 'pong', '🏓', 'uptime', 'up'],
   ownerOnly: false,

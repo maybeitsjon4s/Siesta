@@ -1,7 +1,6 @@
-const { MessageButton, MessageActionRow } = require('discord.js-light');
-const Emojis = require('../../Structures/Utils/emojis');
+import { MessageButton, MessageActionRow } from 'discord.js';
 
-module.exports = {
+export default {
   name: 'stats',
   aliases: ['estatisticas', 'botinfo', 'bi'],
   ownerOnly: false,
@@ -21,8 +20,8 @@ module.exports = {
         color: client.color,
         description: `> ${message.author}, ${t('commands:stats.message')}`,
         fields: [{
-          name: `${Emojis.star} ${t('commands:stats.stats')}`,
-          value: `> **${Emojis.rocket} Servers:** \`${client.guilds.cache.size}\`\n> **${Emojis.heart2}Uptime:** \`${client.utils.formatTime(client.uptime)}\`\n> **${Emojis.config} RAM:** \`${client.utils.formatSizeUnits(global.process.memoryUsage().heapUsed)}\`\n> **${Emojis.aurora} Players:** \`${client.music.players.size}\``,
+          name: `${client.Emojis.star} ${t('commands:stats.stats')}`,
+          value: `> ${client.Emojis.rocket} Servers: **${client.guilds.cache.size}**\n> ${client.Emojis.heart2}Uptime: **${client.utils.formatTime(client.uptime)}**\n> ${client.Emojis.config} RAM: **${client.utils.formatSizeUnits(global.process.memoryUsage().heapUsed)}**\n> ${client.Emojis.aurora} Players: **${client.music.players.size}**`,
           inline: true
         }],
         footer: {

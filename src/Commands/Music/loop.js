@@ -1,6 +1,4 @@
-const Emojis = require('../../Structures/Utils/emojis');
-
-module.exports = {
+export default {
   name: 'loop',
   aliases: ['repetir', 'repeat'],
   ownerOnly: false,
@@ -8,19 +6,19 @@ module.exports = {
   sameChannel: true,
   description: '[ 🎵 Music ] Enable/Disable the track/queue loop.',
   options: [],
-  async exec({ message, player, t }) {
+  async exec({ message, player, t, client }) {
 
     if (!player.queue.length) {
       player.setTrackLoop(!player.trackRepeat);
       player.setQueueLoop(false);
       const trackRepeat = player.trackRepeat ? t('commands:loop.enable') : t('commands:loop.disable');
-      message.reply(`**${Emojis.music} › ${trackRepeat} ${t('commands:loop.trackSucess')}!**`);
+      message.reply(`**${client.Emojis.music} › ${trackRepeat} ${t('commands:loop.trackSucess')}!**`);
 
     } else {
       player.setQueueLoop(!player.queueRepeat);
       player.setTrackLoop(false);
       const queueRepeat = player.queueRepeat ? t('commands:loop.enable') : t('commands:loop.disable');
-      message.reply(`**${Emojis.music} › ${queueRepeat} ${t('commands:loop.queueSucess')}!**`);
+      message.reply(`**${client.Emojis.music} › ${queueRepeat} ${t('commands:loop.queueSucess')}!**`);
     }
   }
 };

@@ -1,6 +1,6 @@
-const Day = require('dayjs');
+import Day from 'dayjs';
 
-module.exports =  {
+export default {
   name: 'guildDelete',
   async exec (client, guild) {
     client.utils.sendLogs({

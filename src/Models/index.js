@@ -1,7 +1,4 @@
-const Guild = require('./Guild.js');
-const User = require('./User.js');
+import Guild from './Guild.js';
+import User from './User.js';
 
-module.exports = {
-  Guild,
-  User
-};
+export { Guild, User };

@@ -1,17 +1,19 @@
-const glob = require('glob');
-const Emojis = require('../../Structures/Utils/emojis.js');
-const { reloadResources } = require('i18next');
-module.exports = {
+import glob from 'glob';
+import { reloadResources } from 'i18next';
+
+export default {
   name: 'reload',
-  aliases: ['rl'],
+  aliases: ['rr'],
   ownerOnly: true,
   playerOnly: false,
   sameChannel: false,
   async exec({ client, message }) {
 
     // Commands
-    client.commands.sweep(() => true);
-    glob(`${global.process.cwd()}/src/Commands/**/*js`, async (err, filePaths) => {
+    
+    //client.commands.sweep(() => true);
+    //glob(`${global.process.cwd()}/src/Commands/**/*js`, async (err, filePaths) => {
+    /*
       if (err) return message.reply('```' + err.stack + '```');
 
       filePaths.forEach((file) => {
@@ -29,10 +31,11 @@ module.exports = {
         }
       });
     });
-    message.reply(`**${Emojis.dev} › Comandos recarregados.**`);
+    message.reply(`**${client.Emojis.dev} › Comandos recarregados.**`);
+    */
 
     // Locales
     await reloadResources(['pt-BR', 'en-US']);
-    message.reply(`**${Emojis.dev} › Locales recarregados.**`);
+    message.reply(`**${client.Emojis.dev} › Locales recarregados.**`);
   },
 };

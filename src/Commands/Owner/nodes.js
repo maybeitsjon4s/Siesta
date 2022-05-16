@@ -1,5 +1,4 @@
-
-module.exports = {
+export default {
   name: 'nodes',
   aliases: ['lavalink'],
   ownerOnly: false,

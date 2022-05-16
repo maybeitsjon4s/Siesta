@@ -1,6 +1,4 @@
-const Emojis = require('../../Structures/Utils/emojis.js');
-
-module.exports = {
+export default {
   name: 'shuffle',
   aliases: ['embaralhar', 'misturar'],
   ownerOnly: false,
@@ -8,12 +6,12 @@ module.exports = {
   sameChannel: true,
   description: '[ 🎵 Music ] Shuffle the queue.',
   options: [],
-  async exec({ message,  player, t }) {
+  async exec({ message,  player, t, client }) {
     
-    if(!player.queue.length) return message.reply(`**${Emojis.errado} › ${t('commands:suffle.noQueue')}**`);
+    if(!player.queue.length) return message.reply(`**${client.Emojis.errado} › ${t('commands:suffle.noQueue')}**`);
 
     player.shuffleQueue();
 
-    message.reply(`**${Emojis.music} › ${t('commands:shuffle.sucess')}**`);
+    message.reply(`**${client.Emojis.music} › ${t('commands:shuffle.sucess')}**`);
   }
 };

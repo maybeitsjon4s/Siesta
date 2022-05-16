@@ -1,6 +1,4 @@
-const Emojis = require('../../Structures/Utils/emojis.js');
-
-module.exports = {
+export default {
   name: 'skipto',
   aliases: ['goto', 'jump'],
   ownerOnly: false,
@@ -15,14 +13,14 @@ module.exports = {
       required: true
     }
   ],
-  async exec({ message, args, player, t }) {
+  async exec({ message, args, player, t, client }) {
 
     const position = Number(args[0]);
 
-    if(!position || isNaN(position) || position < 0 || position > player.queue.length) return message.reply(`**${Emojis.errado} › ${t('commands:skipto.invalidPosition')}**`);
+    if(!position || isNaN(position) || position < 0 || position > player.queue.length) return message.reply(`**${client.Emojis.errado} › ${t('commands:skipto.invalidPosition')}**`);
 
     player.skip(position);
-    message.reply(`**${Emojis.music} › ${t('commands:skipto.sucess',{
+    message.reply(`**${client.Emojis.music} › ${t('commands:skipto.sucess',{
       position: String(position)
     })}**`);
   }

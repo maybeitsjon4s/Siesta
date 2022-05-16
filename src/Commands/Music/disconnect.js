@@ -1,6 +1,4 @@
-const Emojis = require('../../Structures/Utils/emojis');
-
-module.exports = {
+export default {
   name: 'disconnect',
   aliases: ['leave', 'parar', 'dc', 'desconectar', 'stop', 'clearqueue'],
   ownerOnly: false,
@@ -8,10 +6,10 @@ module.exports = {
   sameChannel: true,
   description: '[ 🎵 Music ] Disconnect the bot from the voice channel.',
   options: [],
-  async exec({ message, player, t }) {
+  async exec({ message, player, t, client }) {
 
     player.destroy();
-    message.reply(`**${Emojis.music} › ${t('commands:disconnect.sucess')}**`);
+    message.reply(`**${client.Emojis.music} › ${t('commands:disconnect.sucess')}**`);
     
   }
 };

@@ -1,7 +1,6 @@
-const Emojis = require('../../Structures/Utils/emojis.js');
-const i18next = require('i18next');
+import i18next from 'i18next';
 
-module.exports =  {
+export default {
   name: 'messageCreate',
   async exec(client, message) {
     if (!message.guild) return;
@@ -25,12 +24,12 @@ module.exports =  {
         break;
       }
 
-      const regex = /(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li|club)|discordapp\.com\/invite|discord\.com\/invite)\/.+[a-z]/gi;
+      const isInvite = (str) => (/dis(?:board\.org\/(?:pl\/)?server\/join|cord(?:\.me\/server\/join|(?:app\.com\/invite|\.(?:com\/invite|gg\/))))/gi).test(str);
 
       const whitelist = GUILD.antiinvite.whitelist;
 
-      if (regex.exec(message.content) && !whitelist.some(x => x == message.channel.id)) {
-        message.channel.send(`**${Emojis.errado} › ${message.author} ` + t('events:autoModEvents.antiinvite') + '**');
+      if (isInvite(message.content) && !whitelist.some(x => x == message.channel.id)) {
+        message.channel.send(`**${client.Emojis.errado} › ${message.author} ` + t('events:autoModEvents.antiinvite') + '**');
         message.delete().catch(() => {});
       }
     }

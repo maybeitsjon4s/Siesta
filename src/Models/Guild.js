@@ -1,5 +1,7 @@
-const { Schema, model } = require('mongoose');
-module.exports = model('Guilds', new Schema({
+import pkg from 'mongoose';
+const { Schema, model } = pkg;
+
+export default model('Guilds', new Schema({
   _id: {
     type: String
   },

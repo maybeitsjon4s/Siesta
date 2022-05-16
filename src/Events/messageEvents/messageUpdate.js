@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: 'messageUpdate',
   async exec(client, oldMessage, message) {
     if(!message.guild || !message.author ||message.author?.bot) return;

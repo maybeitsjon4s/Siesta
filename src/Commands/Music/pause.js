@@ -1,6 +1,4 @@
-const Emojis = require('../../Structures/Utils/emojis');
-
-module.exports = {
+export default {
   name: 'pause',
   aliases: ['pausar'],
   playerOnly: true,
@@ -8,12 +6,12 @@ module.exports = {
   ownerOnly: false,
   description: '[ 🎵 Music ] Pauses the currently playing track.',
   options: [],
-  async exec({ message, player, t }) {
+  async exec({ message, player, t, client }) {
 
-    if (player.paused) return message.reply(`**${Emojis.errado} › ${t('commands:pause.alteradyPause')}!**`);
+    if (player.paused) return message.reply(`**${client.Emojis.errado} › ${t('commands:pause.alteradyPause')}!**`);
 
     player.pause(true);
-    message.reply(`**${Emojis.music} › ${t('commands:pause.sucess')}!**`);
+    message.reply(`**${client.Emojis.music} › ${t('commands:pause.sucess')}!**`);
     
   }
 };

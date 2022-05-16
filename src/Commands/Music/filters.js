@@ -1,14 +1,13 @@
-const Emojis = require('../../Structures/Utils/emojis');
-const { MessageActionRow, MessageButton } = require('discord.js-light');
+import { MessageActionRow, MessageButton } from 'discord.js';
 
-module.exports = {
+export default {
   name: 'filters',
   aliases: ['filtros', 'bassboost'],
   ownerOnly: false,
   playerOnly: true,
   sameChannel: true,
   descripions: '[ 🎵 Music ] Add/remove filters to the player.',
-  async exec({  message, player, t }) {
+  async exec({  message, player, t, client }) {
 
     const row = new MessageActionRow().addComponents(
       new MessageButton()
@@ -30,7 +29,7 @@ module.exports = {
     );
 
     message.reply({
-      content: `**${Emojis.music} › ${t('commands:filters.firstMessage')}**`,
+      content: `**${client.Emojis.music} › ${t('commands:filters.firstMessage')}**`,
       components: [row],
       fetchReply: true
     }).then(msg => {
@@ -42,13 +41,13 @@ module.exports = {
       collector.on('collect', async (i) => {
         await i.deferUpdate();
         if(i.user.id !== message.author.id) return i.followUp({
-          content: `**${Emojis.errado} › ${t('commands:filters.onlyAuthor')}**`,
+          content: `**${client.Emojis.errado} › ${t('commands:filters.onlyAuthor')}**`,
           ephemeral: true
         });
         switch(i.customId) {
         case 'nightcore':
           msg.edit({
-            content: `**${Emojis.music} › ${t('commands:filters.changedMessage', {
+            content: `**${client.Emojis.music} › ${t('commands:filters.changedMessage', {
               filter: 'NightCore'
             })}**`,
             components: []
@@ -62,7 +61,7 @@ module.exports = {
           break;
         case 'bassboost':
           msg.edit({
-            content: `**${Emojis.music} › ${t('commands:filters.changedMessage', {
+            content: `**${client.Emojis.music} › ${t('commands:filters.changedMessage', {
               filter: 'Bass Boost'
             })}**`,
             components: []
@@ -73,7 +72,7 @@ module.exports = {
           break;
         case 'eightD':
           msg.edit({
-            content: `**${Emojis.music} › ${t('commands:filters.changedMessage', {
+            content: `**${client.Emojis.music} › ${t('commands:filters.changedMessage', {
               filter: '8D'
             })}**`,
             components: []
@@ -83,7 +82,7 @@ module.exports = {
           break;
         case 'clear':
           msg.edit({
-            content: `**${Emojis.music} › ${t('commands:filters.clearFiltersMessage')}**`,
+            content: `**${client.Emojis.music} › ${t('commands:filters.clearFiltersMessage')}**`,
             components: []
           });
           player.filters.clear();

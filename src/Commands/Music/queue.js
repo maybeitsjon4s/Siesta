@@ -1,7 +1,6 @@
-const { MessageEmbed } = require('discord.js-light');
-const Emojis = require('../../Structures/Utils/emojis');
+import { MessageEmbed } from 'discord.js';
 
-module.exports = {
+export default {
   name: 'queue',
   aliases: ['q', 'fila'],
   ownerOnly: false,
@@ -20,7 +19,7 @@ module.exports = {
     const queue = player.queue;
 
     const QUEUE = new MessageEmbed()
-      .setTitle(`${Emojis.music} | __Siesta__`)
+      .setTitle(`${client.Emojis.music} | __Siesta__`)
       .setColor(client.color)
       .setTimestamp();
 

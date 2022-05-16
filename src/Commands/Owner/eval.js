@@ -1,4 +1,6 @@
-module.exports = {
+import { inspect } from 'util';
+
+export default {
   name: 'eval',
   aliases: ['e', 'ev'],
   ownerOnly: true,
@@ -19,7 +21,7 @@ module.exports = {
     if (!code) return;
     try {
       let result = await eval(code);
-      if (typeof result !== 'string') result = require('util').inspect(result, { depth: 0 });
+      if (typeof result !== 'string') result = inspect(result, { depth: 0 });
 
       message.reply({
         content: `\`\`\`js\n${result.slice(0, 1970).replace((new RegExp(global.config.token,'gi')), '')}\`\`\``});

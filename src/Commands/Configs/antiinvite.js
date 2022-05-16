@@ -1,7 +1,6 @@
-const { MessageEmbed } = require('discord.js-light');
-const Emojis = require('../../Structures/Utils/emojis');
+import { MessageEmbed } from 'discord.js';
 
-module.exports = {
+export default {
   name: 'antiinvite',
   aliases: ['anticonvites'],
   playerOnly: false,
@@ -9,7 +8,7 @@ module.exports = {
   ownerOnly: false,
   async exec({ client, message, args, t }) {
       
-    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** › ${t('commands:antiinvite.errorPerm')}**`);
+    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id)) return message.reply(`${client.Emojis.errado}** › ${t('commands:antiinvite.errorPerm')}**`);
 
     const guild = await client.db.guild.findOne({ _id: message.guild.id });
 
@@ -23,15 +22,15 @@ module.exports = {
       })
       .addFields(
         {
-          name: `${Emojis.ban} › ${t('commands:antiinvite.firstField.title')}`,
+          name: `${client.Emojis.ban} › ${t('commands:antiinvite.firstField.title')}`,
           value: String(t('commands:antiinvite.firstField.value'))
         },
         {
-          name: `${Emojis.config} › ${t('commands:antiinvite.secondField.title')}`,
+          name: `${client.Emojis.config} › ${t('commands:antiinvite.secondField.title')}`,
           value: String(t('commands:antiinvite.secondField.value'))
         }
       )
-      .setTitle(`${Emojis.config} • __Siesta__`);
+      .setTitle(`${client.Emojis.config} • __Siesta__`);
 
     if (!args[0] || ![
       'desativar',
@@ -51,7 +50,7 @@ module.exports = {
             'antiinvite.status': true
           }
         });
-      message.reply(`**${Emojis.config} › ${t('commands:antiinvite.enabled')}**`);
+      message.reply(`**${client.Emojis.config} › ${t('commands:antiinvite.enabled')}**`);
     }
 
     if (['desativar', 'disable'].some((x) => x == args[0].toLowerCase())) {
@@ -60,22 +59,22 @@ module.exports = {
           'antiinvite.status': false
         }
       });
-      message.reply(`**${Emojis.config} › ${t('commands:antiinvite.disabled')}**`);
+      message.reply(`**${client.Emojis.config} › ${t('commands:antiinvite.disabled')}**`);
     }
     if (['whitelist', 'ignorar'].some((x) => x == args[0].toLowerCase())) {
 
-      if (!args[1] || !['add', 'remove'].some((x) => x == args[1].toLowerCase())) return message.reply(`**${Emojis.errado} › ${t('commands:antiinvite.errorWhiteList')}.**`);
+      if (!args[1] || !['add', 'remove'].some((x) => x == args[1].toLowerCase())) return message.reply(`**${client.Emojis.errado} › ${t('commands:antiinvite.errorWhiteList')}.**`);
 
       if (['add', 'adicionar'].some((x) => x == args[2].toLowerCase())) {
 
         const channel =message.mentions.channels.first() || message.guilds.channels.cache.get(args[2]) || message.channel;
         const channelsList = guild.antiinvite.whitelist;
-        if (channelsList.some((x) => x == channel.id)) return message.reply(`**${Emojis.errado} › ${t('commands:antiinvite.channelAltereadySet')}.**`);
+        if (channelsList.some((x) => x == channel.id)) return message.reply(`**${client.Emojis.errado} › ${t('commands:antiinvite.channelAltereadySet')}.**`);
         await client.db.guild.findOneAndUpdate({ _id: message.guild.id },
           {
             $push: { 'antiinvite.whitelist': channel.id }
           });
-        message.reply(`**${Emojis.config} › ${t('commands:antiinvite.addedChannel')}**`);
+        message.reply(`**${client.Emojis.config} › ${t('commands:antiinvite.addedChannel')}**`);
       }
       if (['remove', 'remover'].some((x) => x == args[2].toLowerCase())) {
         const channel =
@@ -85,7 +84,7 @@ module.exports = {
         const channelsList = guild.antiinvite.whitelist;
         if (!channelsList) guild.antiinvite.whitelist;
         if (!channelsList.some((x) => x == channel.id))
-          return message.reply( `**${Emojis.errado} › ${t('commands:antiinvite.removeError')}!**`);
+          return message.reply( `**${client.Emojis.errado} › ${t('commands:antiinvite.removeError')}!**`);
         const NumberInList = channelsList.indexOf(channel.id);
         channelsList.splice(NumberInList, 1);
         await client.db.guild.findOneAndUpdate({ _id: message.guild.id },
@@ -95,7 +94,7 @@ module.exports = {
             }
           });
         message.reply(
-          `**${Emojis.config} › ${t('commands:antiinvite.removed')}**`
+          `**${client.Emojis.config} › ${t('commands:antiinvite.removed')}**`
         );
       }
     }

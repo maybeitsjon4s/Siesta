@@ -1,7 +1,6 @@
-const { MessageActionRow, MessageButton } = require('discord.js-light');
-const Emojis = require('../../Structures/Utils/emojis');
+import { MessageActionRow, MessageButton } from 'discord.js';
 
-module.exports = {
+export default {
   name: 'invite',
   aliases: [],
   ownerOnly: false,
@@ -9,10 +8,10 @@ module.exports = {
   sameChannel: false,
   description: '[ 📚 Utils ] Show my invite links!',
   options: [],
-  async exec({ message, t }) {
+  async exec({ message, t, client }) {
     
     message.reply({
-      content: `**${Emojis.star} › ${t('commands:invite.message')}!**`,
+      content: `**${client.Emojis.star} › ${t('commands:invite.message')}!**`,
       components: [
         new MessageActionRow().addComponents(
           new MessageButton()

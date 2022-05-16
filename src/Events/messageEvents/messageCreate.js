@@ -1,8 +1,8 @@
-const Emojis = require('../../Structures/Utils/emojis');
-const Day = require('dayjs');
-const { MessageActionRow, MessageButton } = require('discord.js');
-const i18next = require('i18next');
-module.exports = {
+import Day from 'dayjs';
+import { MessageActionRow, MessageButton } from 'discord.js';
+import i18next from 'i18next';
+
+export default {
   name: 'messageCreate',
   async exec(client, message) {
     if (message.author.bot || !message.guild) return;
@@ -68,12 +68,12 @@ module.exports = {
   
     if(command.ownerOnly && !client.owners.some(id => id === message.author.id)) return;
 
-    if(command.playerOnly && !player) return message.reply(`**${Emojis.errado} › ${t('music:channelError')}**`);
+    if(command.playerOnly && !player) return message.reply(`**${client.Emojis.errado} › ${t('music:channelError')}**`);
 
     if(command.sameChannel) {
-      if(!message.member.voice.channel) return message.reply(`**${Emojis.errado} › ${t('music:channelError')}**`);
+      if(!message.member.voice.channel) return message.reply(`**${client.Emojis.errado} › ${t('music:channelError')}**`);
       if(message.guild.me.voice.channel) {
-        if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply(`**${Emojis.errado} › ${t('music:channelError')}**`);
+        if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply(`**${client.Emojis.errado} › ${t('music:channelError')}**`);
       }
     }
 
@@ -86,7 +86,7 @@ module.exports = {
       client.logger.error(`Erro no commando ${command.name}, Servidor: ${message.guild.id}, Usuario: ${message.author.id}.`);
       client.logger.stack(err.stack);
       message.reply({ 
-        content: `**${Emojis.errado} › ${t('events:messageCreate.error', {
+        content: `**${client.Emojis.errado} › ${t('events:messageCreate.error', {
           command: command.name
         })}**`,
         components: [new MessageActionRow().addComponents(

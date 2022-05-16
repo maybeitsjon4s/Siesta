@@ -1,8 +1,7 @@
-const { MessageActionRow, MessageButton } = require('discord.js-light');
-const { readdirSync } = require('fs');
-const Emojis = require('../../Structures/Utils/emojis');
+import { MessageActionRow, MessageButton } from 'discord.js';
+import { readdirSync } from 'node:fs';
 
-module.exports = {
+export default {
   name: 'help',
   aliases: ['ajuda', 'commands', 'h'],
   ownerOnly: false,
@@ -19,7 +18,6 @@ module.exports = {
 
     const mod = readdirSync('./src/Commands/Mod').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
     const configs = readdirSync('./src/Commands/Configs').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
-    const fun = readdirSync('./src/Commands/Fun').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
     const info = readdirSync('./src/Commands/Info').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
     const msc = readdirSync('./src/Commands/Music').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
       
@@ -40,7 +38,7 @@ module.exports = {
         embeds: [{
           color: client.color,
           fields: [{
-            name: `${Emojis.rocket} ${this.formatName(command.name)}`,
+            name: `${client.Emojis.rocket} ${this.formatName(command.name)}`,
             value: `**${t('commands:help.commandDescription')} ›** \`${command.description || '???'}\`\n**${t('commands:help.aliases')} ›** \`${command.aliases.length > 0 ? command.aliases.join(', ') : ''}\``
           }]
         }]
@@ -53,24 +51,20 @@ module.exports = {
         commands: client.commands.size.toString()
       })}!`,
       fields: [{
-        name: `${Emojis.ban} › __${t('commands:help.moderation')}__ [${mod.length}]`,
-        value: `\`${mod.join(', ')}\``
+        name: `${client.Emojis.ban} › __${t('commands:help.moderation')}__ [${mod.length}]`,
+        value: `\`\`\`${mod.join(' | ')}\`\`\``
       },
       {
-        name: `${Emojis.config} › __${t('commands:help.config')}__ [${configs.length}]`,
-        value: `\`${configs.join(', ')}\``
+        name: `${client.Emojis.config} › __${t('commands:help.config')}__ [${configs.length}]`,
+        value: `\`\`\`${configs.join(' | ')}\`\`\``
       },
       {
-        name: `${Emojis.estrela} › __${t('commands:help.fun')}__ [${fun.length}]`,
-        value: `\`${fun.join(', ')}\``
+        name: `${client.Emojis.star} › __${t('commands:help.info')}__ [${info.length}] `,
+        value: `\`\`\`${info.join(' | ')}\`\`\``
       },
       {
-        name: `${Emojis.star} › __${t('commands:help.info')}__ [${info.length}] `,
-        value: `\`${info.join(', ')}\``
-      },
-      {
-        name: `${Emojis.music} › __${t('commands:help.music')}__ [${msc.length}]`,
-        value: `\`${msc.join(', ')}\``
+        name: `${client.Emojis.music} › __${t('commands:help.music')}__ [${msc.length}]`,
+        value: `\`\`\`${msc.join(' | ')}\`\`\``
       }],
       footer: {
         iconURL: message.author.displayAvatarURL({ dynamic: true }),

@@ -1,10 +1,11 @@
-const { Vulkava } = require('vulkava');
-const Emojis = require('./Utils/emojis.js');
-const i18next = require('i18next');
-const { promisify } = require('util');
+import { Vulkava } from 'vulkava';
+import i18next from 'i18next';
+import { promisify } from 'util';
 const delay = promisify(setTimeout);
+import pkg from 'chalk';
+const { red, green } = pkg;
 
-module.exports = class SiestaMusic extends Vulkava {
+export default class SiestaMusic extends Vulkava {
   constructor(client) {
     super({
       nodes: global.config.lavalinkNodes,
@@ -18,7 +19,7 @@ module.exports = class SiestaMusic extends Vulkava {
     this.client = client;
 
     this.on('nodeConnect', (node) => {
-      this.client.logger.sucess(node.options.id, 'Node Connected')
+      this.client.logger.sucess(node.options.id, 'Node Connected');
       setInterval(() => {
         node.send({
           op: 'pong'
@@ -28,7 +29,7 @@ module.exports = class SiestaMusic extends Vulkava {
     });
     this.on('error', (node, error) => {
       if(error.message.includes('503') || error.message.includes('1006')) return;
-      this.client.logger.error(error.message)
+      this.client.logger.error(error.message);
     });
 
     this.on('nodeDisconnect', (node) => console.log(red(`[ ${node.options.id} ]`), green('Node Disconnected')));
@@ -51,7 +52,7 @@ module.exports = class SiestaMusic extends Vulkava {
         const guild = player.guildId;
         await delay(3 * 60 * 1000); // 3 mins
         if(!client.music.players.get(guild)?.playing) {
-          client.channels.cache.get(player.textChannelId).send(`**${Emojis.music} › ${t('events:musicEvents.queueEnd')}**`).catch(() => {});
+          client.channels.cache.get(player.textChannelId).send(`**${this.client.Emojis.music} › ${t('events:musicEvents.queueEnd')}**`).catch(() => {});
           player.destroy();
         }
       }
@@ -63,7 +64,7 @@ module.exports = class SiestaMusic extends Vulkava {
     
       const t = await this.getLanguage(player.guildId);
     
-      channel.send(`**${Emojis.music} › ${t('events:musicEvents.trackStart', {
+      channel.send(`**${this.client.Emojis.music} › ${t('events:musicEvents.trackStart', {
         track: track.title,
         user: track.requester.tag
       })}**`).then(msg => {
@@ -78,7 +79,7 @@ module.exports = class SiestaMusic extends Vulkava {
     this.on('trackException', async({ player, exception }) => {
       player.skip();
       const t = await this.getLanguage(player.guildId);
-      client.channels.cache.get(player.textChannelId).send({ content: `**${Emojis.music} › ${t('events:musicEvents.trackException')} **` + '```\n' + exception.message + '```' });
+      client.channels.cache.get(player.textChannelId).send({ content: `**${this.client.Emojis.music} › ${t('events:musicEvents.trackException')} **` + '```\n' + exception.message + '```' });
     });
 
   }
@@ -94,5 +95,5 @@ module.exports = class SiestaMusic extends Vulkava {
     }
     return t;
   }
-};
+}
 

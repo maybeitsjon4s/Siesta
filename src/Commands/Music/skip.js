@@ -1,6 +1,4 @@
-const Emojis = require('../../Structures/Utils/emojis');
-
-module.exports = {
+export default {
   name: 'skip',
   aliases: ['s', 'pular', 'forceskip', 'fs'],
   ownerOnly: false,
@@ -8,10 +6,10 @@ module.exports = {
   sameChannel: true,
   description: '[ 🎵 Music ] Skips the currently track.',
   options: [],
-  async exec({ message, player, t }) {
+  async exec({ message, player, t, client }) {
      
     player.skip();
 
-    message.reply(`**${Emojis.music} › ${t('commands:skip.sucess')}!**`);
+    message.reply(`**${client.Emojis.music} › ${t('commands:skip.sucess')}!**`);
   },
 };

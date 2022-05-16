@@ -1,6 +1,7 @@
-const { Schema, model } = require('mongoose');
+import pkg from 'mongoose';
+const { Schema, model } = pkg;
 
-module.exports = model('Users', new Schema({
+export default model('Users', new Schema({
   _id: {
     type: String,
     default: null

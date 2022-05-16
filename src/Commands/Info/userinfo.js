@@ -1,7 +1,6 @@
-const { MessageEmbed } = require('discord.js-light');
-const Emojis = require('../../Structures/Utils/emojis');
+import { MessageEmbed } from 'discord.js';
 
-module.exports = {
+export default {
   name: 'userinfo',
   aliases: ['ui', 'whois'],
   ownerOnly: false,
@@ -19,10 +18,10 @@ module.exports = {
     const user = await client.utils.getUser(args[0], message) || message.author;
 
     const embed = new MessageEmbed()
-      .setTitle(`__${user.tag.replaceAll('_', '')}__ • ${client.utils.getUserFlags(user) || Emojis.user}`)
+      .setTitle(`__${user.tag.replaceAll('_', '')}__ • ${client.utils.getUserFlags(user) || client.Emojis.user}`)
       .setColor(client.color)
       .addFields({
-        name: `${Emojis.estrela} › ${t('commands:userinfo.createdAccount')}`,
+        name: `${client.Emojis.estrela} › ${t('commands:userinfo.createdAccount')}`,
         value: `<t:${(user.createdAt / 1000).toFixed()}> (<t:${(user.createdAt / 1000).toFixed()}:R>)`,
         inline: true
       })
@@ -36,15 +35,15 @@ module.exports = {
 
 
     member && embed.fields.push({
-      name: Emojis.heart2 + ` › ${t('commands:userinfo.joinedAt')}`,
+      name: client.Emojis.heart2 + ` › ${t('commands:userinfo.joinedAt')}`,
       value: `<t:${(member.joinedAt / 1000).toFixed()}> (<t:${(member.joinedAt / 1000).toFixed()}:R>)`,
       inline: true
     });
 
-    user.displayAvatarURL() && embed.setThumbnail(user.displayAvatarURL())
+    user.displayAvatarURL() && embed.setThumbnail(user.displayAvatarURL());
 
     member && member.premiumSince && embed.fields.push({
-      name: Emojis.boost + ` › ${t('commands:userinfo.boosterSince')}`,
+      name: client.Emojis.boost + ` › ${t('commands:userinfo.boosterSince')}`,
       value: `<t:${(member.premiumSince / 1000).toFixed()}> (<t:${(member.premiumSince / 1000).toFixed()}:R>)`
     });
     message.reply({ embeds: [embed] });

@@ -1,4 +1,4 @@
-module.exports =  {
+export default {
   ban: '<:lock:910274452632264804>',
   star: '<a:star:910274327927206018>',
   dev: '<a:dev:910274104484044811>',

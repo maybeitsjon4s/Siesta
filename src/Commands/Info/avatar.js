@@ -1,7 +1,6 @@
-const { MessageEmbed } = require('discord.js-light');
-const Emojis = require('../../Structures/Utils/emojis');
+import { MessageEmbed } from 'discord.js';
 
-module.exports = {
+export default {
   name: 'avatar',
   aliases: ['av'],
   ownerOnly: false,
@@ -26,7 +25,7 @@ module.exports = {
         
     const embed = new MessageEmbed()
       .setColor(client.color)
-      .setTitle(`${Emojis.star} • __Siesta__`)
+      .setTitle(`${client.Emojis.star} • __Siesta__`)
       .setDescription(`${t('commands:avatar.sucess', {
         user: user.username,
         URL: user.displayAvatarURL({ dynamic: true, size: 2048})

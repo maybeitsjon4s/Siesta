@@ -1,6 +1,4 @@
-const Emojis = require('../../Structures/Utils/emojis.js');
-
-module.exports = {
+export default {
   name: 'blacklist',
   aliases: ['bl'],
   ownerOnly: true,
@@ -17,11 +15,11 @@ module.exports = {
       if(args[0] == 'add') {
         doc.blacklist = true;
         await doc.save();
-        message.reply(`**${Emojis.dev} › Usuario \`${user.tag}\` adicionado na blacklist**`);
+        message.reply(`**${client.Emojis.dev} › Usuario \`${user.tag}\` adicionado na blacklist**`);
       } else if(args[0] == 'remove') {
         doc.blacklist = false;
         await doc.save();
-        message.reply(`**${Emojis.dev} › Usuario \`${user.tag}\` removido da blacklist.**`);
+        message.reply(`**${client.Emojis.dev} › Usuario \`${user.tag}\` removido da blacklist.**`);
       }
     }
   }

@@ -1,6 +1,4 @@
-const Emojis = require('../../Structures/Utils/emojis');
-
-module.exports = {
+export default {
   name: 'prefix',
   aliases: ['setprefix', 'prefixo'],
   playerOnly: false,
@@ -8,11 +6,11 @@ module.exports = {
   ownerOnly: false,
   async exec({ client, message, args, t }) { 
 
-    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id) ) return message.reply(`${Emojis.errado}** › ${t('commands:prefix.errorPerm')}**`);
+    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id) ) return message.reply(`${client.Emojis.errado}** › ${t('commands:prefix.errorPerm')}**`);
 
-    if (!args[0]) return message.reply(`${Emojis.errado}** › ${t('commands:prefix.noPrefix')}**`);
+    if (!args[0]) return message.reply(`${client.Emojis.errado}** › ${t('commands:prefix.noPrefix')}**`);
 
-    if (args[0].length > 7) return message.reply(`${Emojis.errado}** › ${t('commands:prefix.sevenLenght')}**`);
+    if (args[0].length > 7) return message.reply(`${client.Emojis.errado}** › ${t('commands:prefix.sevenLenght')}**`);
 
     await client.db.guild.findOneAndUpdate({
       _id: message.guild.id
@@ -21,6 +19,6 @@ module.exports = {
         prefix: args[0]
       }
     });
-    message.reply(`${Emojis.config}** › ${t('commands:prefix.seted')}!**`);
+    message.reply(`${client.Emojis.config}** › ${t('commands:prefix.seted')}!**`);
   }
 };

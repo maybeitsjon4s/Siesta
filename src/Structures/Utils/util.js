@@ -1,6 +1,6 @@
-const { WebhookClient } = require('discord.js-light');
+import { WebhookClient } from 'discord.js';
 
-module.exports = {
+export default {
 
   async sendLogs({ content, type }) {
     switch(type) {
@@ -28,18 +28,15 @@ module.exports = {
 
   async getUser(args, message) {
     if (!args || !message) return;
-
     let user;
 
     if(/<@!?\d{17,18}>/.test(args)) {
-      user = await message.client.users.fetch(args.match(/\d{17,18}/)?.[0]);
 
+      user = await message.client.users.fetch(args.match(/\d{17,18}/)?.[0]);
     } else {
 
       user = await message.guild.members.search({ query: args, limit: 1 }).then((x) => x.first()?.user);
-
       if(!user) user = await message.client.users.fetch(args).catch(() => {}); 
-  
     }
 
     if(user) {

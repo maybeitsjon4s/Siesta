@@ -1,6 +1,4 @@
-const Emojis = require('../../Structures/Utils/emojis');
-
-module.exports = {
+export default {
   name: 'resume',
   aliases: ['pausar', 'dispause', 'continuar'],
   ownerOnly: false,
@@ -8,11 +6,11 @@ module.exports = {
   sameChannel: true,
   description: '[ 🎵 Music ] Resumes the player.',
   options: [],
-  async exec({ message, player, t }) {
+  async exec({ message, player, t, client }) {
 
-    if (!player.paused) return message.reply(`**${Emojis.errado} › ${t('commands:resume.alteradyPause')}!**`);
+    if (!player.paused) return message.reply(`**${client.Emojis.errado} › ${t('commands:resume.alteradyPause')}!**`);
 
     player.pause(false);
-    message.reply(`**${Emojis.music} › ${t('commands:resume.sucess')}!**`);
+    message.reply(`**${client.Emojis.music} › ${t('commands:resume.sucess')}!**`);
   },
 };

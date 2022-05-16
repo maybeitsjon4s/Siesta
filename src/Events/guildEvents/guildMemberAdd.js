@@ -1,6 +1,6 @@
-const { MessageActionRow, MessageButton } = require('discord.js-light');
+import { MessageActionRow, MessageButton } from 'discord.js';
 
-module.exports = {
+export default {
   name: 'guildMemberAdd',
   async exec (client, member) {
 

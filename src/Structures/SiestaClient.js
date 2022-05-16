@@ -1,21 +1,18 @@
-const { Client, Options, Collection } = require('discord.js-light');
+import { Client, Options, Collection } from 'discord.js';
+import _pkg from 'chalk';
+const { blue, gray, green, red } = _pkg;
+import pkg from 'mongoose';
+const { connect } = pkg;
+import { Guild, User } from '../Models/index.js';
+import { promisify } from 'util';
+import g from 'glob';
+const glob = promisify(g);
+import Emojis from './Utils/emojis.js';
+import LocaleManager from './LocaleManager.js';
+import Music from './Music.js';
+import util from './Utils/util.js';
 
-const { blue, gray, green, red } = require('chalk');
-const { connect } = require('mongoose');
-const { Guild, User } = require('../Models/index.js');
-const { extend } = require('dayjs');
-require('dayjs/locale/pt');
-require('dayjs/locale/en');
-const relativeTime = require('dayjs/plugin/relativeTime');
-extend(relativeTime);
-
-const { promisify } = require('util');
-const glob = promisify(require('glob'));
-
-const LocaleManager = require('./LocaleManager.js');
-const Music = require('./Music.js');
-
-module.exports = class Siesta extends Client {
+export default class Siesta extends Client {
   constructor() {
     super({
       makeCache: Options.cacheWithLimits({
@@ -46,13 +43,14 @@ module.exports = class Siesta extends Client {
         parse: ['users'],
         repliedUser: false
       },
-      ws: { properties: { $browser: "Discord iOS" }},
+      ws: { properties: { $browser: 'Discord iOS' }},
       shardCount: 2
     });
 
+    this.Emojis = Emojis;
     this.commands = new Collection();
     this.aliases = new Collection();
-    this.utils = require('./Utils/util');
+    this.utils = util;
     this.owners = ['431768491759239211', '499356551535001610'];
     this.color = '#ffffff';
     this.db = {
@@ -69,10 +67,10 @@ module.exports = class Siesta extends Client {
     // Loads Everything
     this.loadEvents();
     this.loadCommands();
-    this.localeManager = new LocaleManager(this)
+    this.localeManager = new LocaleManager(this);
     this.localeManager.loadLocales();
     this.music = new Music(this);
-        
+
     // Connecting to the database
     connect(global.config.connections.database).catch(() => {});
 
@@ -82,19 +80,23 @@ module.exports = class Siesta extends Client {
   async loadCommands() {
     await glob(`${global.process.cwd()}/src/Commands/**/*js`, async (err, filePaths) => {
       if (err) return console.log(err);
-      filePaths.forEach((file) => {
-        const pull = require(file);
-        if (pull.name) this.commands.set(pull.name, pull);
-        if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach((alias) => this.aliases.set(alias, pull.name));
+      filePaths.forEach(async (file) => {
+        const pull = await import(file);
+        const { name, aliases } = pull.default;
+        if (name) this.commands.set(name, pull.default);
+        if (aliases && Array.isArray(aliases)) {
+          aliases.forEach((alias) => this.aliases.set(alias, name));
+        }
       });
     });
   }
   
   async loadEvents() {
     const events = await glob(`${global.process.cwd()}/src/Events/**/*.js`);
-    events.forEach((eventFile) => {
-      const file = require(eventFile);
-      super.on(file.name, file.exec.bind(null, this));
+    events.forEach(async (eventFile) => {
+      const file = await import(eventFile);
+      const { name, exec } = file.default;
+      super.on(name, exec.bind(null, this));
     });
   }
   async loadSlashCommands() {
@@ -102,16 +104,14 @@ module.exports = class Siesta extends Client {
 
     const arrayOfSlashCommands = [];
   
-    slashCommands.map((value) => {
-      const file = require(value);
+    slashCommands.map(async (value) => {
+      const file = await import(value);
   
       if(!file?.name || !file.description ||!file.options) return;
-
-      file.dm_permission = false;
   
       arrayOfSlashCommands.push(file);
     });
   
     await this.application.commands.set(arrayOfSlashCommands);
   }
-};
+}

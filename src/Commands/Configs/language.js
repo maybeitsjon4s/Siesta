@@ -1,7 +1,6 @@
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js-light');
-const Emojis = require('../../Structures/Utils/emojis');
+import { MessageEmbed, MessageActionRow, MessageButton } from 'discord.js';
 
-module.exports = {
+export default {
   name: 'language',
   aliases: ['setlang', 'lang'],
   playerOnly: false,
@@ -30,7 +29,7 @@ module.exports = {
         .setCustomId('en')
     );
 
-    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id)) return message.reply(`${Emojis.errado}** › ${t('commands:language.errorPerm')}**`);
+    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id)) return message.reply(`${client.Emojis.errado}** › ${t('commands:language.errorPerm')}**`);
 
     const embed = new MessageEmbed()
       .setColor(client.color)
@@ -40,7 +39,7 @@ module.exports = {
           dynamic: true
         })
       })
-      .setTitle(`${Emojis.config} • __Siesta__`)
+      .setTitle(`${client.Emojis.config} • __Siesta__`)
       .setDescription(`${message.author}, ${t('commands:language.message')}`);
 
     message.reply({
@@ -55,7 +54,7 @@ module.exports = {
       collector.on('collect', async (i) => {
             
         if (i.user.id !== message.author.id) return i.reply({
-          content: `${Emojis.errado}** › ${t('commands:language.onlyAuthor')}**`,
+          content: `${client.Emojis.errado}** › ${t('commands:language.onlyAuthor')}**`,
           ephemeral: true
         });
         if (i.customId == 'pt') {
@@ -68,7 +67,7 @@ module.exports = {
             }
           });
           msg.edit({
-            content: `**${Emojis.config} › ${t('language.portugueseSeted')}!**`,
+            content: `**${client.Emojis.config} › ${t('language.portugueseSeted')}!**`,
             embeds: [],
             components: []
           });
@@ -83,7 +82,7 @@ module.exports = {
             }
           });
           msg.edit({
-            content: `**${Emojis.config} › ${t('language.englishSeted')}!**`,
+            content: `**${client.Emojis.config} › ${t('language.englishSeted')}!**`,
             embeds: [],
             components: []
           });

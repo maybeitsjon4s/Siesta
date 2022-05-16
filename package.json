@@ -12,21 +12,18 @@
   "type": "module",
   "dependencies": {
     "chalk": "4.1.2",
-    "dayjs": "^1.11.1",
+    "dayjs": "^1.11.2",
     "discord.js": "^13.7.0",
-    "glob": "^7.2.0",
-    "i18next": "^21.6.15",
+    "glob": "8.0.3",
+    "i18next": "^21.8.2",
     "i18next-fs-backend": "^1.1.4",
     "js-yaml": "^4.1.0",
-    "mongoose": "^6.3.2",
+    "mongoose": "^6.3.3",
     "topgg-autoposter": "^2.0.1",
-    "undici": "^5.1.1",
+    "undici": "^5.2.0",
     "vulkava": "^1.2.1"
   },
-  "engines": {
-    "node": "17.x"
-  },
   "devDependencies": {
-    "eslint": "^8.14.0"
+    "eslint": "^8.15.0"
   }
 }

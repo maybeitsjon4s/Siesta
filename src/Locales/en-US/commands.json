@@ -117,6 +117,21 @@
         "myPermission": "You do not have the `Manage Channels` Permission.",
         "sucess": "Chat successfully unlocked!"
       },
+      "warn": {
+        "noPermission": "You need the `Manage Roles` permission to this command",
+        "invalidUser": "You need to give me a valid user to this command",
+        "warnYourSelf": "You cannot warn your self",
+        "warnMe": "You cannot warn me",
+        "higherRole": "The member's role is higher than yours",
+        "bigReason": "The reason cannot pass 50 characters",
+        "reason": "Reason",
+        "noReason": "Not Provided",
+        "author": "Author"
+      },
+      "warns": {
+        "noWarns": "The {{user}} don't have any warn",
+        "page": "Page"
+      },
       "disconnect": {
         "sucess": "I disconnected from the voice channel successfully"
       },

@@ -119,6 +119,21 @@
     "myPermission": "Você não tem a Permissão `Gerenciar Canais`.",
     "sucess": "Chat destrancado com sucesso!"
   },
+  "warn": {
+    "noPermission": "Você precisa da permissão de Gerenciar Cargos para este comando",
+    "invalidUser": "Você deve me dar um usuario valido para este comando",
+    "warnYourSelf": " Você não pode dar um warn a si mesmo",
+    "warnMe": "Você não pode me dar um warn",
+    "higherRole": "O cargo do membro é maior que o seu",
+    "bigReason": "O motivo não pode passar de 50 caracteres",
+    "reason": "Motivo",
+    "noReason": "Não especificado",
+    "author": "author"
+  },
+  "warns": {
+    "noWarns": "O {{user}} não tem nenhum warn",
+    "page": "Pagina"
+  },
   "disconnect": {
     "sucess": "Disconectei-me do canal de voz com sucesso"
   },

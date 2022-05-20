@@ -8,7 +8,7 @@ export default {
   options: [],
   async exec({ message,  player, t, client }) {
     
-    if(!player.queue.length) return message.reply(`**${client.Emojis.errado} › ${t('commands:suffle.noQueue')}**`);
+    if(!player.queue.length) return message.reply(`**${client.Emojis.errado} › ${t('commands:shuffle.noQueue')}**`);
 
     player.shuffleQueue();
 

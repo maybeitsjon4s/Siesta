@@ -68,7 +68,7 @@ export default {
   
     if(command.ownerOnly && !client.owners.some(id => id === message.author.id)) return;
 
-    if(command.playerOnly && !player) return message.reply(`**${client.Emojis.errado} › ${t('music:channelError')}**`);
+    if(command.playerOnly && !player) return message.reply(`**${client.Emojis.errado} › ${t('music:noPlayer')}**`);
 
     if(command.sameChannel) {
       if(!message.member.voice.channel) return message.reply(`**${client.Emojis.errado} › ${t('music:channelError')}**`);

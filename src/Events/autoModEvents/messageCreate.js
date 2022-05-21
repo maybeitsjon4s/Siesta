@@ -29,7 +29,7 @@ export default {
       const whitelist = GUILD.antiinvite.whitelist;
 
       if (isInvite(message.content) && !whitelist.some(x => x == message.channel.id)) {
-        message.channel.send(`**${client.Emojis.errado} › ${message.author} ` + t('events:autoModEvents.antiinvite') + '**');
+        message.channel.send(`**${client.emj.errado} › ${message.author} ` + t('events:autoModEvents.antiinvite') + '**');
         message.delete().catch(() => {});
       }
     }

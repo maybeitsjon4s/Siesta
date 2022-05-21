@@ -10,6 +10,6 @@ export default {
      
     player.skip();
 
-    message.reply(`**${client.Emojis.music} › ${t('commands:skip.sucess')}!**`);
+    message.reply(`**${client.emj.music} › ${t('commands:skip.sucess')}!**`);
   },
 };

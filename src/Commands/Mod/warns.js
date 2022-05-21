@@ -13,7 +13,7 @@ export default {
     let doc = await client.db.guild.findOne({ _id: message.guild.id });
     let queue = doc.warns[member.id];
     if(!queue) queue = [];
-    if(queue.length === 0) return message.reply(`**${client.Emojis.errado} › ${t('commands:warns.noWarns', { user: (member.user?.toString() || message.author.toString())})} **`);
+    if(queue.length === 0) return message.reply(`**${client.emj.errado} › ${t('commands:warns.noWarns', { user: (member.user?.toString() || message.author.toString())})} **`);
     const maxPerPage = 10;
 
     const pages = Math.ceil(queue.length / maxPerPage);
@@ -38,7 +38,7 @@ export default {
     );
 
     const embed = new MessageEmbed()
-      .setTitle(`${client.Emojis.ban} • __Siesta__`)
+      .setTitle(`${client.emj.ban} • __Siesta__`)
       .setDescription(info.join('\n'))
       .setColor(client.color)
       .setFooter({ text: pageTranslated + ` ${page + 1}/${pages}`});

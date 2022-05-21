@@ -20,8 +20,8 @@ export default {
         color: client.color,
         description: `> ${message.author}, ${t('commands:stats.message')}`,
         fields: [{
-          name: `${client.Emojis.star} ${t('commands:stats.stats')}`,
-          value: `> ${client.Emojis.rocket} Servers: **${client.guilds.cache.size}**\n> ${client.Emojis.heart2}Uptime: **${client.utils.formatTime(client.uptime)}**\n> ${client.Emojis.config} RAM: **${client.utils.formatSizeUnits(global.process.memoryUsage().heapUsed)}**\n> ${client.Emojis.aurora} Players: **${client.music.players.size}**`,
+          name: `${client.emj.star} ${t('commands:stats.stats')}`,
+          value: `> ${client.emj.rocket} Servers: **${client.guilds.cache.size}**\n> ${client.emj.heart2}Uptime: **${client.utils.formatTime(client.uptime)}**\n> ${client.emj.config} RAM: **${client.utils.formatSizeUnits(global.process.memoryUsage().heapUsed)}**\n> ${client.emj.aurora} Players: **${client.music.players.size}**`,
           inline: true
         }],
         footer: {

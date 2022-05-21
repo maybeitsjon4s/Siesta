@@ -31,11 +31,11 @@ export default {
         }
       });
     });
-    message.reply(`**${client.Emojis.dev} › Comandos recarregados.**`);
+    message.reply(`**${client.emj.dev} › Comandos recarregados.**`);
     */
 
     // Locales
     await reloadResources(['pt-BR', 'en-US']);
-    message.reply(`**${client.Emojis.dev} › Locales recarregados.**`);
+    message.reply(`**${client.emj.dev} › Locales recarregados.**`);
   },
 };

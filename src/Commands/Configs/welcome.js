@@ -7,12 +7,12 @@ export default {
   async exec({ client, message, args, t }) {
     
     if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.includes(message.author.id)) return message.reply({
-      content: `**${client.Emojis.errado} › ${t('commands:welcome.errorPerm')}**`});
+      content: `**${client.emj.errado} › ${t('commands:welcome.errorPerm')}**`});
 
     const doc = await client.db.guild.findOne({ _id: message.guild.id });
 
     const errorMessage = {embeds: [{
-      title: `${client.Emojis.config} • Siesta`,
+      title: `${client.emj.config} • Siesta`,
       description: t('commands:welcome.argsError', {
         prefix: doc.prefix
       }),

@@ -11,13 +11,13 @@ export default {
     if(player.autoplay) {
       player.autoplay.status = false;
       player.autoplay.track = null;
-      message.reply(`**${client.Emojis.music} › ${t('commands:autoplay.disabled')}**`);
+      message.reply(`**${client.emj.music} › ${t('commands:autoplay.disabled')}**`);
     } else {
       player.autoplay = {
         status: true,
         track: player.current
       };
-      message.reply(`**${client.Emojis.music} › ${t('commands:autoplay.activated')}**`);
+      message.reply(`**${client.emj.music} › ${t('commands:autoplay.activated')}**`);
     }
   },
 };

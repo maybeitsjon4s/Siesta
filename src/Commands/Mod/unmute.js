@@ -18,21 +18,21 @@ export default {
   }],
   async exec({ client, args, message, t }) {
 
-    if(!message.member.permissions.has('MODERATE_MEMBERS')) return message.reply(`**${client.Emojis.errado} › ${t('commands:unmute.userPermission')}!**`);
+    if(!message.member.permissions.has('MODERATE_MEMBERS')) return message.reply(`**${client.emj.errado} › ${t('commands:unmute.userPermission')}!**`);
 
-    if(!message.guild.me.permissions.has('MODERATE_MEMBERS')) return message.reply(`**${client.Emojis.errado} › ${t('commands:unmute.myPermission')}!**`);
+    if(!message.guild.me.permissions.has('MODERATE_MEMBERS')) return message.reply(`**${client.emj.errado} › ${t('commands:unmute.myPermission')}!**`);
 
     const member = await message.guild.members.fetch(await client.utils.getUser(args[0]).catch(() => {})).catch(() => {});
 
-    if(!member || member.id === message.author.id) return message.reply(`**${client.Emojis.errado} › ${t('commands:unmute.noUser')}!**`);
+    if(!member || member.id === message.author.id) return message.reply(`**${client.emj.errado} › ${t('commands:unmute.noUser')}!**`);
 
-    if(!member.communicationDisabledUntilTimestamp) return message.reply(`**${client.Emojis.errado} › ${t('commands:unmute.userNotMuted')}!**`);
+    if(!member.communicationDisabledUntilTimestamp) return message.reply(`**${client.emj.errado} › ${t('commands:unmute.userNotMuted')}!**`);
 
     const reason = args[1] || 'Removing timeout';
 
     await member.timeout(0, `By: ${message.author.tag} - ${reason}`).catch(() => {});
 
-    message.reply(`**${client.Emojis.ban} › ${t('commands:unmute.sucess', {
+    message.reply(`**${client.emj.ban} › ${t('commands:unmute.sucess', {
       user: member.user.tag
     })}!**`);
   }

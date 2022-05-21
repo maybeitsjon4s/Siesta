@@ -9,7 +9,7 @@ export default {
   async exec({ message, player, t, client }) {
 
     player.destroy();
-    message.reply(`**${client.Emojis.music} › ${t('commands:disconnect.sucess')}**`);
+    message.reply(`**${client.emj.music} › ${t('commands:disconnect.sucess')}**`);
     
   }
 };

@@ -27,23 +27,23 @@ export default {
   }],
   async exec({ client, message, args, t }) {
     
-    if (!message.member.permissions.has('MODERATE_MEMBERS') && !client.owners.some(id => id === message.author.id)) return message.reply(`**${client.Emojis.errado} › ${t('commands:mute.userPermision')}!**`);
-    if (!message.guild.me.permissions.has('MODERATE_MEMBERS')) return message.reply(`**${client.Emojis.errado} › ${t('commands:mute.myPermission')}!**`);
-    if (!args[0]) return message.reply(`**${client.Emojis.errado} › ${t('commands:mute.noArgs')}!**`);
+    if (!message.member.permissions.has('MODERATE_MEMBERS') && !client.owners.some(id => id === message.author.id)) return message.reply(`**${client.emj.errado} › ${t('commands:mute.userPermision')}!**`);
+    if (!message.guild.me.permissions.has('MODERATE_MEMBERS')) return message.reply(`**${client.emj.errado} › ${t('commands:mute.myPermission')}!**`);
+    if (!args[0]) return message.reply(`**${client.emj.errado} › ${t('commands:mute.noArgs')}!**`);
     const member = await message.guild.members.fetch(await client.utils.getUser(args[0]).catch(() => {})).catch(() => {});
-    if(!member) return message.reply(`**${client.Emojis.errado} › ${t('commands:mute.notFound')}!**`);
+    if(!member) return message.reply(`**${client.emj.errado} › ${t('commands:mute.notFound')}!**`);
     const time = args[1];
     const reason = args.slice(2).join(' ') || 'INVALID';
-    if (!time) return message.reply(`**${client.Emojis.errado} › ${t('commands:mute.noTime')}!**`);
+    if (!time) return message.reply(`**${client.emj.errado} › ${t('commands:mute.noTime')}!**`);
 
-    if (member.id === message.author.id) return message.reply(`**${client.Emojis.errado} › ${t('commands:mute.muteYourSelf')}!**`);
-    if (member.id === client.user.id) return message.reply(`**${client.Emojis.errado} › ${t('commands:mute.punishMe')}!**`);
+    if (member.id === message.author.id) return message.reply(`**${client.emj.errado} › ${t('commands:mute.muteYourSelf')}!**`);
+    if (member.id === client.user.id) return message.reply(`**${client.emj.errado} › ${t('commands:mute.punishMe')}!**`);
 
-    if (message.member.roles?.highest?.position <= member.roles?.highest?.position) return message.reply(`**${client.Emojis.errado} › ${t('commands:mute.higherRole')}!**`);
-    if (member.roles?.highest?.position >= message.guild.me.roles?.highest?.position) return message.reply(`**${client.Emojis.errado} › ${t('commands:mute.higherRoleThanMine')}!**`);
-    if (!client.utils.timeToMS(time))return message.reply(`**${client.Emojis.errado} › ${t('commands:mute.invalidTime')}**`);
+    if (message.member.roles?.highest?.position <= member.roles?.highest?.position) return message.reply(`**${client.emj.errado} › ${t('commands:mute.higherRole')}!**`);
+    if (member.roles?.highest?.position >= message.guild.me.roles?.highest?.position) return message.reply(`**${client.emj.errado} › ${t('commands:mute.higherRoleThanMine')}!**`);
+    if (!client.utils.timeToMS(time))return message.reply(`**${client.emj.errado} › ${t('commands:mute.invalidTime')}**`);
     const tempo = client.utils.timeToMS(time);
-    if (tempo >= 2419200000) return message.reply(`**${client.Emojis.errado} › ${t('commands:mute.higherThan28days')}!**`);
+    if (tempo >= 2419200000) return message.reply(`**${client.emj.errado} › ${t('commands:mute.higherThan28days')}!**`);
 
     const embed1 = new MessageEmbed()
       .setColor(client.color)
@@ -51,17 +51,17 @@ export default {
         text: message.author.tag,
         iconURL: message.author.displayAvatarURL({ dynamic: true }),
       })
-      .setTitle(`${client.Emojis.ban} • __Siesta__`)
+      .setTitle(`${client.emj.ban} • __Siesta__`)
       .addFields({
-        name: `${client.Emojis.user} › ${t('commands:mute.user')}: `,
+        name: `${client.emj.user} › ${t('commands:mute.user')}: `,
         value: `\`${member.user?.tag}\``,
       },
       {
-        name: `${client.Emojis.info} › ${t('commands:mute.reason')}:`,
+        name: `${client.emj.info} › ${t('commands:mute.reason')}:`,
         value: `\`${reason}\``
       },
       {
-        name: `${client.Emojis.rocket} › ${t('commands:mute.during')}:`,
+        name: `${client.emj.rocket} › ${t('commands:mute.during')}:`,
         value: `\`${client.utils.formatTime(client.utils.convertMilliseconds(tempo))}\``
       })
       .setTimestamp();

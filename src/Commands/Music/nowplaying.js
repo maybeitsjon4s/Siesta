@@ -13,10 +13,10 @@ export default {
       
     const track = player.current;
     const embed = new MessageEmbed()
-      .setTitle(`${client.Emojis.music} • __Siesta__`)
+      .setTitle(`${client.emj.music} • __Siesta__`)
       .setColor(client.color)
       .setTimestamp()
-      .setDescription(`**${client.Emojis.aurora} › ${t('commands:nowplaying.info')}\n${t('commands:nowplaying.name')}: [${track.title.replace('`', '\'')}](${track.uri}) \n ${t('commands:nowplaying.duration')}: ${formatTime(
+      .setDescription(`**${client.emj.aurora} › ${t('commands:nowplaying.info')}\n${t('commands:nowplaying.name')}: [${track.title.replace('`', '\'')}](${track.uri}) \n ${t('commands:nowplaying.duration')}: ${formatTime(
         client.utils.convertMilliseconds(player.position)
       )}\`[${client.utils.progressBar(
         player.position / 1000 / 50,
@@ -24,7 +24,7 @@ export default {
         20
       )}]\` ${formatTime(
         client.utils.convertMilliseconds(track.duration)
-      )}\n${client.Emojis.estrela} › Status\n Volume: \`${player.volume}/500\`\nLoop: \`${player.trackRepeat ? t('commands:nowplaying.enabled') : t('commands:nowplaying.disabled')}\`\nStatus: \`${!player.filters.player.paused ? t('commands:nowplaying.playing') : t('commands:nowplaying.paused')}\`**`)
+      )}\n${client.emj.estrela} › Status\n Volume: \`${player.volume}/500\`\nLoop: \`${player.trackRepeat ? t('commands:nowplaying.enabled') : t('commands:nowplaying.disabled')}\`\nStatus: \`${!player.filters.player.paused ? t('commands:nowplaying.playing') : t('commands:nowplaying.paused')}\`**`)
       .setFooter({
         text: `${message.author.tag}`,
         iconURL: message.author.displayAvatarURL({ dynamic: true })

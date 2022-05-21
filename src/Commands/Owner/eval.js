@@ -24,11 +24,11 @@ export default {
       if (typeof result !== 'string') result = inspect(result, { depth: 0 });
 
       message.reply({
-        content: `**${client.Emojis.certo} › Sucess\nOutput: \`\`\`js\n${result.slice(0, 1900).replace((new RegExp(global.config.token,'gi')), '')}\`\`\`**`});
+        content: `**${client.emj.certo} › Sucess\nOutput: \`\`\`js\n${result.slice(0, 1900).replace((new RegExp(global.config.token,'gi')), '')}\`\`\`**`});
 
     } catch (e) {
       message.reply({
-        content: `**${client.Emojis.errado} › Error\nOutput: \`\`\`js\n${e.stack.slice(0, 1900)}\`\`\`**`,
+        content: `**${client.emj.errado} › Error\nOutput: \`\`\`js\n${e.stack.slice(0, 1900)}\`\`\`**`,
 
       });
     }

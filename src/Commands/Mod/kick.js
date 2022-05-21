@@ -21,36 +21,36 @@ export default {
   }],
   async exec({ client, message, args, t }) {
 
-    if (!message.member.permissions.has('KICK_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${client.Emojis.errado} › ${t('commands:kick.userPermission')}**`);
+    if (!message.member.permissions.has('KICK_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${client.emj.errado} › ${t('commands:kick.userPermission')}**`);
 
-    if (!message.guild.me.permissions.has('KICK_MEMBERS')) return message.reply(`**${client.Emojis.errado} › ${t('commands:kick.myPermission')}**`);
+    if (!message.guild.me.permissions.has('KICK_MEMBERS')) return message.reply(`**${client.emj.errado} › ${t('commands:kick.myPermission')}**`);
 
-    if (!args[0]) return message.reply(`**${client.Emojis.errado} › ${t('commands:kick.noMention')}!**`);
+    if (!args[0]) return message.reply(`**${client.emj.errado} › ${t('commands:kick.noMention')}!**`);
 
     let member;
     try {
       member = message.mentions.members.first() || await message.guild.members.fetch(args[0]);
     } catch {
-      return message.reply(`**${client.Emojis.errado} › ${t.commands.kick.notFound}!**`);
+      return message.reply(`**${client.emj.errado} › ${t.commands.kick.notFound}!**`);
     }
 
-    if (message.member.roles.highest.position <= member.roles.highest.position)return message.reply(`**${client.Emojis.errado} › ${t('commands:kick.higherRole')}!**`);
+    if (message.member.roles.highest.position <= member.roles.highest.position)return message.reply(`**${client.emj.errado} › ${t('commands:kick.higherRole')}!**`);
 
-    if (member.roles.highest.position >= message.guild.me.roles.highest.position) return message.reply(`**${client.Emojis.errado} › ${t('commands:kick.higherRoleThanMine')}!**`);
+    if (member.roles.highest.position >= message.guild.me.roles.highest.position) return message.reply(`**${client.emj.errado} › ${t('commands:kick.higherRoleThanMine')}!**`);
 
     const motivo = args.slice(1).join(' ') || t('commands:kick.noReason');
 
     message.guild.members.kick(member.id, `By: ${message.author.tag} -- ${motivo}`);
 
     const kick = new MessageEmbed()
-      .setTitle(`${client.Emojis.ban} • __Siesta__`)
+      .setTitle(`${client.emj.ban} • __Siesta__`)
       .addFields(
         {
-          name: `${client.Emojis.user} ${t('commands:kick.user')}`,
+          name: `${client.emj.user} ${t('commands:kick.user')}`,
           value: `\`${member.user.tag}\``,
         },
         {
-          name: `${client.Emojis.info} ${t('commands:kick.reason')}`,
+          name: `${client.emj.info} ${t('commands:kick.reason')}`,
           value: `\`${motivo}\``
         }
       )

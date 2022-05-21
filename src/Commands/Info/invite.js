@@ -11,7 +11,7 @@ export default {
   async exec({ message, t, client }) {
     
     message.reply({
-      content: `**${client.Emojis.star} › ${t('commands:invite.message')}!**`,
+      content: `**${client.emj.star} › ${t('commands:invite.message')}!**`,
       components: [
         new MessageActionRow().addComponents(
           new MessageButton()

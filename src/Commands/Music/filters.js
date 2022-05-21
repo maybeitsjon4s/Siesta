@@ -29,7 +29,7 @@ export default {
     );
 
     message.reply({
-      content: `**${client.Emojis.music} › ${t('commands:filters.firstMessage')}**`,
+      content: `**${client.emj.music} › ${t('commands:filters.firstMessage')}**`,
       components: [row],
       fetchReply: true
     }).then(msg => {
@@ -41,13 +41,13 @@ export default {
       collector.on('collect', async (i) => {
         await i.deferUpdate();
         if(i.user.id !== message.author.id) return i.followUp({
-          content: `**${client.Emojis.errado} › ${t('commands:filters.onlyAuthor')}**`,
+          content: `**${client.emj.errado} › ${t('commands:filters.onlyAuthor')}**`,
           ephemeral: true
         });
         switch(i.customId) {
         case 'nightcore':
           msg.edit({
-            content: `**${client.Emojis.music} › ${t('commands:filters.changedMessage', {
+            content: `**${client.emj.music} › ${t('commands:filters.changedMessage', {
               filter: 'NightCore'
             })}**`,
             components: []
@@ -61,7 +61,7 @@ export default {
           break;
         case 'bassboost':
           msg.edit({
-            content: `**${client.Emojis.music} › ${t('commands:filters.changedMessage', {
+            content: `**${client.emj.music} › ${t('commands:filters.changedMessage', {
               filter: 'Bass Boost'
             })}**`,
             components: []
@@ -72,7 +72,7 @@ export default {
           break;
         case 'eightD':
           msg.edit({
-            content: `**${client.Emojis.music} › ${t('commands:filters.changedMessage', {
+            content: `**${client.emj.music} › ${t('commands:filters.changedMessage', {
               filter: '8D'
             })}**`,
             components: []
@@ -82,7 +82,7 @@ export default {
           break;
         case 'clear':
           msg.edit({
-            content: `**${client.Emojis.music} › ${t('commands:filters.clearFiltersMessage')}**`,
+            content: `**${client.emj.music} › ${t('commands:filters.clearFiltersMessage')}**`,
             components: []
           });
           player.filters.clear();

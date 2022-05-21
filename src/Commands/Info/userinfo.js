@@ -18,10 +18,10 @@ export default {
     const user = await client.utils.getUser(args[0], message) || message.author;
 
     const embed = new MessageEmbed()
-      .setTitle(`__${user.tag.replaceAll('_', '')}__ • ${client.utils.getUserFlags(user) || client.Emojis.user}`)
+      .setTitle(`__${user.tag.replaceAll('_', '')}__ • ${client.utils.getUserFlags(user) || client.emj.user}`)
       .setColor(client.color)
       .addFields({
-        name: `${client.Emojis.estrela} › ${t('commands:userinfo.createdAccount')}`,
+        name: `${client.emj.estrela} › ${t('commands:userinfo.createdAccount')}`,
         value: `<t:${(user.createdAt / 1000).toFixed()}> (<t:${(user.createdAt / 1000).toFixed()}:R>)`,
         inline: true
       })
@@ -35,7 +35,7 @@ export default {
 
 
     member && embed.fields.push({
-      name: client.Emojis.heart2 + ` › ${t('commands:userinfo.joinedAt')}`,
+      name: client.emj.heart2 + ` › ${t('commands:userinfo.joinedAt')}`,
       value: `<t:${(member.joinedAt / 1000).toFixed()}> (<t:${(member.joinedAt / 1000).toFixed()}:R>)`,
       inline: true
     });
@@ -43,7 +43,7 @@ export default {
     user.displayAvatarURL() && embed.setThumbnail(user.displayAvatarURL());
 
     member && member.premiumSince && embed.fields.push({
-      name: client.Emojis.boost + ` › ${t('commands:userinfo.boosterSince')}`,
+      name: client.emj.boost + ` › ${t('commands:userinfo.boosterSince')}`,
       value: `<t:${(member.premiumSince / 1000).toFixed()}> (<t:${(member.premiumSince / 1000).toFixed()}:R>)`
     });
     message.reply({ embeds: [embed] });

@@ -47,7 +47,7 @@ export default class Siesta extends Client {
       shardCount: 2
     });
 
-    this.Emojis = Emojis;
+    this.emj = Emojis;
     this.commands = new Collection();
     this.aliases = new Collection();
     this.utils = util;

@@ -29,7 +29,7 @@ export default {
         .setCustomId('en')
     );
 
-    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id)) return message.reply(`${client.Emojis.errado}** › ${t('commands:language.errorPerm')}**`);
+    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id)) return message.reply(`${client.emj.errado}** › ${t('commands:language.errorPerm')}**`);
 
     const embed = new MessageEmbed()
       .setColor(client.color)
@@ -39,7 +39,7 @@ export default {
           dynamic: true
         })
       })
-      .setTitle(`${client.Emojis.config} • __Siesta__`)
+      .setTitle(`${client.emj.config} • __Siesta__`)
       .setDescription(`${message.author}, ${t('commands:language.message')}`);
 
     message.reply({
@@ -54,7 +54,7 @@ export default {
       collector.on('collect', async (i) => {
             
         if (i.user.id !== message.author.id) return i.reply({
-          content: `${client.Emojis.errado}** › ${t('commands:language.onlyAuthor')}**`,
+          content: `${client.emj.errado}** › ${t('commands:language.onlyAuthor')}**`,
           ephemeral: true
         });
         if (i.customId == 'pt') {
@@ -67,7 +67,7 @@ export default {
             }
           });
           msg.edit({
-            content: `**${client.Emojis.config} › ${t('language.portugueseSeted')}!**`,
+            content: `**${client.emj.config} › ${t('language.portugueseSeted')}!**`,
             embeds: [],
             components: []
           });
@@ -82,7 +82,7 @@ export default {
             }
           });
           msg.edit({
-            content: `**${client.Emojis.config} › ${t('language.englishSeted')}!**`,
+            content: `**${client.emj.config} › ${t('language.englishSeted')}!**`,
             embeds: [],
             components: []
           });

@@ -19,7 +19,7 @@ export default {
     const queue = player.queue;
 
     const QUEUE = new MessageEmbed()
-      .setTitle(`${client.Emojis.music} | __Siesta__`)
+      .setTitle(`${client.emj.music} | __Siesta__`)
       .setColor(client.color)
       .setTimestamp();
 

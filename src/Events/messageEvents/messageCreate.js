@@ -68,12 +68,12 @@ export default {
   
     if(command.ownerOnly && !client.owners.some(id => id === message.author.id)) return;
 
-    if(command.playerOnly && !player) return message.reply(`**${client.Emojis.errado} › ${t('music:noPlayer')}**`);
+    if(command.playerOnly && !player) return message.reply(`**${client.emj.errado} › ${t('music:noPlayer')}**`);
 
     if(command.sameChannel) {
-      if(!message.member.voice.channel) return message.reply(`**${client.Emojis.errado} › ${t('music:channelError')}**`);
+      if(!message.member.voice.channel) return message.reply(`**${client.emj.errado} › ${t('music:channelError')}**`);
       if(message.guild.me.voice.channel) {
-        if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply(`**${client.Emojis.errado} › ${t('music:channelError')}**`);
+        if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply(`**${client.emj.errado} › ${t('music:channelError')}**`);
       }
     }
 
@@ -86,7 +86,7 @@ export default {
       client.logger.error(`Erro no commando ${command.name}, Servidor: ${message.guild.id}, Usuario: ${message.author.id}.`);
       client.logger.stack(err.stack);
       message.reply({ 
-        content: `**${client.Emojis.errado} › ${t('events:messageCreate.error', {
+        content: `**${client.emj.errado} › ${t('events:messageCreate.error', {
           command: command.name
         })}**`,
         components: [new MessageActionRow().addComponents(

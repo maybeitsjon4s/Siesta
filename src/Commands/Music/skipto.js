@@ -17,10 +17,10 @@ export default {
 
     const position = Number(args[0]);
 
-    if(!position || isNaN(position) || position < 0 || position > player.queue.length) return message.reply(`**${client.Emojis.errado} › ${t('commands:skipto.invalidPosition')}**`);
+    if(!position || isNaN(position) || position < 0 || position > player.queue.length) return message.reply(`**${client.emj.errado} › ${t('commands:skipto.invalidPosition')}**`);
 
     player.skip(position);
-    message.reply(`**${client.Emojis.music} › ${t('commands:skipto.sucess',{
+    message.reply(`**${client.emj.music} › ${t('commands:skipto.sucess',{
       position: String(position)
     })}**`);
   }

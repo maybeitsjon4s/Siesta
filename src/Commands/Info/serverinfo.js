@@ -13,36 +13,36 @@ export default {
     const guild = client.guilds.cache.get(args[0]) || message.guild;
 
     const embed = new MessageEmbed()
-      .setTitle(`${client.Emojis.star}・__Siesta__`)
+      .setTitle(`${client.emj.star}・__Siesta__`)
       .setColor(client.color)
       .addFields(
         {
-          name: `${client.Emojis.user} › ${t('commands:serverinfo.name')}`,
+          name: `${client.emj.user} › ${t('commands:serverinfo.name')}`,
           value: `\`${guild.name}\``,
           inline: true
         },
         {
-          name: `${client.Emojis.info} › ID`, 
+          name: `${client.emj.info} › ID`, 
           value: `\`${guild.id}\``,
           inline: true
         },
         {
-          name: `${client.Emojis.owner} › ${t('commands:serverinfo.owner')}`,
+          name: `${client.emj.owner} › ${t('commands:serverinfo.owner')}`,
           value: `\`${await guild.fetchOwner().then((x) => x.user.tag)}\``,
           inline: true
         },
         {
-          name: `${client.Emojis.heart2} › ${t('commands:serverinfo.channels')}`,
+          name: `${client.emj.heart2} › ${t('commands:serverinfo.channels')}`,
           value: `> **${t('commands:serverinfo.text')}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_TEXT'/*text*/).size}\`\n> **${t('commands:serverinfo.voice')}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_VOICE'/*voice*/).size}\`\n> **${t('commands:serverinfo.category')}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_CATEGORY'/*category*/).size}\``,
           inline: true
         },
         {
-          name: `${client.Emojis.boost} › Boosts`,
+          name: `${client.emj.boost} › Boosts`,
           value: `\`${message.guild.premiumSubscriptionCount || '0'}\``,
           inline: true
         },
         {
-          name: `${client.Emojis.rocket} › ${t('commands:serverinfo.createdAt')}`,
+          name: `${client.emj.rocket} › ${t('commands:serverinfo.createdAt')}`,
           value: `<t:${(guild.createdAt / 1000).toFixed()}> (<t:${(guild.createdAt / 1000).toFixed()}:R>)`,
           inline: true
         }

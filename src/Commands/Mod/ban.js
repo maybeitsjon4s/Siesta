@@ -21,23 +21,23 @@ export default {
   }],
   async exec({ client, message, args, t }) {
     
-    if (!message.member.permissions.has('BAN_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${client.Emojis.errado} › ${t('commands:ban.userPermission')}.**`);
-    if (!message.guild.me.permissions.has('BAN_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${client.Emojis.errado} › ${t('commands:ban.myPermission')}**`);
+    if (!message.member.permissions.has('BAN_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${client.emj.errado} › ${t('commands:ban.userPermission')}.**`);
+    if (!message.guild.me.permissions.has('BAN_MEMBERS') && !client.owners.some(id => id === message.author.id) ) return message.reply(`**${client.emj.errado} › ${t('commands:ban.myPermission')}**`);
 
     const motivo = args.slice(1).join(' ');
-    if (!args[0]) return message.reply(`**${client.Emojis.errado} › ${t('commands:ban.noMention')}**`);
+    if (!args[0]) return message.reply(`**${client.emj.errado} › ${t('commands:ban.noMention')}**`);
        
     const user = await client.utils.getUser(args[0], message);
 
-    if(!user) return message.reply(`**${client.Emojis.errado} › ${t('commands:ban.invalidUser')}**`);
+    if(!user) return message.reply(`**${client.emj.errado} › ${t('commands:ban.invalidUser')}**`);
 
     message.guild.bans.fetch().then(async (bans) => {
       const Found = bans.find((m) => m.user.id === user.id);
 
-      if (Found) return message.reply(`**${client.Emojis.errado} › ${t('commands:ban.banned')}**`);
+      if (Found) return message.reply(`**${client.emj.errado} › ${t('commands:ban.banned')}**`);
 
-      if (user.id === message.author.id) return message.reply(`**${client.Emojis.errado} › ${t('commands:ban.targetYourSelf')}**`);
-      if (motivo.length >= 1000) return message.reply(`**${client.Emojis.errado} › ${t('commands:ban.maxLength')}**`);
+      if (user.id === message.author.id) return message.reply(`**${client.emj.errado} › ${t('commands:ban.targetYourSelf')}**`);
+      if (motivo.length >= 1000) return message.reply(`**${client.emj.errado} › ${t('commands:ban.maxLength')}**`);
 
       if (!message.guild.members.cache.get(user.id)) {
         message.guild.members.ban(user, {
@@ -45,9 +45,9 @@ export default {
         });
 
         const embed = new MessageEmbed()
-          .setTitle(`${client.Emojis.ban} • __Siesta__`)
-          .addField(`${client.Emojis.user} › ${t('commands:ban.user')}`, `\`${user.tag}\``)
-          .addField(`${client.Emojis.info} › ${t('commands:ban.reason')}`, `\`${motivo || t('commands:ban.invalidReason')}\``)
+          .setTitle(`${client.emj.ban} • __Siesta__`)
+          .addField(`${client.emj.user} › ${t('commands:ban.user')}`, `\`${user.tag}\``)
+          .addField(`${client.emj.info} › ${t('commands:ban.reason')}`, `\`${motivo || t('commands:ban.invalidReason')}\``)
           .setTimestamp()
           .setColor(client.color)
           .setFooter({
@@ -59,22 +59,22 @@ export default {
       if (message.guild.members.cache.get(user.id)) {
         const member = message.guild.members.cache.get(user.id);
 
-        if (message.guild.me.roles.highest.position <= member.roles.highest.position) return message.reply(`**${client.Emojis.errado} › ${t('commands:ban.higherRoleThanMine')}**`);
-        if (message.member.roles.highest.position <= member.roles.highest.position) return message.reply(`**${client.Emojis.errado} › ${t('commands:ban.higherRole')}**`);
+        if (message.guild.me.roles.highest.position <= member.roles.highest.position) return message.reply(`**${client.emj.errado} › ${t('commands:ban.higherRoleThanMine')}**`);
+        if (message.member.roles.highest.position <= member.roles.highest.position) return message.reply(`**${client.emj.errado} › ${t('commands:ban.higherRole')}**`);
 
         message.guild.members.ban(member, {
           reason: `${motivo || t('commands.ban.invalidReason')}`,
         });
 
         const embed1 = new MessageEmbed()
-          .setTitle(`${client.Emojis.ban} • __Siesta__`)
+          .setTitle(`${client.emj.ban} • __Siesta__`)
           .addFields(
             {
-              name: `${client.Emojis.user} › ${t('commands:ban.user')}`,
+              name: `${client.emj.user} › ${t('commands:ban.user')}`,
               value: `\`${user.tag}\``
             },
             {
-              name: `${client.Emojis.info} › ${t('commands:ban.reason')}`,
+              name: `${client.emj.info} › ${t('commands:ban.reason')}`,
               value: `\`${motivo || t('commands:ban.invalidReason')}\``
             }
           )

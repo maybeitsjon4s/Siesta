@@ -55,17 +55,17 @@ export default {
       if(command.ownerOnly && !client.owners.some(id => id === interaction.user.id)) return;
 
       if(command.playerOnly && !player) return message.reply({
-        content: `**${client.Emojis.errado} › ${t('music:noPlayer')}**`,
+        content: `**${client.emj.errado} › ${t('music:noPlayer')}**`,
         ephemeral: true
       });
 
       if(command.sameChannel) {
         if(!message.member.voice.channel) return message.reply({
-          content: `**${client.Emojis.errado} › ${t('music:channelError')}**`,
+          content: `**${client.emj.errado} › ${t('music:channelError')}**`,
           ephemeral: true
         });
         if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply({
-          content: `**${client.Emojis.errado} › ${t('music:channelError')}**`,
+          content: `**${client.emj.errado} › ${t('music:channelError')}**`,
           ephemeral: true
         });
       }
@@ -75,7 +75,7 @@ export default {
         client.logger.stack(err.stack);
 
         interaction.reply({
-          content: `**${client.Emojis.errado} › ${t('events:messageCreate.error', {
+          content: `**${client.emj.errado} › ${t('events:messageCreate.error', {
             command: command.name
           })}**`,
           components: [

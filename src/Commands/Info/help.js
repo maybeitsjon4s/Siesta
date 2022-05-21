@@ -38,7 +38,7 @@ export default {
         embeds: [{
           color: client.color,
           fields: [{
-            name: `${client.Emojis.rocket} ${this.formatName(command.name)}`,
+            name: `${client.emj.rocket} ${this.formatName(command.name)}`,
             value: `**${t('commands:help.commandDescription')} ›** \`${command.description || '???'}\`\n**${t('commands:help.aliases')} ›** \`${command.aliases.length > 0 ? command.aliases.join(', ') : ''}\``
           }]
         }]
@@ -51,19 +51,19 @@ export default {
         commands: client.commands.size.toString()
       })}!`,
       fields: [{
-        name: `${client.Emojis.ban} › __${t('commands:help.moderation')}__ [${mod.length}]`,
+        name: `${client.emj.ban} › __${t('commands:help.moderation')}__ [${mod.length}]`,
         value: `\`\`\`${mod.join(' | ')}\`\`\``
       },
       {
-        name: `${client.Emojis.config} › __${t('commands:help.config')}__ [${configs.length}]`,
+        name: `${client.emj.config} › __${t('commands:help.config')}__ [${configs.length}]`,
         value: `\`\`\`${configs.join(' | ')}\`\`\``
       },
       {
-        name: `${client.Emojis.star} › __${t('commands:help.info')}__ [${info.length}] `,
+        name: `${client.emj.star} › __${t('commands:help.info')}__ [${info.length}] `,
         value: `\`\`\`${info.join(' | ')}\`\`\``
       },
       {
-        name: `${client.Emojis.music} › __${t('commands:help.music')}__ [${msc.length}]`,
+        name: `${client.emj.music} › __${t('commands:help.music')}__ [${msc.length}]`,
         value: `\`\`\`${msc.join(' | ')}\`\`\``
       }],
       footer: {

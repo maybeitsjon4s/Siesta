@@ -9,8 +9,8 @@ export default {
   description: '[ 🎵 Music ] Show some infos about the currently playing song.',
   options: [],
   async exec({ client, message, player, t }) {
-    
-      
+
+
     const track = player.current;
     const embed = new MessageEmbed()
       .setTitle(`${client.emj.music} • __Siesta__`)

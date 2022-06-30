@@ -13,23 +13,19 @@ export default {
     type: 'STRING',
     required: true
   }],
-  async exec({ message, client, player, args, t }) {
+  async exec({ message, client, args }) {
     
-    if (!args[0]) return;
-
-    const code = args.join(' ');
-    if (!code) return;
-    try {
-      let result = await eval(code);
-      if (typeof result !== 'string') result = inspect(result, { depth: 0 });
-
-      message.reply({
-        content: `**${client.emj.certo} › Sucess\nOutput: \`\`\`js\n${result.slice(0, 1900).replace((new RegExp(global.config.token,'gi')), '')}\`\`\`**`});
-
-    } catch (e) {
-      message.reply({
-        content: `**${client.emj.errado} › Error\nOutput: \`\`\`js\n${e.stack.slice(0, 1900)}\`\`\`**`,
-
+    const expr = args.join(' ');
+    if (!expr) return;
+    let res;
+    try { 
+      res = await eval(expr);
+      if (typeof res !== 'string') res = inspect(res, { depth: 0 });
+      message.reply({ 
+        content: `**${client.emj.certo} › Sucess\nOutput: \`\`\`js\n${res.slice(0, 1900).replace((new RegExp(global.config.token,'gi')), '')}\`\`\`**`});
+    } catch (error) {
+      return message.reply({
+        content: `**${client.emj.errado} › Error\nOutput: \`\`\`js\n${error.stack.slice(0, 1900)}\`\`\`**`,
       });
     }
   },

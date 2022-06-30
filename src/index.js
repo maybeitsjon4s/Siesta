@@ -3,7 +3,6 @@ import { readFileSync } from 'node:fs';
 import { AutoPoster } from 'topgg-autoposter';
 global.config = load(readFileSync('./config.yml', 'utf8'));
 import SiestaClient from './Structures/SiestaClient.js';
-
 const client = new SiestaClient();
 client.start();
 AutoPoster(global.config.connections.topgg, client);

@@ -4,7 +4,7 @@ token: ''
 # Connections
 connections:
   database: ''
-  topgg: '' # If you don't have your bot aproved on top.gg go to src/index.js and comment line 12
+  topgg: '' # If you don't have your bot aproved on top.gg go to src/index.js and comment line 8
 
 # Logs
 logs:

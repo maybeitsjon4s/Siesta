@@ -18,7 +18,7 @@ export default {
     const user = await client.utils.getUser(args[0], message) || message.author;
 
     const embed = new MessageEmbed()
-      .setTitle(`__${user.tag.replaceAll('_', '')}__ • ${client.utils.getUserFlags(user) || client.emj.user}`)
+      .setDescription(`** [${user.username}](https://discord.com/users/${user.id}/) • ${client.utils.getUserFlags(user) || client.emj.user}**`)
       .setColor(client.color)
       .addFields({
         name: `${client.emj.estrela} › ${t('commands:userinfo.createdAccount')}`,

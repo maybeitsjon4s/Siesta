@@ -31,7 +31,7 @@ export default {
 
     const result = await client.music.search(music, message.author);
 
-    if (result.loadType === 'LOAD_FAILED') return message.reply(`**${client.emj.errado} › ${t('commands:play.failedToPlay')}**`);
+    if (result.loadType === 'LOAD_FAILED') return message.reply(`**${client.emj.errado} › ${t('commands:play.failedToPlay')}\n\`\`\`${result?.exception?.message}\`\`\`**`);
     
     if (result.loadType === 'NO_MATCHES') return message.reply(`**${client.emj.errado} › ${t('commands:play.noMatches')}.**`);
 

@@ -10,7 +10,8 @@ export default {
       name: 'song',
       description: 'Song/Playlist URL/Name',
       type: 'STRING',
-      required: true
+      required: true,
+      autocomplete: true,
     }
   ],
   async exec({ client, message, args, player, t }) {

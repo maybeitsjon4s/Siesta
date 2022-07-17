@@ -6,12 +6,12 @@ export default {
   sameChannel: true,
   description: '[ 🎵 Music ] Shuffle the queue.',
   options: [],
-  async exec({ message,  player, t, client }) {
-    
-    if(!player.queue.length) return message.reply(`**${client.emj.errado} › ${t('commands:shuffle.noQueue')}**`);
+  async exec({ message, player, t, client }) {
+
+    if (!player.queue.length) return message.reply(`**${client.emotes.errado} › ${t('commands:shuffle.noQueue')}**`);
 
     player.shuffleQueue();
 
-    message.reply(`**${client.emj.music} › ${t('commands:shuffle.sucess')}**`);
+    message.reply(`**${client.emotes.music} › ${t('commands:shuffle.sucess')}**`);
   }
 };

@@ -1,12 +1,12 @@
 import Day from 'dayjs';
-import { MessageActionRow, MessageButton } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 import i18next from 'i18next';
 
 export default {
   name: 'messageCreate',
   async exec(client, message) {
     if (message.author.bot || !message.guild) return;
-    
+
     let prefix;
 
     let USER = await client.db.user.findOne({
@@ -31,30 +31,31 @@ export default {
       prefix = GUILD.prefix;
     }
 
-    if(client.user.id == '897914623796338740'/*Siesta Canary*/) prefix = '.';
+    if (client.user.id == '897914623796338740') prefix = '.';
 
     if (!message.content.toLowerCase().startsWith(prefix)) return;
 
     if (!USER) USER = await client.db.user.create({ _id: message.author.id, });
 
-    if(USER?.blacklist) return;
+    if (USER?.blacklist) return;
 
     let t = GUILD.lang || 0;
 
-    switch(t) {
-    case 1:
-      t = i18next.getFixedT('pt-BR');
-      break;
-    case 0:
-      t = i18next.getFixedT('en-US');
-      break;
+    switch (t) {
+      case 1:
+        t = i18next.getFixedT('pt-BR');
+        break;
+      case 0:
+        t = i18next.getFixedT('en-US');
+        break;
     }
 
-    if(!message.channel.permissionsFor(client.user.id).has('READ_MESSAGE_HISTORY')) message.reply = message.channel.send;
+    if (!message.channel.permissionsFor(client.user.id).has('ReadMessageHistory')) message.reply = message.channel.send;
 
-    if (message.content == `<@${client.user.id}>` || message.content == `<@!${client.user.id}>`) return message.reply({ content: t('events:messageCreate.mention', {
-      prefix: GUILD.prefix
-    })
+    if (message.content == `<@${client.user.id}>` || message.content == `<@!${client.user.id}>`) return message.reply({
+      content: t('events:messageCreate.mention', {
+        prefix: GUILD.prefix
+      })
     });
 
     const [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -65,15 +66,15 @@ export default {
     if (!command) return;
 
     const player = client.music.players.get(message.guild.id);
-  
-    if(command.ownerOnly && !client.owners.some(id => id === message.author.id)) return;
 
-    if(command.playerOnly && !player) return message.reply(`**${client.emj.errado} › ${t('music:noPlayer')}**`);
+    if (command.ownerOnly && !client.owners.some(id => id === message.author.id)) return;
 
-    if(command.sameChannel) {
-      if(!message.member.voice.channel) return message.reply(`**${client.emj.errado} › ${t('music:channelError')}**`);
-      if(message.guild.me.voice.channel) {
-        if(message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply(`**${client.emj.errado} › ${t('music:channelError')}**`);
+    if (command.playerOnly && !player) return message.reply(`**${client.emotes.errado} › ${t('music:noPlayer')}**`);
+
+    if (command.sameChannel) {
+      if (!message.member.voice.channel) return message.reply(`**${client.emotes.errado} › ${t('music:channelError')}**`);
+      if (message.guild.members.me.voice.channel) {
+        if (message.member.voice.channel.id !== message.guild.members.me.voice.channel?.id) return message.reply(`**${client.emotes.errado} › ${t('music:channelError')}**`);
       }
     }
 
@@ -85,19 +86,21 @@ export default {
     await command.exec({ client, message, args, player, t }).catch((err) => {
       client.logger.error(`Erro no commando ${command.name}, Servidor: ${message.guild.id}, Usuario: ${message.author.id}.`);
       client.logger.stack(err.stack);
-      message.reply({ 
-        content: `**${client.emj.errado} › ${t('events:messageCreate.error', {
+      message.reply({
+        content: `**${client.emotes.errado} › ${t('events:messageCreate.error', {
           command: command.name
         })}**`,
-        components: [new MessageActionRow().addComponents(
-          new MessageButton()
-            .setStyle('LINK')
+        components: [new ActionRowBuilder().addComponents(
+          new ButtonBuilder()
+            .setStyle(ButtonStyle.Link)
             .setLabel(t('events:messageCreate.support'))
             .setURL('https://discord.com/invite/vYEutrG7gY'))]
       });
     });
-    await client.db.user.findOneAndUpdate({ _id: message.author.id }, { 
-      $set: { lastCommandUsed: Date.now() 
-      } });  
+    await client.db.user.findOneAndUpdate({ _id: message.author.id }, {
+      $set: {
+        lastCommandUsed: Date.now()
+      }
+    });
   }
 };

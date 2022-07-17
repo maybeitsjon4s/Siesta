@@ -1,4 +1,4 @@
-import { Client, Options, Collection } from 'discord.js';
+import { Client, GatewayIntentBits, Options, Collection, Colors } from 'discord.js';
 import _pkg from 'chalk';
 const { blue, gray, green, red } = _pkg;
 import pkg from 'mongoose';
@@ -23,7 +23,7 @@ export default class Siesta extends Client {
         GuildManager: Infinity,
         GuildMemberManager: Infinity,
         GuildStickerManager: 0,
-        GuildScheduledEventManager: 0, 
+        GuildScheduledEventManager: 0,
         MessageManager: 0,
         PresenceManager: 0,
         ReactionManager: 0,
@@ -34,25 +34,26 @@ export default class Siesta extends Client {
         UserManager: 0,
       }),
       intents: [
-        'GUILDS',
-        'GUILD_MESSAGES',
-        'GUILD_MEMBERS',
-        'GUILD_VOICE_STATES',
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildVoiceStates,
       ],
       allowedMentions: {
         parse: ['users'],
         repliedUser: false
       },
-      ws: { properties: { $browser: 'Discord iOS' }},
+      ws: { properties: { browser: 'Discord iOS' } },
       shardCount: 2
     });
 
-    this.emj = Emojis;
+    this.emotes = Emojis;
     this.commands = new Collection();
     this.aliases = new Collection();
     this.utils = util;
     this.owners = ['431768491759239211', '499356551535001610'];
-    this.color = '#ffffff';
+    this.color = Colors.White
     this.db = {
       user: User,
       guild: Guild
@@ -72,7 +73,7 @@ export default class Siesta extends Client {
     this.music = new Music(this);
 
     // Connecting to the database
-    connect(global.config.connections.database).catch(() => {});
+    connect(global.config.connections.database).catch(() => { });
 
     // Login the client
     await super.login(global.config.token);
@@ -90,7 +91,7 @@ export default class Siesta extends Client {
       });
     });
   }
-  
+
   async loadEvents() {
     const events = await glob(`${global.process.cwd()}/src/Events/**/*.js`);
     events.forEach(async (eventFile) => {
@@ -103,15 +104,15 @@ export default class Siesta extends Client {
     const slashCommands = await glob(`${global.process.cwd()}/src/Commands/*/*.js`);
 
     const arrayOfSlashCommands = [];
-  
+
     slashCommands.map(async (value) => {
       const file = await import(value);
-  
-      if(!file?.name || !file.description ||!file.options) return;
-  
+
+      if (!file?.name || !file.description || !file.options) return;
+
       arrayOfSlashCommands.push(file);
     });
-  
+
     await this.application.commands.set(arrayOfSlashCommands);
   }
 }

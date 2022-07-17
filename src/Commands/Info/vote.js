@@ -1,4 +1,4 @@
-import { MessageActionRow, MessageButton } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 
 export default {
   name: 'vote',
@@ -9,17 +9,17 @@ export default {
   description: '[ 📚 Utils ] Show the link so you can vote me and help me grow!',
   options: [],
   async exec({ message, t, client }) {
-    
+
     message.reply({
-      content: `**${client.emj.star} › ${t('commands:vote.message')}!**`,
+      content: `**${client.emotes.star} › ${t('commands:vote.message')}!**`,
       components: [
-        new MessageActionRow().addComponents(
-          new MessageButton()
-            .setStyle('LINK')
+        new ActionRowBuilder().addComponents(
+          new ButtonBuilder()
+            .setStyle(ButtonStyle.Link)
             .setEmoji({
               name: 'topgg',
               id: '910275555402842212',
-              animated: true 
+              animated: true
             })
             .setLabel(t('commands:vote.label'))
             .setURL('https://top.gg/bot/907747074118926347/vote')

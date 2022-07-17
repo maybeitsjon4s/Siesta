@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder, ApplicationCommandOptionType } from 'discord.js';
 
 export default {
   name: 'avatar',
@@ -10,7 +10,7 @@ export default {
   options: [{
     name: 'user',
     description: 'The user name/id/mention that you wanna see the avatar!',
-    type: 'STRING',
+    type: ApplicationCommandOptionType.String,
     required: false
   }],
   async exec({ client, message, args, t }) {
@@ -22,13 +22,13 @@ export default {
       dynamic: true,
       size: 2048
     });
-        
-    const embed = new MessageEmbed()
+
+    const embed = new EmbedBuilder()
       .setColor(client.color)
-      .setTitle(`${client.emj.star} • __Siesta__`)
+      .setTitle(`${client.emotes.star} • __Siesta__`)
       .setDescription(`${t('commands:avatar.sucess', {
         user: user.username,
-        URL: user.displayAvatarURL({ dynamic: true, size: 2048})
+        URL: user.displayAvatarURL({ dynamic: true, size: 2048 })
       })}**`)
       .setImage(avatar)
       .setFooter({

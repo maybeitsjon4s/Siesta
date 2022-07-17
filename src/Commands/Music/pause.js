@@ -8,10 +8,10 @@ export default {
   options: [],
   async exec({ message, player, t, client }) {
 
-    if (player.paused) return message.reply(`**${client.emj.errado} › ${t('commands:pause.alteradyPause')}!**`);
+    if (player.paused) return message.reply(`**${client.emotes.errado} › ${t('commands:pause.alteradyPause')}!**`);
 
     player.pause(true);
-    message.reply(`**${client.emj.music} › ${t('commands:pause.sucess')}!**`);
-    
+    message.reply(`**${client.emotes.music} › ${t('commands:pause.sucess')}!**`);
+
   }
 };

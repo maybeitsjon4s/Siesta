@@ -1,4 +1,4 @@
-import { MessageEmbed, MessageActionRow, MessageButton } from 'discord.js';
+import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 
 export default {
   name: 'language',
@@ -7,31 +7,31 @@ export default {
   sameChannel: false,
   ownerOnly: false,
   async exec({ client, message, t }) {
-    
-    const row = new MessageActionRow().addComponents(
-      new MessageButton()
+
+    const row = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
         .setLabel('Português')
         .setEmoji({
           name: 'pt',
           id: '965658002994651237',
           animated: false
         })
-        .setStyle('SECONDARY')
+        .setStyle(ButtonStyle.Secondary)
         .setCustomId('pt'),
-      new MessageButton()
+      new ButtonBuilder()
         .setLabel('English')
         .setEmoji({
           name: 'en',
           id: '965658073203081257',
           animated: false
         })
-        .setStyle('SECONDARY')
+        .setStyle(ButtonStyle.Secondary)
         .setCustomId('en')
     );
 
-    if (!message.member.permissions.has('MANAGE_GUILD') && !client.owners.some(id => id === message.author.id)) return message.reply(`${client.emj.errado}** › ${t('commands:language.errorPerm')}**`);
+    if (!message.member.permissions.has('ManageGuild') && !client.owners.some(id => id === message.author.id)) return message.reply(`${client.emotes.errado}** › ${t('commands:language.errorPerm')}**`);
 
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
       .setColor(client.color)
       .setFooter({
         text: message.author.tag,
@@ -39,7 +39,7 @@ export default {
           dynamic: true
         })
       })
-      .setTitle(`${client.emj.config} • __Siesta__`)
+      .setTitle(`${client.emotes.config} • __Siesta__`)
       .setDescription(`${message.author}, ${t('commands:language.message')}`);
 
     message.reply({
@@ -52,9 +52,9 @@ export default {
       });
 
       collector.on('collect', async (i) => {
-            
+
         if (i.user.id !== message.author.id) return i.reply({
-          content: `${client.emj.errado}** › ${t('commands:language.onlyAuthor')}**`,
+          content: `${client.emotes.errado}** › ${t('commands:language.onlyAuthor')}**`,
           ephemeral: true
         });
         if (i.customId == 'pt') {
@@ -67,7 +67,7 @@ export default {
             }
           });
           msg.edit({
-            content: `**${client.emj.config} › ${t('language.portugueseSeted')}!**`,
+            content: `**${client.emotes.config} › ${t('language.portugueseSeted')}!**`,
             embeds: [],
             components: []
           });
@@ -82,7 +82,7 @@ export default {
             }
           });
           msg.edit({
-            content: `**${client.emj.config} › ${t('language.englishSeted')}!**`,
+            content: `**${client.emotes.config} › ${t('language.englishSeted')}!**`,
             embeds: [],
             components: []
           });

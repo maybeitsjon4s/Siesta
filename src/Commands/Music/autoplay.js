@@ -6,18 +6,18 @@ export default {
   sameChannel: true,
   description: '[ 🎵Music ] Enable/disable the autoplay',
   options: [],
-  async exec({  message, player, t, client }) {
+  async exec({ message, player, t, client }) {
 
-    if(player.autoplay) {
+    if (player.autoplay) {
       player.autoplay.status = false;
       player.autoplay.track = null;
-      message.reply(`**${client.emj.music} › ${t('commands:autoplay.disabled')}**`);
+      message.reply(`**${client.emotes.music} › ${t('commands:autoplay.disabled')}**`);
     } else {
       player.autoplay = {
         status: true,
         track: player.current
       };
-      message.reply(`**${client.emj.music} › ${t('commands:autoplay.activated')}**`);
+      message.reply(`**${client.emotes.music} › ${t('commands:autoplay.activated')}**`);
     }
   },
 };

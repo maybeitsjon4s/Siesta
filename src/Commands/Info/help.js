@@ -1,4 +1,4 @@
-import { MessageActionRow, MessageButton } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ApplicationCommandOptionType, ButtonStyle } from 'discord.js';
 import { readdirSync } from 'node:fs';
 
 export default {
@@ -11,7 +11,7 @@ export default {
   options: [{
     name: 'command',
     description: 'The command you wanna see infos about',
-    type: 'STRING',
+    type: ApplicationCommandOptionType.String,
     required: false
   }],
   async exec({ client, message, args, t }) {
@@ -20,58 +20,60 @@ export default {
     const configs = readdirSync('./src/Commands/Configs').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
     const info = readdirSync('./src/Commands/Info').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
     const msc = readdirSync('./src/Commands/Music').map((arquivo) => `${arquivo.replace(/.js/g, '')}`);
-      
-    const row = new MessageActionRow().addComponents(
-      new MessageButton()
+
+    const row = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
         .setLabel(t('commands:help.inviteMe'))
-        .setStyle('LINK')
+        .setStyle(ButtonStyle.Link)
         .setURL('https://dsc.gg/siesta-bot'),
-      new MessageButton()
+      new ButtonBuilder()
         .setLabel(t('commands:help.support'))
-        .setStyle('LINK')
+        .setStyle(ButtonStyle.Link)
         .setURL('https://discord.gg/vYEutrG7gY'));
 
-    if(args[0] && client.commands.get(args[0]) || client.aliases.get(args[0])) {
+    if (args[0] && client.commands.get(args[0]) || client.aliases.get(args[0])) {
       const command = client.commands.get(args[0]) || client.commands.get(client.aliases.get(args[0]));
 
       return message.reply({
         embeds: [{
           color: client.color,
           fields: [{
-            name: `${client.emj.rocket} ${this.formatName(command.name)}`,
+            name: `${client.emotes.rocket} ${this.formatName(command.name)}`,
             value: `**${t('commands:help.commandDescription')} ›** \`${command.description || '???'}\`\n**${t('commands:help.aliases')} ›** \`${command.aliases.length > 0 ? command.aliases.join(', ') : ''}\``
           }]
         }]
       });
     }
 
-    message.reply({ embeds: [{
-      color: client.color,
-      description: `> ${message.author}, ${t('commands:help.message', {
-        commands: client.commands.size.toString()
-      })}!`,
-      fields: [{
-        name: `${client.emj.ban} › __${t('commands:help.moderation')}__ [${mod.length}]`,
-        value: `\`\`\`${mod.join(' | ')}\`\`\``
-      },
-      {
-        name: `${client.emj.config} › __${t('commands:help.config')}__ [${configs.length}]`,
-        value: `\`\`\`${configs.join(' | ')}\`\`\``
-      },
-      {
-        name: `${client.emj.star} › __${t('commands:help.info')}__ [${info.length}] `,
-        value: `\`\`\`${info.join(' | ')}\`\`\``
-      },
-      {
-        name: `${client.emj.music} › __${t('commands:help.music')}__ [${msc.length}]`,
-        value: `\`\`\`${msc.join(' | ')}\`\`\``
+    message.reply({
+      embeds: [{
+        color: client.color,
+        description: `> ${message.author}, ${t('commands:help.message', {
+          commands: client.commands.size.toString()
+        })}!`,
+        fields: [{
+          name: `${client.emotes.ban} › __${t('commands:help.moderation')}__ [${mod.length}]`,
+          value: `\`\`\`${mod.join(' | ')}\`\`\``
+        },
+        {
+          name: `${client.emotes.config} › __${t('commands:help.config')}__ [${configs.length}]`,
+          value: `\`\`\`${configs.join(' | ')}\`\`\``
+        },
+        {
+          name: `${client.emotes.star} › __${t('commands:help.info')}__ [${info.length}] `,
+          value: `\`\`\`${info.join(' | ')}\`\`\``
+        },
+        {
+          name: `${client.emotes.music} › __${t('commands:help.music')}__ [${msc.length}]`,
+          value: `\`\`\`${msc.join(' | ')}\`\`\``
+        }],
+        footer: {
+          iconURL: message.author.displayAvatarURL({ dynamic: true }),
+          text: message.author.tag
+        }
       }],
-      footer: {
-        iconURL: message.author.displayAvatarURL({ dynamic: true }),
-        text: message.author.tag
-      }
-    }], 
-    components: [row] });
+      components: [row]
+    });
 
   },
   formatName(name) {

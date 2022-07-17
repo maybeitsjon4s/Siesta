@@ -7,9 +7,9 @@ export default {
   description: '[ 🎵 Music ] Skips the currently track.',
   options: [],
   async exec({ message, player, t, client }) {
-     
+
     player.skip();
 
-    message.reply(`**${client.emj.music} › ${t('commands:skip.sucess')}!**`);
+    message.reply(`**${client.emotes.music} › ${t('commands:skip.sucess')}!**`);
   },
 };

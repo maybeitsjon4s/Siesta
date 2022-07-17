@@ -1,4 +1,4 @@
-import { MessageActionRow, MessageButton } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 
 export default {
   name: 'invite',
@@ -9,13 +9,13 @@ export default {
   description: '[ 📚 Utils ] Show my invite links!',
   options: [],
   async exec({ message, t, client }) {
-    
+
     message.reply({
-      content: `**${client.emj.star} › ${t('commands:invite.message')}!**`,
+      content: `**${client.emotes.star} › ${t('commands:invite.message')}!**`,
       components: [
-        new MessageActionRow().addComponents(
-          new MessageButton()
-            .setStyle('LINK')
+        new ActionRowBuilder().addComponents(
+          new ButtonBuilder()
+            .setStyle(ButtonStyle.Link)
             .setEmoji({
               name: 'heart1',
               id: '914564033091366942',

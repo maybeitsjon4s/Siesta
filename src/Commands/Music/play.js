@@ -1,3 +1,5 @@
+import { ApplicationCommandOptionType } from 'discord.js'
+
 export default {
   name: 'play',
   aliases: ['tocar', 'p', 'join'],
@@ -9,7 +11,7 @@ export default {
     {
       name: 'song',
       description: 'Song/Playlist URL/Name',
-      type: 'STRING',
+      type: ApplicationCommandOptionType.String,
       required: true,
       autocomplete: true,
     }
@@ -17,24 +19,24 @@ export default {
   async exec({ client, message, args, player, t }) {
 
     if (player) {
-      if (message.member.voice.channel?.id != player.voiceChannelId) return message.reply(`**${client.emj.errado} › ${t('commands:play.wrongVoiceChannel')}**`);
+      if (message.member.voice.channel?.id != player.voiceChannelId) return message.reply(`**${client.emotes.errado} › ${t('commands:play.wrongVoiceChannel')}**`);
     }
 
-    if (!message.member.voice.channel) return message.reply(`**${client.emj.errado} › ${t('commands:play.noVoiceChannel')}**`);
+    if (!message.member.voice.channel) return message.reply(`**${client.emotes.errado} › ${t('commands:play.noVoiceChannel')}**`);
 
     let music = args.join(' ');
 
-    if(!music && message.attachments?.first() && message.attachments?.first()?.contentType == 'video/mp4' || message.attachments?.first()?.contentType == 'audio/mpeg') music = message.attachments?.first().proxyURL;
+    if (!music && message.attachments?.first() && message.attachments?.first()?.contentType == 'video/mp4' || message.attachments?.first()?.contentType == 'audio/mpeg') music = message.attachments?.first().proxyURL;
 
-    if(!message.member.voice.channel.permissionsFor(client.user.id).has(['VIEW_CHANNEL', 'CONNECT', 'SPEAK'])) return message.reply(`**${client.emj.errado} › ${t('commands:play.noPerm')}**`);
+    if (!message.member.voice.channel.permissionsFor(client.user.id).has(['ViewChannel', 'Connect', 'Speak'])) return message.reply(`**${client.emotes.errado} › ${t('commands:play.noPerm')}**`);
 
-    if (!music) return message.reply(`**${client.emj.errado} › ${t('commands:play.noArgs')}**`);
+    if (!music) return message.reply(`**${client.emotes.errado} › ${t('commands:play.noArgs')}**`);
 
     const result = await client.music.search(music, message.author);
 
-    if (result.loadType === 'LOAD_FAILED') return message.reply(`**${client.emj.errado} › ${t('commands:play.failedToPlay')}\n\`\`\`${result?.exception?.message}\`\`\`**`);
-    
-    if (result.loadType === 'NO_MATCHES') return message.reply(`**${client.emj.errado} › ${t('commands:play.noMatches')}.**`);
+    if (result.loadType === 'LOAD_FAILED') return message.reply(`**${client.emotes.errado} › ${t('commands:play.failedToPlay')}\n\`\`\`${result?.exception?.message}\`\`\`**`);
+
+    if (result.loadType === 'NO_MATCHES') return message.reply(`**${client.emotes.errado} › ${t('commands:play.noMatches')}.**`);
 
     player = client.music.createPlayer({
       guildId: message.guild.id,
@@ -55,7 +57,7 @@ export default {
 
       if (!player.playing) player.play();
 
-      message.reply(`**${client.emj.music} › ${t('commands:play.playListLoaded', {
+      message.reply(`**${client.emotes.music} › ${t('commands:play.playListLoaded', {
         name: result.playlistInfo?.name,
         length: result.tracks.length.toString(),
         time: client.utils.formatTime(result.playlistInfo.duration)
@@ -67,10 +69,10 @@ export default {
       track.setRequester(message.author);
       player.queue.push(track);
 
-      if (player) message.reply(`**${client.emj.music} › ${t('commands:play.musicLoaded', {
+      if (player) message.reply(`**${client.emotes.music} › ${t('commands:play.musicLoaded', {
         track: track.title
       })}**`);
-          
+
 
       if (!player.playing) player.play();
     }

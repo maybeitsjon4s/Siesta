@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder, ApplicationCommandOptionType } from 'discord.js';
 
 export default {
   name: 'queue',
@@ -10,16 +10,16 @@ export default {
   options: [{
     name: 'page',
     description: 'The page of the queue you wanna see, by default its the page 1',
-    type: 'NUMBER',
+    type: ApplicationCommandOptionType.Number,
     required: false
   }],
   async exec({ client, message, args, player, t }) {
 
-      
+
     const queue = player.queue;
 
-    const QUEUE = new MessageEmbed()
-      .setTitle(`${client.emj.music} | __Siesta__`)
+    const QUEUE = new EmbedBuilder()
+      .setTitle(`${client.emotes.music} | __Siesta__`)
       .setColor(client.color)
       .setTimestamp();
 

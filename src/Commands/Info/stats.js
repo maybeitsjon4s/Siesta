@@ -1,4 +1,4 @@
-import { MessageButton, MessageActionRow } from 'discord.js';
+import { ButtonBuilder, ActionRowBuilder, ButtonStyle } from 'discord.js';
 
 export default {
   name: 'stats',
@@ -10,7 +10,7 @@ export default {
   options: [],
   async exec({ client, message, t }) {
 
-    message.reply({ 
+    message.reply({
       embeds: [{
         author: {
           name: 'Status • Siesta',
@@ -20,23 +20,25 @@ export default {
         color: client.color,
         description: `> ${message.author}, ${t('commands:stats.message')}`,
         fields: [{
-          name: `${client.emj.star} ${t('commands:stats.stats')}`,
-          value: `> ${client.emj.rocket} Servers: **${client.guilds.cache.size}**\n> ${client.emj.heart2}Uptime: **${client.utils.formatTime(client.uptime)}**\n> ${client.emj.config} RAM: **${client.utils.formatSizeUnits(global.process.memoryUsage().heapUsed)}**\n> ${client.emj.aurora} Players: **${client.music.players.size}**`,
+          name: `${client.emotes.star} ${t('commands:stats.stats')}`,
+          value: `> ${client.emotes.rocket} Servers: **${client.guilds.cache.size}**\n> ${client.emotes.heart2}Uptime: **${client.utils.formatTime(client.uptime)}**\n> ${client.emotes.config} RAM: **${client.utils.formatSizeUnits(global.process.memoryUsage().heapUsed)}**\n> ${client.emotes.aurora} Players: **${client.music.players.size}**`,
           inline: true
         }],
         footer: {
           text: `${t('commands:stats.createdBy')} ${await client.users.fetch('431768491759239211').then((f) => f.tag)}`,
           iconURL: await client.users.fetch('431768491759239211').then((f) => f.displayAvatarURL({ dynamic: true }))
-        }}],
-      components: [new MessageActionRow().addComponents(
-        new MessageButton()
-          .setStyle('LINK')
+        }
+      }],
+      components: [new ActionRowBuilder().addComponents(
+        new ButtonBuilder()
+          .setStyle(ButtonStyle.Link)
           .setURL('https://discord.com/api/oauth2/authorize?client_id=907747074118926347&permissions=271641686&scope=applications.commands%20bot')
           .setLabel(t('commands:stats.label')[0]),
-        new MessageButton()
-          .setStyle('LINK')
+        new ButtonBuilder()
+          .setStyle(ButtonStyle.Link)
           .setURL('https://discord.com/invite/vYEutrG7gY')
           .setLabel(t('commands:stats.label')[1])
-      )]});
+      )]
+    });
   }
 };

@@ -1,3 +1,5 @@
+import { ApplicationCommandOptionType } from 'discord.js'
+
 export default {
   name: 'seek',
   aliases: [],
@@ -9,13 +11,13 @@ export default {
     {
       name: 'time',
       description: 'The time that i will jump to.',
-      type: 'STRING',
+      type: ApplicationCommandOptionType.String,
       required: true
     }
   ],
   async exec({ client, message, args, player, t }) {
 
-    if (!args[0] || !client.utils.timeToMS(args[0])) return message.reply(`**${client.emj.errado} › ${t('commands:seek.invalidTime')}**`);
+    if (!args[0] || !client.utils.timeToMS(args[0])) return message.reply(`**${client.emotes.errado} › ${t('commands:seek.invalidTime')}**`);
 
     const time = client.utils.timeToMS(args[0]);
     const position = player.position;
@@ -25,16 +27,16 @@ export default {
       if (time > position) {
         player.seek(time);
         return message.reply({
-          content: `**${client.emj.music} ›** ***${t('commands:seek.goingTo')} ${client.utils.formatTime(time)}...***`,
+          content: `**${client.emotes.music} ›** ***${t('commands:seek.goingTo')} ${client.utils.formatTime(time)}...***`,
         });
       } else {
         player.seek(time);
         return message.reply({
-          content: `**${client.emj.music} ›** ***${t('commands:seek.backingTo')} ${client.utils.formatTime(time)}...***`,
+          content: `**${client.emotes.music} ›** ***${t('commands:seek.backingTo')} ${client.utils.formatTime(time)}...***`,
         });
       }
     } else {
-      return message.reply(`**${client.emj.errado} › ${t('commands:seek.exceeds')}**`);
+      return message.reply(`**${client.emotes.errado} › ${t('commands:seek.exceeds')}**`);
     }
   },
 };

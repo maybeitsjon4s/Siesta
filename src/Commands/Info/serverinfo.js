@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 
 export default {
   name: 'serverinfo',
@@ -12,37 +12,37 @@ export default {
 
     const guild = client.guilds.cache.get(args[0]) || message.guild;
 
-    const embed = new MessageEmbed()
-      .setTitle(`${client.emj.star}・__Siesta__`)
+    const embed = new EmbedBuilder()
+      .setTitle(`${client.emotes.star}・__Siesta__`)
       .setColor(client.color)
       .addFields(
         {
-          name: `${client.emj.user} › ${t('commands:serverinfo.name')}`,
+          name: `${client.emotes.user} › ${t('commands:serverinfo.name')}`,
           value: `\`${guild.name}\``,
           inline: true
         },
         {
-          name: `${client.emj.info} › ID`, 
+          name: `${client.emotes.info} › ID`,
           value: `\`${guild.id}\``,
           inline: true
         },
         {
-          name: `${client.emj.owner} › ${t('commands:serverinfo.owner')}`,
+          name: `${client.emotes.owner} › ${t('commands:serverinfo.owner')}`,
           value: `\`${await guild.fetchOwner().then((x) => x.user.tag)}\``,
           inline: true
         },
         {
-          name: `${client.emj.heart2} › ${t('commands:serverinfo.channels')}`,
+          name: `${client.emotes.heart2} › ${t('commands:serverinfo.channels')}`,
           value: `> **${t('commands:serverinfo.text')}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_TEXT'/*text*/).size}\`\n> **${t('commands:serverinfo.voice')}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_VOICE'/*voice*/).size}\`\n> **${t('commands:serverinfo.category')}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_CATEGORY'/*category*/).size}\``,
           inline: true
         },
         {
-          name: `${client.emj.boost} › Boosts`,
+          name: `${client.emotes.boost} › Boosts`,
           value: `\`${message.guild.premiumSubscriptionCount || '0'}\``,
           inline: true
         },
         {
-          name: `${client.emj.rocket} › ${t('commands:serverinfo.createdAt')}`,
+          name: `${client.emotes.rocket} › ${t('commands:serverinfo.createdAt')}`,
           value: `<t:${(guild.createdAt / 1000).toFixed()}> (<t:${(guild.createdAt / 1000).toFixed()}:R>)`,
           inline: true
         }

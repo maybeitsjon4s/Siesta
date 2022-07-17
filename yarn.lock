@@ -987,12 +987,7 @@ typescript@^4.2.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
   integrity sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==
 
-undici@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-5.0.0.tgz#3c1e08c7f0df90c485d5d8dbb0517e11e34f2090"
-  integrity sha512-VhUpiZ3No1DOPPQVQnsDZyfcbTTcHdcgWej1PdFnSvOeJmOVDgiOHkunJmBLfmjt4CqgPQddPVjSWW0dsTs5Yg==
-
-undici@^5.2.0, undici@^5.7.0:
+undici@^5.2.0, undici@^5.5.1, undici@^5.7.0:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/undici/-/undici-5.7.0.tgz#979f89229c01505573cb274d0e11ea8d82b4004f"
   integrity sha512-ORgxwDkiPS+gK2VxE7iyVeR7JliVn5DqhZ4LgQqYLBXsuK+lwOEmnJ66dhvlpLM0tC3fC7eYF1Bti2frbw2eAA==
@@ -1020,12 +1015,12 @@ v8-compile-cache@^2.0.3:
   integrity sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==
 
 vulkava@^1.2.1:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/vulkava/-/vulkava-1.2.4.tgz#46856d30af25834a2f2a45f5c50480d58006e4ce"
-  integrity sha512-fh0BuRh0pZMEA/GqvPdYFOkq+rvATBDjv/WvY0djB015fvykcKzGMKDe/rbRhogrHMzm7EaHaGQgBXHm23Oc9A==
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/vulkava/-/vulkava-1.5.2.tgz#9ba2d28c3d44217fdef4de026b079850472431a8"
+  integrity sha512-3SmCd4sohRTSipK4jkuKUQJYsIIX/IXTbcaqM6RHyLGOK2FzTUIzH/mbd30eut5wq9lmkUHC3wKTU06qbgeurA==
   dependencies:
-    undici "^5.0.0"
-    ws "^8.5.0"
+    undici "^5.5.1"
+    ws "^8.8.0"
 
 webidl-conversions@^3.0.0:
   version "3.0.1"
@@ -1070,12 +1065,7 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
-ws@^8.5.0:
-  version "8.5.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.5.0.tgz#bfb4be96600757fe5382de12c670dab984a1ed4f"
-  integrity sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==
-
-ws@^8.8.1:
+ws@^8.8.0, ws@^8.8.1:
   version "8.8.1"
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.8.1.tgz#5dbad0feb7ade8ecc99b830c1d77c913d4955ff0"
   integrity sha512-bGy2JzvzkPowEJV++hF07hAD6niYSr0JzBNo/J29WsB57A2r7Wlc1UFcTR9IzrPvuNVO4B8LGqF8qcpsVOhJCA==

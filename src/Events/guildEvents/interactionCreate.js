@@ -92,7 +92,7 @@ export default {
           content: `**${client.emotes.errado} › ${t('music:channelError')}**`,
           ephemeral: true
         });
-        if (message.member.voice.channel.id !== message.guild.me.voice.channel?.id) return message.reply({
+        if (message.member.voice.channel.id !== message.guild.members.me.voice.channel?.id) return message.reply({
           content: `**${client.emotes.errado} › ${t('music:channelError')}**`,
           ephemeral: true
         });

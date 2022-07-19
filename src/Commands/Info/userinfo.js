@@ -34,7 +34,7 @@ export default {
     const member = await message.guild.members.fetch(user.id).catch(() => { });
 
 
-    member && embed.fields.push({
+    member && embed.data.fields.push({
       name: client.emotes.heart2 + ` › ${t('commands:userinfo.joinedAt')}`,
       value: `<t:${(member.joinedAt / 1000).toFixed()}> (<t:${(member.joinedAt / 1000).toFixed()}:R>)`,
       inline: true
@@ -42,7 +42,7 @@ export default {
 
     user.displayAvatarURL() && embed.setThumbnail(user.displayAvatarURL());
 
-    member && member.premiumSince && embed.fields.push({
+    member && member.premiumSince && embed.data.fields.push({
       name: client.emotes.boost + ` › ${t('commands:userinfo.boosterSince')}`,
       value: `<t:${(member.premiumSince / 1000).toFixed()}> (<t:${(member.premiumSince / 1000).toFixed()}:R>)`
     });

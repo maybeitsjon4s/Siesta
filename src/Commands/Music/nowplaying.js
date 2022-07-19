@@ -11,7 +11,10 @@ export default {
   async exec({ client, message, player, t }) {
 
 
-    const track = player.current;
+    const { current: track } = player;
+
+    if (!track) return message.reply(`**${client.emotes.errado} › ${t('commands:nowplaying.noMusic')}**`);
+
     const embed = new EmbedBuilder()
       .setTitle(`${client.emotes.music} • __Siesta__`)
       .setColor(client.color)

@@ -10,7 +10,7 @@ export default {
 
     if (!player.queue.length) return message.reply(`**${client.emotes.errado} › ${t('commands:shuffle.noQueue')}**`);
 
-    player.shuffleQueue();
+    player.queue.shuffle()();
 
     message.reply(`**${client.emotes.music} › ${t('commands:shuffle.sucess')}**`);
   }

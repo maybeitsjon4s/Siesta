@@ -42,12 +42,12 @@ export default {
     let t = GUILD.lang || 0;
 
     switch (t) {
-      case 1:
-        t = i18next.getFixedT('pt-BR');
-        break;
-      case 0:
-        t = i18next.getFixedT('en-US');
-        break;
+    case 1:
+      t = i18next.getFixedT('pt-BR');
+      break;
+    case 0:
+      t = i18next.getFixedT('en-US');
+      break;
     }
 
     if (!message.channel.permissionsFor(client.user.id).has('ReadMessageHistory')) message.reply = message.channel.send;

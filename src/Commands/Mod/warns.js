@@ -59,30 +59,30 @@ export default {
       if (i.user.id !== message.author.id) return;
 
       switch (i.customId) {
-        case 'left':
-          if (page !== 0) {
-            --page;
-            embed.setDescription(queue.slice(page * maxPerPage, (page * maxPerPage) + maxPerPage).map((e, i) => `**[ ${(i + 1) + page * maxPerPage} ]** ${e}`).join('\n'));
-            embed.setFooter({
-              text: pageTranslated + ` ${page + 1}/${pages}`
-            });
-            msg.edit({
-              embeds: [embed]
-            });
-          }
-          break;
-        case 'right':
-          if (page < pages - 1) {
-            page++;
-            embed.setDescription(queue.slice(page * maxPerPage, (page * maxPerPage) + maxPerPage).map((e, i) => `**[ ${(i + 1) + page * maxPerPage} ]** ${e}`).join('\n'));
-            embed.setFooter({
-              text: pageTranslated + ` ${page + 1}/${pages}`
-            });
-            msg.edit({
-              embeds: [embed]
-            });
-          }
-          break;
+      case 'left':
+        if (page !== 0) {
+          --page;
+          embed.setDescription(queue.slice(page * maxPerPage, (page * maxPerPage) + maxPerPage).map((e, i) => `**[ ${(i + 1) + page * maxPerPage} ]** ${e}`).join('\n'));
+          embed.setFooter({
+            text: pageTranslated + ` ${page + 1}/${pages}`
+          });
+          msg.edit({
+            embeds: [embed]
+          });
+        }
+        break;
+      case 'right':
+        if (page < pages - 1) {
+          page++;
+          embed.setDescription(queue.slice(page * maxPerPage, (page * maxPerPage) + maxPerPage).map((e, i) => `**[ ${(i + 1) + page * maxPerPage} ]** ${e}`).join('\n'));
+          embed.setFooter({
+            text: pageTranslated + ` ${page + 1}/${pages}`
+          });
+          msg.edit({
+            embeds: [embed]
+          });
+        }
+        break;
       }
     });
   }

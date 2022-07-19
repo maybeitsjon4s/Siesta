@@ -8,7 +8,7 @@ export default {
   options: [],
   async exec({ message, player, t, client }) {
 
-    if (player.queue.length === 0) return message.reply(`**${client.emotes.errado} › ${t('commands:skip.error')}!**`)
+    if (player.queue.length === 0) return message.reply(`**${client.emotes.errado} › ${t('commands:skip.error')}!**`);
       
     player.skip();
 

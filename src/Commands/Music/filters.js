@@ -45,48 +45,48 @@ export default {
           ephemeral: true
         });
         switch (i.customId) {
-          case 'nightcore':
-            msg.edit({
-              content: `**${client.emotes.music} › ${t('commands:filters.changedMessage', {
-                filter: 'NightCore'
-              })}**`,
-              components: []
-            });
-            player.filters.clear();
-            player.filters
-              .setTimescale({ pitch: 1.2, rate: 1.1 }, false)
-              .setEqualizer([0.2, 0.2], false)
-              .setTremolo({ depth: 0.3, frequency: 14 }, false)
-              .apply();
-            break;
-          case 'bassboost':
-            msg.edit({
-              content: `**${client.emotes.music} › ${t('commands:filters.changedMessage', {
-                filter: 'Bass Boost'
-              })}**`,
-              components: []
-            });
-            player.filters.clear();
-            player.filters.setEqualizer([0.29, 0.23, 0.19, 0.16, 0.08]).apply();
-            player.bassboost = true;
-            break;
-          case 'eightD':
-            msg.edit({
-              content: `**${client.emotes.music} › ${t('commands:filters.changedMessage', {
-                filter: '8D'
-              })}**`,
-              components: []
-            });
-            player.filters.clear();
-            player.filters.setRotation({ rotationHz: 0.2 }).apply();
-            break;
-          case 'clear':
-            msg.edit({
-              content: `**${client.emotes.music} › ${t('commands:filters.clearFiltersMessage')}**`,
-              components: []
-            });
-            player.filters.clear();
-            break;
+        case 'nightcore':
+          msg.edit({
+            content: `**${client.emotes.music} › ${t('commands:filters.changedMessage', {
+              filter: 'NightCore'
+            })}**`,
+            components: []
+          });
+          player.filters.clear();
+          player.filters
+            .setTimescale({ pitch: 1.2, rate: 1.1 }, false)
+            .setEqualizer([0.2, 0.2], false)
+            .setTremolo({ depth: 0.3, frequency: 14 }, false)
+            .apply();
+          break;
+        case 'bassboost':
+          msg.edit({
+            content: `**${client.emotes.music} › ${t('commands:filters.changedMessage', {
+              filter: 'Bass Boost'
+            })}**`,
+            components: []
+          });
+          player.filters.clear();
+          player.filters.setEqualizer([0.29, 0.23, 0.19, 0.16, 0.08]).apply();
+          player.bassboost = true;
+          break;
+        case 'eightD':
+          msg.edit({
+            content: `**${client.emotes.music} › ${t('commands:filters.changedMessage', {
+              filter: '8D'
+            })}**`,
+            components: []
+          });
+          player.filters.clear();
+          player.filters.setRotation({ rotationHz: 0.2 }).apply();
+          break;
+        case 'clear':
+          msg.edit({
+            content: `**${client.emotes.music} › ${t('commands:filters.clearFiltersMessage')}**`,
+            components: []
+          });
+          player.filters.clear();
+          break;
         }
       });
       collector.on('end', () => msg.delete().catch(() => { }));

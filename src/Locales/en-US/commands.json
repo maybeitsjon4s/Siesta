@@ -156,7 +156,8 @@
         "enabled": "Enabled",
         "disabled": "Disabled",
         "playing": "Playing",
-        "paused": "Paused"
+        "paused": "Paused",
+        "noMusic": "There is no music playing right now"
       },
       "pause": {
         "alteradyPause": "Music is currently paused!",

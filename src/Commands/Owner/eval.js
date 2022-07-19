@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { inspect } from 'util';
-import { ApplicationCommandOptionType } from 'discord.js'
+import { ApplicationCommandOptionType } from 'discord.js';
 
 export default {
   name: 'eval',
@@ -14,7 +15,7 @@ export default {
     type: ApplicationCommandOptionType.String,
     required: true
   }],
-  async exec({ message, client, args }) {
+  async exec({ message, client, args, t, player }) {
 
     const expr = args.join(' ');
     if (!expr) return;

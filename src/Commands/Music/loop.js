@@ -8,7 +8,7 @@ export default {
   options: [],
   async exec({ message, player, t, client }) {
 
-    if (!player.queue.length) {
+    if (!player.queue.size) {
       player.setTrackLoop(!player.trackRepeat);
       player.setQueueLoop(false);
       const trackRepeat = player.trackRepeat ? t('commands:loop.enable') : t('commands:loop.disable');

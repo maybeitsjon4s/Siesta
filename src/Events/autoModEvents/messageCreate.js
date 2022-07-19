@@ -16,12 +16,12 @@ export default {
       let t = GUILD.lang || 0;
 
       switch (t) {
-        case 1:
-          t = i18next.getFixedT('pt-BR');
-          break;
-        case 0:
-          t = i18next.getFixedT('en-US');
-          break;
+      case 1:
+        t = i18next.getFixedT('pt-BR');
+        break;
+      case 0:
+        t = i18next.getFixedT('en-US');
+        break;
       }
 
       const isInvite = (str) => (/dis(?:board\.org\/(?:pl\/)?server\/join|cord(?:\.me\/server\/join|(?:app\.com\/invite|\.(?:com\/invite|gg\/))))/gi).test(str);

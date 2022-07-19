@@ -56,14 +56,14 @@ export default {
         name: `${client.emotes.user} › ${t('commands:mute.user')}: `,
         value: `\`${member.user?.tag}\``,
       },
-        {
-          name: `${client.emotes.info} › ${t('commands:mute.reason')}:`,
-          value: `\`${reason}\``
-        },
-        {
-          name: `${client.emotes.rocket} › ${t('commands:mute.during')}:`,
-          value: `\`${client.utils.formatTime(client.utils.convertMilliseconds(tempo))}\``
-        })
+      {
+        name: `${client.emotes.info} › ${t('commands:mute.reason')}:`,
+        value: `\`${reason}\``
+      },
+      {
+        name: `${client.emotes.rocket} › ${t('commands:mute.during')}:`,
+        value: `\`${client.utils.formatTime(client.utils.convertMilliseconds(tempo))}\``
+      })
       .setTimestamp();
     message.reply({ embeds: [embed1] });
     member.timeout(tempo, `By: ${message.author.tag} -- ${reason}`).catch(() => { });

@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType } from 'discord.js'
+import { ApplicationCommandOptionType } from 'discord.js';
 
 export default {
   name: 'volume',

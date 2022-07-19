@@ -9,7 +9,7 @@ export default {
 
     if (interaction.type === InteractionType.ApplicationCommandAutocomplete) {
       if (!interaction.member) return;
-      const value = interaction.options.getFocused()
+      const value = interaction.options.getFocused();
       if (!value) return interaction.respond([]);
       const res = await request(`https://clients1.google.com/complete/search?client=youtube&hl=pt-PT&ds=yt&q=${encodeURIComponent(value)}`, {
         headers: {
@@ -19,7 +19,7 @@ export default {
 
       const choices = [];
 
-      const data = res.split('[')
+      const data = res.split('[');
 
       for (var i = 3, min = Math.min(8 * 2, data.length); i < min; i += 2) {
         const choice = data[i].split('"')[1].replace(/\\u([0-9a-fA-F]{4})/g, (_, cc) => String.fromCharCode(parseInt(cc, 16)));
@@ -28,7 +28,7 @@ export default {
           choices.push({
             name: choice,
             value: choice
-          })
+          });
         }
       }
 

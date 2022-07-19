@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType } from 'discord.js'
+import { ApplicationCommandOptionType } from 'discord.js';
 
 export default {
   name: 'play',
@@ -52,7 +52,7 @@ export default {
 
       for (const track of result.tracks) {
         track.setRequester(message.author);
-        player.queue.push(track);
+        player.queue.add(track);
       }
 
       if (!player.playing) player.play();
@@ -67,7 +67,7 @@ export default {
 
       const track = result.tracks[0];
       track.setRequester(message.author);
-      player.queue.push(track);
+      player.queue.add(track);
 
       if (player) message.reply(`**${client.emotes.music} › ${t('commands:play.musicLoaded', {
         track: track.title

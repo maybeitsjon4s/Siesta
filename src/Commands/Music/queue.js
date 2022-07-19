@@ -16,7 +16,7 @@ export default {
   async exec({ client, message, args, player, t }) {
 
 
-    const queue = player.queue;
+    const { tracks: queue } = player.queue;
 
     const QUEUE = new EmbedBuilder()
       .setTitle(`${client.emotes.music} | __Siesta__`)
@@ -43,6 +43,7 @@ export default {
     const maxPages = Math.ceil(queue.length / multiple);
 
     QUEUE.setFooter({ text: `${t('commands:queue.page')} ${page > maxPages ? maxPages : page}/${maxPages} ` });
+
     message.reply({ embeds: [QUEUE] });
   }
 };

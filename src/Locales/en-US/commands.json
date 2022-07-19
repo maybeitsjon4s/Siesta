@@ -189,6 +189,7 @@
         "exceeds": "This time exceeds the time of the song"
       },
       "skip": {
+        "error": "There ins't any music in the queue",
         "sucess": "Music skiped!"
       },
       "volume": {

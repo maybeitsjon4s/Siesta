@@ -190,6 +190,7 @@
     "exceeds": "Esse tempo excede o tempo da música"
   },
   "skip": {
+    "error": "Não tem musicas na queue para serem puladas",
     "sucess": "Musica pulada!"
   },
   "volume": {

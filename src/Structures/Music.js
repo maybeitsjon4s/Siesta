@@ -75,7 +75,6 @@ export default class SiestaMusic extends Vulkava {
     });
 
     this.on('trackStuck', (player) => player.skip());
-
     this.on('trackException', async ({ player, exception }) => {
       player.skip();
       const t = await this.getLanguage(player.guildId);

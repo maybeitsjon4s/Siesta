@@ -18,9 +18,9 @@ export default {
     if (!Number(args[0]) || Number(args[0]) > player.queue.length || Number(args[0] < 0)) return message.reply(`**${client.emotes.errado} › ${t('commands:remove.invalidTrack')}**`);
 
     message.reply(`**${client.emotes.music} › ${t('commands:remove.removed', {
-      track: player.queue[Number(args[0] - 1)].title
+      track: player.queue.tracks[Number(args[0] - 1)].title
     })}**`);
 
-    player.queue.splice(Number(args[0]) - 1, 1);
+    player.queue.tracks.splice(Number(args[0]) - 1, 1);
   }
 };

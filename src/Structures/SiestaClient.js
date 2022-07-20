@@ -1,16 +1,54 @@
 import { Client, GatewayIntentBits, Options, Collection, Colors } from 'discord.js';
-import _pkg from 'chalk';
-const { blue, gray, green, red } = _pkg;
+import chalk from 'chalk';
+const { blue, gray, green, red } = chalk;
 import pkg from 'mongoose';
 const { connect } = pkg;
 import { Guild, User } from '../Models/index.js';
-import { promisify } from 'util';
+import { promisify, inspect } from 'util';
 import g from 'glob';
 const glob = promisify(g);
 import Emojis from './Utils/emojis.js';
 import LocaleManager from './LocaleManager.js';
 import Music from './Music.js';
 import util from './Utils/util.js';
+import { createLogger, format } from 'winston'
+
+import pkg_ from 'winston/lib/winston/transports/index.js';
+const { Console } = pkg_;
+
+const logger = createLogger({
+  handleExceptions: true,
+  handleRejections: true,
+  exitOnError: false,
+})
+
+logger.add(
+  new Console({
+    level: "silly",
+    format: format.combine(
+      format.timestamp(),
+      format.colorize(),
+      format.printf((info) => {
+        const levelPrefix =
+          info.level.includes("info") || info.level.includes("warn")
+            ? `${info.level} `
+            : info.level;
+        const tagsPrefix =
+          info.tags && info.tags.length > 0
+            ? ` --- [${info.tags
+                .map((t) => blue(t))
+                .join(", ")}]:`
+            : " --- ";
+        const message =
+          (info.message) instanceof Error ||
+          typeof info.message === "object"
+            ? inspect(info.message, { depth: 0 })
+            : green(String(info.message));
+        return `${blue(info.timestamp)} ${levelPrefix} ${process.pid}${tagsPrefix} ${message}`;
+      })
+    ),
+  })
+);
 
 export default class Siesta extends Client {
   constructor() {
@@ -58,22 +96,23 @@ export default class Siesta extends Client {
       user: User,
       guild: Guild
     };
-    this.logger = {
-      sucess: (type, text) => console.log(`${blue('[ ' + type + ' ]')} › ${green(text)}`),
-      error: (text) => console.log(`${red(text)}`),
-      stack: (text) => console.log(gray(String(text.toString()))),
-    };
+    this.logger = logger;
   }
   async start() {
     // Loads Everything
     this.loadEvents();
+    this.logger.info('Events Loadesd', { tags: ['Events', 'Client']})
     this.loadCommands();
+    this.logger.info('Commands Loadesd', { tags: ['Commands', 'Client']})
     this.localeManager = new LocaleManager(this);
     this.localeManager.loadLocales();
+    this.logger.info('Locales Loaded', { tags: ['Locales', 'i18next']})
     this.music = new Music(this);
 
     // Connecting to the database
-    connect(global.config.connections.database).catch(() => { });
+    connect(global.config.connections.database)
+    .then(() => this.logger.info('Database Connected', { tags: ['Database']}))
+    .catch((err) => this.logger.warn(err, { tags: ['Database']}));
 
     // Login the client
     await super.login(global.config.token);

@@ -19,7 +19,7 @@ export default class SiestaMusic extends Vulkava {
     this.client = client;
 
     this.on('nodeConnect', (node) => {
-      this.client.logger.sucess(node.options.id, 'Node Connected');
+      this.client.logger.info(`Node ${node.options.id} Connected`, { tags: ['Nodes', 'Vulkava']});
       setInterval(() => {
         node.send({
           op: 'pong'
@@ -29,10 +29,10 @@ export default class SiestaMusic extends Vulkava {
     });
     this.on('error', (node, error) => {
       if (error.message.includes('503') || error.message.includes('1006')) return;
-      this.client.logger.error(error.message);
+      this.client.logger.warn(error, { tags: ['Vulkava']});
     });
 
-    this.on('nodeDisconnect', (node) => console.log(red(`[ ${node.options.id} ]`), green('Node Disconnected')));
+    this.on('nodeDisconnect', (node) => this.client.logger.warn(`Node ${node.options.id} Disconnected`, { tags: ['Nodes', 'Vulkava']}));
 
     this.on('queueEnd', async (player) => {
       const t = await this.getLanguage(player.guildId);

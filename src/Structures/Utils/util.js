@@ -1,22 +1,6 @@
 import { WebhookClient } from 'discord.js';
 
-export { 
-  sendLogs, 
-  getUserFlags, 
-  getUserFlags, 
-  applyLineBreaks, 
-  formatTime, 
-  abbreviateNumber, 
-  convertAbbreviatedNum, 
-  convertMilliseconds, 
-  progressBar, 
-  timeToMS,
-  shorten,
-  formatSizeUnits,
-  coinflip
-}
-
-  async sendLogs({ content, type }) {
+  async function sendLogs({ content, type }) {
     switch(type) {
     case 'command':
       new WebhookClient({
@@ -29,8 +13,9 @@ export {
       }).send({ content });
       break;
     }
-  },
-  getUserFlags (user) {
+  }
+
+  function getUserFlags (user) {
     const flagsList = [];
     if(user.flags) {
       const flags = user.flags.toArray().join(' ')
@@ -51,9 +36,9 @@ export {
       flags.forEach((f) => flagsList.push(f));
     }
     return flagsList.length > 0 ? flagsList.join(' ') : '';
-  },
+  }
 
-  async getUser(args, message) {
+  async function getUser(args, message) {
     if (!args || !message) return;
     let user;
 
@@ -71,9 +56,9 @@ export {
     } else {
       return null;
     }
-  },
+  }
 
-  applyLineBreaks(string, maxCharLengthPerLine) {
+  function applyLineBreaks(string, maxCharLengthPerLine) {
     const split = string.split(' ');
     const chunks = [];
 
@@ -84,9 +69,9 @@ export {
     }
 
     return chunks.map((c) => c.trim()).join('\n');
-  },
+  }
 
-  formatTime(ms) {
+  function formatTime(ms) {
     let seconds = ms / 1000;
     const days = parseInt(seconds / 86400);
     seconds = seconds % 86400;
@@ -105,9 +90,9 @@ export {
       return `${minutes}m, ${seconds}s`;
     }
     return `${seconds}s`;
-  },
+  }
 
-  abbreviateNumber(number, precision = 2) {
+  function abbreviateNumber(number, precision = 2) {
     const suffsFromZeros = {
       0: '',
       3: 'k',
@@ -125,9 +110,9 @@ export {
       (calc.indexOf('.') === calc.length - 3 ?
         calc.replace(/\.00/, '') :
         calc) + suffsFromZeros[divDigits];
-  },
+  }
 
-  convertAbbreviatedNum(abbreviation) {
+  function convertAbbreviatedNum(abbreviation) {
     const number = parseFloat(abbreviation.substr(0, abbreviation.length - 1));
     const unit = abbreviation.substr(-1);
     const zeros = {
@@ -138,9 +123,9 @@ export {
     };
 
     return !zeros[unit] ? parseFloat(abbreviation) : number * zeros[unit];
-  },
+  }
 
-  convertMilliseconds(ms) {
+  function convertMilliseconds(ms) {
     const seconds = ~~(ms / 1000);
     const minutes = ~~(seconds / 60);
     const hours = ~~(minutes / 60);
@@ -152,15 +137,15 @@ export {
       minutes: minutes % 60,
       seconds: seconds % 60,
     };
-  },
+  }
 
-  progressBar(current, total, barSize) {
+  function progressBar(current, total, barSize) {
     const progress = Math.round((barSize * current) / total);
 
     return ('━'.repeat(progress > 0 ? progress - 1 : progress) + '⚪' + '─'.repeat(barSize - progress));
-  },
+  }
 
-  timeToMS(time) {
+  function timeToMS(time) {
     const timeUnits = time
       .replace(/[\d\s]/g, () => '')
       .toLowerCase()
@@ -206,17 +191,17 @@ export {
     convertions[curr[curr.length - 1]],
       0
     );
-  },
+  }
 
-  shorten(text, size) {
+  function shorten(text, size) {
     if (typeof text !== 'string') return '';
     if (text.length <= size) return text;
     return text.substr(0, size).trim() + '...';
-  },
+  }
 
-  coinflip: () => Math.random() < 0.5,
+  const coinflip = () => Math.random() < 0.5
 
-  formatSizeUnits(bytes) {
+  function formatSizeUnits(bytes) {
     if (bytes >= 1073741824) {
       bytes = (bytes / 1073741824).toFixed(2) + ' GB';
     } else if (bytes >= 1048576) {
@@ -231,5 +216,20 @@ export {
       bytes = '0 bytes';
     }
     return bytes;
-  },
-};
+  }
+
+export default { 
+  sendLogs, 
+  getUser, 
+  getUserFlags, 
+  applyLineBreaks, 
+  formatTime, 
+  abbreviateNumber, 
+  convertAbbreviatedNum, 
+  convertMilliseconds, 
+  progressBar, 
+  timeToMS,
+  shorten,
+  formatSizeUnits,
+  coinflip
+}

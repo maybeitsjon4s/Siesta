@@ -21,7 +21,8 @@
     "mongoose": "^6.3.3",
     "topgg-autoposter": "^2.0.1",
     "undici": "^5.2.0",
-    "vulkava": "^1.5.2"
+    "vulkava": "^1.5.2",
+    "winston": "^3.8.1"
   },
   "devDependencies": {
     "eslint": "^8.15.0"

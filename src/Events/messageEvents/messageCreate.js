@@ -84,8 +84,7 @@ export default {
     });
 
     await command.exec({ client, message, args, player, t }).catch((err) => {
-      client.logger.error(`Erro no commando ${command.name}, Servidor: ${message.guild.id}, Usuario: ${message.author.id}.`);
-      client.logger.stack(err.stack);
+      client.logger.warn(err, { tags: ['Commands']});
       message.reply({
         content: `**${client.emotes.errado} › ${t('events:messageCreate.error', {
           command: command.name

@@ -1,4 +1,4 @@
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, ChannelType } from 'discord.js';
 
 export default {
   name: 'serverinfo',
@@ -33,7 +33,7 @@ export default {
         },
         {
           name: `${client.emotes.heart2} › ${t('commands:serverinfo.channels')}`,
-          value: `> **${t('commands:serverinfo.text')}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_TEXT'/*text*/).size}\`\n> **${t('commands:serverinfo.voice')}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_VOICE'/*voice*/).size}\`\n> **${t('commands:serverinfo.category')}** \`${guild.channels.cache.filter((a) => a.type === 'GUILD_CATEGORY'/*category*/).size}\``,
+          value: `> **${t('commands:serverinfo.text')}** \`${guild.channels.cache.filter((a) => a.type === ChannelType.GuildText).size}\`\n> **${t('commands:serverinfo.voice')}** \`${guild.channels.cache.filter((a) => a.type === ChannelType.GuildVoice).size}\`\n> **${t('commands:serverinfo.category')}** \`${guild.channels.cache.filter((a) => a.type === ChannelType.GuildCategory).size}\``,
           inline: true
         },
         {

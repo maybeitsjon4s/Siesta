@@ -99,8 +99,7 @@ export default {
       }
 
       await command.exec({ client, message, args, player, t }).catch(err => {
-        client.logger.error(`Erro em ${command.name}, Servidor: ${message.guild.id}, Usuario: ${interaction.user.id}`);
-        client.logger.stack(err.stack);
+        client.logger.warn(err, { tags: ['Commands']});
 
         interaction.reply({
           content: `**${client.emotes.errado} › ${t('events:messageCreate.error', {

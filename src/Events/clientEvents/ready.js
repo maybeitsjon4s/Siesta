@@ -4,7 +4,7 @@ const { blue } = pkg;
 export default {
   name: 'ready',
   async exec(client) {
-    client.logger.sucess('CLIENT', `Logged in as ${blue(client.user.username)}`);
+    client.logger.info(`${client.user.username} is ready!`, { tags: ['Client']});
 
     client.music.start(client.user.id);
 

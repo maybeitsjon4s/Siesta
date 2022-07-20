@@ -1,6 +1,20 @@
 import { WebhookClient } from 'discord.js';
 
-export default {
+export { 
+  sendLogs, 
+  getUserFlags, 
+  getUserFlags, 
+  applyLineBreaks, 
+  formatTime, 
+  abbreviateNumber, 
+  convertAbbreviatedNum, 
+  convertMilliseconds, 
+  progressBar, 
+  timeToMS,
+  shorten,
+  formatSizeUnits,
+  coinflip
+}
 
   async sendLogs({ content, type }) {
     switch(type) {
@@ -19,7 +33,20 @@ export default {
   getUserFlags (user) {
     const flagsList = [];
     if(user.flags) {
-      const flags = user.flags.toArray().join(' ').replace('PARTNERED_SERVER_OWNER', '<:parceiro:938035311093612544>').replace('DISCORD_CERTIFIED_MODERATOR', '<:mod:938035490836344852>').replace('EARLY_VERIFIED_BOT_DEVELOPER', '<:dev2:938036145441374238>').replace('EARLY_SUPPORTER', '<:supporter:938036320721326101>').replace('HOUSE_BALANCE', '<:balance:938043574430347284>').replace('HOUSE_BRILLIANCE', '<:briliance:938044002849128459>').replace('HOUSE_BRAVERY', '<:bravery:938044368584056863>').replace('VERIFIED_BOT', '').replace('HYPESQUAD_EVENTS', '<:hypesquad:938548922954178610>').replace('BUGHUNTER_LEVEL_1', '<:bughunter1:961284995543085096>').replace('BUGHUNTER_LEVEL_2', '<:bughunter2:961285102065823794>').replace('DISCORD_EMPLOYEE', '<:employee:961285914548666368>').split(' ');
+      const flags = user.flags.toArray().join(' ')
+      .replace('Partner', '<:parceiro:938035311093612544>')
+      .replace('CertifiedModerator', '<:mod:938035490836344852>')
+      .replace('VerifiedDeveloper', '<:dev2:938036145441374238>')
+      .replace('PremiumEarlySupporter', '<:supporter:938036320721326101>')
+      .replace('HypeSquadOnlineHouse3', '<:balance:938043574430347284>')
+      .replace('HypeSquadOnlineHouse2', '<:briliance:938044002849128459>')
+      .replace('HypeSquadOnlineHouse1', '<:bravery:938044368584056863>')
+      .replace('VerifiedBot', '').
+      replace('Hypesquad', '<:hypesquad:938548922954178610>')
+      .replace('BugHunterLevel1', '<:bughunter1:961284995543085096>')
+      .replace('BugHunterLevel2', '<:bughunter2:961285102065823794>')
+      .replace('Staff', '<:employee:961285914548666368>')
+      .split(' ');
       
       flags.forEach((f) => flagsList.push(f));
     }

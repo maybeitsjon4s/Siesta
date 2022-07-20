@@ -91,7 +91,7 @@ export default class Siesta extends Client {
     this.aliases = new Collection();
     this.utils = util;
     this.owners = ['431768491759239211', '499356551535001610'];
-    this.color = Colors.White;
+    this.color = Colors.DarkGrey;
     this.db = {
       user: User,
       guild: Guild

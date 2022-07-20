@@ -16,11 +16,6 @@ export default {
         new ActionRowBuilder().addComponents(
           new ButtonBuilder()
             .setStyle(ButtonStyle.Link)
-            .setEmoji({
-              name: 'heart1',
-              id: '914564033091366942',
-              animated: true
-            })
             .setLabel(t('commands:invite.buttonLabel'))
             .setURL('https://discord.com/api/oauth2/authorize?client_id=907747074118926347&permissions=271641686&scope=applications.commands%20bot')
         ),

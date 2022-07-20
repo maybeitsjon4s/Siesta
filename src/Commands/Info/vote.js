@@ -16,11 +16,6 @@ export default {
         new ActionRowBuilder().addComponents(
           new ButtonBuilder()
             .setStyle(ButtonStyle.Link)
-            .setEmoji({
-              name: 'topgg',
-              id: '910275555402842212',
-              animated: true
-            })
             .setLabel(t('commands:vote.label'))
             .setURL('https://top.gg/bot/907747074118926347/vote')
         ),

@@ -1117,7 +1117,7 @@ typescript@^4.2.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
   integrity sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==
 
-undici@^5.2.0, undici@^5.5.1, undici@^5.7.0:
+undici@^5.2.0, undici@^5.7.0, undici@^5.8.0:
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/undici/-/undici-5.8.0.tgz#dec9a8ccd90e5a1d81d43c0eab6503146d649a4f"
   integrity sha512-1F7Vtcez5w/LwH2G2tGnFIihuWUlc58YidwLiCv+jR2Z50x0tNXpRRw7eOIJ+GvqCqIkg9SB7NWAJ/T9TLfv8Q==
@@ -1145,12 +1145,12 @@ v8-compile-cache@^2.0.3:
   integrity sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==
 
 vulkava@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/vulkava/-/vulkava-1.5.2.tgz#9ba2d28c3d44217fdef4de026b079850472431a8"
-  integrity sha512-3SmCd4sohRTSipK4jkuKUQJYsIIX/IXTbcaqM6RHyLGOK2FzTUIzH/mbd30eut5wq9lmkUHC3wKTU06qbgeurA==
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/vulkava/-/vulkava-1.5.3.tgz#1cbd954be01a55ef370a1036bd4e00459d52d2fd"
+  integrity sha512-6p6z5sJpFxfccagpsFjhC3N3O7kxQYDdznIssTA3R8HM19QWHnz5Tpbt3H5OEDeENgzUP64vRyVtcg/wJ/rrtg==
   dependencies:
-    undici "^5.5.1"
-    ws "^8.8.0"
+    undici "^5.8.0"
+    ws "^8.8.1"
 
 webidl-conversions@^3.0.0:
   version "3.0.1"
@@ -1220,7 +1220,7 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
-ws@^8.8.0, ws@^8.8.1:
+ws@^8.8.1:
   version "8.8.1"
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.8.1.tgz#5dbad0feb7ade8ecc99b830c1d77c913d4955ff0"
   integrity sha512-bGy2JzvzkPowEJV++hF07hAD6niYSr0JzBNo/J29WsB57A2r7Wlc1UFcTR9IzrPvuNVO4B8LGqF8qcpsVOhJCA==
